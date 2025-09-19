@@ -255,7 +255,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   
-                  className="group p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300"
+                  className="group p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 bg-gradient-to-br from-gray-900/50 to-gray-800/30 hover:from-gray-800/50 hover:to-gray-700/30"
                 >
                   <div className="flex items-center mb-6">
                     <div className="p-3 rounded-lg bg-gray-800 group-hover:bg-blue-600 transition-colors duration-300 mr-4">
