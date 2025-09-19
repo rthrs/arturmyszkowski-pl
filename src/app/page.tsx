@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { 
   Github, 
-  Linkedin, 
   Mail, 
   Download, 
   Code, 
@@ -13,7 +13,8 @@ import {
   Smartphone,
   Menu,
   X,
-  ArrowRight
+  ArrowRight,
+  Instagram
 } from "lucide-react";
 
 export default function Home() {
@@ -24,11 +25,21 @@ export default function Home() {
     setIsMenuOpen(false);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    setIsMenuOpen(false);
+  };
+
   const skills = [
-    { name: "Frontend", icon: Globe, description: "React, Next.js, TypeScript" },
-    { name: "Backend", icon: Database, description: "Node.js, Python, APIs" },
-    { name: "Mobile", icon: Smartphone, description: "React Native, iOS, Android" },
-    { name: "DevOps", icon: Code, description: "Docker, AWS, CI/CD" },
+    { name: "Frontend Development", icon: Globe, description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI" },
+    { name: "Mobile Development", icon: Smartphone, description: "React Native, iOS, Android" },
+    { name: "Backend & Databases", icon: Database, description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore" },
+    { name: "Graphics & Visualization", icon: Code, description: "WebGL, Three.js, D3.js" },
+    { name: "State Management", icon: Code, description: "Redux, Redux Saga, Immer, TanStack Query, RxJS" },
+    { name: "DevOps & Leadership", icon: Code, description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies" },
   ];
 
   return (
@@ -38,13 +49,14 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <motion.div
+            <motion.button
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="font-medium text-lg text-white"
+              onClick={scrollToTop}
+              className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300"
             >
-              artur.myszkowski
-            </motion.div>
+              arturmyszkowski.pl
+            </motion.button>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
@@ -101,9 +113,15 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8"
           >
-            {/* Profile Photo Placeholder */}
-            <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-              <span className="text-white text-2xl font-semibold">AM</span>
+            {/* Profile Photo */}
+            <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-gray-700 relative">
+              <Image 
+                src="/images/profile.webp" 
+                alt="Artur Myszkowski" 
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             
             <div className="space-y-4">
@@ -149,7 +167,7 @@ export default function Home() {
               className="flex justify-center space-x-8 pt-12"
             >
               <a
-                href="https://github.com/arturmyszkowski"
+                href="https://github.com/rthrs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -157,15 +175,15 @@ export default function Home() {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/arturmyszkowski"
+                href="https://instagram.com/artur6strings"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
-                <Linkedin size={20} />
+                <Instagram size={20} />
               </a>
               <a
-                href="mailto:artur@myszkowski.pl"
+                href="mailto:contact@arturmyszkowski.pl"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <Mail size={20} />
@@ -194,21 +212,16 @@ export default function Home() {
 
             <div className="space-y-8 text-lg text-gray-300 font-light leading-relaxed">
               <p>
-                I&apos;m a Senior Software Engineer with extensive experience in modern web technologies 
-                and a passion for creating scalable, maintainable applications. With a strong foundation 
-                in both frontend and backend development, I enjoy solving complex problems and building 
+              I&apos;m a Senior Software Engineer with extensive experience in modern web technologies 
+                and a passion for creating scalable, maintainable applications. I&apos;m holding a Master&apos;s degree
+                in Computer Science from the University of Warsaw. With a strong foundation 
+                in algorithms and data structures, I enjoy solving complex problems and building 
                 solutions that make a real difference.
               </p>
               <p>
-                My journey in software development has led me to work with diverse teams and technologies, 
-                from startups to enterprise environments. I&apos;m particularly passionate about clean code, 
-                user experience, and staying current with the latest industry trends and best practices.
+                My core philosophy is to continuously learn and apply the most effective technologies for each project. I thrive in collaborative environments and enjoy working with diverse teams. While my main expertise is in the React ecosystem, I am adaptable and comfortable working across a broad range of tools and frameworks.
               </p>
-              <p>
-                When I&apos;m not coding, you can find me exploring new technologies, contributing to open source 
-                projects, or sharing knowledge with the developer community. I&apos;m always eager to take on new 
-                challenges and opportunities for growth.
-              </p>
+            
             </div>
           </motion.div>
         </div>
@@ -282,14 +295,18 @@ export default function Home() {
               achievements, and technical expertise.
             </p>
 
-            <motion.button
+            <motion.a
+              href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
+              download="Artur_Myszkowski_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300"
             >
               <Download size={20} className="mr-2" />
               Download Resume
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </section>
@@ -313,26 +330,26 @@ export default function Home() {
 
             <div className="text-center space-y-8">
               <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-                I&apos;m always interested in new opportunities and exciting projects. 
-                Let&apos;s connect and discuss how we can work together!
+                I&apos;m always open to discussing new projects, creative ideas, or opportunities 
+                to be part of an ambitious team. Let&apos;s connect and explore how we can work together!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <a
-                  href="mailto:artur@myszkowski.pl"
+                  href="mailto:contact@arturmyszkowski.pl"
                   className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300"
                 >
                   <Mail size={20} className="mr-2" />
-                  artur@myszkowski.pl
+                  contact@arturmyszkowski.pl
                 </a>
                 <a
-                  href="https://linkedin.com/in/arturmyszkowski"
+                  href="https://instagram.com/artur6strings"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center px-8 py-4 border border-gray-800 hover:border-gray-700 text-white font-medium rounded-lg transition-all duration-300"
                 >
-                  <Linkedin size={20} className="mr-2" />
-                  LinkedIn
+                  <Instagram size={20} className="mr-2" />
+                  Instagram
                 </a>
               </div>
             </div>
@@ -344,7 +361,7 @@ export default function Home() {
       <footer className="py-12 px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-400 font-light">
-            © 2024 Artur Myszkowski. Built with Next.js, TypeScript, and Tailwind CSS.
+            © 2025 Artur Myszkowski. Built with Next.js and Tailwind CSS.
           </p>
         </div>
       </footer>

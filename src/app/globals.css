@@ -1,19 +1,31 @@
 @import "tailwindcss";
 
+/* Overscroll background color to match main page */
+html {
+  background-color: #000000;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+  background-color: #000000;
 }
 
 /* Selection color */
 ::selection {
   background: #3b82f6;
   color: #ffffff;
+}
+
+/* Cursor pointer for all links and clickable elements */
+a, button, [role="button"], [onclick] {
+  cursor: pointer;
+}
+
+/* Ensure links without href still show pointer cursor */
+a {
+  cursor: pointer;
 }
 
 /* Scrollbar styling */

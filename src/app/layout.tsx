@@ -16,12 +16,12 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Artur Myszkowski - Senior Software Engineer",
-  description: "Senior Software Engineer looking for new opportunities. Experienced in modern web technologies, passionate about clean code and innovative solutions.",
-  keywords: ["software engineer", "developer", "programmer", "web development", "react", "typescript"],
+  description: "Senior Software Engineer with 7+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.",
+  keywords: ["software Engineer", "senior Engineer", "frontend Engineer", "react Engineer", "typescript", "web development", "computer science", "university of warsaw"],
   authors: [{ name: "Artur Myszkowski" }],
   openGraph: {
     title: "Artur Myszkowski - Senior Software Engineer",
-    description: "Senior Software Engineer looking for new opportunities",
+    description: "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
     type: "website",
   },
 };
