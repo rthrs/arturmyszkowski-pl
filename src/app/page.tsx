@@ -38,48 +38,48 @@ export default function Home() {
       name: "Frontend Development", 
       icon: Globe, 
       description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI",
-      iconColorClass: "group-hover:bg-blue-600",
-      cardBgClass: "from-blue-900/20 to-gray-900/50 hover:from-blue-800/30 hover:to-gray-800/40",
+      iconColorClass: "group-hover:bg-blue-700/80",
+      cardBgClass: "from-blue-900/8 to-gray-900/50 hover:from-blue-800/12 hover:to-gray-800/40",
       animation: "rotate"
     },
     { 
       name: "Mobile Development", 
       icon: Smartphone, 
       description: "React Native, iOS, Android",
-      iconColorClass: "group-hover:bg-purple-600",
-      cardBgClass: "from-purple-900/20 to-gray-900/50 hover:from-purple-800/30 hover:to-gray-800/40",
+      iconColorClass: "group-hover:bg-purple-700/80",
+      cardBgClass: "from-purple-900/8 to-gray-900/50 hover:from-purple-800/12 hover:to-gray-800/40",
       animation: "bounce"
     },
     { 
       name: "Backend & Databases", 
       icon: Database, 
       description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore",
-      iconColorClass: "group-hover:bg-green-600",
-      cardBgClass: "from-green-900/20 to-gray-900/50 hover:from-green-800/30 hover:to-gray-800/40",
+      iconColorClass: "group-hover:bg-green-700/80",
+      cardBgClass: "from-green-900/8 to-gray-900/50 hover:from-green-800/12 hover:to-gray-800/40",
       animation: "scale"
     },
     { 
       name: "Graphics & Visualization", 
       icon: Code, 
       description: "WebGL, Three.js, D3.js",
-      iconColorClass: "group-hover:bg-pink-600",
-      cardBgClass: "from-pink-900/20 to-gray-900/50 hover:from-pink-800/30 hover:to-gray-800/40",
+      iconColorClass: "group-hover:bg-pink-700/80",
+      cardBgClass: "from-pink-900/8 to-gray-900/50 hover:from-pink-800/12 hover:to-gray-800/40",
       animation: "pulse"
     },
     { 
       name: "State Management", 
       icon: Code, 
       description: "Redux, Redux Saga, Immer, TanStack Query, RxJS",
-      iconColorClass: "group-hover:bg-yellow-600",
-      cardBgClass: "from-yellow-900/20 to-gray-900/50 hover:from-yellow-800/30 hover:to-gray-800/40",
+      iconColorClass: "group-hover:bg-yellow-700/80",
+      cardBgClass: "from-yellow-900/8 to-gray-900/50 hover:from-yellow-800/12 hover:to-gray-800/40",
       animation: "wiggle"
     },
     { 
       name: "DevOps & Leadership", 
       icon: Code, 
       description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies",
-      iconColorClass: "group-hover:bg-cyan-600",
-      cardBgClass: "from-cyan-900/20 to-gray-900/50 hover:from-cyan-800/30 hover:to-gray-800/40",
+      iconColorClass: "group-hover:bg-cyan-700/80",
+      cardBgClass: "from-cyan-900/8 to-gray-900/50 hover:from-cyan-800/12 hover:to-gray-800/40",
       animation: "float"
     },
   ];
