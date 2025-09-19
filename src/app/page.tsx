@@ -53,7 +53,7 @@ export default function Home() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               onClick={scrollToTop}
-              className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300"
+              className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono"
             >
               arturmyszkowski.pl
             </motion.button>
@@ -128,7 +128,7 @@ export default function Home() {
               <h1 className="text-5xl sm:text-7xl font-light text-white tracking-tight">
                 Artur Myszkowski
               </h1>
-              <p className="text-xl sm:text-2xl text-gray-400 font-light">
+              <p className="text-xl sm:text-2xl text-gray-400 font-light font-mono">
                 Senior Software Engineer
               </p>
             </div>
@@ -265,7 +265,7 @@ export default function Home() {
                       {skill.name}
                     </h3>
                   </div>
-                  <p className="text-gray-400 font-light">
+                  <p className="text-gray-400 font-light font-mono">
                     {skill.description}
                   </p>
                 </motion.div>
@@ -362,7 +362,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-12 px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-400 font-light">
+          <p className="text-gray-400 font-light font-mono">
             © 2025 Artur Myszkowski. Built with Next.js and Tailwind CSS.
           </p>
         </div>
