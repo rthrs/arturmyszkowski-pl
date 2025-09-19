@@ -50,6 +50,15 @@ module.exports = {
     'hover:border-blue-400/20',
     'border-gray-600/10',
     'hover:border-gray-500/20',
+    // Footer link classes
+    'text-blue-400',
+    'hover:text-blue-300',
+    'text-cyan-400',
+    'hover:text-cyan-300',
+    'decoration-blue-500/50',
+    'hover:decoration-blue-400/70',
+    'decoration-cyan-500/50',
+    'hover:decoration-cyan-400/70',
   ],
   theme: {
     extend: {

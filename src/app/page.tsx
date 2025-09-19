@@ -409,7 +409,25 @@ export default function Home() {
       <footer className="py-12 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-800 border-t border-gray-900">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-400 font-light font-mono">
-            © 2025 Artur Myszkowski. Built with Next.js and Tailwind CSS.
+            © 2025 Artur Myszkowski. Built with{' '}
+            <a 
+              href="https://nextjs.org" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors duration-200 underline decoration-blue-500/50 hover:decoration-blue-400/70"
+            >
+              Next.js
+            </a>
+            {' '}and{' '}
+            <a 
+              href="https://tailwindcss.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 underline decoration-cyan-500/50 hover:decoration-cyan-400/70"
+            >
+              Tailwind CSS
+            </a>
+            .
           </p>
         </div>
       </footer>
