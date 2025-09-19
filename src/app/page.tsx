@@ -155,16 +155,16 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8"
           >
-            {/* Profile Photo */}
-            <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-gray-700 relative">
-              <Image 
-                src="/images/profile.webp" 
-                alt="Artur Myszkowski" 
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+                  {/* Profile Photo */}
+                  <div className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden border-2 border-gray-700 relative">
+                    <Image
+                      src="/images/profile.webp"
+                      alt="Artur Myszkowski"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
             
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-7xl font-light text-white tracking-tight">
