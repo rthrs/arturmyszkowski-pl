@@ -46,10 +46,13 @@ module.exports = {
     'shadow-md',
     'hover:shadow-lg',
     // Button border classes
-    'border-blue-500/10',
-    'hover:border-blue-400/20',
-    'border-gray-600/10',
-    'hover:border-gray-500/20',
+    'border-blue-500/30',
+    'hover:border-blue-400/50',
+    'border-gray-600/30',
+    'hover:border-gray-500/50',
+    // Skill icon border classes
+    'border-gray-600/30',
+    'hover:border-gray-500/50',
     // Footer link classes
     'text-blue-400',
     'hover:text-blue-300',
