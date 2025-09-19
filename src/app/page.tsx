@@ -105,7 +105,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -196,7 +196,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 lg:px-8 bg-gray-900">
+      <section id="about" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -230,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 lg:px-8 bg-black">
+      <section id="skills" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-black">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -276,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-24 px-6 lg:px-8 bg-gray-900">
+      <section id="work" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -314,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 lg:px-8 bg-black">
+      <section id="contact" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -360,7 +360,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+      <footer className="py-12 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-800 border-t border-gray-900">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-400 font-light font-mono">
             © 2025 Artur Myszkowski. Built with Next.js and Tailwind CSS.
