@@ -105,7 +105,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -150,13 +150,15 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="pt-8"
             >
-              <button
+              <motion.button
                 onClick={() => scrollToSection('work')}
-                className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 View My Work
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              </motion.button>
             </motion.div>
 
             {/* Social Links */}
@@ -248,8 +250,8 @@ export default function Home() {
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   
@@ -302,7 +304,7 @@ export default function Home() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300"
+              className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Download size={20} className="mr-2" />
               Download Resume
@@ -337,7 +339,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <a
                   href="mailto:contact@arturmyszkowski.pl"
-                  className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300"
+                  className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <Mail size={20} className="mr-2" />
                   contact@arturmyszkowski.pl
@@ -346,7 +348,7 @@ export default function Home() {
                   href="https://instagram.com/artur6strings"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center px-8 py-4 border border-gray-800 hover:border-gray-700 text-white font-medium rounded-lg transition-all duration-300"
+                  className="group inline-flex items-center px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <Instagram size={20} className="mr-2" />
                   Instagram
