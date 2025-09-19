@@ -32,6 +32,24 @@ module.exports = {
     'skill-animate-pulse',
     'skill-animate-wiggle',
     'skill-animate-float',
+    // Button gradient classes
+    'bg-gradient-to-r',
+    'from-blue-600',
+    'to-blue-700',
+    'hover:from-blue-700',
+    'hover:to-blue-800',
+    'from-gray-700',
+    'to-gray-800',
+    'hover:from-gray-600',
+    'hover:to-gray-700',
+    // Button shadow classes
+    'shadow-md',
+    'hover:shadow-lg',
+    // Button border classes
+    'border-blue-500/10',
+    'hover:border-blue-400/20',
+    'border-gray-600/10',
+    'hover:border-gray-500/20',
   ],
   theme: {
     extend: {

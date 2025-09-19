@@ -194,12 +194,12 @@ export default function Home() {
             >
               <motion.button
                 onClick={() => scrollToSection('work')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/10 hover:border-blue-400/20"
               >
-                View My Work
-                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                <span>View My Work</span>
+                <ArrowRight size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
               </motion.button>
             </motion.div>
 
@@ -344,12 +344,12 @@ export default function Home() {
               download="Artur_Myszkowski_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/10 hover:border-blue-400/20"
             >
               <Download size={20} className="mr-2" />
-              Download Resume
+              <span>Download Resume</span>
             </motion.a>
           </motion.div>
         </div>
@@ -379,22 +379,26 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <a
+                <motion.a
                   href="mailto:contact@arturmyszkowski.pl"
-                  className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/10 hover:border-blue-400/20"
                 >
                   <Mail size={20} className="mr-2" />
-                  contact@arturmyszkowski.pl
-                </a>
-                <a
+                  <span>contact@arturmyszkowski.pl</span>
+                </motion.a>
+                <motion.a
                   href="https://instagram.com/artur6strings"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-600/10 hover:border-gray-500/20"
                 >
                   <Instagram size={20} className="mr-2" />
-                  Instagram
-                </a>
+                  <span>Instagram</span>
+                </motion.a>
               </div>
             </div>
           </motion.div>
