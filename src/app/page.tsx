@@ -34,12 +34,48 @@ export default function Home() {
   };
 
   const skills = [
-    { name: "Frontend Development", icon: Globe, description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI" },
-    { name: "Mobile Development", icon: Smartphone, description: "React Native, iOS, Android" },
-    { name: "Backend & Databases", icon: Database, description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore" },
-    { name: "Graphics & Visualization", icon: Code, description: "WebGL, Three.js, D3.js" },
-    { name: "State Management", icon: Code, description: "Redux, Redux Saga, Immer, TanStack Query, RxJS" },
-    { name: "DevOps & Leadership", icon: Code, description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies" },
+    { 
+      name: "Frontend Development", 
+      icon: Globe, 
+      description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI",
+      colorClass: "group-hover:bg-blue-600",
+      animation: "rotate"
+    },
+    { 
+      name: "Mobile Development", 
+      icon: Smartphone, 
+      description: "React Native, iOS, Android",
+      colorClass: "group-hover:bg-purple-600",
+      animation: "bounce"
+    },
+    { 
+      name: "Backend & Databases", 
+      icon: Database, 
+      description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore",
+      colorClass: "group-hover:bg-green-600",
+      animation: "scale"
+    },
+    { 
+      name: "Graphics & Visualization", 
+      icon: Code, 
+      description: "WebGL, Three.js, D3.js",
+      colorClass: "group-hover:bg-pink-600",
+      animation: "pulse"
+    },
+    { 
+      name: "State Management", 
+      icon: Code, 
+      description: "Redux, Redux Saga, Immer, TanStack Query, RxJS",
+      colorClass: "group-hover:bg-yellow-600",
+      animation: "wiggle"
+    },
+    { 
+      name: "DevOps & Leadership", 
+      icon: Code, 
+      description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies",
+      colorClass: "group-hover:bg-cyan-600",
+      animation: "float"
+    },
   ];
 
   return (
@@ -255,11 +291,11 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   
-                  className="group p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 bg-gradient-to-br from-gray-900/50 to-gray-800/30 hover:from-gray-800/50 hover:to-gray-700/30"
+                  className={`group p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 bg-gradient-to-br from-gray-900/50 to-gray-800/30 hover:from-gray-800/50 hover:to-gray-700/30 skill-animate-${skill.animation}`}
                 >
                   <div className="flex items-center mb-6">
-                    <div className="p-3 rounded-lg bg-gray-800 group-hover:bg-blue-600 transition-colors duration-300 mr-4">
-                      <skill.icon size={24} className="text-white" />
+                    <div className={`p-3 rounded-lg bg-gray-800 ${skill.colorClass} transition-all duration-300 mr-4`}>
+                      <skill.icon size={24} className="text-white skill-icon" />
                     </div>
                     <h3 className="text-xl font-medium text-white">
                       {skill.name}
