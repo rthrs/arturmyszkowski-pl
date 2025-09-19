@@ -59,6 +59,15 @@ module.exports = {
     'hover:decoration-blue-400/70',
     'decoration-cyan-500/50',
     'hover:decoration-cyan-400/70',
+    // Footer gradient classes
+    'bg-gradient-to-r',
+    'from-transparent',
+    'to-gray-600',
+    'bg-gradient-to-l',
+    'from-gray-600',
+    'bg-blue-600/50',
+    'via-cyan-600/50',
+    'to-blue-600/50',
   ],
   theme: {
     extend: {

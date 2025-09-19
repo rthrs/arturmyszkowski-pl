@@ -238,7 +238,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+      <section id="about" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-900">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -272,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-black">
+      <section id="skills" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+      <section id="work" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-800">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -356,7 +356,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+      <section id="contact" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-900">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -406,10 +406,13 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-800 border-t border-gray-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-400 font-light font-mono">
-            © 2025 Artur Myszkowski. Built with{' '}
+      <footer className="pb-6 pt-8 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-900 border-t border-gray-800">
+        <div className="max-w-4xl mx-auto text-center text-sm">
+          <p className="text-gray-400 font-light font-mono mb-1">
+            © 2025 Artur Myszkowski
+            </p>
+            <p className="text-gray-400 font-light font-mono text-xs">
+            Built with{' '}
             <a 
               href="https://nextjs.org" 
               target="_blank" 
@@ -427,7 +430,7 @@ export default function Home() {
             >
               Tailwind CSS
             </a>
-            .
+            
           </p>
         </div>
       </footer>
