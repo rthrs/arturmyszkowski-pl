@@ -185,7 +185,7 @@ export default function Home() {
       </nav>
 
       {/* Background Gradient */}
-      <div className="absolute -inset-x-[600px] lg:-right-[300px] -inset-y-72 md:-inset-48 lg:-inset-y-32 -rotate-[7deg] z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
+      <div className="absolute -inset-x-[600px] lg:-right-[300px] -inset-y-72 md:-inset-48 lg:-inset-y-8 -rotate-[7deg] z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative z-10">

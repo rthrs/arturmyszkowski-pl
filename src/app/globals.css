@@ -4,12 +4,12 @@
 html {
   background-color: #000000;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
-  overflow-x: hidden;
-  background-color: #000000;
+  overflow-x: clip;
 }
 
 /* Selection color */
@@ -26,35 +26,4 @@ a, button, [role="button"], [onclick] {
 /* Ensure links without href still show pointer cursor */
 a {
   cursor: pointer;
-}
-
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f5f5f5;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #e5e5e5;
-  border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #262626;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #737373;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;
 }
