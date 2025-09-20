@@ -19,6 +19,7 @@ import {
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -40,7 +41,12 @@ export default function Home() {
       description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI",
       iconColorClass: "from-blue-900/50 to-gray-900/50 group-hover:bg-blue-700/50",
       cardBgClass: "from-blue-900/8 to-gray-900/50 hover:from-blue-800/20 hover:to-gray-800/40",
-      animation: "rotate"
+      animation: "rotate",
+      hoverAnimation: {
+        rotate: [0, 10, -10, 0],
+        scale: [1, 1.1, 1.1, 1],
+        transition: { duration: 0.9, ease: "easeInOut" as const }
+      }
     },
     { 
       name: "Mobile Development", 
@@ -48,7 +54,12 @@ export default function Home() {
       description: "React Native, iOS, Android",
       iconColorClass: "from-purple-900/50 to-gray-900/50 group-hover:bg-purple-700/50",
       cardBgClass: "from-purple-900/8 to-gray-900/50 hover:from-purple-800/20 hover:to-gray-800/40",
-      animation: "bounce"
+      animation: "bounce",
+      hoverAnimation: {
+        y: [0, -8, 0],
+        scale: [1, 1.1, 1],
+        transition: { duration: 0.9, ease: "easeInOut" as const }
+      }
     },
     { 
       name: "Backend & Databases", 
@@ -56,7 +67,11 @@ export default function Home() {
       description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore",
       iconColorClass: "from-green-900/50 to-gray-900/50 group-hover:bg-green-700/50",
       cardBgClass: "from-green-900/8 to-gray-900/50 hover:from-green-800/20 hover:to-gray-800/40",
-      animation: "scale"
+      animation: "scale",
+      hoverAnimation: {
+        scale: [1, 1.2, 1],
+        transition: { duration: 0.9, ease: "easeInOut" as const }
+      }
     },
     { 
       name: "Graphics & Visualization", 
@@ -64,7 +79,12 @@ export default function Home() {
       description: "WebGL, Three.js, D3.js",
       iconColorClass: "from-pink-900/50 to-gray-900/50 group-hover:bg-pink-700/50",
       cardBgClass: "from-pink-900/8 to-gray-900/50 hover:from-pink-800/20 hover:to-gray-800/40",
-      animation: "pulse"
+      animation: "pulse",
+      hoverAnimation: {
+        scale: [1, 1.1, 1],
+        opacity: [1, 0.8, 1],
+        transition: { duration: 0.9, ease: "easeInOut" as const }
+      }
     },
     { 
       name: "State Management", 
@@ -72,7 +92,12 @@ export default function Home() {
       description: "Redux, Redux Saga, Immer, TanStack Query, RxJS",
       iconColorClass: "from-yellow-900/50 to-gray-900/50 group-hover:bg-yellow-700/50",
       cardBgClass: "from-yellow-900/8 to-gray-900/50 hover:from-yellow-800/20 hover:to-gray-800/40",
-      animation: "wiggle"
+      animation: "wiggle",
+      hoverAnimation: {
+        rotate: [0, -5, 5, -5, 0],
+        scale: [1, 1.1, 1.1, 1.1, 1],
+        transition: { duration: 0.9, ease: "easeInOut" as const }
+      }
     },
     { 
       name: "DevOps & Leadership", 
@@ -80,9 +105,22 @@ export default function Home() {
       description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies",
       iconColorClass: "from-cyan-900/50 to-gray-900/50 group-hover:bg-cyan-700/50",
       cardBgClass: "from-cyan-900/8 to-gray-900/50 hover:from-cyan-800/20 hover:to-gray-800/40",
-      animation: "float"
+      animation: "float",
+      hoverAnimation: {
+        y: [0, -5, -10, -5, 0],
+        scale: [1, 1.05, 1.1, 1.05, 1],
+        transition: { duration: 0.9, ease: "easeInOut" as const }
+      }
     },
   ];
+
+  const defaultAnimation = {
+    rotate: 0,
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: "easeInOut" as const }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -297,12 +335,18 @@ export default function Home() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  
-                  className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl ${skill.cardBgClass} skill-animate-${skill.animation}`}
+                  onHoverStart={() => setHoveredSkill(skill.name)}
+                  onHoverEnd={() => setHoveredSkill(null)}
+                  className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl ${skill.cardBgClass}`}
                 >
                   <div className="flex items-center mb-6">
                     <div className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}>
-                      <skill.icon size={24} className="text-white skill-icon" />
+                      <motion.div
+                        animate={hoveredSkill === skill.name ? skill.hoverAnimation : defaultAnimation}
+                        className="text-white"
+                      >
+                        <skill.icon size={24} />
+                      </motion.div>
                     </div>
                     <h3 className="text-xl font-medium text-white">
                       {skill.name}
