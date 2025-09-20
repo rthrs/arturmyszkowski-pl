@@ -202,7 +202,7 @@ export default function Home() {
       </nav>
 
       {/* Background Gradient */}
-      <div className="absolute -inset-x-[600px] lg:-right-[300px] -inset-y-72 md:-inset-48 lg:-inset-y-8 -rotate-[7deg] z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
+      <div className="absolute -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative z-10">
@@ -508,7 +508,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="pt-12 px-6 lg:px-8">
+      <footer className="pt-12 px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-sm">
           <p className="text-gray-400 font-light font-mono mb-1">
             © 2025 Artur Myszkowski
@@ -532,7 +532,6 @@ export default function Home() {
             >
               Tailwind CSS
             </a>
-            
           </p>
         </div>
       </footer>
