@@ -14,7 +14,8 @@ import {
   Menu,
   X,
   ArrowRight,
-  Instagram
+  Instagram,
+  FileText
 } from "lucide-react";
 
 export default function Home() {
@@ -149,6 +150,14 @@ export default function Home() {
                   {item}
                 </button>
               ))}
+              <a
+                href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium"
+              >
+                Resume
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -178,6 +187,14 @@ export default function Home() {
                     {item}
                   </button>
                 ))}
+                <a
+                  href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium"
+                >
+                  Resume
+                </a>
               </div>
             </motion.div>
           )}
@@ -295,6 +312,18 @@ export default function Home() {
               >
                 <div className="absolute -inset-2 rounded-full bg-blue-500/12 blur-md"></div>
                 <Mail size={28} strokeWidth={1.5} className="relative z-10" />
+              </motion.a>
+              <motion.a
+                href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
+                <FileText size={28} strokeWidth={1.5} className="relative z-10" />
               </motion.a>
             </motion.div>
           </motion.div>
