@@ -197,7 +197,7 @@ export default function Home() {
             className="space-y-8"
           >
                   {/* Profile Photo */}
-                  <div className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden border-2 border-gray-700 relative">
+                  <div className="w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-2 border-gray-700 relative">
                     <Image
                       src="/images/profile.webp"
                       alt="Artur Myszkowski"
@@ -241,7 +241,7 @@ export default function Home() {
                 className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50"
               >
                 <span>View My Work</span>
-                <ArrowRight size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
+                <ArrowRight size={20} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
               </motion.button>
             </motion.div>
 
@@ -252,28 +252,37 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="flex justify-center space-x-8 pt-12"
             >
-              <a
+              <motion.a
                 href="https://github.com/rthrs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Github size={20} />
-              </a>
-              <a
+                <Github size={28} strokeWidth={1.5} />
+              </motion.a>
+              <motion.a
                 href="https://instagram.com/artur6strings"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Instagram size={20} />
-              </a>
-              <a
+                <Instagram size={28} strokeWidth={1.5} />
+              </motion.a>
+              <motion.a
                 href="mailto:contact@arturmyszkowski.pl"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Mail size={20} />
-              </a>
+                <Mail size={28} strokeWidth={1.5} />
+              </motion.a>
             </motion.div>
           </motion.div>
         </div>
@@ -396,7 +405,7 @@ export default function Home() {
               whileTap={{ scale: 0.98 }}
               className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50"
             >
-              <Download size={20} className="mr-2" />
+              <Download size={24} strokeWidth={1.5} className="mr-2" />
               <span>Download Resume</span>
             </motion.a>
           </motion.div>
@@ -433,7 +442,7 @@ export default function Home() {
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50"
                 >
-                  <Mail size={20} className="mr-2" />
+                  <Mail size={24} strokeWidth={1.5} className="mr-2" />
                   <span>contact@arturmyszkowski.pl</span>
                 </motion.a>
                 <motion.a
@@ -444,7 +453,7 @@ export default function Home() {
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50"
                 >
-                  <Instagram size={20} className="mr-2" />
+                  <Instagram size={24} strokeWidth={1.5} className="mr-2" />
                   <span>Instagram</span>
                 </motion.a>
               </div>
