@@ -197,13 +197,21 @@ export default function Home() {
             className="space-y-8"
           >
                   {/* Profile Photo */}
-                  <div className="w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-2 border-gray-700 relative">
-                    <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-blue-600/10 to-purple-600/10 blur-xl"></div>
+                  <div className="w-48 h-48 mx-auto mb-8 rounded-full border-2 border-gray-700 relative">
+                    {/* Blurred background photo */}
+                    <Image
+                      src="/images/profile.webp"
+                      alt=""
+                      fill
+                      className="object-cover absolute -inset-6 blur-2xl scale-125 opacity-12 rounded-full"
+                      priority
+                    />
+                    {/* Main profile photo */}
                     <Image
                       src="/images/profile.webp"
                       alt="Artur Myszkowski"
                       fill
-                      className="object-cover relative z-10"
+                      className="object-cover relative z-10 rounded-full"
                       priority
                     />
                   </div>
@@ -241,7 +249,7 @@ export default function Home() {
                 // transition={{ duration: 0.8, delay: 0 }}
                 className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
               >
-                <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/10 to-blue-700/10 blur-lg"></div>
+                <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg"></div>
                 <span className="relative z-10">View My Work</span>
                 <ArrowRight size={20} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200 relative z-10" />
               </motion.button>
@@ -263,7 +271,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="absolute -inset-2 rounded-full bg-gray-500/8 blur-md"></div>
+                <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
                 <Github size={28} strokeWidth={1.5} className="relative z-10" />
               </motion.a>
               <motion.a
@@ -275,7 +283,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="absolute -inset-2 rounded-full bg-pink-500/8 blur-md"></div>
+                <div className="absolute -inset-2 rounded-full bg-pink-500/12 blur-md"></div>
                 <Instagram size={28} strokeWidth={1.5} className="relative z-10" />
               </motion.a>
               <motion.a
@@ -285,7 +293,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="absolute -inset-2 rounded-full bg-blue-500/8 blur-md"></div>
+                <div className="absolute -inset-2 rounded-full bg-blue-500/12 blur-md"></div>
                 <Mail size={28} strokeWidth={1.5} className="relative z-10" />
               </motion.a>
             </motion.div>
@@ -448,7 +456,7 @@ export default function Home() {
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
                 >
-                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/10 to-blue-700/10 blur-lg"></div>
+                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg"></div>
                   <Mail size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
                   <span className="relative z-10">contact@arturmyszkowski.pl</span>
                 </motion.a>
@@ -460,7 +468,7 @@ export default function Home() {
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50 relative"
                 >
-                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-gray-500/10 to-gray-600/10 blur-lg"></div>
+                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-gray-500/12 to-gray-600/12 blur-lg"></div>
                   <Instagram size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
                   <span className="relative z-10">Instagram</span>
                 </motion.a>
