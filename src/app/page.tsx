@@ -38,48 +38,48 @@ export default function Home() {
       name: "Frontend Development", 
       icon: Globe, 
       description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI",
-      iconColorClass: "group-hover:bg-blue-700/80",
-      cardBgClass: "from-blue-900/8 to-gray-900/50 hover:from-blue-800/12 hover:to-gray-800/40",
+      iconColorClass: "from-blue-900/50 to-gray-900/50 group-hover:bg-blue-700/50",
+      cardBgClass: "from-blue-900/8 to-gray-900/50 hover:from-blue-800/20 hover:to-gray-800/40",
       animation: "rotate"
     },
     { 
       name: "Mobile Development", 
       icon: Smartphone, 
       description: "React Native, iOS, Android",
-      iconColorClass: "group-hover:bg-purple-700/80",
-      cardBgClass: "from-purple-900/8 to-gray-900/50 hover:from-purple-800/12 hover:to-gray-800/40",
+      iconColorClass: "from-purple-900/50 to-gray-900/50 group-hover:bg-purple-700/50",
+      cardBgClass: "from-purple-900/8 to-gray-900/50 hover:from-purple-800/20 hover:to-gray-800/40",
       animation: "bounce"
     },
     { 
       name: "Backend & Databases", 
       icon: Database, 
       description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore",
-      iconColorClass: "group-hover:bg-green-700/80",
-      cardBgClass: "from-green-900/8 to-gray-900/50 hover:from-green-800/12 hover:to-gray-800/40",
+      iconColorClass: "from-green-900/50 to-gray-900/50 group-hover:bg-green-700/50",
+      cardBgClass: "from-green-900/8 to-gray-900/50 hover:from-green-800/20 hover:to-gray-800/40",
       animation: "scale"
     },
     { 
       name: "Graphics & Visualization", 
       icon: Code, 
       description: "WebGL, Three.js, D3.js",
-      iconColorClass: "group-hover:bg-pink-700/80",
-      cardBgClass: "from-pink-900/8 to-gray-900/50 hover:from-pink-800/12 hover:to-gray-800/40",
+      iconColorClass: "from-pink-900/50 to-gray-900/50 group-hover:bg-pink-700/50",
+      cardBgClass: "from-pink-900/8 to-gray-900/50 hover:from-pink-800/20 hover:to-gray-800/40",
       animation: "pulse"
     },
     { 
       name: "State Management", 
       icon: Code, 
       description: "Redux, Redux Saga, Immer, TanStack Query, RxJS",
-      iconColorClass: "group-hover:bg-yellow-700/80",
-      cardBgClass: "from-yellow-900/8 to-gray-900/50 hover:from-yellow-800/12 hover:to-gray-800/40",
+      iconColorClass: "from-yellow-900/50 to-gray-900/50 group-hover:bg-yellow-700/50",
+      cardBgClass: "from-yellow-900/8 to-gray-900/50 hover:from-yellow-800/20 hover:to-gray-800/40",
       animation: "wiggle"
     },
     { 
       name: "DevOps & Leadership", 
       icon: Code, 
       description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies",
-      iconColorClass: "group-hover:bg-cyan-700/80",
-      cardBgClass: "from-cyan-900/8 to-gray-900/50 hover:from-cyan-800/12 hover:to-gray-800/40",
+      iconColorClass: "from-cyan-900/50 to-gray-900/50 group-hover:bg-cyan-700/50",
+      cardBgClass: "from-cyan-900/8 to-gray-900/50 hover:from-cyan-800/20 hover:to-gray-800/40",
       animation: "float"
     },
   ];
@@ -88,7 +88,7 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white">
     
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-gray-800">
+      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.button
@@ -196,6 +196,7 @@ export default function Home() {
                 onClick={() => scrollToSection('work')}
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
+                // transition={{ duration: 0.8, delay: 0 }}
                 className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/30 hover:border-blue-400/50"
               >
                 <span>View My Work</span>
@@ -297,10 +298,10 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   
-                  className={`group p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl ${skill.cardBgClass} skill-animate-${skill.animation}`}
+                  className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl ${skill.cardBgClass} skill-animate-${skill.animation}`}
                 >
                   <div className="flex items-center mb-6">
-                    <div className={`p-3 rounded-xl bg-gray-800 ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}>
+                    <div className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}>
                       <skill.icon size={24} className="text-white skill-icon" />
                     </div>
                     <h3 className="text-xl font-medium text-white">
@@ -406,7 +407,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="pb-6 pt-8 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-900 border-t border-gray-800">
+      <footer className="pb-6 pt-8 px-6 lg:px-8 bg-black/50">
         <div className="max-w-4xl mx-auto text-center text-sm">
           <p className="text-gray-400 font-light font-mono mb-1">
             © 2025 Artur Myszkowski
