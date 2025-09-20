@@ -208,7 +208,7 @@ export default function Home() {
                   </div>
             
             <div className="space-y-4">
-              <h1 className="text-5xl sm:text-7xl font-light text-white tracking-tight">
+              <h1 className="text-5xl sm:text-7xl font-light text-white tracking-tight font-heading">
                 Artur Myszkowski
               </h1>
               <p className="text-xl sm:text-2xl text-gray-400 font-light font-mono">
@@ -290,10 +290,10 @@ export default function Home() {
             className="space-y-12"
           >
             <div className="text-center">
-              <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
+              <h2 className="text-5xl sm:text-6xl font-medium text-white mb-6 font-heading tracking-tight">
                 About
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-gray-400/40 to-blue-600/40 mx-auto rounded-full"></div>
             </div>
 
             <div className="space-y-8 text-lg text-gray-300 font-light leading-relaxed">
@@ -324,10 +324,10 @@ export default function Home() {
             className="space-y-16"
           >
             <div className="text-center">
-              <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
+              <h2 className="text-5xl sm:text-6xl font-medium text-white mb-6 font-heading tracking-tight">
                 Skills
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-gray-400/40 to-blue-600/40 mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -376,10 +376,10 @@ export default function Home() {
             className="space-y-12 text-center"
           >
             <div>
-              <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
+              <h2 className="text-5xl sm:text-6xl font-medium text-white mb-6 font-heading tracking-tight">
                 Work
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-gray-400/40 to-blue-600/40 mx-auto rounded-full"></div>
             </div>
 
             <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
@@ -414,10 +414,10 @@ export default function Home() {
             className="space-y-12"
           >
             <div className="text-center">
-              <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
+              <h2 className="text-5xl sm:text-6xl font-medium text-white mb-6 font-heading tracking-tight">
                 Contact
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-gray-400/40 to-blue-600/40 mx-auto rounded-full"></div>
             </div>
 
             <div className="text-center space-y-8">
