@@ -523,7 +523,7 @@ export default function Home() {
             >
               Next.js
             </a>
-            {' '}and{' '}
+            {', '}
             <a 
               href="https://tailwindcss.com" 
               target="_blank" 
@@ -531,6 +531,15 @@ export default function Home() {
               className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 underline decoration-cyan-500/50 hover:decoration-cyan-400/70"
             >
               Tailwind CSS
+            </a>
+            {' and '}
+            <a 
+              href="https://www.framer.com/motion/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300 transition-colors duration-200 underline decoration-purple-500/50 hover:decoration-purple-400/70"
+            >
+              Framer Motion
             </a>
           </p>
         </div>
