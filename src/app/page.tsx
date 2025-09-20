@@ -220,7 +220,7 @@ export default function Home() {
                       src="/images/profile.webp"
                       alt=""
                       fill
-                      className="object-cover absolute -inset-6 blur-2xl scale-125 opacity-12 rounded-full"
+                      className="object-cover absolute -inset-6 blur-2xl scale-105 opacity-12 rounded-full"
                       priority
                     />
                     {/* Main profile photo */}
@@ -300,7 +300,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="absolute -inset-2 rounded-full bg-pink-500/12 blur-md"></div>
+                <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
                 <Instagram size={28} strokeWidth={1.5} className="relative z-10" />
               </motion.a>
               <motion.a
@@ -310,7 +310,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="absolute -inset-2 rounded-full bg-blue-500/12 blur-md"></div>
+                <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
                 <Mail size={28} strokeWidth={1.5} className="relative z-10" />
               </motion.a>
               <motion.a
@@ -375,10 +375,10 @@ export default function Home() {
             className="space-y-16"
           >
             <div className="text-center">
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-purple-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-sky-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
                 Skills
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-purple-300/60 to-gray-400/60 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-sky-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -427,10 +427,10 @@ export default function Home() {
             className="space-y-12 text-center"
           >
             <div>
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-emerald-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-cyan-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
                 Work
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-300/60 to-gray-400/60 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
@@ -466,10 +466,10 @@ export default function Home() {
             className="space-y-12"
           >
             <div className="text-center">
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-orange-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-teal-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
                 Contact
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-orange-300/60 to-gray-400/60 mx-auto rounded-full"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-teal-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <div className="text-center space-y-8">
