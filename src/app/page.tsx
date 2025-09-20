@@ -175,7 +175,7 @@ export default function Home() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-gray-800"
+              className="md:hidden"
             >
               <div className="py-4 space-y-4">
                 {['About', 'Skills', 'Work', 'Contact'].map((item) => (
@@ -205,7 +205,7 @@ export default function Home() {
       <div className="absolute -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative z-10">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative z-10 mt-18">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -214,7 +214,7 @@ export default function Home() {
             className="space-y-8"
           >
                   {/* Profile Photo */}
-                  <div className="w-48 h-48 mx-auto mb-8 rounded-full border-2 border-gray-700 relative">
+                  <div className="w-48 h-48 mx-auto mb-8 rounded-full border-1 border-gray-700 relative">
                     {/* Blurred background photo */}
                     <Image
                       src="/images/profile.webp"
