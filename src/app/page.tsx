@@ -440,7 +440,6 @@ export default function Home() {
 
             <motion.a
               href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
-              download="Artur_Myszkowski_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -1 }}
