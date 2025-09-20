@@ -235,7 +235,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 // transition={{ duration: 0.8, delay: 0 }}
-                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/30 hover:border-blue-400/50"
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50"
               >
                 <span>View My Work</span>
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -290,7 +290,7 @@ export default function Home() {
               <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
                 About
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-600 to-blue-700 mx-auto rounded-full"></div>
+              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
             </div>
 
             <div className="space-y-8 text-lg text-gray-300 font-light leading-relaxed">
@@ -324,7 +324,7 @@ export default function Home() {
               <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
                 Skills
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-600 to-blue-700 mx-auto rounded-full"></div>
+              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -376,7 +376,7 @@ export default function Home() {
               <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
                 Work
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-600 to-blue-700 mx-auto rounded-full"></div>
+              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
             </div>
 
             <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
@@ -391,7 +391,7 @@ export default function Home() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/30 hover:border-blue-400/50"
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50"
             >
               <Download size={20} className="mr-2" />
               <span>Download Resume</span>
@@ -414,7 +414,7 @@ export default function Home() {
               <h2 className="text-4xl sm:text-5xl font-light text-white mb-6">
                 Contact
               </h2>
-              <div className="w-24 h-px bg-gradient-to-r from-blue-600 to-blue-700 mx-auto rounded-full"></div>
+              <div className="w-24 h-px bg-gradient-to-r from-blue-800 to-blue-900 mx-auto rounded-full"></div>
             </div>
 
             <div className="text-center space-y-8">
@@ -428,7 +428,7 @@ export default function Home() {
                   href="mailto:contact@arturmyszkowski.pl"
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500/30 hover:border-blue-400/50"
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50"
                 >
                   <Mail size={20} className="mr-2" />
                   <span>contact@arturmyszkowski.pl</span>
@@ -439,7 +439,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50"
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50"
                 >
                   <Instagram size={20} className="mr-2" />
                   <span>Instagram</span>
