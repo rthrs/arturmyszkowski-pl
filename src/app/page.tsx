@@ -123,7 +123,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative">
     
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl">
@@ -184,8 +184,11 @@ export default function Home() {
         </div>
       </nav>
 
+      {/* Background Gradient */}
+      <div className="absolute -inset-x-[600px] lg:-right-[300px] -inset-y-72 md:-inset-48 lg:-inset-y-32 -rotate-[7deg] z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
+
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -277,7 +280,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-900">
+      <section id="about" className="py-24 px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -311,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+      <section id="skills" className="py-24 px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -363,7 +366,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-800">
+      <section id="work" className="py-24 px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -401,7 +404,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-900">
+      <section id="contact" className="py-24 px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -451,7 +454,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="pb-6 pt-8 px-6 lg:px-8 bg-black/50">
+      <footer className="pt-12 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center text-sm">
           <p className="text-gray-400 font-light font-mono mb-1">
             © 2025 Artur Myszkowski
