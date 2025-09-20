@@ -264,7 +264,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 // transition={{ duration: 0.8, delay: 0 }}
-                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
               >
                 <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg"></div>
                 <span className="relative z-10">View My Work</span>
@@ -283,7 +283,7 @@ export default function Home() {
                 href="https://github.com/rthrs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                className="text-gray-400 hover:text-white relative group"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -295,7 +295,7 @@ export default function Home() {
                 href="https://instagram.com/artur6strings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                className="text-gray-400 hover:text-white relative group"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -305,7 +305,7 @@ export default function Home() {
               </motion.a>
               <motion.a
                 href="mailto:contact@arturmyszkowski.pl"
-                className="text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                className="text-gray-400 hover:text-white relative group"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -317,7 +317,7 @@ export default function Home() {
                 href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                className="text-gray-400 hover:text-white relative group"
                 whileHover={{ scale: 1.2, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -444,7 +444,8 @@ export default function Home() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
             >
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-700/20 blur-lg"></div>
               <Download size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
@@ -482,7 +483,7 @@ export default function Home() {
                   href="mailto:contact@arturmyszkowski.pl"
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
                 >
                   <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg"></div>
                   <Mail size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
@@ -494,7 +495,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50 relative"
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50 relative"
                 >
                   <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-gray-500/12 to-gray-600/12 blur-lg"></div>
                   <Instagram size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
