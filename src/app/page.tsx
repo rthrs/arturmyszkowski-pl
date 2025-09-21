@@ -295,17 +295,17 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="pt-8"
+              className="pt-8 flex justify-center"
             >
               <motion.button
-                onClick={() => scrollToSection('work')}
+                onClick={() => scrollToSection('about')}
                 whileHover={{ scale: 1.05, y: -1 }}
                 whileTap={{ scale: 0.95 }}
                 // transition={{ duration: 0.8, delay: 0 }}
-                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative sm:text-lg"
               >
                 <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg"></div>
-                <span className="relative z-10">View My Work</span>
+                <span className="relative z-10">Read about me</span>
                 <ArrowRight size={20} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200 relative z-10" />
               </motion.button>
             </motion.div>
@@ -398,6 +398,18 @@ export default function Home() {
                 My core philosophy is to continuously learn and apply the most effective technologies for each project. I thrive in collaborative environments and enjoy working with diverse teams. While my main expertise is in the React ecosystem, I am adaptable and comfortable working across a broad range of tools and frameworks.
               </p>
             
+              <div className="pt-2 flex justify-center">
+                <motion.button
+                  onClick={() => scrollToSection('skills')}
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium rounded-xl border border-gray-600/30 hover:border-gray-500/50 relative"
+                >
+                  <span className="relative z-10">Explore my skills</span>
+                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200 relative z-10" />
+                </motion.button>
+              </div>
+
             </div>
           </motion.div>
         </div>
@@ -438,7 +450,7 @@ export default function Home() {
                     setTimeout(() => setHoveredSkill(null), 500);
                   }}
                   onTapCancel={() => setHoveredSkill(null)}
-                  className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass}`}
+                  className={`group px-8 py-6 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass}`}
                 >
                   <div className="flex items-center mb-6">
                     <div className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}>
@@ -465,6 +477,18 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="text-center pt-4 flex justify-center">
+              <motion.button
+                onClick={() => scrollToSection('work')}
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium text-base sm:text-lg rounded-xl border border-gray-600/30 hover:border-gray-500/50 relative"
+              >
+                <span className="relative z-10">See my work</span>
+                <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200 relative z-10" />
+              </motion.button>
             </div>
           </motion.div>
         </div>
@@ -500,12 +524,24 @@ export default function Home() {
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
             >
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-700/20 blur-lg"></div>
               <Download size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
               <span className="relative z-10">Download Resume</span>
             </motion.a>
+
+            <div className="flex justify-center">
+              <motion.button
+                onClick={() => scrollToSection('contact')}
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium rounded-xl border border-gray-600/30 hover:border-gray-500/50 relative"
+              >
+                <span className="relative z-10">Get in touch</span>
+                <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform duration-200 relative z-10" />
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -535,11 +571,11 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <motion.a
+              <motion.a
                   href="mailto:contact@arturmyszkowski.pl"
                   whileHover={{ scale: 1.05, y: -1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
                 >
                   <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg"></div>
                   <Mail size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
@@ -551,7 +587,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, y: -1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium rounded-xl shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50 relative"
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg border border-gray-600/30 hover:border-gray-500/50 relative"
                 >
                   <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-gray-500/12 to-gray-600/12 blur-lg"></div>
                   <Instagram size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
