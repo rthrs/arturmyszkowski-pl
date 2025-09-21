@@ -34,7 +34,7 @@ export default function Home() {
     const performScroll = () => {
       const header = document.querySelector('nav') as HTMLElement | null;
       const headerHeight = header?.offsetHeight ?? 64; // fallback for safety
-      const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 16; // small gap
+      const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 28; // small gap
       window.scrollTo({ top: y, behavior: 'smooth' });
     };
 
@@ -144,7 +144,7 @@ export default function Home() {
     <div className="min-h-screen text-white relative">
     
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-60 bg-black/50 backdrop-blur-xl">
+      <nav className="fixed top-0 w-full z-[60] bg-black/50 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.button
@@ -231,7 +231,7 @@ export default function Home() {
       <div className="absolute -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative scroll-mt-20 sm:scroll-mt-24">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative scroll-mt-20 sm:scroll-mt-24 pt-20 sm:pt-24">
         {/* WebGL Fluid Background */}
         <FluidBackground />
         <div className="max-w-4xl mx-auto text-center relative z-10">
