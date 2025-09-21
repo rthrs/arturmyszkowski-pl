@@ -214,13 +214,13 @@ export default function Home() {
             className="space-y-8"
           >
                   {/* Profile Photo */}
-                  <div className="w-48 h-48 mx-auto mb-8 rounded-full border-1 border-gray-700 relative">
-                    {/* Blurred background photo */}
+                  <div className="w-48 h-48 mx-auto mb-8 rounded-full relative">
+                    {/* Enhanced blurred background photo */}
                     <Image
                       src="/images/profile.webp"
                       alt=""
                       fill
-                      className="object-cover absolute -inset-6 blur-2xl scale-105 opacity-12 rounded-full"
+                      className="object-cover absolute -inset-6 blur-2xl scale-110 opacity-20 rounded-full"
                       priority
                     />
                     {/* Main profile photo */}
