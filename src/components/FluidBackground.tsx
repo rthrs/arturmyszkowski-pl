@@ -67,15 +67,15 @@ function FluidPlane() {
         void main() {
           vec2 uv = vUv;
           
-          // Create liquid-like flowing centers distributed across full area - slowed down
-          vec2 center1 = vec2(0.2, 0.3) + liquidFlow(uv, uTime * 0.2);
-          vec2 center2 = vec2(0.8, 0.7) + liquidFlow(uv, uTime * 0.25);
-          vec2 center3 = vec2(0.5, 0.1) + liquidFlow(uv, uTime * 0.15);
-          vec2 center4 = vec2(0.1, 0.9) + liquidFlow(uv, uTime * 0.3);
-          vec2 center5 = vec2(0.9, 0.2) + liquidFlow(uv, uTime * 0.22);
-          vec2 center6 = vec2(0.4, 0.8) + liquidFlow(uv, uTime * 0.18);
-          vec2 center7 = vec2(0.7, 0.4) + liquidFlow(uv, uTime * 0.28);
-          vec2 center8 = vec2(0.3, 0.6) + liquidFlow(uv, uTime * 0.24);
+          // Create liquid-like flowing centers concentrated in center area for smooth blending
+          vec2 center1 = vec2(0.4, 0.4) + liquidFlow(uv, uTime * 0.2);
+          vec2 center2 = vec2(0.6, 0.6) + liquidFlow(uv, uTime * 0.25);
+          vec2 center3 = vec2(0.5, 0.3) + liquidFlow(uv, uTime * 0.15);
+          vec2 center4 = vec2(0.3, 0.7) + liquidFlow(uv, uTime * 0.3);
+          vec2 center5 = vec2(0.7, 0.3) + liquidFlow(uv, uTime * 0.22);
+          vec2 center6 = vec2(0.45, 0.75) + liquidFlow(uv, uTime * 0.18);
+          vec2 center7 = vec2(0.65, 0.45) + liquidFlow(uv, uTime * 0.28);
+          vec2 center8 = vec2(0.35, 0.55) + liquidFlow(uv, uTime * 0.24);
           
           // Create liquid gradient blobs - slowed down
           float liquid1 = liquidGradient(uv, center1, 0.35, uTime * 0.4);
@@ -114,9 +114,13 @@ function FluidPlane() {
           float glow = sin(totalLiquid * 3.14159) * 0.3 + 0.7;
           finalColor *= glow;
           
-          // Liquid-like opacity with smooth transitions
-          float alpha = totalLiquid * 0.15 + 0.05;
-          alpha = clamp(alpha, 0.05, 0.3);
+          // Create smooth fade-out towards edges for background blending
+          float centerDistance = length(uv - vec2(0.5, 0.5));
+          float fadeOut = 1.0 - smoothstep(0.3, 0.8, centerDistance);
+          
+          // Liquid-like opacity with smooth transitions and edge fading
+          float alpha = (totalLiquid * 0.15 + 0.05) * fadeOut;
+          alpha = clamp(alpha, 0.0, 0.25);
           
           gl_FragColor = vec4(finalColor, alpha);
         }
@@ -173,6 +177,11 @@ export default function FluidBackground({ className = "" }: FluidBackgroundProps
           <FluidPlane />
         </Canvas>
       </div>
+      {/* Subtle gradient overlay for smooth blending with background */}
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-transparent pointer-events-none" 
+           style={{
+             background: 'radial-gradient(ellipse at center, transparent 30%, transparent 70%, rgba(0,0,0,0.1) 100%)'
+           }} />
     </div>
   );
 }
