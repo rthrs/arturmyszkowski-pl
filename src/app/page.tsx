@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "@/components/SectionDivider";
@@ -24,6 +24,15 @@ import {
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [inputMode, setInputMode] = useState<'touch' | 'mouse' | 'unknown'>('unknown');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Detect coarse pointers (touch) to mitigate flicker on mobile Safari/Chrome
+      const mq = window.matchMedia('(hover: none), (pointer: coarse)');
+      setInputMode(mq.matches ? 'touch' : 'mouse');
+    }
+  }, []);
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -417,10 +426,10 @@ export default function Home() {
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  initial={false}
+                  whileInView={inputMode === 'mouse' ? { opacity: 1 } : undefined}
+                  transition={inputMode === 'mouse' ? { duration: 0.8, delay: index * 0.1 } : undefined}
+                  viewport={inputMode === 'mouse' ? { once: true } : undefined}
                   onHoverStart={() => setHoveredSkill(skill.name)}
                   onHoverEnd={() => setHoveredSkill(null)}
                   onTapStart={() => setHoveredSkill(skill.name)}
@@ -429,13 +438,13 @@ export default function Home() {
                     setTimeout(() => setHoveredSkill(null), 500);
                   }}
                   onTapCancel={() => setHoveredSkill(null)}
-                  className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl ${skill.cardBgClass}`}
+                  className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass}`}
                 >
                   <div className="flex items-center mb-6">
                     <div className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}>
                       <motion.div
                         animate={hoveredSkill === skill.name ? skill.hoverAnimation : defaultAnimation}
-                        className="text-white"
+                        className="text-white transform-gpu will-change-transform"
                       >
                         <skill.icon size={24} />
                       </motion.div>
