@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import WaveBackground from "@/components/WaveBackground";
 import SectionDivider from "@/components/SectionDivider";
 import FluidBackground from "@/components/FluidBackground";
 import { 
@@ -145,25 +144,25 @@ export default function Home() {
     <div className="min-h-screen text-white relative">
     
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl">
+      <nav className="fixed top-0 w-full z-60 bg-black/50 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.button
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               onClick={scrollToTop}
-              className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono"
+              className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono z-60"
             >
               arturmyszkowski.pl
             </motion.button>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex h-full">
               {['About', 'Skills', 'Work', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium"
+                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4"
                 >
                   {item}
                 </button>
@@ -172,7 +171,7 @@ export default function Home() {
                 href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium"
+                className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4"
               >
                 Resume
               </a>
@@ -180,12 +179,21 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white"
+              className="md:hidden text-white z-60"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
+
+          {/* Mobile Backdrop (closes menu on outside click) */}
+          {isMenuOpen && (
+            <div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"
+              onClick={() => setIsMenuOpen(false)}
+              aria-hidden
+            />
+          )}
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
@@ -193,14 +201,14 @@ export default function Home() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden"
+              className="md:hidden relative z-50"
             >
-              <div className="py-4 space-y-4">
+              <div className="py-2 space-y-2">
                 {['About', 'Skills', 'Work', 'Contact'].map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
-                    className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium"
+                    className="block w-full text-left text-gray-200 hover:text-white transition-colors text-base font-medium px-5 py-4 rounded-lg hover:bg-white/5"
                   >
                     {item}
                   </button>
@@ -209,7 +217,7 @@ export default function Home() {
                   href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium"
+                  className="block w-full text-left text-gray-200 hover:text-white transition-colors text-base font-medium px-5 py-4 rounded-lg hover:bg-white/5"
                 >
                   Resume
                 </a>
