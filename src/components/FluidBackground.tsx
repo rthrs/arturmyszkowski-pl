@@ -32,10 +32,15 @@ function FluidPlane() {
       },
       vertexShader: `
         varying vec2 vUv;
+        varying float vScreenY;
         
         void main() {
           vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          vec4 clipPosition = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          gl_Position = clipPosition;
+          // Convert to NDC and then to 0-1 screen space Y
+          float ndcY = clipPosition.y / clipPosition.w;
+          vScreenY = ndcY * 0.5 + 0.5;
         }
       `,
       fragmentShader: `
@@ -47,6 +52,7 @@ function FluidPlane() {
         uniform vec3 uColor5;
         uniform vec3 uColor6;
         varying vec2 vUv;
+        varying float vScreenY;
         
         // Liquid-like gradient function - slowed down
         float liquidGradient(vec2 uv, vec2 center, float radius, float time) {
@@ -114,20 +120,24 @@ function FluidPlane() {
           float glow = sin(totalLiquid * 3.14159) * 0.3 + 0.7;
           finalColor *= glow;
           
-          // Create smooth fade-out towards edges for background blending
+          // Create smooth fade-out towards center for background blending
           float centerDistance = length(uv - vec2(0.5, 0.5));
           float fadeOut = 1.0 - smoothstep(0.3, 0.8, centerDistance);
+
+          // Screen-space bottom fade (align with canvas). 0.0 at bottom, 1.0 at top
+          // Make band a bit smaller
+          float bottomMask = smoothstep(0.0, 0.2, vScreenY);
           
           // Liquid-like opacity with smooth transitions and edge fading
-          float alpha = (totalLiquid * 0.15 + 0.05) * fadeOut;
-          alpha = clamp(alpha, 0.0, 0.25);
+          float alpha = (totalLiquid * 0.22 + 0.08) * fadeOut * bottomMask;
+          alpha = clamp(alpha, 0.0, 0.35);
           
           gl_FragColor = vec4(finalColor, alpha);
         }
       `,
       transparent: true,
       side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
     });
     
     setMaterial(shaderMaterial);
@@ -173,15 +183,11 @@ export default function FluidBackground({ className = "" }: FluidBackgroundProps
           style={{ background: 'transparent' }}
           dpr={[1, 2]} // Limit pixel ratio for performance
           onError={() => setHasError(true)}
+          gl={{ alpha: true, antialias: true }}
         >
           <FluidPlane />
         </Canvas>
       </div>
-      {/* Subtle gradient overlay for smooth blending with background */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-transparent pointer-events-none" 
-           style={{
-             background: 'radial-gradient(ellipse at center, transparent 30%, transparent 70%, rgba(0,0,0,0.1) 100%)'
-           }} />
     </div>
   );
 }
