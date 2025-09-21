@@ -5,20 +5,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionDivider from "@/components/SectionDivider";
 import FluidBackground from "@/components/FluidBackground";
+import TechBadge from "@/components/TechBadge";
 import { 
-  Github, 
-  Mail, 
-  Download, 
-  Code, 
-  Database, 
-  Globe, 
-  Smartphone,
-  Menu,
-  X,
-  ArrowRight,
-  Instagram,
-  FileText
-} from "lucide-react";
+  FiGithub as Github,
+  FiMail as Mail,
+  FiDownload as Download,
+  FiCode as Code,
+  FiDatabase as Database,
+  FiGlobe as Globe,
+  FiSmartphone as Smartphone,
+  FiMenu as Menu,
+  FiX as X,
+  FiArrowRight as ArrowRight,
+  FiInstagram as Instagram,
+  FiFileText as FileText
+} from "react-icons/fi";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,7 +57,7 @@ export default function Home() {
     { 
       name: "Frontend Development", 
       icon: Globe, 
-      description: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3/Sass, Tailwind CSS, Styled-Components, Chakra-UI",
+      description: "JavaScript, TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, Styled-Components, Chakra-UI",
       iconColorClass: "from-blue-900/50 to-gray-900/50 group-hover:bg-blue-700/50",
       cardBgClass: "from-blue-900/8 to-gray-900/50 hover:from-blue-800/20 hover:to-gray-800/40",
       animation: "rotate",
@@ -82,7 +83,7 @@ export default function Home() {
     { 
       name: "Backend & Databases", 
       icon: Database, 
-      description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore",
+      description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB",
       iconColorClass: "from-green-900/50 to-gray-900/50 group-hover:bg-green-700/50",
       cardBgClass: "from-green-900/8 to-gray-900/50 hover:from-green-800/20 hover:to-gray-800/40",
       animation: "scale",
@@ -107,7 +108,7 @@ export default function Home() {
     { 
       name: "State Management", 
       icon: Code, 
-      description: "Redux, Redux Saga, Immer, TanStack Query, RxJS",
+      description: "Redux, RxJS, Redux Saga, TanStack Query, Immer, Immutable.js",
       iconColorClass: "from-yellow-900/50 to-gray-900/50 group-hover:bg-yellow-700/50",
       cardBgClass: "from-yellow-900/8 to-gray-900/50 hover:from-yellow-800/20 hover:to-gray-800/40",
       animation: "wiggle",
@@ -120,7 +121,7 @@ export default function Home() {
     { 
       name: "DevOps & Leadership", 
       icon: Code, 
-      description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile Methodologies",
+      description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile, Scrum Kanban",
       iconColorClass: "from-cyan-900/50 to-gray-900/50 group-hover:bg-cyan-700/50",
       cardBgClass: "from-cyan-900/8 to-gray-900/50 hover:from-cyan-800/20 hover:to-gray-800/40",
       animation: "float",
@@ -443,9 +444,16 @@ export default function Home() {
                       {skill.name}
                     </h3>
                   </div>
-                  <p className="text-gray-400 font-light font-mono">
-                    {skill.description}
-                  </p>
+                  <div className="text-gray-300 font-light">
+                    <div className="flex flex-wrap gap-2">
+                      {skill.description.split(',').map((raw) => {
+                        const label = raw.trim();
+                        return (
+                          <TechBadge key={label} name={label} />
+                        );
+                      })}
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
