@@ -34,7 +34,7 @@ export default function Home() {
     const performScroll = () => {
       const header = document.querySelector('nav') as HTMLElement | null;
       const headerHeight = header?.offsetHeight ?? 64; // fallback for safety
-      const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 28; // small gap
+      const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 24; // small gap
       window.scrollTo({ top: y, behavior: 'smooth' });
     };
 
@@ -565,7 +565,7 @@ export default function Home() {
             >
               Tailwind CSS
             </a>
-            {' and '}
+            {', '}
             <a 
               href="https://www.framer.com/motion/" 
               target="_blank" 
@@ -573,6 +573,15 @@ export default function Home() {
               className="text-purple-400 hover:text-purple-300 transition-colors duration-200 underline decoration-purple-500/50 hover:decoration-purple-400/70"
             >
               Framer Motion
+            </a>
+            {' and '}
+            <a 
+              href="https://threejs.org" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200 underline decoration-emerald-500/50 hover:decoration-emerald-400/70"
+            >
+              Three.js
             </a>
           </p>
         </div>
