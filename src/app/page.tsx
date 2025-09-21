@@ -157,7 +157,7 @@ export default function Home() {
             </motion.button>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex h-full">
+            <div className="hidden md:flex items-center h-full">
               {['About', 'Skills', 'Work', 'Contact'].map((item) => (
                 <button
                   key={item}
