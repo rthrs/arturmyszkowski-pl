@@ -26,8 +26,23 @@ export default function Home() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+
+    // Close mobile menu first so header height collapses before measuring
     setIsMenuOpen(false);
+
+    const performScroll = () => {
+      const header = document.querySelector('nav') as HTMLElement | null;
+      const headerHeight = header?.offsetHeight ?? 64; // fallback for safety
+      const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 16; // small gap
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    };
+
+    // Wait for layout to settle (menu collapse, address bar changes on mobile)
+    requestAnimationFrame(() => {
+      requestAnimationFrame(performScroll);
+    });
   };
 
   const scrollToTop = () => {
@@ -208,7 +223,7 @@ export default function Home() {
       <div className="absolute -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative scroll-mt-20 sm:scroll-mt-24">
         {/* WebGL Fluid Background */}
         <FluidBackground />
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -338,7 +353,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 lg:px-8 relative z-10">
+      <section id="about" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -373,7 +388,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 lg:px-8 relative">
+      <section id="skills" className="py-24 px-6 lg:px-8 relative scroll-mt-24">
       
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
@@ -427,7 +442,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* Work Section */}
-      <section id="work" className="py-24 px-6 lg:px-8 relative z-10">
+      <section id="work" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -467,7 +482,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 lg:px-8 relative z-10">
+      <section id="contact" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
