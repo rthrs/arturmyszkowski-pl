@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import WaveBackground from "@/components/WaveBackground";
+import SectionDivider from "@/components/SectionDivider";
 import FluidBackground from "@/components/FluidBackground";
 import { 
   Github, 
@@ -334,6 +335,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* About Section */}
       <section id="about" className="py-24 px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -366,6 +369,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* Skills Section */}
       <section id="skills" className="py-24 px-6 lg:px-8 relative">
@@ -419,6 +424,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Work Section */}
       <section id="work" className="py-24 px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -456,6 +463,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6 lg:px-8 relative z-10">
