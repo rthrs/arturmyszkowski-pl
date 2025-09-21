@@ -422,6 +422,12 @@ export default function Home() {
                   viewport={{ once: true }}
                   onHoverStart={() => setHoveredSkill(skill.name)}
                   onHoverEnd={() => setHoveredSkill(null)}
+                  onTapStart={() => setHoveredSkill(skill.name)}
+                  onTap={() => {
+                    // allow the forward animation to be perceived before returning
+                    setTimeout(() => setHoveredSkill(null), 500);
+                  }}
+                  onTapCancel={() => setHoveredSkill(null)}
                   className={`group p-8 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl ${skill.cardBgClass}`}
                 >
                   <div className="flex items-center mb-6">
