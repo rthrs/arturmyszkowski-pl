@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import WaveBackground from "@/components/WaveBackground";
+import FluidBackground from "@/components/FluidBackground";
 import { 
   Github, 
   Mail, 
@@ -205,8 +207,10 @@ export default function Home() {
       <div className="absolute -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 opacity-30"></div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative z-10 mt-18">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 relative">
+        {/* WebGL Fluid Background */}
+        <FluidBackground />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -365,8 +369,10 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 lg:px-8 relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <section id="skills" className="py-24 px-6 lg:px-8 relative">
+        {/* WebGL Wave Background */}
+        <WaveBackground />
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
