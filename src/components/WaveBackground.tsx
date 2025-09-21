@@ -37,10 +37,10 @@ function WaveMesh() {
           
           vec4 modelPosition = modelMatrix * vec4(position, 1.0);
           
-          // Create wave pattern
-          float elevation = sin(modelPosition.x * 0.5 + uTime * 2.0) * 0.3;
-          elevation += sin(modelPosition.y * 0.3 + uTime * 1.5) * 0.4;
-          elevation += sin(modelPosition.x * 0.8 + modelPosition.y * 0.6 + uTime * 3.0) * 0.2;
+          // Create wave pattern (subtle)
+          float elevation = sin(modelPosition.x * 0.5 + uTime * 1.2) * 0.08;
+          elevation += sin(modelPosition.y * 0.3 + uTime * 0.9) * 0.06;
+          elevation += sin(modelPosition.x * 0.8 + modelPosition.y * 0.6 + uTime * 1.5) * 0.04;
           
           modelPosition.z = elevation;
           vElevation = elevation;
@@ -60,13 +60,14 @@ function WaveMesh() {
         varying float vElevation;
         
         void main() {
-          // Create flowing color pattern
-          vec3 color = mix(uColor1, uColor2, sin(vElevation * 10.0 + uTime * 2.0) * 0.5 + 0.5);
-          color = mix(color, uColor3, sin(vUv.y * 3.0 + uTime * 1.0) * 0.3 + 0.3);
+          // Create flowing color pattern (subtle)
+          vec3 color = mix(uColor1, uColor2, sin(vElevation * 8.0 + uTime * 1.2) * 0.25 + 0.35);
+          color = mix(color, uColor3, sin(vUv.y * 2.0 + uTime * 0.6) * 0.15 + 0.15);
+          color *= 0.8;
           
-          // Make wave more visible
-          float alpha = 0.4 + vElevation * 0.6;
-          alpha = clamp(alpha, 0.3, 0.7);
+          // Subtle transparency
+          float alpha = 0.12 + vElevation * 0.18;
+          alpha = clamp(alpha, 0.08, 0.22);
           
           gl_FragColor = vec4(color, alpha);
         }

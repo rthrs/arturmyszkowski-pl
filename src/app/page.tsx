@@ -345,10 +345,9 @@ export default function Home() {
             className="space-y-12"
           >
             <div className="text-center">
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-blue-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-semibold bg-gradient-to-br from-gray-300 to-gray-400 mb-2 bg-clip-text text-transparent font-heading tracking-tight">
                 About
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-blue-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <div className="space-y-8 text-lg text-gray-300 font-light leading-relaxed">
@@ -370,8 +369,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="skills" className="py-24 px-6 lg:px-8 relative">
-        {/* WebGL Wave Background */}
-        <WaveBackground />
+      
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -381,10 +379,9 @@ export default function Home() {
             className="space-y-16"
           >
             <div className="text-center">
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-sky-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-semibold bg-gradient-to-br from-gray-300 to-gray-400 mb-2 bg-clip-text text-transparent font-heading tracking-tight">
                 Skills
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-sky-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -433,10 +430,9 @@ export default function Home() {
             className="space-y-12 text-center"
           >
             <div>
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-cyan-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-semibold bg-gradient-to-br from-gray-300 to-gray-400 mb-2 bg-clip-text text-transparent font-heading tracking-tight">
                 Work
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
@@ -472,10 +468,9 @@ export default function Home() {
             className="space-y-12"
           >
             <div className="text-center">
-              <h2 className="inline-block text-5xl sm:text-6xl font-medium bg-gradient-to-br from-teal-300 to-gray-400 mb-6 bg-clip-text text-transparent mb-3 font-heading tracking-tight">
+              <h2 className="inline-block text-5xl sm:text-6xl font-semibold bg-gradient-to-br from-gray-300 to-gray-400 mb-2 bg-clip-text text-transparent font-heading tracking-tight">
                 Contact
               </h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-teal-300/60 to-gray-400/60 mx-auto rounded-full"></div>
             </div>
 
             <div className="text-center space-y-8">
