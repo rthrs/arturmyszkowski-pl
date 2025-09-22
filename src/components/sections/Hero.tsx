@@ -29,14 +29,14 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 >
                     <div className="w-48 h-48 mx-auto mb-8 rounded-full relative">
                         <Image
-                            src="/images/profile.webp"
+                            src="/images/profile2.jpg"
                             alt=""
                             fill
                             className="object-cover absolute -inset-6 blur-2xl scale-110 opacity-20 rounded-full"
                             priority
                         />
                         <Image
-                            src="/images/profile.webp"
+                            src="/images/profile2.jpg"
                             alt="Artur Myszkowski"
                             fill
                             className="object-cover relative z-10 rounded-full"
