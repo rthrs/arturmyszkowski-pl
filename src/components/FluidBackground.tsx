@@ -145,7 +145,8 @@ function FluidPlane() {
 
     useFrame((state) => {
         if (material) {
-            material.uniforms.uTime.value = state.clock.getElapsedTime();
+            // Slow down animation when page is not visible
+            material.uniforms.uTime.value = state.clock.getElapsedTime() * 0.3;
         }
     });
 
@@ -304,12 +305,12 @@ function TechGrid({
 
     useFrame((state) => {
         if (gridRef.current) {
-            // Very subtle rotation
-            gridRef.current.rotation.z += 0.0003;
+            // Very subtle rotation - reduced speed
+            gridRef.current.rotation.z += 0.0001;
 
-            // Very gentle floating
+            // Very gentle floating - reduced speed
             gridRef.current.position.y +=
-                Math.sin(state.clock.getElapsedTime() * 0.15) * 0.0003;
+                Math.sin(state.clock.getElapsedTime() * 0.05) * 0.0001;
         }
     });
 
@@ -329,9 +330,21 @@ export default function FluidBackground({
 }: FluidBackgroundProps) {
     const [isClient, setIsClient] = useState(false);
     const [hasError, setHasError] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         setIsClient(true);
+        
+        // Pause animations when page is not visible
+        const handleVisibilityChange = () => {
+            setIsVisible(!document.hidden);
+        };
+        
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
     }, []);
 
     if (!isClient || hasError) {
@@ -353,9 +366,14 @@ export default function FluidBackground({
                 <Canvas
                     camera={{ position: [0, 0, 5], fov: 75 }}
                     style={{ background: "transparent" }}
-                    dpr={[1, 2]} // Limit pixel ratio for performance
+                    dpr={[1, 1.5]} // Reduced pixel ratio for better performance
                     onError={() => setHasError(true)}
-                    gl={{ alpha: true, antialias: true }}
+                    gl={{ 
+                        alpha: true, 
+                        antialias: false, // Disable antialiasing for performance
+                        powerPreference: "low-power" // Use integrated GPU
+                    }}
+                    frameloop={isVisible ? "always" : "demand"} // Pause when not visible
                 >
                     <FluidPlane />
 

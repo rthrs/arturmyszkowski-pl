@@ -48,25 +48,25 @@ function SkillsWireframe() {
 
     useFrame((state) => {
         if (gridRef.current && geometry && originalPositions) {
-            const time = state.clock.getElapsedTime();
+            // Slow down animation for better performance
+            const time = state.clock.getElapsedTime() * 0.4;
 
             // Get the position attribute
             const positionAttribute = geometry.getAttribute('position') as THREE.BufferAttribute;
             const positions = positionAttribute.array as Float32Array;
 
-            // Create cloth-like morphing effect
+            // Create cloth-like morphing effect - reduced complexity
             for (let i = 0; i < positions.length; i += 3) {
                 const x = originalPositions[i];
                 const y = originalPositions[i + 1];
 
-                // Cloth-like flowing waves
-                const windWave1 = Math.sin(x * 0.4 + time * 0.8) * Math.cos(y * 0.2) * 2.0;
-                const windWave2 = Math.cos(x * 0.3 + y * 0.35 + time * 0.6) * 1.5;
-                const windWave3 = Math.sin(x * 0.6 + y * 0.4 + time * 0.4) * Math.sin(y * 0.3) * 1.0;
-                const ripple1 = Math.sin(x * 0.8 + time * 1.2) * Math.cos(y * 0.6 + time * 0.5) * 0.8;
+                // Simplified waves for better performance
+                const windWave1 = Math.sin(x * 0.3 + time * 0.6) * Math.cos(y * 0.15) * 1.5;
+                const windWave2 = Math.cos(x * 0.25 + y * 0.3 + time * 0.4) * 1.0;
+                const ripple1 = Math.sin(x * 0.6 + time * 0.8) * Math.cos(y * 0.4 + time * 0.3) * 0.5;
 
                 // Combine waves for cloth-like movement
-                positions[i + 2] = windWave1 + windWave2 + windWave3 + ripple1;
+                positions[i + 2] = windWave1 + windWave2 + ripple1;
             }
 
             // Mark the attribute as needing update
@@ -109,8 +109,12 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                 <Canvas
                     camera={{ position: [0, 0, 8], fov: 75 }}
                     style={{ background: "transparent" }}
-                    dpr={[1, 2]}
-                    gl={{ alpha: true, antialias: true }}
+                    dpr={[1, 1.5]} // Reduced pixel ratio for better performance
+                    gl={{ 
+                        alpha: true, 
+                        antialias: false, // Disable antialiasing for performance
+                        powerPreference: "low-power" // Use integrated GPU
+                    }}
                 >
                     <SkillsWireframe />
                 </Canvas>
