@@ -39,7 +39,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             src="/images/profile2.jpg"
                             alt="Artur Myszkowski"
                             fill
-                            className="object-cover relative z-10 rounded-full"
+                            className="object-cover relative z-10 rounded-full  mask-radial-from-45% mask-radial-to-100% mask-radial-at-center"
                             priority
                         />
                     </div>
