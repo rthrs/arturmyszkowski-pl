@@ -83,7 +83,7 @@ function SkillsWireframe() {
 
     return (
         <lineSegments ref={gridRef} geometry={geometry} position={[0, 0, -3]}>
-            <lineBasicMaterial color="#64D2FF" transparent opacity={0.12} />
+            <lineBasicMaterial color="#64D2FF" transparent opacity={0.075} />
         </lineSegments>
     );
 }
@@ -105,14 +105,14 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
             className="py-24 px-6 lg:px-8 relative scroll-mt-24"
         >
             {/* Morphing wireframe background */}
-            <div className="absolute -z-10 rotate-[-2deg] top-0 -bottom-8 -inset-x-8 opacity-50">
+            <div className="absolute -z-10 rotate-[-2deg] top-0 -bottom-8 -inset-x-8">
                 <Canvas
                     camera={{ position: [0, 0, 8], fov: 75 }}
                     style={{ background: "transparent" }}
                     dpr={[1, 1.5]} // Reduced pixel ratio for better performance
                     gl={{ 
                         alpha: true, 
-                        antialias: false, // Disable antialiasing for performance
+                        antialias: true,
                         powerPreference: "low-power" // Use integrated GPU
                     }}
                 >

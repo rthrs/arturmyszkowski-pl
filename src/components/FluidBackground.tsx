@@ -277,7 +277,7 @@ function MorphingWireframe({
     useFrame((state) => {
         if (!meshRef.current || !geometry) return;
         
-        const time = state.clock.getElapsedTime();
+        const time = state.clock.getElapsedTime() * 0.2;
         
         // Initialize morphTargetInfluences if not already set
         if (!meshRef.current.morphTargetInfluences) {
