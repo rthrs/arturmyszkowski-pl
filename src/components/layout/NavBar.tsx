@@ -14,8 +14,8 @@ export default function NavBar({ onNavigate, onLogoClick }: NavBarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <nav className="fixed top-0 w-full z-[60] bg-black/50 backdrop-blur-xl">
-            <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <nav className="fixed top-[-10px] w-full z-[60] bg-black/50 backdrop-blur-xl rotate-[-0.5deg] pt-[10px] pb-[4px]">
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 rotate-[0.5deg]">
                 <div className="flex justify-between items-center h-16">
                     <motion.button
                         initial={{ opacity: 0, x: -20 }}
