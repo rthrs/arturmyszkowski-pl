@@ -424,10 +424,16 @@ function MorphingWireframe({
                 meshRef.current.morphTargetInfluences[2] = morph3;
             }
 
-            // Very subtle rotation - keep mesh visible on screen
-            meshRef.current.rotation.z += 0.00005;
-            meshRef.current.rotation.x += 0.00002;
-            meshRef.current.rotation.y += 0.00003;
+            const maxRotation = 0.2; // Maximum rotation in radians (about 5.7 degrees)
+            
+            // Z-axis rotation: oscillates between -maxRotation and +maxRotation
+            meshRef.current.rotation.z = Math.sin(time * 0.3) * maxRotation;
+            
+            // X-axis rotation: oscillates with different phase
+            meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.5;
+            
+            // Y-axis rotation: oscillates with different phase
+            meshRef.current.rotation.y = Math.sin(time * 0.25 + Math.PI / 2) * maxRotation * 0.3;
 
             // Gentle floating
             meshRef.current.position.y += Math.sin(time * 0.05) * 0.0001;
