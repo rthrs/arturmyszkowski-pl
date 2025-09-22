@@ -347,7 +347,7 @@ export default function FluidBackground({
 
     return (
         <div
-            className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}
+            className={`absolute rotate-[-2deg] top-0 -bottom-8 -inset-x-8  -z-10 ${className}`}
         >
             <div className="w-full h-full">
                 <Canvas

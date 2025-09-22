@@ -111,7 +111,7 @@ export default function TechBadge({ name }: TechBadgeProps) {
     const map = iconMap[key] || null;
     return (
         <span
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-600/60 text-gray-200 text-sm/none font-mono"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-600/60 text-gray-200 text-sm/none font-mono bg-black/60"
             title={name}
         >
             {map && (
