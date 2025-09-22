@@ -32,6 +32,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             src="/images/profile2e.png"
                             alt=""
                             fill
+                            sizes="192px"
                             className="object-cover absolute -inset-6 blur-2xl scale-110 opacity-20 rounded-full"
                             priority
                         />
@@ -39,6 +40,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             src="/images/profile2e.png"
                             alt="Artur Myszkowski"
                             fill
+                            sizes="192px"
                             className="object-cover relative z-10 rounded-full  mask-radial-from-45% mask-radial-to-100% mask-radial-at-center"
                             priority
                         />
