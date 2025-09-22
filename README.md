@@ -32,21 +32,25 @@ A modern, minimalist personal website inspired by Cursor's aesthetic, built with
 ## 🚀 Getting Started
 
 1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 2. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
+
+    ```bash
+    npm run dev
+    ```
 
 3. **Open your browser** and visit [http://localhost:3000](http://localhost:3000)
 
 ## 🎨 Customization
 
 ### Personal Information
+
 Update the following in `src/app/page.tsx`:
+
 - Name and title in the hero section
 - About me content
 - Skills and descriptions
@@ -54,17 +58,21 @@ Update the following in `src/app/page.tsx`:
 - Profile photo (replace `public/profile-photo.jpg`)
 
 ### Styling
+
 - Colors: Modify the Tailwind classes throughout the components
 - Typography: Update font choices in `src/app/layout.tsx`
 - Layout: Adjust spacing, sizing, and layout in the component classes
 
 ### Content
+
 - **Profile Photo**: Replace `public/profile-photo.jpg` with your actual photo (recommended: 400x400px or larger)
 - **Resume**: Add your actual resume PDF to the public folder and update the download link
 - **Social Links**: Update GitHub, LinkedIn, and email links with your actual profiles
 
 ### Future Enhancements
+
 The website is structured to easily add:
+
 - **Blog Section**: Add MDX support for blog posts
 - **Portfolio**: Create a projects showcase section
 - **Contact Form**: Add a functional contact form with form handling

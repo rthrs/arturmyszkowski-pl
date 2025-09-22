@@ -3,47 +3,58 @@ import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
+    variable: "--font-inter",
+    subsets: ["latin"],
+    display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
+    variable: "--font-jetbrains-mono",
+    subsets: ["latin"],
+    display: "swap",
 });
 
 const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
+    variable: "--font-space-grotesk",
+    subsets: ["latin"],
+    display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Artur Myszkowski | Senior Software Engineer",
-  description: "Senior Software Engineer with 7+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.",
-  keywords: ["software Engineer", "senior Engineer", "frontend Engineer", "react Engineer", "typescript", "web development", "computer science", "university of warsaw"],
-  authors: [{ name: "Artur Myszkowski" }],
-  openGraph: {
     title: "Artur Myszkowski | Senior Software Engineer",
-    description: "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
-    type: "website",
-  },
+    description:
+        "Senior Software Engineer with 7+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.",
+    keywords: [
+        "software Engineer",
+        "senior Engineer",
+        "frontend Engineer",
+        "react Engineer",
+        "typescript",
+        "web development",
+        "computer science",
+        "university of warsaw",
+    ],
+    authors: [{ name: "Artur Myszkowski" }],
+    openGraph: {
+        title: "Artur Myszkowski | Senior Software Engineer",
+        description:
+            "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
+        type: "website",
+    },
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body
+                className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+            >
+                {children}
+            </body>
+        </html>
+    );
 }

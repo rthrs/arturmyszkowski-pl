@@ -1,36 +1,36 @@
 "use client";
 
-import { useRef, useState, useEffect } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Canvas } from '@react-three/fiber';
-import * as THREE from 'three';
+import { useRef, useState, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
 
 interface FluidBackgroundProps {
-  className?: string;
+    className?: string;
 }
 
 function FluidPlane() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const [geometry, setGeometry] = useState<THREE.PlaneGeometry | null>(null);
-  const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
+    const meshRef = useRef<THREE.Mesh>(null);
+    const [geometry, setGeometry] = useState<THREE.PlaneGeometry | null>(null);
+    const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
 
-  useEffect(() => {
-    // Create much larger geometry to cover full hero section
-    const planeGeometry = new THREE.PlaneGeometry(50, 50, 1, 1);
-    setGeometry(planeGeometry);
+    useEffect(() => {
+        // Create much larger geometry to cover full hero section
+        const planeGeometry = new THREE.PlaneGeometry(50, 50, 1, 1);
+        setGeometry(planeGeometry);
 
-    // Create fluid shader material
-    const shaderMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        uTime: { value: 0 },
-        uColor1: { value: new THREE.Color('#007AFF') }, // Apple Blue
-        uColor2: { value: new THREE.Color('#AF52DE') }, // Apple Purple
-        uColor3: { value: new THREE.Color('#FF3B30') }, // Apple Red
-        uColor4: { value: new THREE.Color('#FF9500') }, // Apple Orange
-        uColor5: { value: new THREE.Color('#30D158') }, // Apple Green
-        uColor6: { value: new THREE.Color('#64D2FF') }, // Apple Cyan
-      },
-      vertexShader: `
+        // Create fluid shader material
+        const shaderMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uColor1: { value: new THREE.Color("#007AFF") }, // Apple Blue
+                uColor2: { value: new THREE.Color("#AF52DE") }, // Apple Purple
+                uColor3: { value: new THREE.Color("#FF3B30") }, // Apple Red
+                uColor4: { value: new THREE.Color("#FF9500") }, // Apple Orange
+                uColor5: { value: new THREE.Color("#30D158") }, // Apple Green
+                uColor6: { value: new THREE.Color("#64D2FF") }, // Apple Cyan
+            },
+            vertexShader: `
         varying vec2 vUv;
         varying float vScreenY;
         
@@ -43,7 +43,7 @@ function FluidPlane() {
           vScreenY = ndcY * 0.5 + 0.5;
         }
       `,
-      fragmentShader: `
+            fragmentShader: `
         uniform float uTime;
         uniform vec3 uColor1;
         uniform vec3 uColor2;
@@ -135,59 +135,70 @@ function FluidPlane() {
           gl_FragColor = vec4(finalColor, alpha);
         }
       `,
-      transparent: true,
-      side: THREE.DoubleSide,
-      blending: THREE.NormalBlending,
+            transparent: true,
+            side: THREE.DoubleSide,
+            blending: THREE.NormalBlending,
+        });
+
+        setMaterial(shaderMaterial);
+    }, []);
+
+    useFrame((state) => {
+        if (material) {
+            material.uniforms.uTime.value = state.clock.getElapsedTime();
+        }
     });
-    
-    setMaterial(shaderMaterial);
-  }, []);
 
-  useFrame((state) => {
-    if (material) {
-      material.uniforms.uTime.value = state.clock.getElapsedTime();
+    if (!geometry || !material) {
+        return null;
     }
-  });
 
-  if (!geometry || !material) {
-    return null;
-  }
-
-  return (
-    <mesh ref={meshRef} geometry={geometry} material={material} position={[0, 0, -8]} />
-  );
+    return (
+        <mesh
+            ref={meshRef}
+            geometry={geometry}
+            material={material}
+            position={[0, 0, -8]}
+        />
+    );
 }
 
-export default function FluidBackground({ className = "" }: FluidBackgroundProps) {
-  const [isClient, setIsClient] = useState(false);
-  const [hasError, setHasError] = useState(false);
+export default function FluidBackground({
+    className = "",
+}: FluidBackgroundProps) {
+    const [isClient, setIsClient] = useState(false);
+    const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
-  if (!isClient || hasError) {
-    // Fallback gradient while loading or on error
+    if (!isClient || hasError) {
+        // Fallback gradient while loading or on error
+        return (
+            <div
+                className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}
+            >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
+            </div>
+        );
+    }
+
     return (
-      <div className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
-      </div>
-    );
-  }
-
-  return (
-    <div className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}>
-      <div className="w-full h-full">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 75 }}
-          style={{ background: 'transparent' }}
-          dpr={[1, 2]} // Limit pixel ratio for performance
-          onError={() => setHasError(true)}
-          gl={{ alpha: true, antialias: true }}
+        <div
+            className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}
         >
-          <FluidPlane />
-        </Canvas>
-      </div>
-    </div>
-  );
+            <div className="w-full h-full">
+                <Canvas
+                    camera={{ position: [0, 0, 5], fov: 75 }}
+                    style={{ background: "transparent" }}
+                    dpr={[1, 2]} // Limit pixel ratio for performance
+                    onError={() => setHasError(true)}
+                    gl={{ alpha: true, antialias: true }}
+                >
+                    <FluidPlane />
+                </Canvas>
+            </div>
+        </div>
+    );
 }

@@ -2,28 +2,31 @@
 
 /* Overscroll background color to match main page */
 html {
-  background-color: #000000;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+    background-color: #000000;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  overflow-x: clip;
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    overflow-x: clip;
 }
 
 /* Selection color */
 ::selection {
-  background: #3b82f6;
-  color: #ffffff;
+    background: #3b82f6;
+    color: #ffffff;
 }
 
 /* Cursor pointer for all links and clickable elements */
-a, button, [role="button"], [onclick] {
-  cursor: pointer;
+a,
+button,
+[role="button"],
+[onclick] {
+    cursor: pointer;
 }
 
 /* Ensure links without href still show pointer cursor */
 a {
-  cursor: pointer;
+    cursor: pointer;
 }
