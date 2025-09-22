@@ -7,9 +7,10 @@ import * as THREE from "three";
 
 interface FluidBackgroundProps {
     className?: string;
+    speed?: number;
 }
 
-function FluidPlane() {
+function FluidPlane({ speed = 0.3 }: { speed?: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
 
@@ -143,8 +144,8 @@ function FluidPlane() {
 
     useFrame((state) => {
         if (material) {
-            // Slow down animation when page is not visible
-            material.uniforms.uTime.value = state.clock.getElapsedTime() * 0.3;
+            // Use speed prop to control animation speed
+            material.uniforms.uTime.value = state.clock.getElapsedTime() * speed;
         }
     });
 
@@ -168,10 +169,12 @@ function MorphingWireframe({
     position,
     scale = 1,
     divisions = 60,
+    speed = 0.5,
 }: {
     position: [number, number, number];
     scale?: number;
     divisions?: number;
+    speed?: number;
 }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
@@ -278,7 +281,7 @@ function MorphingWireframe({
     useFrame((state) => {
         if (!meshRef.current || !geometry) return;
         
-        const time = state.clock.getElapsedTime() * 0.2;
+        const time = state.clock.getElapsedTime() * speed;
         
         // Initialize morphTargetInfluences if not already set
         if (!meshRef.current.morphTargetInfluences) {
@@ -321,6 +324,7 @@ function MorphingWireframe({
 
 export default function FluidBackground({
     className = "",
+    speed = 0.3,
 }: FluidBackgroundProps) {
     const [isClient, setIsClient] = useState(false);
     const [hasError, setHasError] = useState(false);
@@ -354,7 +358,7 @@ export default function FluidBackground({
 
     return (
         <div
-            className={`absolute rotate-[-2deg] top-0 -bottom-8 -inset-x-8  -z-10 ${className}`}
+            className={`absolute rotate-[-2deg] top-0 -bottom-8 -inset-x-8 -z-10 ${className}`}
         >
             <div className="w-full h-full">
                 <Canvas
@@ -369,10 +373,10 @@ export default function FluidBackground({
                     }}
                     frameloop={isVisible ? "always" : "demand"} // Pause when not visible
                 >
-                    <FluidPlane />
+                    <FluidPlane speed={speed} />
 
                     {/* Morphing wireframe grid with morph targets */}
-                    <MorphingWireframe position={[0, 0, -6]} scale={2} divisions={60} />
+                    <MorphingWireframe position={[0, 0, 0]} scale={1.2} divisions={60} speed={speed} />
                 </Canvas>
             </div>
         </div>

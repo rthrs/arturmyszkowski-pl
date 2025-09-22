@@ -14,6 +14,7 @@ interface WireframeBackgroundProps {
     cameraPosition?: [number, number, number];
     fov?: number;
     dpr?: [number, number];
+    speed?: number;
 }
 
 function WireframeMesh({
@@ -22,12 +23,14 @@ function WireframeMesh({
     opacity = 0.075,
     size = 25,
     divisions = 60,
+    speed = 0.4,
 }: {
     position: [number, number, number];
     color: string;
     opacity: number;
     size: number;
     divisions: number;
+    speed: number;
 }) {
     const gridRef = useRef<THREE.LineSegments>(null);
     const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
@@ -63,8 +66,8 @@ function WireframeMesh({
 
     useFrame((state) => {
         if (gridRef.current && geometry && originalPositions) {
-            // Slow down animation for better performance
-            const time = state.clock.getElapsedTime() * 0.4;
+            // Use speed prop to control animation speed
+            const time = state.clock.getElapsedTime() * speed;
 
             // Get the position attribute
             const positionAttribute = geometry.getAttribute('position') as THREE.BufferAttribute;
@@ -113,6 +116,7 @@ export default function WireframeBackground({
     cameraPosition = [0, 0, 8],
     fov = 75,
     dpr = [1, 1.5],
+    speed = 0.4,
 }: WireframeBackgroundProps) {
     return (
         <div className={className}>
@@ -132,6 +136,7 @@ export default function WireframeBackground({
                     opacity={opacity}
                     size={size}
                     divisions={divisions}
+                    speed={speed}
                 />
             </Canvas>
         </div>

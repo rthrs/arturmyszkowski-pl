@@ -41,7 +41,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             alt="Artur Myszkowski"
                             fill
                             sizes="192px"
-                            className="object-cover relative z-10 rounded-full  mask-radial-from-45% mask-radial-to-100% mask-radial-at-center"
+                            className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center"
                             priority
                         />
                     </div>
