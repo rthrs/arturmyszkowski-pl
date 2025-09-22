@@ -11,13 +11,11 @@ interface FluidBackgroundProps {
 
 function FluidPlane() {
     const meshRef = useRef<THREE.Mesh>(null);
-    const [geometry, setGeometry] = useState<THREE.PlaneGeometry | null>(null);
     const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
 
     useEffect(() => {
         // Create much larger geometry to cover full hero section
         const planeGeometry = new THREE.PlaneGeometry(50, 50, 1, 1);
-        setGeometry(planeGeometry);
 
         // Create fluid shader material
         const shaderMaterial = new THREE.ShaderMaterial({
@@ -150,124 +148,30 @@ function FluidPlane() {
         }
     });
 
-    if (!geometry || !material) {
+    if (!material) {
         return null;
     }
 
     return (
         <mesh
             ref={meshRef}
-            geometry={geometry}
+            geometry={new THREE.PlaneGeometry(50, 50, 1, 1)}
             material={material}
             position={[0, 0, -8]}
         />
     );
 }
 
-// Floating geometric shapes for modern tech aesthetic
-function MorphingGeometry({
-    position,
-    scale = 1,
-    speed = 1,
-}: {
-    position: [number, number, number];
-    scale?: number;
-    speed?: number;
-}) {
-    const meshRef = useRef<THREE.Mesh>(null);
-    const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
-    const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
-
-    useEffect(() => {
-        // Create icosahedron geometry that will morph
-        const geo = new THREE.IcosahedronGeometry(0.8 * scale, 2);
-        setGeometry(geo);
-
-        // Create morphing shader material
-        const shaderMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                uTime: { value: 0 },
-                uOpacity: { value: 0.15 },
-                uColor: { value: new THREE.Color("#64D2FF") }, // Apple Cyan
-            },
-            vertexShader: `
-                uniform float uTime;
-                varying vec3 vPosition;
-                varying vec3 vNormal;
-                
-                void main() {
-                    vPosition = position;
-                    vNormal = normal;
-                    
-                    // Subtle morphing animation
-                    vec3 pos = position;
-                    pos += normal * sin(uTime * 0.5 + position.x * 2.0) * 0.1;
-                    pos += normal * cos(uTime * 0.3 + position.y * 3.0) * 0.08;
-                    
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                }
-            `,
-            fragmentShader: `
-                uniform float uTime;
-                uniform float uOpacity;
-                uniform vec3 uColor;
-                varying vec3 vPosition;
-                varying vec3 vNormal;
-                
-                void main() {
-                    // Create subtle gradient based on position and normal
-                    float fresnel = 1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0)));
-                    float intensity = fresnel * 0.8 + 0.2;
-                    
-                    // Subtle pulsing effect
-                    float pulse = sin(uTime * 2.0) * 0.1 + 0.9;
-                    
-                    gl_FragColor = vec4(uColor * intensity * pulse, uOpacity);
-                }
-            `,
-            transparent: true,
-            side: THREE.DoubleSide,
-        });
-
-        setMaterial(shaderMaterial);
-    }, [scale]);
-
-    useFrame((state) => {
-        if (material && meshRef.current) {
-            material.uniforms.uTime.value =
-                state.clock.getElapsedTime() * speed;
-
-            // Subtle rotation
-            meshRef.current.rotation.x += 0.002 * speed;
-            meshRef.current.rotation.y += 0.003 * speed;
-
-            // Gentle floating motion
-            meshRef.current.position.y +=
-                Math.sin(state.clock.getElapsedTime() * 0.5 * speed) * 0.002;
-        }
-    });
-
-    if (!geometry || !material) {
-        return null;
-    }
-
-    return (
-        <mesh
-            ref={meshRef}
-            geometry={geometry}
-            material={material}
-            position={position}
-        />
-    );
-}
 
 // Morphing wireframe grid using morph targets
 function MorphingWireframe({
     position,
     scale = 1,
+    divisions = 60,
 }: {
     position: [number, number, number];
     scale?: number;
+    divisions?: number;
 }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
@@ -276,19 +180,14 @@ function MorphingWireframe({
     useEffect(() => {
         // Create base wireframe geometry
         const baseGeometry = new THREE.BufferGeometry();
-        const points: number[] = [];
-        const indices: number[] = [];
-
-        const size = 20 * scale;
-        const divisions = 40;
-        const step = size / divisions;
-        const halfSize = size / 2;
-
-        // Create connected triangular mesh - no isolated triangles
         const vertices: number[] = [];
         const triangleIndices: number[] = [];
+
+        const size = 20 * scale;
+        const step = size / divisions;
+        const halfSize = size / 2;
         
-        // First, create all vertices
+        // Create all vertices
         for (let i = 0; i <= divisions; i++) {
             for (let j = 0; j <= divisions; j++) {
                 const x = -halfSize + i * step;
@@ -297,7 +196,7 @@ function MorphingWireframe({
             }
         }
         
-        // Then create triangles using vertex indices
+        // Create triangles using vertex indices
         for (let i = 0; i < divisions; i++) {
             for (let j = 0; j < divisions; j++) {
                 const a = i * (divisions + 1) + j;
@@ -307,62 +206,40 @@ function MorphingWireframe({
                 
                 // Create two triangles per quad, alternating pattern
                 if ((i + j) % 2 === 0) {
-                    // Triangle 1: a -> b -> c
-                    triangleIndices.push(a, b, c);
-                    // Triangle 2: b -> d -> c
-                    triangleIndices.push(b, d, c);
+                    triangleIndices.push(a, b, c, b, d, c);
                 } else {
-                    // Triangle 1: a -> b -> d
-                    triangleIndices.push(a, b, d);
-                    // Triangle 2: a -> d -> c
-                    triangleIndices.push(a, d, c);
+                    triangleIndices.push(a, b, d, a, d, c);
                 }
             }
         }
-        
-        points.push(...vertices);
 
-        baseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
+        baseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
         baseGeometry.setIndex(triangleIndices);
         
         // Initialize morph attributes array
         baseGeometry.morphAttributes = {};
 
-        // Create morph target 1: Wave distortion
+        // Create morph targets
         const wavePoints: number[] = [];
+        const spherePoints: number[] = [];
+        const twistPoints: number[] = [];
         
-        // Create wave distortion for each vertex
+        // Generate all morph targets in a single loop for efficiency
         for (let i = 0; i <= divisions; i++) {
             for (let j = 0; j <= divisions; j++) {
                 const x = -halfSize + i * step;
                 const y = -halfSize + j * step;
+                
+                // Wave distortion
                 const waveZ = Math.sin(x * 0.08) * Math.cos(y * 0.08) * 1.2;
                 wavePoints.push(x, y, waveZ);
-            }
-        }
-
-        // Create morph target 2: Spherical distortion
-        const spherePoints: number[] = [];
-        
-        // Create spherical distortion for each vertex
-        for (let i = 0; i <= divisions; i++) {
-            for (let j = 0; j <= divisions; j++) {
-                const x = -halfSize + i * step;
-                const y = -halfSize + j * step;
+                
+                // Spherical distortion
                 const dist = Math.sqrt(x * x + y * y);
                 const sphereZ = Math.sqrt(Math.max(0, 80 - dist * 0.08)) - 8;
                 spherePoints.push(x, y, sphereZ);
-            }
-        }
-
-        // Create morph target 3: Twisted distortion
-        const twistPoints: number[] = [];
-        
-        // Create twisted distortion for each vertex
-        for (let i = 0; i <= divisions; i++) {
-            for (let j = 0; j <= divisions; j++) {
-                const x = -halfSize + i * step;
-                const y = -halfSize + j * step;
+                
+                // Twisted distortion
                 const angle = Math.atan2(y, x) + x * 0.05;
                 const twistZ = Math.sin(angle * 2.5) * 1.0;
                 twistPoints.push(x, y, twistZ);
@@ -394,50 +271,37 @@ function MorphingWireframe({
         (wireframeMaterial as any).morphTargets = true;
 
         setMaterial(wireframeMaterial);
-    }, [scale]);
+    }, [scale, divisions]);
 
-    // Initialize morphTargetInfluences when mesh is created
-    useEffect(() => {
-        if (meshRef.current) {
-            meshRef.current.morphTargetInfluences = [0, 0, 0];
-        }
-    }, [geometry, material]);
 
     useFrame((state) => {
-        if (meshRef.current && geometry) {
-            const time = state.clock.getElapsedTime();
-            
-            // Initialize morphTargetInfluences if not already set
-            if (!meshRef.current.morphTargetInfluences) {
-                meshRef.current.morphTargetInfluences = [0, 0, 0];
-            }
-            
-            // Only animate if morph targets are properly set up
-            if (meshRef.current.morphTargetInfluences.length >= 3) {
-                // Animate between different morph targets
-                const morph1 = (Math.sin(time * 0.3) + 1) * 0.5;
-                const morph2 = (Math.sin(time * 0.4 + Math.PI / 3) + 1) * 0.5;
-                const morph3 = (Math.sin(time * 0.5 + Math.PI * 2 / 3) + 1) * 0.5;
-                
-                meshRef.current.morphTargetInfluences[0] = morph1;
-                meshRef.current.morphTargetInfluences[1] = morph2;
-                meshRef.current.morphTargetInfluences[2] = morph3;
-            }
-
-            const maxRotation = 0.2; // Maximum rotation in radians (about 5.7 degrees)
-            
-            // Z-axis rotation: oscillates between -maxRotation and +maxRotation
-            meshRef.current.rotation.z = Math.sin(time * 0.3) * maxRotation;
-            
-            // X-axis rotation: oscillates with different phase
-            meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.5;
-            
-            // Y-axis rotation: oscillates with different phase
-            meshRef.current.rotation.y = Math.sin(time * 0.25 + Math.PI / 2) * maxRotation * 0.3;
-
-            // Gentle floating
-            meshRef.current.position.y += Math.sin(time * 0.05) * 0.0001;
+        if (!meshRef.current || !geometry) return;
+        
+        const time = state.clock.getElapsedTime();
+        
+        // Initialize morphTargetInfluences if not already set
+        if (!meshRef.current.morphTargetInfluences) {
+            meshRef.current.morphTargetInfluences = [0, 0, 0];
         }
+        
+        // Animate between different morph targets
+        const morph1 = (Math.sin(time * 0.3) + 1) * 0.5;
+        const morph2 = (Math.sin(time * 0.4 + Math.PI / 3) + 1) * 0.5;
+        const morph3 = (Math.sin(time * 0.5 + Math.PI * 2 / 3) + 1) * 0.5;
+        
+        meshRef.current.morphTargetInfluences[0] = morph1;
+        meshRef.current.morphTargetInfluences[1] = morph2;
+        meshRef.current.morphTargetInfluences[2] = morph3;
+
+        const maxRotation = 0.25;
+        
+        // Oscillating rotation
+        meshRef.current.rotation.z = Math.sin(time * 0.3) * maxRotation;
+        meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.5;
+        meshRef.current.rotation.y = Math.sin(time * 0.25 + Math.PI / 2) * maxRotation * 0.3;
+
+        // Gentle floating
+        meshRef.current.position.y += Math.sin(time * 0.05) * 0.0001;
     });
 
     if (!geometry || !material) {
@@ -507,7 +371,7 @@ export default function FluidBackground({
                     <FluidPlane />
 
                     {/* Morphing wireframe grid with morph targets */}
-                    <MorphingWireframe position={[0, 0, -6]} scale={1.8} />
+                    <MorphingWireframe position={[0, 0, -6]} scale={2} divisions={60} />
                 </Canvas>
             </div>
         </div>
