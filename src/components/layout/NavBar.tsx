@@ -1,26 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiMenu as Menu, FiX as X } from "react-icons/fi";
 import { NAV_ITEMS, RESUME_URL } from "@/constants/nav";
 
 interface NavBarProps {
     onNavigate: (sectionId: string) => void;
-    onLogoClick: () => void;
 }
 
-export default function NavBar({ onNavigate, onLogoClick }: NavBarProps) {
+export default function NavBar({ onNavigate }: NavBarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navRef = useRef<HTMLElement>(null);
+
+    // Close menu when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        // Only add listener when menu is open
+        if (isMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
+    // Close menu on escape key
+    useEffect(() => {
+        function handleEscape(event: KeyboardEvent) {
+            if (event.key === 'Escape') {
+                setIsMenuOpen(false);
+            }
+        }
+
+        if (isMenuOpen) {
+            document.addEventListener('keydown', handleEscape);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+        };
+    }, [isMenuOpen]);
+
 
     return (
-        <nav className="fixed top-[-10px] w-full z-[60] bg-black/50 backdrop-blur-xl rotate-[-0.5deg] pt-[10px] pb-[4px]">
+        <nav ref={navRef} className="fixed top-[-10px] w-full z-[60] bg-black/50 backdrop-blur-xl rotate-[-0.5deg] pt-[10px] pb-[4px]">
             <div className="max-w-6xl mx-auto px-6 lg:px-8 rotate-[0.5deg]">
                 <div className="flex justify-between items-center h-16">
                     <motion.button
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        onClick={onLogoClick}
+                        onClick={() => {
+                            setIsMenuOpen(false);
+                            onNavigate('hero');
+                        }}
                         className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono z-60"
                     >
                         arturmyszkowski.pl
@@ -56,14 +95,6 @@ export default function NavBar({ onNavigate, onLogoClick }: NavBarProps) {
                     </button>
                 </div>
 
-                {/* Mobile Backdrop (closes menu on outside click) */}
-                {isMenuOpen && (
-                    <div
-                        className="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"
-                        onClick={() => setIsMenuOpen(false)}
-                        aria-hidden
-                    />
-                )}
 
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
