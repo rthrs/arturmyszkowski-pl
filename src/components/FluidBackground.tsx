@@ -239,9 +239,10 @@ function MorphingWireframe({
                 const sphereZ = Math.sqrt(Math.max(0, 80 - dist * 0.08)) - 8;
                 spherePoints.push(x, y, sphereZ);
                 
-                // Twisted distortion
-                const angle = Math.atan2(y, x) + x * 0.05;
-                const twistZ = Math.sin(angle * 2.5) * 1.0;
+                // Twisted distortion using smooth spiral pattern
+                // Avoid atan2 discontinuity by using a different approach
+                const spiralPhase = Math.sqrt(x * x + y * y) * 0.3 + x * 0.1;
+                const twistZ = Math.cos(spiralPhase) * 2;
                 twistPoints.push(x, y, twistZ);
             }
         }
