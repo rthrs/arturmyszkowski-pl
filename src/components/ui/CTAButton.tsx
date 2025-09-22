@@ -14,7 +14,7 @@ interface CTAButtonProps extends ComponentProps<typeof motion.button> {
 }
 
 const baseClasses =
-    "group inline-flex items-center rounded-xl border relative transition-transform";
+    "group inline-flex items-center rounded-xl border relative";
 const sizeClasses = "px-8 py-4 text-base sm:text-lg font-medium";
 
 const variantClasses: Record<CTAButtonVariant, string> = {
@@ -33,6 +33,11 @@ export default function CTAButton({
         <motion.button
             whileHover={{ scale: 1.05, y: -1 }}
             whileTap={{ scale: 0.95 }}
+            transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25
+            }}
             className={`${baseClasses} ${sizeClasses} ${variantClasses[variant]} ${className}`}
             {...rest}
         >
