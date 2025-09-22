@@ -163,6 +163,167 @@ function FluidPlane() {
     );
 }
 
+// Floating geometric shapes for modern tech aesthetic
+function MorphingGeometry({
+    position,
+    scale = 1,
+    speed = 1,
+}: {
+    position: [number, number, number];
+    scale?: number;
+    speed?: number;
+}) {
+    const meshRef = useRef<THREE.Mesh>(null);
+    const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
+    const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
+
+    useEffect(() => {
+        // Create icosahedron geometry that will morph
+        const geo = new THREE.IcosahedronGeometry(0.8 * scale, 2);
+        setGeometry(geo);
+
+        // Create morphing shader material
+        const shaderMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uOpacity: { value: 0.15 },
+                uColor: { value: new THREE.Color("#64D2FF") }, // Apple Cyan
+            },
+            vertexShader: `
+                uniform float uTime;
+                varying vec3 vPosition;
+                varying vec3 vNormal;
+                
+                void main() {
+                    vPosition = position;
+                    vNormal = normal;
+                    
+                    // Subtle morphing animation
+                    vec3 pos = position;
+                    pos += normal * sin(uTime * 0.5 + position.x * 2.0) * 0.1;
+                    pos += normal * cos(uTime * 0.3 + position.y * 3.0) * 0.08;
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform float uTime;
+                uniform float uOpacity;
+                uniform vec3 uColor;
+                varying vec3 vPosition;
+                varying vec3 vNormal;
+                
+                void main() {
+                    // Create subtle gradient based on position and normal
+                    float fresnel = 1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0)));
+                    float intensity = fresnel * 0.8 + 0.2;
+                    
+                    // Subtle pulsing effect
+                    float pulse = sin(uTime * 2.0) * 0.1 + 0.9;
+                    
+                    gl_FragColor = vec4(uColor * intensity * pulse, uOpacity);
+                }
+            `,
+            transparent: true,
+            side: THREE.DoubleSide,
+        });
+
+        setMaterial(shaderMaterial);
+    }, [scale]);
+
+    useFrame((state) => {
+        if (material && meshRef.current) {
+            material.uniforms.uTime.value =
+                state.clock.getElapsedTime() * speed;
+
+            // Subtle rotation
+            meshRef.current.rotation.x += 0.002 * speed;
+            meshRef.current.rotation.y += 0.003 * speed;
+
+            // Gentle floating motion
+            meshRef.current.position.y +=
+                Math.sin(state.clock.getElapsedTime() * 0.5 * speed) * 0.002;
+        }
+    });
+
+    if (!geometry || !material) {
+        return null;
+    }
+
+    return (
+        <mesh
+            ref={meshRef}
+            geometry={geometry}
+            material={material}
+            position={position}
+        />
+    );
+}
+
+// Wireframe grid for tech aesthetic
+function TechGrid({
+    position,
+    scale = 1,
+}: {
+    position: [number, number, number];
+    scale?: number;
+}) {
+    const gridRef = useRef<THREE.LineSegments>(null);
+    const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
+
+    useEffect(() => {
+        // Create grid geometry
+        const gridGeometry = new THREE.BufferGeometry();
+        const points: number[] = [];
+
+        const size = 20 * scale;
+        const divisions = 80;
+        const step = size / divisions;
+        const halfSize = size / 2;
+
+        // Grid lines
+        for (let i = 0; i <= divisions; i++) {
+            const x = -halfSize + i * step;
+            points.push(x, -halfSize, 0, x, halfSize, 0);
+            points.push(
+                -halfSize,
+                -halfSize + i * step,
+                0,
+                halfSize,
+                -halfSize + i * step,
+                0
+            );
+        }
+
+        gridGeometry.setAttribute(
+            "position",
+            new THREE.Float32BufferAttribute(points, 3)
+        );
+        setGeometry(gridGeometry);
+    }, [scale]);
+
+    useFrame((state) => {
+        if (gridRef.current) {
+            // Very subtle rotation
+            gridRef.current.rotation.z += 0.0003;
+
+            // Very gentle floating
+            gridRef.current.position.y +=
+                Math.sin(state.clock.getElapsedTime() * 0.15) * 0.0003;
+        }
+    });
+
+    if (!geometry) {
+        return null;
+    }
+
+    return (
+        <lineSegments ref={gridRef} geometry={geometry} position={position}>
+            <lineBasicMaterial color="#64D2FF" transparent opacity={0.08} />
+        </lineSegments>
+    );
+}
+
 export default function FluidBackground({
     className = "",
 }: FluidBackgroundProps) {
@@ -197,6 +358,9 @@ export default function FluidBackground({
                     gl={{ alpha: true, antialias: true }}
                 >
                     <FluidPlane />
+
+                    {/* Large wireframe grid covering whole view */}
+                    <TechGrid position={[0, 0, -9]} scale={2.0} />
                 </Canvas>
             </div>
         </div>
