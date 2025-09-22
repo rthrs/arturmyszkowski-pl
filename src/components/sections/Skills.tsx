@@ -11,6 +11,7 @@ import { DEFAULT_ICON_ANIMATION } from "@/constants/motion";
 
 export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
     const [hovered, setHovered] = useState<string | null>(null);
+    const [touched, setTouched] = useState<string | null>(null);
     const [inputMode, setInputMode] = useState<"touch" | "mouse" | "unknown">(
         "unknown"
     );
@@ -54,10 +55,20 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                                         ? { opacity: 1 }
                                         : undefined
                                 }
+                                whileTap={{ 
+                                    scale: 0.98,
+                                    borderColor: "rgb(75 85 99)", // gray-600
+                                    backgroundColor: "rgba(75, 85, 99, 0.1)" // gray-600 with opacity
+                                }}
+                                animate={{
+                                    scale: touched === skill.name ? 0.98 : 1,
+                                    borderColor: touched === skill.name ? "rgb(75 85 99)" : "rgb(31 41 55)", // gray-600 : gray-800
+                                    backgroundColor: touched === skill.name ? "rgba(75, 85, 99, 0.1)" : "rgba(0, 0, 0, 0)"
+                                }}
                                 transition={
                                     inputMode === "mouse"
                                         ? { duration: 0.8, delay: index * 0.1 }
-                                        : undefined
+                                        : { type: "spring", stiffness: 300, damping: 30 }
                                 }
                                 viewport={
                                     inputMode === "mouse"
@@ -66,20 +77,30 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                                 }
                                 onHoverStart={() => setHovered(skill.name)}
                                 onHoverEnd={() => setHovered(null)}
-                                onTapStart={() => setHovered(skill.name)}
-                                onTap={() =>
-                                    setTimeout(() => setHovered(null), 500)
-                                }
-                                onTapCancel={() => setHovered(null)}
-                                className={`group px-8 py-6 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass}`}
+                                onTapStart={() => {
+                                    setHovered(skill.name);
+                                    setTouched(skill.name);
+                                }}
+                                onTap={() => {
+                                    setTimeout(() => {
+                                        setHovered(null);
+                                        setTouched(null);
+                                    }, 1200);
+                                }}
+                                onTapCancel={() => {
+                                    setHovered(null);
+                                    setTouched(null);
+                                }}
+                                className={`group px-8 py-6 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass} active:border-gray-600 active:bg-gray-600/10`}
                             >
                                 <div className="flex items-center mb-6">
-                                    <div
-                                        className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}
+                                    <motion.div
+                                        whileTap={{ scale: 0.95 }}
+                                        className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50 active:border-gray-500/70 active:bg-gray-700/50`}
                                     >
                                         <motion.div
                                             animate={
-                                                hovered === skill.name
+                                                hovered === skill.name || touched === skill.name
                                                     ? skill.hoverAnimation as any
                                                     : DEFAULT_ICON_ANIMATION
                                             }
@@ -87,10 +108,13 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                                         >
                                             <skill.icon size={24} />
                                         </motion.div>
-                                    </div>
-                                    <h3 className="text-xl font-medium text-white">
+                                    </motion.div>
+                                    <motion.h3 
+                                        whileTap={{ scale: 0.98 }}
+                                        className="text-xl font-medium text-white"
+                                    >
                                         {skill.name}
-                                    </h3>
+                                    </motion.h3>
                                 </div>
                                 <div className="text-gray-300 font-light">
                                     <TechBadgesList csv={skill.description} />
