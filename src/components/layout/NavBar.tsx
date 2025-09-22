@@ -60,7 +60,8 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                             setIsMenuOpen(false);
                             onNavigate('hero');
                         }}
-                        className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono z-60"
+                        whileTap={{ scale: 0.95 }}
+                        className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono z-60 p-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                     >
                         arturmyszkowski.pl
                     </motion.button>
@@ -68,31 +69,34 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center h-full">
                         {NAV_ITEMS.map((item) => (
-                            <button
+                            <motion.button
                                 key={item}
                                 onClick={() => onNavigate(item.toLowerCase())}
-                                className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4"
+                                whileTap={{ scale: 0.95 }}
+                                className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                             >
                                 {item}
-                            </button>
+                            </motion.button>
                         ))}
-                        <a
+                        <motion.a
                             href={RESUME_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4"
+                            whileTap={{ scale: 0.95 }}
+                            className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                         >
                             Resume
-                        </a>
+                        </motion.a>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden text-white z-60"
+                    <motion.button
+                        className="md:hidden text-white z-60 p-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        whileTap={{ scale: 0.9 }}
                     >
                         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                    </button>
+                    </motion.button>
                 </div>
 
 
@@ -105,27 +109,29 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                         className="md:hidden relative z-50"
                     >
                         <div className="py-2 space-y-2">
-                            {NAV_ITEMS.map((item) => (
-                                <button
-                                    key={item}
-                                    onClick={() => {
-                                        setIsMenuOpen(false);
-                                        onNavigate(item.toLowerCase());
-                                    }}
-                                    className="block w-full text-left text-gray-200 hover:text-white transition-colors text-base font-medium px-5 py-4 rounded-lg hover:bg-white/5"
-                                >
-                                    {item}
-                                </button>
-                            ))}
-                            <a
+                        {NAV_ITEMS.map((item) => (
+                            <motion.button
+                                key={item}
+                                onClick={() => {
+                                    setIsMenuOpen(false);
+                                    onNavigate(item.toLowerCase());
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                                className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
+                            >
+                                {item}
+                            </motion.button>
+                        ))}
+                            <motion.a
                                 href={RESUME_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="block w-full text-left text-gray-200 hover:text-white transition-colors text-base font-medium px-5 py-4 rounded-lg hover:bg-white/5"
+                                whileTap={{ scale: 0.95 }}
+                                className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                             >
                                 Resume
-                            </a>
+                            </motion.a>
                         </div>
                     </motion.div>
                 )}
