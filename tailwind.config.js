@@ -3,7 +3,7 @@ module.exports = {
     content: [
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/app/**/*.{js,ts,jsx,tsx,mdx}"
     ],
     safelist: [
         "group-hover:bg-blue-700/80",
@@ -70,16 +70,16 @@ module.exports = {
         "from-gray-600",
         "bg-blue-600/50",
         "via-cyan-600/50",
-        "to-blue-600/50",
+        "to-blue-600/50"
     ],
     theme: {
         extend: {
             fontFamily: {
                 sans: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
                 heading: ["var(--font-inter)", "system-ui", "sans-serif"],
-                mono: ["var(--font-jetbrains-mono)", "monospace"],
-            },
-        },
+                mono: ["var(--font-jetbrains-mono)", "monospace"]
+            }
+        }
     },
-    plugins: [],
+    plugins: []
 };

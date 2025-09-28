@@ -15,9 +15,6 @@ function FluidPlane({ speed = 0.3 }: { speed?: number }) {
     const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
 
     useEffect(() => {
-        // Create much larger geometry to cover full hero section
-        const planeGeometry = new THREE.PlaneGeometry(50, 50, 1, 1);
-
         // Create fluid shader material
         const shaderMaterial = new THREE.ShaderMaterial({
             uniforms: {
@@ -27,7 +24,7 @@ function FluidPlane({ speed = 0.3 }: { speed?: number }) {
                 uColor3: { value: new THREE.Color("#FF3B30") }, // Apple Red
                 uColor4: { value: new THREE.Color("#FF9500") }, // Apple Orange
                 uColor5: { value: new THREE.Color("#30D158") }, // Apple Green
-                uColor6: { value: new THREE.Color("#64D2FF") }, // Apple Cyan
+                uColor6: { value: new THREE.Color("#64D2FF") } // Apple Cyan
             },
             vertexShader: `
         varying vec2 vUv;
@@ -136,7 +133,7 @@ function FluidPlane({ speed = 0.3 }: { speed?: number }) {
       `,
             transparent: true,
             side: THREE.DoubleSide,
-            blending: THREE.NormalBlending,
+            blending: THREE.NormalBlending
         });
 
         setMaterial(shaderMaterial);
@@ -163,13 +160,12 @@ function FluidPlane({ speed = 0.3 }: { speed?: number }) {
     );
 }
 
-
 // Morphing wireframe grid using morph targets
 function MorphingWireframe({
     position,
     scale = 1,
     divisions = 60,
-    speed = 0.5,
+    speed = 0.5
 }: {
     position: [number, number, number];
     scale?: number;
@@ -189,7 +185,7 @@ function MorphingWireframe({
         const size = 20 * scale;
         const step = size / divisions;
         const halfSize = size / 2;
-        
+
         // Create all vertices
         for (let i = 0; i <= divisions; i++) {
             for (let j = 0; j <= divisions; j++) {
@@ -198,7 +194,7 @@ function MorphingWireframe({
                 vertices.push(x, y, 0);
             }
         }
-        
+
         // Create triangles using vertex indices
         for (let i = 0; i < divisions; i++) {
             for (let j = 0; j < divisions; j++) {
@@ -206,7 +202,7 @@ function MorphingWireframe({
                 const b = (i + 1) * (divisions + 1) + j;
                 const c = i * (divisions + 1) + (j + 1);
                 const d = (i + 1) * (divisions + 1) + (j + 1);
-                
+
                 // Create two triangles per quad, alternating pattern
                 if ((i + j) % 2 === 0) {
                     triangleIndices.push(a, b, c, b, d, c);
@@ -216,9 +212,9 @@ function MorphingWireframe({
             }
         }
 
-        baseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        baseGeometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
         baseGeometry.setIndex(triangleIndices);
-        
+
         // Initialize morph attributes array
         baseGeometry.morphAttributes = {};
 
@@ -226,22 +222,22 @@ function MorphingWireframe({
         const wavePoints: number[] = [];
         const spherePoints: number[] = [];
         const twistPoints: number[] = [];
-        
+
         // Generate all morph targets in a single loop for efficiency
         for (let i = 0; i <= divisions; i++) {
             for (let j = 0; j <= divisions; j++) {
                 const x = -halfSize + i * step;
                 const y = -halfSize + j * step;
-                
+
                 // Wave distortion
                 const waveZ = Math.sin(x * 0.08) * Math.cos(y * 0.08) * 1.2;
                 wavePoints.push(x, y, waveZ);
-                
+
                 // Spherical distortion
                 const dist = Math.sqrt(x * x + y * y);
                 const sphereZ = Math.sqrt(Math.max(0, 80 - dist * 0.08)) - 8;
                 spherePoints.push(x, y, sphereZ);
-                
+
                 // Twisted distortion using smooth spiral pattern
                 // Avoid atan2 discontinuity by using a different approach
                 const spiralPhase = Math.sqrt(x * x + y * y) * 0.3 + x * 0.1;
@@ -270,35 +266,33 @@ function MorphingWireframe({
             transparent: true,
             opacity: 0.08
         });
-        
-        // Enable morph targets on the material (TypeScript workaround)
-        (wireframeMaterial as any).morphTargets = true;
+
+        wireframeMaterial.morphTargets = true;
 
         setMaterial(wireframeMaterial);
     }, [scale, divisions]);
 
-
     useFrame((state) => {
         if (!meshRef.current || !geometry) return;
-        
+
         const time = state.clock.getElapsedTime() * speed;
-        
+
         // Initialize morphTargetInfluences if not already set
         if (!meshRef.current.morphTargetInfluences) {
             meshRef.current.morphTargetInfluences = [0, 0, 0];
         }
-        
+
         // Animate between different morph targets
         const morph1 = (Math.sin(time * 0.3) + 1) * 0.5;
         const morph2 = (Math.sin(time * 0.4 + Math.PI / 3) + 1) * 0.5;
-        const morph3 = (Math.sin(time * 0.5 + Math.PI * 2 / 3) + 1) * 0.5;
-        
+        const morph3 = (Math.sin(time * 0.5 + (Math.PI * 2) / 3) + 1) * 0.5;
+
         meshRef.current.morphTargetInfluences[0] = morph1;
         meshRef.current.morphTargetInfluences[1] = morph2;
         meshRef.current.morphTargetInfluences[2] = morph3;
 
         const maxRotation = 0.25;
-        
+
         // Oscillating rotation
         meshRef.current.rotation.z = Math.sin(time * 0.3) * maxRotation;
         meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.5;
@@ -312,62 +306,48 @@ function MorphingWireframe({
         return null;
     }
 
-    return (
-        <mesh
-            ref={meshRef}
-            geometry={geometry}
-            material={material}
-            position={position}
-        />
-    );
+    return <mesh ref={meshRef} geometry={geometry} material={material} position={position} />;
 }
 
-export default function FluidBackground({
-    className = "",
-    speed = 0.3,
-}: FluidBackgroundProps) {
+export default function FluidBackground({ className = "", speed = 0.3 }: FluidBackgroundProps) {
     const [isClient, setIsClient] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         setIsClient(true);
-        
+
         // Pause animations when page is not visible
         const handleVisibilityChange = () => {
             setIsVisible(!document.hidden);
         };
-        
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
         return () => {
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
     }, []);
 
     if (!isClient || hasError) {
         // Fallback gradient while loading or on error
         return (
-            <div
-                className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}
-            >
+            <div className={`absolute top-0 left-0 w-full h-full -z-10 ${className}`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
             </div>
         );
     }
 
     return (
-        <div
-            className={`absolute rotate-[-2deg] top-0 -bottom-8 -inset-x-8 -z-10 ${className}`}
-        >
+        <div className={`absolute rotate-[-2deg] top-0 -bottom-8 -inset-x-8 -z-10 ${className}`}>
             <div className="w-full h-full">
                 <Canvas
                     camera={{ position: [0, 0, 8], fov: 60 }}
                     style={{ background: "transparent" }}
                     dpr={[1, 1.5]} // Reduced pixel ratio for better performance
                     onError={() => setHasError(true)}
-                    gl={{ 
-                        alpha: true, 
+                    gl={{
+                        alpha: true,
                         antialias: true,
                         powerPreference: "low-power" // Use integrated GPU
                     }}

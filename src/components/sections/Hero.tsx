@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import FluidBackground from "@/components/FluidBackground";
 import CTAButton from "@/components/ui/CTAButton";
-import {
-    FiGithub as Github,
-    FiMail as Mail,
-    FiInstagram as Instagram,
-    FiFileText as FileText,
-} from "react-icons/fi";
+import { FiGithub as Github, FiMail as Mail, FiInstagram as Instagram, FiFileText as FileText } from "react-icons/fi";
 
 interface HeroProps {
     onCtaClick: () => void;
@@ -61,9 +56,8 @@ export default function Hero({ onCtaClick }: HeroProps) {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-light"
                     >
-                        Building exceptional digital experiences with modern
-                        technologies. Passionate about clean code, innovative
-                        solutions, and meaningful impact.
+                        Building exceptional digital experiences with modern technologies. Passionate about clean code,
+                        innovative solutions, and meaningful impact.
                     </motion.p>
 
                     <motion.div
@@ -72,11 +66,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                         transition={{ duration: 0.8, delay: 0.5 }}
                         className="pt-8 flex justify-center"
                     >
-                        <CTAButton
-                            onClick={onCtaClick}
-                            label="Read about me"
-                            variant="blue"
-                        />
+                        <CTAButton onClick={onCtaClick} label="Read about me" variant="blue" />
                     </motion.div>
 
                     <motion.div
@@ -95,15 +85,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             transition={{
                                 type: "spring",
                                 stiffness: 300,
-                                damping: 20,
+                                damping: 20
                             }}
                         >
                             <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
-                            <Github
-                                size={28}
-                                strokeWidth={1.5}
-                                className="relative z-10"
-                            />
+                            <Github size={28} strokeWidth={1.5} className="relative z-10" />
                         </motion.a>
                         <motion.a
                             href="https://instagram.com/artur6strings"
@@ -115,15 +101,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             transition={{
                                 type: "spring",
                                 stiffness: 300,
-                                damping: 20,
+                                damping: 20
                             }}
                         >
                             <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
-                            <Instagram
-                                size={28}
-                                strokeWidth={1.5}
-                                className="relative z-10"
-                            />
+                            <Instagram size={28} strokeWidth={1.5} className="relative z-10" />
                         </motion.a>
                         <motion.a
                             href="mailto:contact@arturmyszkowski.pl"
@@ -133,15 +115,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             transition={{
                                 type: "spring",
                                 stiffness: 300,
-                                damping: 20,
+                                damping: 20
                             }}
                         >
                             <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
-                            <Mail
-                                size={28}
-                                strokeWidth={1.5}
-                                className="relative z-10"
-                            />
+                            <Mail size={28} strokeWidth={1.5} className="relative z-10" />
                         </motion.a>
                         <motion.a
                             href="/documents/Artur_Myszkowski_Resume_2025_v4.pdf"
@@ -153,15 +131,11 @@ export default function Hero({ onCtaClick }: HeroProps) {
                             transition={{
                                 type: "spring",
                                 stiffness: 300,
-                                damping: 20,
+                                damping: 20
                             }}
                         >
                             <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
-                            <FileText
-                                size={28}
-                                strokeWidth={1.5}
-                                className="relative z-10"
-                            />
+                            <FileText size={28} strokeWidth={1.5} className="relative z-10" />
                         </motion.a>
                     </motion.div>
                 </motion.div>

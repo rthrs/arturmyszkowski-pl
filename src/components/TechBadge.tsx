@@ -33,7 +33,7 @@ import {
     SiApple,
     SiAndroid,
     SiWebgl,
-    SiImmer,
+    SiImmer
 } from "react-icons/si";
 
 interface TechBadgeProps {
@@ -49,7 +49,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Git: { icon: <SiGit />, colorClass: "text-red-500" },
     "REST API": {
         icon: <span className="text-gray-300">API</span>,
-        colorClass: "text-gray-300",
+        colorClass: "text-gray-300"
     },
     HTML5: { icon: <SiHtml5 />, colorClass: "text-orange-500" },
     CSS3: { icon: <SiCss3 />, colorClass: "text-blue-500" },
@@ -57,7 +57,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Tailwind CSS": { icon: <SiTailwindcss />, colorClass: "text-sky-400" },
     "Styled-Components": {
         icon: <SiStyledcomponents />,
-        colorClass: "text-pink-300",
+        colorClass: "text-pink-300"
     },
     "Chakra-UI": { icon: <SiChakraui />, colorClass: "text-teal-300" },
     "React Native": { icon: <SiReact />, colorClass: "text-cyan-300" },
@@ -78,7 +78,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     RxJS: { icon: <SiReactivex />, colorClass: "text-pink-400" },
     "Immutable.js": {
         icon: <span className="font-bold text-gray-200 text-[10px]">IM</span>,
-        colorClass: "text-gray-200",
+        colorClass: "text-gray-200"
     },
     Immer: { icon: <SiImmer />, colorClass: "text-gray-200" },
     AWS: { icon: <SiAmazonwebservices />, colorClass: "text-orange-400" },
@@ -86,7 +86,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Hugo: { icon: <SiHugo />, colorClass: "text-pink-500" },
     Webpack: { icon: <SiWebpack />, colorClass: "text-sky-400" },
     Rollup: { icon: <SiRollupdotjs />, colorClass: "text-red-500" },
-    "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" },
+    "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" }
 };
 
 export default function TechBadge({ name }: TechBadgeProps) {
@@ -104,7 +104,7 @@ export default function TechBadge({ name }: TechBadgeProps) {
         TS: "TypeScript",
         Firestore: "Firebase",
         Duckdb: "DuckDB",
-        duckdb: "DuckDB",
+        duckdb: "DuckDB"
     };
 
     const key = aliasMap[name] ?? name;
@@ -114,11 +114,7 @@ export default function TechBadge({ name }: TechBadgeProps) {
             className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-600/60 text-gray-200 text-sm/none font-mono bg-black/60"
             title={name}
         >
-            {map && (
-                <span className={`${map.colorClass} text-[14px]`}>
-                    {map.icon}
-                </span>
-            )}
+            {map && <span className={`${map.colorClass} text-[14px]`}>{map.icon}</span>}
             <span className="leading-none">{name}</span>
         </span>
     );

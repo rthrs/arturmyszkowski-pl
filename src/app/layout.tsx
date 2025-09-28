@@ -5,19 +5,19 @@ import "./globals.css";
 const inter = Inter({
     variable: "--font-inter",
     subsets: ["latin"],
-    display: "swap",
+    display: "swap"
 });
 
 const jetbrainsMono = JetBrains_Mono({
     variable: "--font-jetbrains-mono",
     subsets: ["latin"],
-    display: "swap",
+    display: "swap"
 });
 
 const spaceGrotesk = Space_Grotesk({
     variable: "--font-space-grotesk",
     subsets: ["latin"],
-    display: "swap",
+    display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -32,27 +32,24 @@ export const metadata: Metadata = {
         "typescript",
         "web development",
         "computer science",
-        "university of warsaw",
+        "university of warsaw"
     ],
     authors: [{ name: "Artur Myszkowski" }],
     openGraph: {
         title: "Artur Myszkowski | Senior Software Engineer",
-        description:
-            "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
-        type: "website",
-    },
+        description: "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
+        type: "website"
+    }
 };
 
 export default function RootLayout({
-    children,
+    children
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
-            >
+            <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}>
                 {children}
             </body>
         </html>

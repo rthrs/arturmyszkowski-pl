@@ -23,34 +23,36 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
         // Only add listener when menu is open
         if (isMenuOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener("mousedown", handleClickOutside);
         }
 
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [isMenuOpen]);
 
     // Close menu on escape key
     useEffect(() => {
         function handleEscape(event: KeyboardEvent) {
-            if (event.key === 'Escape') {
+            if (event.key === "Escape") {
                 setIsMenuOpen(false);
             }
         }
 
         if (isMenuOpen) {
-            document.addEventListener('keydown', handleEscape);
+            document.addEventListener("keydown", handleEscape);
         }
 
         return () => {
-            document.removeEventListener('keydown', handleEscape);
+            document.removeEventListener("keydown", handleEscape);
         };
     }, [isMenuOpen]);
 
-
     return (
-        <nav ref={navRef} className="fixed top-[-10px] w-full z-[60] bg-black/50 backdrop-blur-xl rotate-[-0.5deg] pt-[10px] pb-[4px]">
+        <nav
+            ref={navRef}
+            className="fixed top-[-10px] w-full z-[60] bg-black/50 backdrop-blur-xl rotate-[-0.5deg] pt-[10px] pb-[4px]"
+        >
             <div className="max-w-6xl mx-auto px-6 lg:px-8 rotate-[0.5deg]">
                 <div className="flex justify-between items-center h-16">
                     <motion.button
@@ -58,7 +60,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                         animate={{ opacity: 1, x: 0 }}
                         onClick={() => {
                             setIsMenuOpen(false);
-                            onNavigate('hero');
+                            onNavigate("hero");
                         }}
                         whileTap={{ scale: 0.95 }}
                         className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono z-60 p-2 rounded-lg hover:bg-white/5 active:bg-white/10"
@@ -99,7 +101,6 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                     </motion.button>
                 </div>
 
-
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
                     <motion.div
@@ -109,19 +110,19 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                         className="md:hidden relative z-50"
                     >
                         <div className="py-2 space-y-2">
-                        {NAV_ITEMS.map((item) => (
-                            <motion.button
-                                key={item}
-                                onClick={() => {
-                                    setIsMenuOpen(false);
-                                    onNavigate(item.toLowerCase());
-                                }}
-                                whileTap={{ scale: 0.95 }}
-                                className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
-                            >
-                                {item}
-                            </motion.button>
-                        ))}
+                            {NAV_ITEMS.map((item) => (
+                                <motion.button
+                                    key={item}
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        onNavigate(item.toLowerCase());
+                                    }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
+                                >
+                                    {item}
+                                </motion.button>
+                            ))}
                             <motion.a
                                 href={RESUME_URL}
                                 target="_blank"

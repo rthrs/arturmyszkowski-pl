@@ -6,8 +6,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-    baseDirectory: __dirname,
+    baseDirectory: __dirname
 });
+
+const prettierPlugin = (await import("eslint-plugin-prettier")).default;
 
 const eslintConfig = [
     {
@@ -21,19 +23,32 @@ const eslintConfig = [
             "*.config.js",
             "*.config.mjs",
             "tailwind.config.js",
-            "postcss.config.mjs",
-        ],
+            "postcss.config.mjs"
+        ]
     },
     ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
     {
         plugins: {
-            prettier: (await import("eslint-plugin-prettier")).default,
+            prettier: prettierPlugin
         },
         rules: {
-            "prettier/prettier": "error",
-            indent: ["error", 4, { SwitchCase: 1 }],
-        },
-    },
+            "prettier/prettier": [
+                "error",
+                {
+                    usePrettierrc: false,
+                    semi: true,
+                    trailingComma: "none",
+                    singleQuote: false,
+                    printWidth: 120,
+                    tabWidth: 4,
+                    useTabs: false,
+                    bracketSpacing: true,
+                    arrowParens: "always",
+                    endOfLine: "lf"
+                }
+            ]
+        }
+    }
 ];
 
 export default eslintConfig;

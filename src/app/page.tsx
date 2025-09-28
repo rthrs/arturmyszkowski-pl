@@ -12,7 +12,7 @@ import Contact from "@/components/sections/Contact";
 export default function Home() {
     const scrollToSection = (sectionId: string) => {
         // Handle special case for scrolling to top
-        if (sectionId === 'hero') {
+        if (sectionId === "hero") {
             window.scrollTo({ top: 0, behavior: "smooth" });
             return;
         }
@@ -23,11 +23,7 @@ export default function Home() {
         const performScroll = () => {
             const header = document.querySelector("nav") as HTMLElement | null;
             const headerHeight = header?.offsetHeight ?? 64;
-            const y =
-                element.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight -
-                24;
+            const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
             window.scrollTo({ top: y, behavior: "smooth" });
         };
         requestAnimationFrame(() => requestAnimationFrame(performScroll));

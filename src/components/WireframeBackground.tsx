@@ -23,7 +23,7 @@ function WireframeMesh({
     opacity = 0.075,
     size = 25,
     divisions = 60,
-    speed = 0.4,
+    speed = 0.4
 }: {
     position: [number, number, number];
     color: string;
@@ -48,14 +48,7 @@ function WireframeMesh({
         for (let i = 0; i <= divisions; i++) {
             const x = -halfSize + i * step;
             points.push(x, -halfSize, 0, x, halfSize, 0);
-            points.push(
-                -halfSize,
-                -halfSize + i * step,
-                0,
-                halfSize,
-                -halfSize + i * step,
-                0
-            );
+            points.push(-halfSize, -halfSize + i * step, 0, halfSize, -halfSize + i * step, 0);
         }
 
         const positions = new THREE.Float32BufferAttribute(points, 3);
@@ -70,7 +63,7 @@ function WireframeMesh({
             const time = state.clock.getElapsedTime() * speed;
 
             // Get the position attribute
-            const positionAttribute = geometry.getAttribute('position') as THREE.BufferAttribute;
+            const positionAttribute = geometry.getAttribute("position") as THREE.BufferAttribute;
             const positions = positionAttribute.array as Float32Array;
 
             // Create cloth-like morphing effect - reduced complexity
@@ -89,7 +82,7 @@ function WireframeMesh({
 
             // Mark the attribute as needing update
             positionAttribute.needsUpdate = true;
-            
+
             // Slight rotation to fit section edges
             gridRef.current.rotation.z = 2 * (Math.PI / 180);
         }
@@ -116,7 +109,7 @@ export default function WireframeBackground({
     cameraPosition = [0, 0, 8],
     fov = 75,
     dpr = [1, 1.5],
-    speed = 0.4,
+    speed = 0.4
 }: WireframeBackgroundProps) {
     return (
         <div className={className}>
@@ -124,8 +117,8 @@ export default function WireframeBackground({
                 camera={{ position: cameraPosition, fov }}
                 style={{ background: "transparent" }}
                 dpr={dpr}
-                gl={{ 
-                    alpha: true, 
+                gl={{
+                    alpha: true,
                     antialias: true,
                     powerPreference: "low-power"
                 }}

@@ -7,10 +7,7 @@ import { RESUME_URL } from "@/constants/nav";
 
 export default function Work({ onCtaClick }: { onCtaClick: () => void }) {
     return (
-        <section
-            id="work"
-            className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24"
-        >
+        <section id="work" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -26,8 +23,8 @@ export default function Work({ onCtaClick }: { onCtaClick: () => void }) {
                     </div>
 
                     <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-                        Download my resume to learn more about my professional
-                        experience, achievements, and technical expertise.
+                        Download my resume to learn more about my professional experience, achievements, and technical
+                        expertise.
                     </p>
 
                     <motion.a
@@ -39,16 +36,12 @@ export default function Work({ onCtaClick }: { onCtaClick: () => void }) {
                         transition={{
                             type: "spring",
                             stiffness: 300,
-                            damping: 20,
+                            damping: 20
                         }}
                         className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
                     >
                         <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-700/20 blur-lg"></div>
-                        <Download
-                            size={24}
-                            strokeWidth={1.5}
-                            className="mr-2 relative z-10"
-                        />
+                        <Download size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
                         <span className="relative z-10">Download Resume</span>
                     </motion.a>
 
