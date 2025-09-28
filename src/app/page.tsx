@@ -21,9 +21,9 @@ export default function Home() {
         if (!element) return;
 
         const performScroll = () => {
-            const header = document.querySelector("nav") as HTMLElement | null;
+            const header = document.querySelector("nav");
             const headerHeight = header?.offsetHeight ?? 64;
-            const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+            const y = element.getBoundingClientRect().top + window.scrollY - headerHeight - 0;
             window.scrollTo({ top: y, behavior: "smooth" });
         };
         requestAnimationFrame(() => requestAnimationFrame(performScroll));

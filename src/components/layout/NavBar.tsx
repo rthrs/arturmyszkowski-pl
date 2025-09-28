@@ -63,7 +63,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                             onNavigate("hero");
                         }}
                         whileTap={{ scale: 0.95 }}
-                        className="font-medium text-lg text-white hover:text-gray-300 transition-colors duration-300 font-mono z-60 p-2 rounded-lg hover:bg-white/5 active:bg-white/10"
+                        className="font-medium text-xl text-gray-300 hover:text-gray-300 transition-colors duration-300 z-60 p-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                     >
                         arturmyszkowski.pl
                     </motion.button>
@@ -118,7 +118,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                                         onNavigate(item.toLowerCase());
                                     }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
+                                    className="block w-full text-left text-gray-400 hover:text-white transition-colors text-md font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                                 >
                                     {item}
                                 </motion.button>
@@ -129,7 +129,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                                 rel="noopener noreferrer"
                                 onClick={() => setIsMenuOpen(false)}
                                 whileTap={{ scale: 0.95 }}
-                                className="block w-full text-left text-gray-400 hover:text-white transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
+                                className="block w-full text-left text-gray-400 hover:text-white transition-colors text-md font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                             >
                                 Resume
                             </motion.a>

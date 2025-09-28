@@ -14,7 +14,7 @@ interface CTAButtonProps extends ComponentProps<typeof motion.button> {
 }
 
 const baseClasses = "group inline-flex items-center rounded-xl border relative";
-const sizeClasses = "px-8 py-4 text-base sm:text-lg font-medium";
+const sizeClasses = "px-6 sm:px-8 py-4 text-base sm:text-lg font-medium";
 
 const variantClasses: Record<CTAButtonVariant, string> = {
     blue: "bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white border-blue-700/30 hover:border-blue-600/50 shadow-md hover:shadow-lg",
