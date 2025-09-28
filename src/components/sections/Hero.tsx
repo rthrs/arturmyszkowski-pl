@@ -27,21 +27,21 @@ export default function Hero({ onCtaClick }: HeroProps) {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="space-y-8"
                 >
-                    <div className="w-48 h-48 mx-auto mb-8 rounded-full relative">
+                    <div className="size-[201px] mx-auto mb-8 rounded-full relative">
                         <Image
-                            src="/images/profile2e.png"
+                            src="/images/profile.jpg"
                             alt=""
                             fill
-                            sizes="192px"
-                            className="object-cover absolute -inset-6 blur-2xl scale-110 opacity-20 rounded-full"
+                            sizes="201px"
+                            className="object-cover absolute -inset-6 blur-2xl scale-120 opacity-20 rounded-full"
                             priority
                         />
                         <Image
-                            src="/images/profile2e.png"
+                            src="/images/profile.jpg"
                             alt="Artur Myszkowski"
                             fill
-                            sizes="192px"
-                            className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center"
+                            sizes="201px"
+                            className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center sepia-[0.2]"
                             priority
                         />
                     </div>
