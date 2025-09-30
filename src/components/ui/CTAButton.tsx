@@ -18,7 +18,7 @@ const sizeClasses = "px-6 sm:px-8 py-4 text-base sm:text-lg font-medium";
 
 const variantClasses: Record<CTAButtonVariant, string> = {
     blue: "bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white border-blue-700/30 hover:border-blue-600/50 shadow-md hover:shadow-lg",
-    gray: "bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white border-gray-600/30 hover:border-gray-500/50"
+    gray: "bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white border-gray-600/30 hover:border-gray-500/50 shadow-md hover:shadow-lg"
 };
 
 export default function CTAButton({ label, rightIcon, variant = "gray", className = "", ...rest }: CTAButtonProps) {

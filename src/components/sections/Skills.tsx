@@ -20,7 +20,6 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
 
     return (
         <section id="skills" className="py-24 px-6 lg:px-8 relative scroll-mt-24">
-            {/* Morphing wireframe background */}
             <WireframeBackground className="absolute -z-10 rotate-[-2deg] top-0 -bottom-8 -inset-x-8" />
 
             <div className="max-w-6xl mx-auto relative z-10">
@@ -38,11 +37,12 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {SKILLS.map((skill, index) => (
+                        {SKILLS.map((skill) => (
                             <motion.div
                                 key={skill.name}
                                 initial={false}
                                 whileInView={inputMode === "mouse" ? { opacity: 1 } : undefined}
+                                whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{
                                     scale: 0.98,
                                     borderColor: "rgb(75 85 99)", // gray-600
@@ -54,15 +54,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                                     backgroundColor:
                                         touched === skill.name ? "rgba(75, 85, 99, 0.1)" : "rgba(0, 0, 0, 0)"
                                 }}
-                                transition={
-                                    inputMode === "mouse"
-                                        ? { duration: 0.8, delay: index * 0.1 }
-                                        : {
-                                              type: "spring",
-                                              stiffness: 300,
-                                              damping: 30
-                                          }
-                                }
+                                transition={{ duration: 0.1, ease: "easeOut" }}
                                 viewport={inputMode === "mouse" ? { once: true } : undefined}
                                 onHoverStart={() => setHovered(skill.name)}
                                 onHoverEnd={() => setHovered(null)}
@@ -80,7 +72,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                                     setHovered(null);
                                     setTouched(null);
                                 }}
-                                className={`group px-8 py-6 border border-gray-800 rounded-md hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass} active:border-gray-600 active:bg-gray-600/10`}
+                                className={`group px-8 py-6 border border-gray-800 rounded-2xl hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass} active:border-gray-600 active:bg-gray-600/10`}
                             >
                                 <div className="flex items-center mb-6">
                                     <motion.div

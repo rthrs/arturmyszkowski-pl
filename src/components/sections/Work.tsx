@@ -75,32 +75,17 @@ export default function Work({ onCtaClick }: { onCtaClick: () => void }) {
 
                     {/* Portfolio Section */}
                     <div className="mt-16">
-                        <motion.h3
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            viewport={{ once: true }}
-                            className="text-2xl sm:text-3xl font-semibold text-gray-200 mb-12"
-                        >
-                            Featured Projects
-                        </motion.h3>
+                        <h3 className="text-2xl sm:text-3xl font-semibold text-gray-200 mb-12">Featured Projects</h3>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {projects.map((project, index) => (
+                            {projects.map((project) => (
                                 <motion.div
                                     key={project.title}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
+                                    className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300"
                                     whileHover={{
                                         y: -5,
                                         scale: 1.02,
                                         transition: { duration: 0.1, ease: "easeOut" }
-                                    }}
-                                    className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300"
-                                    transition={{
-                                        duration: 0.6,
-                                        delay: index * 0.1
                                     }}
                                 >
                                     {project.featured && (
@@ -163,42 +148,15 @@ export default function Work({ onCtaClick }: { onCtaClick: () => void }) {
                         </div>
                     </div>
 
-                    {/* Resume Download Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        viewport={{ once: true }}
-                        className="space-y-8"
-                    >
-                        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+                            <CTAButton label="Download Resume" rightIcon={<Download size={18} />} variant="blue" />
+                        </a>
 
-                        <div className="space-y-6">
-                            <h3 className="text-xl font-semibold text-gray-200">Download Resume</h3>
-
-                            <motion.a
-                                href={RESUME_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05, y: -1 }}
-                                whileTap={{ scale: 0.95 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 300,
-                                    damping: 20
-                                }}
-                                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white font-medium text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg border border-blue-700/30 hover:border-blue-600/50 relative"
-                            >
-                                <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-700/20 blur-lg"></div>
-                                <Download size={24} strokeWidth={1.5} className="mr-2 relative z-10" />
-                                <span className="relative z-10">Download Resume</span>
-                            </motion.a>
-                        </div>
-
-                        <div className="flex justify-center">
+                        <div className="w-fit">
                             <CTAButton onClick={onCtaClick} label="Get in touch" />
                         </div>
-                    </motion.div>
+                    </div>
                 </motion.div>
             </div>
         </section>
