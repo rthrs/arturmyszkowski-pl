@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiDownload as Download } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
 import Card from "@/components/ui/Card";
+import Section from "@/components/ui/Section";
+import SectionTitle from "@/components/ui/SectionTitle";
+import SectionSubtitle from "@/components/ui/SectionSubtitle";
 import { RESUME_URL } from "@/constants/nav";
 
 interface Project {
@@ -54,92 +57,84 @@ const projects: Project[] = [
 
 export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
     return (
-        <section id="projects" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
-            <div className="max-w-6xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="space-y-16"
-                >
-                    <div className="text-center">
-                        <h2 className="inline-block text-5xl sm:text-6xl font-semibold bg-gradient-to-br from-gray-300 to-gray-400 mb-2 bg-clip-text text-transparent font-heading tracking-tight">
-                            Featured Projects
-                        </h2>
-                        <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed mt-6">
-                            Explore my portfolio of projects and download my resume to learn more about my professional
-                            experience, achievements, and technical expertise.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {projects.map((project) => (
-                            <Card key={project.title} featured={project.featured}>
-                                <div className="space-y-4">
-                                    <h4 className="text-xl font-semibold text-gray-100 group-hover:text-white transition-colors">
-                                        {project.title}
-                                    </h4>
-
-                                    <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.technologies.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="px-3 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full border border-gray-600/30"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <div className="flex gap-3 pt-2">
-                                        {project.githubUrl && (
-                                            <motion.a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.1 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                transition={{ duration: 0.1, ease: "easeOut" }}
-                                                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
-                                            >
-                                                <FiGithub size={16} />
-                                                <span>Code</span>
-                                            </motion.a>
-                                        )}
-                                        {project.liveUrl && (
-                                            <motion.a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.1 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                transition={{ duration: 0.1, ease: "easeOut" }}
-                                                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
-                                            >
-                                                <FiExternalLink size={16} />
-                                                <span>Live Demo</span>
-                                            </motion.a>
-                                        )}
-                                    </div>
-                                </div>
-                            </Card>
-                        ))}
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-                        <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
-                            <CTAButton label="Download Resume" rightIcon={<Download size={18} />} variant="blue" />
-                        </a>
-
-                        <div className="w-fit">
-                            <CTAButton onClick={onCtaClick} label="Get in touch" />
-                        </div>
-                    </div>
-                </motion.div>
+        <Section
+            id="projects"
+            className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24"
+            containerClassName="max-w-6xl mx-auto"
+            contentClassName="space-y-16"
+        >
+            <div className="text-center">
+                <SectionTitle>Featured Projects</SectionTitle>
+                <SectionSubtitle>
+                    Explore my portfolio of projects and download my resume to learn more about my professional
+                    experience, achievements, and technical expertise.
+                </SectionSubtitle>
             </div>
-        </section>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {projects.map((project) => (
+                    <Card key={project.title} featured={project.featured}>
+                        <div className="space-y-4">
+                            <h4 className="text-xl font-semibold text-gray-100 group-hover:text-white transition-colors">
+                                {project.title}
+                            </h4>
+
+                            <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
+
+                            <div className="flex flex-wrap gap-2">
+                                {project.technologies.map((tech) => (
+                                    <span
+                                        key={tech}
+                                        className="px-3 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full border border-gray-600/30"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <div className="flex gap-3 pt-2">
+                                {project.githubUrl && (
+                                    <motion.a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={{ duration: 0.1, ease: "easeOut" }}
+                                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                                    >
+                                        <FiGithub size={16} />
+                                        <span>Code</span>
+                                    </motion.a>
+                                )}
+                                {project.liveUrl && (
+                                    <motion.a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={{ duration: 0.1, ease: "easeOut" }}
+                                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                                    >
+                                        <FiExternalLink size={16} />
+                                        <span>Live Demo</span>
+                                    </motion.a>
+                                )}
+                            </div>
+                        </div>
+                    </Card>
+                ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+                    <CTAButton label="Download Resume" rightIcon={<Download size={18} />} variant="blue" />
+                </a>
+
+                <div className="w-fit">
+                    <CTAButton onClick={onCtaClick} label="Get in touch" />
+                </div>
+            </div>
+        </Section>
     );
 }
