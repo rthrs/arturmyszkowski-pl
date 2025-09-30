@@ -19,14 +19,13 @@ export default function Contact() {
                         <h2 className="inline-block text-5xl sm:text-6xl font-semibold bg-gradient-to-br from-gray-300 to-gray-400 mb-2 bg-clip-text text-transparent font-heading tracking-tight">
                             Contact
                         </h2>
-                    </div>
-
-                    <div className="text-center space-y-8">
-                        <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed mt-6">
                             I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part
                             of an ambitious team. Let&apos;s connect and explore how we can work together!
                         </p>
+                    </div>
 
+                    <div className="text-center space-y-8">
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <a href="mailto:contact@arturmyszkowski.pl">
                                 <CTAButton

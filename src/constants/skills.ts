@@ -22,9 +22,9 @@ export const SKILLS: SkillDef[] = [
         cardBgClass: "from-blue-900/30 to-gray-900/60 hover:from-blue-800/40 hover:to-gray-800/40",
         animation: "rotate",
         hoverAnimation: {
-            rotate: [0, 10, -10, 0],
-            scale: [1, 1.1, 1.1, 1],
-            transition: { duration: 0.9, ease: "easeInOut" as const }
+            rotate: [0, 5, -5, 0],
+            scale: [1, 1.05, 1.05, 1],
+            transition: { duration: 0.6, ease: "easeInOut" as const }
         }
     },
     {
@@ -35,9 +35,9 @@ export const SKILLS: SkillDef[] = [
         cardBgClass: "from-purple-900/30 to-gray-900/60 hover:from-purple-800/40 hover:to-gray-800/40",
         animation: "bounce",
         hoverAnimation: {
-            y: [0, -8, 0],
-            scale: [1, 1.1, 1],
-            transition: { duration: 0.9, ease: "easeInOut" as const }
+            y: [0, -4, 0],
+            scale: [1, 1.05, 1],
+            transition: { duration: 0.6, ease: "easeInOut" as const }
         }
     },
     {
@@ -48,8 +48,8 @@ export const SKILLS: SkillDef[] = [
         cardBgClass: "from-green-900/30 to-gray-900/60 hover:from-green-800/40 hover:to-gray-800/40",
         animation: "scale",
         hoverAnimation: {
-            scale: [1, 1.2, 1],
-            transition: { duration: 0.9, ease: "easeInOut" as const }
+            scale: [1, 1.08, 1],
+            transition: { duration: 0.6, ease: "easeInOut" as const }
         }
     },
     {
@@ -60,9 +60,9 @@ export const SKILLS: SkillDef[] = [
         cardBgClass: "from-pink-900/30 to-gray-900/60 hover:from-pink-800/40 hover:to-gray-800/40",
         animation: "pulse",
         hoverAnimation: {
-            scale: [1, 1.1, 1],
-            opacity: [1, 0.8, 1],
-            transition: { duration: 0.9, ease: "easeInOut" as const }
+            scale: [1, 1.05, 1],
+            opacity: [1, 0.9, 1],
+            transition: { duration: 0.6, ease: "easeInOut" as const }
         }
     },
     {
@@ -73,9 +73,9 @@ export const SKILLS: SkillDef[] = [
         cardBgClass: "from-yellow-900/30 to-gray-900/60 hover:from-yellow-800/40 hover:to-gray-800/40",
         animation: "wiggle",
         hoverAnimation: {
-            rotate: [0, -5, 5, -5, 0],
-            scale: [1, 1.1, 1.1, 1.1, 1],
-            transition: { duration: 0.9, ease: "easeInOut" as const }
+            rotate: [0, -3, 3, -3, 0],
+            scale: [1, 1.05, 1.05, 1.05, 1],
+            transition: { duration: 0.6, ease: "easeInOut" as const }
         }
     },
     {
@@ -86,9 +86,9 @@ export const SKILLS: SkillDef[] = [
         cardBgClass: "from-cyan-900/30 to-gray-900/60 hover:from-cyan-800/40 hover:to-gray-800/40",
         animation: "float",
         hoverAnimation: {
-            y: [0, -5, -10, -5, 0],
-            scale: [1, 1.05, 1.1, 1.05, 1],
-            transition: { duration: 0.9, ease: "easeInOut" as const }
+            y: [0, -3, -6, -3, 0],
+            scale: [1, 1.03, 1.05, 1.03, 1],
+            transition: { duration: 0.6, ease: "easeInOut" as const }
         }
     }
 ];

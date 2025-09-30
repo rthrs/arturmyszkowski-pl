@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiDownload as Download } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
+import Card from "@/components/ui/Card";
 import { RESUME_URL } from "@/constants/nav";
 
 interface Project {
@@ -74,21 +75,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {projects.map((project) => (
-                            <motion.div
-                                key={project.title}
-                                whileHover={{
-                                    y: -2,
-                                    scale: 1.02,
-                                    transition: { duration: 0.1, ease: "easeOut" }
-                                }}
-                                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-gray-600/50 transition-all duration-300"
-                            >
-                                {project.featured && (
-                                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-xs font-medium px-3 py-1 rounded-full">
-                                        Featured
-                                    </div>
-                                )}
-
+                            <Card key={project.title} featured={project.featured}>
                                 <div className="space-y-4">
                                     <h4 className="text-xl font-semibold text-gray-100 group-hover:text-white transition-colors">
                                         {project.title}
@@ -138,7 +125,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
                                         )}
                                     </div>
                                 </div>
-                            </motion.div>
+                            </Card>
                         ))}
                     </div>
 
