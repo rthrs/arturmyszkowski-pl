@@ -13,7 +13,7 @@ interface HeroProps {
 
 export default function Hero({ onCtaClick }: HeroProps) {
     return (
-        <section className="flex sm:min-h-screen items-center justify-center px-6 relative pt-24">
+        <section className="flex min-h-svh items-center justify-center px-6 relative pt-24">
             <FluidBackground />
 
             <div className="max-w-4xl mx-auto text-center relative z-10">
