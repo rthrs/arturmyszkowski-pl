@@ -14,7 +14,7 @@ interface HeroProps {
 export default function Hero({ onCtaClick }: HeroProps) {
     return (
         <section className="flex min-h-svh items-center justify-center px-6 relative pt-24">
-            <FluidBackground />
+            <FluidBackground className="absolute rotate-[-1deg] top-0 -bottom-8 -inset-x-8 -z-10" />
 
             <div className="max-w-4xl mx-auto text-center relative z-10">
                 <motion.div

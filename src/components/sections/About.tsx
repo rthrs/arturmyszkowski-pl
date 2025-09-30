@@ -9,7 +9,10 @@ interface AboutProps {
 
 export default function About({ onCtaClick }: AboutProps) {
     return (
-        <section id="about" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
+        <section
+            id="about"
+            className="min-h-svh flex items-center justify-center py-24 px-6 lg:px-8 relative z-10 scroll-mt-24"
+        >
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

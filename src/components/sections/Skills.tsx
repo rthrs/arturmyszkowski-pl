@@ -20,7 +20,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
 
     return (
         <section id="skills" className="py-24 px-6 lg:px-8 relative scroll-mt-24">
-            <WireframeBackground className="absolute -z-10 rotate-[-2deg] top-0 -bottom-8 -inset-x-8" />
+            <WireframeBackground className="absolute -z-10 rotate-[-1deg] top-0 -bottom-8 -inset-x-8" />
 
             <div className="max-w-6xl mx-auto relative z-10">
                 <motion.div
@@ -41,8 +41,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                             <motion.div
                                 key={skill.name}
                                 initial={false}
-                                whileInView={inputMode === "mouse" ? { opacity: 1 } : undefined}
-                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileHover={{ y: -2, scale: 1.02, transition: { duration: 0.1, ease: "easeOut" } }}
                                 whileTap={{
                                     scale: 0.98,
                                     borderColor: "rgb(75 85 99)", // gray-600
@@ -72,7 +71,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                                     setHovered(null);
                                     setTouched(null);
                                 }}
-                                className={`group px-8 py-6 border border-gray-800 rounded-2xl hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass} active:border-gray-600 active:bg-gray-600/10`}
+                                className={`group px-8 py-6 border border-gray-800 rounded-xl hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl transform-gpu ${skill.cardBgClass} active:border-gray-600 active:bg-gray-600/10`}
                             >
                                 <div className="flex items-center mb-6">
                                     <motion.div

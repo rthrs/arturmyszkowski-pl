@@ -51,7 +51,7 @@ const projects: Project[] = [
     }
 ];
 
-export default function FeaturedProjects({ onCtaClick }: { onCtaClick: () => void }) {
+export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
     return (
         <section id="projects" className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24">
             <div className="max-w-6xl mx-auto">
@@ -73,22 +73,15 @@ export default function FeaturedProjects({ onCtaClick }: { onCtaClick: () => voi
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {projects.map((project, index) => (
+                        {projects.map((project) => (
                             <motion.div
                                 key={project.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
                                 whileHover={{
-                                    y: -5,
+                                    y: -2,
                                     scale: 1.02,
                                     transition: { duration: 0.1, ease: "easeOut" }
                                 }}
-                                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300"
-                                transition={{
-                                    duration: 0.6,
-                                    delay: index * 0.1
-                                }}
+                                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-gray-600/50 transition-all duration-300"
                             >
                                 {project.featured && (
                                     <div className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-xs font-medium px-3 py-1 rounded-full">
