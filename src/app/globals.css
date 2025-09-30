@@ -34,6 +34,28 @@ a {
 section {
     clip-path: polygon(0 2.5rem, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
     margin-bottom: -2.5rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+
+    min-height: calc(100vh - 3.75rem);
+    scroll-margin-top: 3.75rem;
+}
+
+#hero {
+    min-height: 100vh;
+}
+
+#contact {
+    min-height: calc(100vh - 7.75rem);
+}
+
+.divider {
+    clip-path: polygon(0 2.5rem, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+    height: calc(2.5rem + 1px);
+    background: repeating-linear-gradient(to right, var(--color-gray-700) 0 1px, transparent 1px 2px);
+    opacity: 0.5;
+    margin-bottom: -2.5rem;
+    width: 100%;
 }
 
 /* #hero {

@@ -11,20 +11,13 @@ import BackgroundGradient from "@/components/BackgroundGradient";
 
 export default function Home() {
     const scrollToSection = (sectionId: string) => {
-        // Handle special case for scrolling to top
-        if (sectionId === "hero") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            return;
-        }
-
         const element = document.getElementById(sectionId);
-        if (!element) return;
-
-        const performScroll = () => {
-            const y = element.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({ top: y, behavior: "smooth" });
-        };
-        requestAnimationFrame(() => requestAnimationFrame(performScroll));
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
     };
 
     return (
@@ -34,9 +27,13 @@ export default function Home() {
             <NavBar onNavigate={scrollToSection} />
 
             <Hero onCtaClick={() => scrollToSection("about")} />
+            <div className="divider" />
             <About onCtaClick={() => scrollToSection("skills")} />
+            <div className="divider" />
             <Skills onCtaClick={() => scrollToSection("projects")} />
+            <div className="divider" />
             <Projects onCtaClick={() => scrollToSection("contact")} />
+            <div className="divider" />
             <Contact />
 
             <Footer />

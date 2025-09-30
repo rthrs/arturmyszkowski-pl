@@ -17,7 +17,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
     return (
         <Section
             id="skills"
-            className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24"
+            className="bg-gray-800/10"
             containerClassName="max-w-6xl mx-auto"
             contentClassName="space-y-16"
             background={<WireframeBackground />}

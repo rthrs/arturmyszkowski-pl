@@ -11,11 +11,11 @@ interface SectionSubtitleProps {
 export default function SectionSubtitle({ children, className = "" }: SectionSubtitleProps) {
     return (
         <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ y: 30 }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
-            className={`text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed mt-6 ${className}`}
+            className={`text-lg text-gray-300 font-light mx-auto leading-relaxed mt-6 ${className}`}
         >
             {children}
         </motion.p>

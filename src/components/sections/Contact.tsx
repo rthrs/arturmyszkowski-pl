@@ -8,15 +8,10 @@ import SectionSubtitle from "@/components/ui/SectionSubtitle";
 
 export default function Contact() {
     return (
-        <Section
-            id="contact"
-            className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24"
-            containerClassName="max-w-6xl mx-auto"
-            contentClassName="space-y-12"
-        >
+        <Section id="contact" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-12">
             <div className="text-center">
                 <SectionTitle>Contact</SectionTitle>
-                <SectionSubtitle>
+                <SectionSubtitle className="max-w-3xl">
                     I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of an
                     ambitious team. Let&apos;s connect and explore how we can work together!
                 </SectionSubtitle>

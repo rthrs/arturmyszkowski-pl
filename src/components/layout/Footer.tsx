@@ -1,9 +1,9 @@
 export default function Footer() {
     return (
-        <footer className="pt-12 px-6 lg:px-8 relative z-10 pb-4">
+        <footer className="pt-12 pb-4 px-6 relative">
             <div className="max-w-4xl mx-auto text-center text-sm">
-                <p className="text-gray-400 font-light mb-1">© 2025 Artur Myszkowski</p>
-                <p className="text-gray-400 font-light text-xs">
+                <p className="text-gray-400 mb-1">© 2025 Artur Myszkowski</p>
+                <p className="text-gray-400 text-xs">
                     Built with{" "}
                     <a
                         href="https://nextjs.org"

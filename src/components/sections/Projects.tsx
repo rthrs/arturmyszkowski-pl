@@ -57,15 +57,10 @@ const projects: Project[] = [
 
 export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
     return (
-        <Section
-            id="projects"
-            className="py-24 px-6 lg:px-8 relative z-10 scroll-mt-24"
-            containerClassName="max-w-6xl mx-auto"
-            contentClassName="space-y-16"
-        >
+        <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-16">
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
-                <SectionSubtitle>
+                <SectionSubtitle className="max-w-3xl">
                     Explore my portfolio of projects and download my resume to learn more about my professional
                     experience, achievements, and technical expertise.
                 </SectionSubtitle>

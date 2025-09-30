@@ -21,7 +21,7 @@ export default function Section({
     background
 }: SectionProps) {
     return (
-        <section id={id} className={className}>
+        <section id={id} className={`flex items-center justify-center px-6 relative ${className}`}>
             {background}
 
             <div className={containerClassName}>

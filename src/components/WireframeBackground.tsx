@@ -103,7 +103,7 @@ export default function WireframeBackground({
     className = "",
     position = [0, 0, -1],
     color = "#64D2FF",
-    opacity = 0.125,
+    opacity = 0.15,
     size = 30,
     divisions = 80,
     cameraPosition = [0, 0, 8],
