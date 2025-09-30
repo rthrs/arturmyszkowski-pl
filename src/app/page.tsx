@@ -7,6 +7,7 @@ import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
+import BackgroundGradient from "@/components/BackgroundGradient";
 
 export default function Home() {
     const scrollToSection = (sectionId: string) => {
@@ -28,7 +29,7 @@ export default function Home() {
 
     return (
         <main className="relative text-white">
-            <div className="absolute -z-20 -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-b from-black to-gray-900" />
+            <BackgroundGradient />
 
             <NavBar onNavigate={scrollToSection} />
 
