@@ -101,11 +101,11 @@ function WireframeMesh({
 
 export default function WireframeBackground({
     className = "",
-    position = [0, 0, -3],
+    position = [0, 0, -1],
     color = "#64D2FF",
-    opacity = 0.1,
-    size = 25,
-    divisions = 60,
+    opacity = 0.125,
+    size = 30,
+    divisions = 80,
     cameraPosition = [0, 0, 8],
     fov = 75,
     speed = 0.4
@@ -117,7 +117,7 @@ export default function WireframeBackground({
         return null;
     }
     return (
-        <div ref={containerRef} className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
+        <div ref={containerRef} className={`absolute top-0 bottom-0 left-0 right-0 -z-10 ${className}`}>
             <Canvas
                 camera={{ position: cameraPosition, fov }}
                 onError={() => setHasError(true)}

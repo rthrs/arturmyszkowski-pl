@@ -315,14 +315,14 @@ export default function FluidBackground({ className = "", speed = 0.3 }: FluidBa
     if (hasError || !isClient) {
         // Fallback gradient while loading or on error
         return (
-            <div className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
+            <div className={`absolute top-0 bottom-0 left-0 right-0 -z-10 ${className}`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
             </div>
         );
     }
 
     return (
-        <div ref={containerRef} className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
+        <div ref={containerRef} className={`absolute top-0 bottom-0 left-0 right-0 -z-10 ${className}`}>
             <div className="w-full h-full">
                 <Canvas
                     camera={{ position: [0, 0, 8], fov: 60 }}
