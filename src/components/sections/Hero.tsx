@@ -19,7 +19,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
             className="flex min-h-svh items-center justify-center px-6 relative pt-24"
             containerClassName="max-w-4xl mx-auto text-center relative z-10"
             contentClassName="space-y-4 sm:space-y-8"
-            background={<FluidBackground className="absolute rotate-[-1deg] top-0 -bottom-8 -inset-x-8 -z-10" />}
+            background={<FluidBackground />}
         >
             <motion.div
                 initial={{ opacity: 0, y: 30 }}

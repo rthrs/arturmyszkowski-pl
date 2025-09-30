@@ -1,6 +1,5 @@
 "use client";
 
-import SectionDivider from "@/components/SectionDivider";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -21,9 +20,7 @@ export default function Home() {
         if (!element) return;
 
         const performScroll = () => {
-            const header = document.querySelector("nav");
-            const headerHeight = header?.offsetHeight ?? 0;
-            const y = element.getBoundingClientRect().top + window.scrollY - headerHeight;
+            const y = element.getBoundingClientRect().top + window.scrollY;
             window.scrollTo({ top: y, behavior: "smooth" });
         };
         requestAnimationFrame(() => requestAnimationFrame(performScroll));
@@ -37,16 +34,12 @@ export default function Home() {
 
             <Hero onCtaClick={() => scrollToSection("about")} />
 
-            <SectionDivider />
             <About onCtaClick={() => scrollToSection("skills")} />
 
-            <SectionDivider />
             <Skills onCtaClick={() => scrollToSection("projects")} />
 
-            <SectionDivider />
             <Projects onCtaClick={() => scrollToSection("contact")} />
 
-            <SectionDivider />
             <Contact />
 
             <Footer />

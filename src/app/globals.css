@@ -30,3 +30,28 @@ button,
 a {
     cursor: pointer;
 }
+
+section {
+    clip-path: polygon(0 2.5rem, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+    margin-bottom: -2.5rem;
+}
+
+/* #hero {
+    background: red;
+}
+
+#about {
+    background: blue;
+}
+
+#skills {
+    background: green;
+}
+
+#projects {
+    background: yellow;
+}
+
+#contact {
+    background: purple;
+} */

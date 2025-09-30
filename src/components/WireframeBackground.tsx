@@ -103,7 +103,7 @@ export default function WireframeBackground({
     className = "",
     position = [0, 0, -3],
     color = "#64D2FF",
-    opacity = 0.075,
+    opacity = 0.1,
     size = 25,
     divisions = 60,
     cameraPosition = [0, 0, 8],
@@ -112,7 +112,7 @@ export default function WireframeBackground({
     speed = 0.4
 }: WireframeBackgroundProps) {
     return (
-        <div className={className}>
+        <div className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
             <Canvas
                 camera={{ position: cameraPosition, fov }}
                 style={{ background: "transparent" }}

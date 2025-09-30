@@ -48,12 +48,14 @@ export default function NavBar({ onNavigate }: NavBarProps) {
         };
     }, [isMenuOpen]);
 
+    //
+
     return (
         <nav
             ref={navRef}
-            className="fixed top-[-10px] w-full z-[60] bg-black/50 backdrop-blur-xl rotate-[-0.5deg] pt-[10px] pb-[4px]"
+            className="fixed z-[60] w-full bg-black/50 backdrop-blur-2xl [clip-path:polygon(0_0,0_100%,100%_calc(100%_-_0.45rem),100%_0)] pb-1"
         >
-            <div className="max-w-6xl mx-auto px-6 lg:px-8 rotate-[0.5deg]">
+            <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <motion.button
                         initial={{ opacity: 0, x: -20 }}
@@ -107,7 +109,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden relative z-50"
+                        className="md:hidden relative z-50 pb-4"
                     >
                         <div className="py-2 space-y-2">
                             {NAV_ITEMS.map((item) => (
