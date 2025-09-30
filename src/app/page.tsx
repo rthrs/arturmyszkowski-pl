@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
-import Work from "@/components/sections/Work";
+import FeaturedProjects from "@/components/sections/FeaturedProjects";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -41,10 +41,10 @@ export default function Home() {
             <About onCtaClick={() => scrollToSection("skills")} />
 
             <SectionDivider />
-            <Skills onCtaClick={() => scrollToSection("work")} />
+            <Skills onCtaClick={() => scrollToSection("projects")} />
 
             <SectionDivider />
-            <Work onCtaClick={() => scrollToSection("contact")} />
+            <FeaturedProjects onCtaClick={() => scrollToSection("contact")} />
 
             <SectionDivider />
             <Contact />
