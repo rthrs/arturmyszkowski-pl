@@ -4,13 +4,18 @@ import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
+import { useCanvasVisibility } from "@/hooks/useCanvasVisibility";
 
 interface FluidBackgroundProps {
     className?: string;
     speed?: number;
 }
 
-function FluidPlane({ speed = 0.3 }: { speed?: number }) {
+type FluidPlaneProps = {
+    speed?: number;
+};
+
+function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
 
@@ -141,7 +146,6 @@ function FluidPlane({ speed = 0.3 }: { speed?: number }) {
 
     useFrame((state) => {
         if (material) {
-            // Use speed prop to control animation speed
             material.uniforms.uTime.value = state.clock.getElapsedTime() * speed;
         }
     });
@@ -161,17 +165,14 @@ function FluidPlane({ speed = 0.3 }: { speed?: number }) {
 }
 
 // Morphing wireframe grid using morph targets
-function MorphingWireframe({
-    position,
-    scale = 1,
-    divisions = 60,
-    speed = 0.5
-}: {
+type MorphingWireframeProps = {
     position: [number, number, number];
     scale?: number;
     divisions?: number;
     speed?: number;
-}) {
+};
+
+function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }: MorphingWireframeProps) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
     const [material, setMaterial] = useState<THREE.MeshBasicMaterial | null>(null);
@@ -308,26 +309,10 @@ function MorphingWireframe({
 }
 
 export default function FluidBackground({ className = "", speed = 0.3 }: FluidBackgroundProps) {
-    const [isClient, setIsClient] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
+    const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
 
-    useEffect(() => {
-        setIsClient(true);
-
-        // Pause animations when page is not visible
-        const handleVisibilityChange = () => {
-            setIsVisible(!document.hidden);
-        };
-
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-
-        return () => {
-            document.removeEventListener("visibilitychange", handleVisibilityChange);
-        };
-    }, []);
-
-    if (!isClient || hasError) {
+    if (hasError || !isClient) {
         // Fallback gradient while loading or on error
         return (
             <div className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
@@ -337,23 +322,20 @@ export default function FluidBackground({ className = "", speed = 0.3 }: FluidBa
     }
 
     return (
-        <div className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
+        <div ref={containerRef} className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
             <div className="w-full h-full">
                 <Canvas
                     camera={{ position: [0, 0, 8], fov: 60 }}
-                    style={{ background: "transparent" }}
-                    dpr={[1, 1.5]} // Reduced pixel ratio for better performance
                     onError={() => setHasError(true)}
                     gl={{
                         alpha: true,
                         antialias: true,
                         powerPreference: "low-power" // Use integrated GPU
                     }}
-                    frameloop={isVisible ? "always" : "demand"} // Pause when not visible
+                    frameloop={shouldAnimate ? "always" : "demand"}
                 >
                     <FluidPlane speed={speed} />
 
-                    {/* Morphing wireframe grid with morph targets */}
                     <MorphingWireframe position={[0, 0, 0]} scale={1.2} divisions={60} speed={speed} />
                 </Canvas>
             </div>

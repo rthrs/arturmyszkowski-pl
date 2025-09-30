@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useFrame, Canvas } from "@react-three/fiber";
 import * as THREE from "three";
+import { useCanvasVisibility } from "@/hooks/useCanvasVisibility";
 
 interface WireframeBackgroundProps {
     className?: string;
@@ -13,14 +14,13 @@ interface WireframeBackgroundProps {
     divisions?: number;
     cameraPosition?: [number, number, number];
     fov?: number;
-    dpr?: [number, number];
     speed?: number;
 }
 
 function WireframeMesh({
     position = [0, 0, -3],
     color = "#64D2FF",
-    opacity = 0.075,
+    opacity = 1,
     size = 25,
     divisions = 60,
     speed = 0.4
@@ -108,20 +108,25 @@ export default function WireframeBackground({
     divisions = 60,
     cameraPosition = [0, 0, 8],
     fov = 75,
-    dpr = [1, 1.5],
     speed = 0.4
 }: WireframeBackgroundProps) {
+    const [hasError, setHasError] = useState(false);
+    const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
+
+    if (hasError || !isClient) {
+        return null;
+    }
     return (
-        <div className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
+        <div ref={containerRef} className={`absolute top-0 bottom-0 w-full -z-10 ${className}`}>
             <Canvas
                 camera={{ position: cameraPosition, fov }}
-                style={{ background: "transparent" }}
-                dpr={dpr}
+                onError={() => setHasError(true)}
                 gl={{
                     alpha: true,
                     antialias: true,
-                    powerPreference: "low-power"
+                    powerPreference: "low-power" // Use integrated GPU
                 }}
+                frameloop={shouldAnimate ? "always" : "demand"}
             >
                 <WireframeMesh
                     position={position}

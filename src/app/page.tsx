@@ -27,22 +27,18 @@ export default function Home() {
     };
 
     return (
-        <div className="text-white relative">
-            <div className="absolute -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-b from-black to-gray-700 opacity-30 -z-20"></div>
+        <main className="relative text-white">
+            <div className="absolute -z-20 -inset-x-[300px] -top-72 -bottom-6 md:-inset-x-32 md:-right-48 md:-inset-y-4 md:-top-24 -rotate-[5deg] bg-gradient-to-b from-black to-gray-900" />
 
             <NavBar onNavigate={scrollToSection} />
 
             <Hero onCtaClick={() => scrollToSection("about")} />
-
             <About onCtaClick={() => scrollToSection("skills")} />
-
             <Skills onCtaClick={() => scrollToSection("projects")} />
-
             <Projects onCtaClick={() => scrollToSection("contact")} />
-
             <Contact />
 
             <Footer />
-        </div>
+        </main>
     );
 }
