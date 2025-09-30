@@ -1,0 +1,13 @@
+const prettierConfig = {
+    semi: true,
+    trailingComma: "none",
+    singleQuote: false,
+    printWidth: 120,
+    tabWidth: 4,
+    useTabs: false,
+    bracketSpacing: true,
+    arrowParens: "always",
+    endOfLine: "lf"
+};
+
+export default prettierConfig;

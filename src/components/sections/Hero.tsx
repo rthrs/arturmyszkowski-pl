@@ -44,9 +44,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                         <h1 className="text-4xl sm:text-7xl font-light text-white tracking-tight font-heading">
                             Artur Myszkowski
                         </h1>
-                        <p className="text-lg sm:text-2xl text-gray-400 font-light">
-                            Senior Software Engineer
-                        </p>
+                        <p className="text-lg sm:text-2xl text-gray-400 font-light">Senior Software Engineer</p>
                     </div>
 
                     <motion.p
