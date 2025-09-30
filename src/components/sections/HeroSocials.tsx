@@ -57,13 +57,9 @@ export default function HeroSocials() {
                     rel={rel}
                     aria-label={label}
                     className="text-gray-400 hover:text-white relative group"
-                    whileHover={{ scale: 1.2, y: -2 }}
+                    whileHover={{ scale: 1.15, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20
-                    }}
+                    transition={{ duration: 0.125, ease: "easeOut" }}
                 >
                     <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
                     <Icon size={28} strokeWidth={1.5} className="relative z-10" />

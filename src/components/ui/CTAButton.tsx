@@ -26,11 +26,7 @@ export default function CTAButton({ label, rightIcon, variant = "gray", classNam
         <motion.button
             whileHover={{ scale: 1.05, y: -1 }}
             whileTap={{ scale: 0.95 }}
-            transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 25
-            }}
+            transition={{ duration: 0.125, ease: "easeOut" }}
             className={`${baseClasses} ${sizeClasses} ${variantClasses[variant]} ${className}`}
             {...rest}
         >
