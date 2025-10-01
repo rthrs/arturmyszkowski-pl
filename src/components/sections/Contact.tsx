@@ -17,7 +17,7 @@ export default function Contact() {
                 </SectionSubtitle>
             </div>
             <div className="text-center space-y-8">
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <div className="flex flex-col gap-6 justify-center">
                     <a href="mailto:contact@arturmyszkowski.pl">
                         <CTAButton label="contact@arturmyszkowski.pl" rightIcon={<Mail size={18} />} variant="blue" />
                     </a>

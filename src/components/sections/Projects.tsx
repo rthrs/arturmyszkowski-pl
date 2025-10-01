@@ -121,7 +121,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
                 ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+            <div className="flex flex-col gap-6 justify-center items-center pt-8">
                 <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
                     <CTAButton label="Download Resume" rightIcon={<Download size={18} />} variant="blue" />
                 </a>

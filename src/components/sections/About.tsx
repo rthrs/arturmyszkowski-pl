@@ -18,14 +18,14 @@ export default function About({ onCtaClick }: AboutProps) {
             </div>
 
             <div className="space-y-8">
-                <SectionSubtitle className="max-w-3xl lg:max-w-4xl">
+                <SectionSubtitle className="max-w-3xl lg:max-w-4xl text-justify">
                     I&apos;m a Senior Software Engineer with extensive experience in modern web technologies and a
                     passion for creating scalable, maintainable applications. I&apos;m holding a Master&apos;s degree in
                     Computer Science from the University of Warsaw. With a strong foundation in algorithms and data
                     structures, I enjoy solving complex problems and building solutions that make a real difference.
                 </SectionSubtitle>
 
-                <SectionSubtitle className="max-w-3xl lg:max-w-4xl">
+                <SectionSubtitle className="max-w-3xl lg:max-w-4xl text-justify">
                     My core philosophy is to continuously learn and apply the most effective technologies for each
                     project. I thrive in collaborative environments and enjoy working with diverse teams. While my main
                     expertise is in the React ecosystem, I am adaptable and comfortable working across a broad range of
