@@ -33,7 +33,9 @@ import {
     SiApple,
     SiAndroid,
     SiWebgl,
-    SiImmer
+    SiImmer,
+    SiFramer,
+    SiGraphql
 } from "react-icons/si";
 
 interface TechBadgeProps {
@@ -45,11 +47,16 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Typescript: { icon: <SiTypescript />, colorClass: "text-blue-400" },
     TypeScript: { icon: <SiTypescript />, colorClass: "text-blue-400" },
     React: { icon: <SiReact />, colorClass: "text-cyan-300" },
+    "Framer Motion": { icon: <SiFramer />, colorClass: "text-white" },
     "Next.js": { icon: <SiNextdotjs />, colorClass: "text-white" },
     Git: { icon: <SiGit />, colorClass: "text-red-500" },
     "REST API": {
-        icon: <span className="text-gray-300">API</span>,
-        colorClass: "text-gray-300"
+        icon: <span className="font-bold text-[10px]">API</span>,
+        colorClass: "text-gray-200"
+    },
+    GraphQL: {
+        icon: <SiGraphql />,
+        colorClass: "text-pink-500"
     },
     HTML5: { icon: <SiHtml5 />, colorClass: "text-orange-500" },
     CSS3: { icon: <SiCss3 />, colorClass: "text-blue-500" },
@@ -77,7 +84,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "TanStack Query": { icon: <SiReactquery />, colorClass: "text-red-400" },
     RxJS: { icon: <SiReactivex />, colorClass: "text-pink-400" },
     "Immutable.js": {
-        icon: <span className="font-bold text-gray-200 text-[10px]">IM</span>,
+        icon: <span className="font-bold text-[10px]">IM</span>,
         colorClass: "text-gray-200"
     },
     Immer: { icon: <SiImmer />, colorClass: "text-gray-200" },
@@ -89,26 +96,27 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" }
 };
 
-export default function TechBadge({ name }: TechBadgeProps) {
-    const aliasMap: Record<string, string> = {
-        "CSS3/Sass": "CSS3",
-        "Styled Components": "Styled-Components",
-        "Chakra UI": "Chakra-UI",
-        ThreeJS: "Three.js",
-        ThreeJs: "Three.js",
-        NextJS: "Next.js",
-        NextJs: "Next.js",
-        Postgres: "PostgreSQL",
-        "React Query": "TanStack Query",
-        JS: "JavaScript",
-        TS: "TypeScript",
-        Firestore: "Firebase",
-        Duckdb: "DuckDB",
-        duckdb: "DuckDB"
-    };
+const aliasMap: Record<string, string> = {
+    "CSS3/Sass": "CSS3",
+    "Styled Components": "Styled-Components",
+    "Chakra UI": "Chakra-UI",
+    ThreeJS: "Three.js",
+    ThreeJs: "Three.js",
+    NextJS: "Next.js",
+    NextJs: "Next.js",
+    Postgres: "PostgreSQL",
+    "React Query": "TanStack Query",
+    JS: "JavaScript",
+    TS: "TypeScript",
+    Firestore: "Firebase",
+    Duckdb: "DuckDB",
+    duckdb: "DuckDB"
+};
 
+export default function TechBadge({ name }: TechBadgeProps) {
     const key = aliasMap[name] ?? name;
     const map = iconMap[key] || null;
+
     return (
         <span
             className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-600/60 text-gray-200 text-sm/none bg-black/60"

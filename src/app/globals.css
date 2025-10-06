@@ -31,11 +31,16 @@ a {
     cursor: pointer;
 }
 
+:root {
+    --section-padding-y: 4.5rem;
+    --section-skew-height: 2.5rem;
+}
+
 section {
-    clip-path: polygon(0 2.5rem, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
-    margin-bottom: -2.5rem;
-    padding-top: 3rem;
-    padding-bottom: 6rem;
+    clip-path: polygon(0 var(--section-skew-height), 100% 0, 100% calc(100% - var(--section-skew-height)), 0 100%);
+    margin-bottom: calc(-1 * var(--section-skew-height));
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
 
     min-height: calc(100vh - 3.75rem);
     scroll-margin-top: 3.75rem;
@@ -43,6 +48,7 @@ section {
 
 #hero {
     min-height: 100vh;
+    padding-top: calc(var(--section-padding-y) + 68px);
 }
 
 #contact {
@@ -50,11 +56,11 @@ section {
 }
 
 .divider {
-    clip-path: polygon(0 2.5rem, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
-    height: calc(2.5rem + 1px);
+    clip-path: polygon(0 var(--section-skew-height), 100% 0, 100% calc(100% - var(--section-skew-height)), 0 100%);
+    height: calc(var(--section-skew-height) + 1px);
     background: repeating-linear-gradient(to right, var(--color-gray-700) 0 1px, transparent 1px 2px);
     opacity: 0.5;
-    margin-bottom: -2.5rem;
+    margin-bottom: calc(-1 * var(--section-skew-height));
     width: 100%;
 }
 

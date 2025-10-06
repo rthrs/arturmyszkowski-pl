@@ -1,4 +1,10 @@
-import { FiCode as Code, FiDatabase as Database, FiGlobe as Globe, FiSmartphone as Smartphone } from "react-icons/fi";
+import {
+    FiCode as Code,
+    FiDatabase as Database,
+    FiGlobe as Globe,
+    FiSmartphone as Smartphone,
+    FiBarChart2 as BarChart
+} from "react-icons/fi";
 
 import type { IconType } from "react-icons";
 import type { HTMLMotionProps } from "framer-motion";
@@ -17,7 +23,8 @@ export const SKILLS: SkillDef[] = [
     {
         name: "Frontend Development",
         icon: Globe,
-        description: "JavaScript, TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, Styled-Components, Chakra-UI",
+        description:
+            "JavaScript, TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, Styled-Components, Chakra-UI, Framer Motion",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60",
         animation: "rotate",
@@ -43,7 +50,7 @@ export const SKILLS: SkillDef[] = [
     {
         name: "Backend & Databases",
         icon: Database,
-        description: "Node.js, Express, Python, Django, Firebase, PostgreSQL, DuckDB, Firestore",
+        description: "Node.js, Express, Python, Django, REST API, GraphQL, Firebase, PostgreSQL, DuckDB, Firestore",
         iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
         cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60",
         animation: "scale",
@@ -54,7 +61,7 @@ export const SKILLS: SkillDef[] = [
     },
     {
         name: "Graphics & Visualization",
-        icon: Code,
+        icon: BarChart,
         description: "WebGL, Three.js, D3.js",
         iconColorClass: "from-pink-900/60 to-gray-900/60 group-hover:bg-pink-700/60",
         cardBgClass: "from-pink-900/60 to-gray-900/60 hover:from-pink-800/60 hover:to-gray-800/60",

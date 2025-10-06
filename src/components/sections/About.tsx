@@ -5,6 +5,8 @@ import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "../ui/SectionSubtitle";
 import { motion } from "framer-motion";
+import { RESUME_URL } from "@/constants/nav";
+import { FiDownload as Download } from "react-icons/fi";
 
 interface AboutProps {
     onCtaClick: () => void;
@@ -37,9 +39,12 @@ export default function About({ onCtaClick }: AboutProps) {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                     viewport={{ once: true }}
-                    className="pt-2 flex justify-center"
+                    className="pt-2 flex flex-col gap-6 justify-center items-center"
                 >
-                    <CTAButton onClick={onCtaClick} label="Explore my skills" className="px-6 py-3" />
+                    <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+                        <CTAButton label="Download Resume" rightIcon={<Download size={18} />} variant="blue" />
+                    </a>
+                    <CTAButton onClick={onCtaClick} label="Explore my skills" />
                 </motion.div>
             </div>
         </Section>

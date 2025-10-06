@@ -55,8 +55,8 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                 ))}
             </div>
 
-            <div className="text-center pt-4 flex justify-center">
-                <CTAButton onClick={onCtaClick} label="View Projects" className="px-6 py-3" />
+            <div className="text-center flex justify-center">
+                <CTAButton onClick={onCtaClick} label="View Projects" />
             </div>
         </Section>
     );
