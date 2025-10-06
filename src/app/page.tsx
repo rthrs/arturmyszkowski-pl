@@ -8,6 +8,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import BackgroundGradient from "@/components/BackgroundGradient";
+import GoToTopButton from "@/components/ui/GoToTopButton";
 
 export default function Home() {
     const scrollToSection = (sectionId: string) => {
@@ -37,6 +38,8 @@ export default function Home() {
             <Contact />
 
             <Footer />
+
+            <GoToTopButton />
         </main>
     );
 }
