@@ -35,8 +35,11 @@ import {
     SiWebgl,
     SiImmer,
     SiFramer,
-    SiGraphql
+    SiGraphql,
+    SiWebassembly,
+    SiReduxsaga
 } from "react-icons/si";
+import { FiSettings } from "react-icons/fi";
 
 interface TechBadgeProps {
     name: string;
@@ -80,7 +83,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     WebGL: { icon: <SiWebgl />, colorClass: "text-red-400" },
     DuckDB: { icon: <SiDuckdb />, colorClass: "text-amber-300" },
     Redux: { icon: <SiRedux />, colorClass: "text-purple-400" },
-    "Redux Saga": { icon: <SiRedux />, colorClass: "text-purple-400" },
+    "Redux Saga": { icon: <SiReduxsaga />, colorClass: "text-green-500" },
     "TanStack Query": { icon: <SiReactquery />, colorClass: "text-red-400" },
     RxJS: { icon: <SiReactivex />, colorClass: "text-pink-400" },
     "Immutable.js": {
@@ -93,7 +96,9 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Hugo: { icon: <SiHugo />, colorClass: "text-pink-500" },
     Webpack: { icon: <SiWebpack />, colorClass: "text-sky-400" },
     Rollup: { icon: <SiRollupdotjs />, colorClass: "text-red-500" },
-    "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" }
+    "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" },
+    WebWorkers: { icon: <FiSettings />, colorClass: "text-green-400" },
+    WebAssembly: { icon: <SiWebassembly />, colorClass: "text-purple-400" }
 };
 
 const aliasMap: Record<string, string> = {

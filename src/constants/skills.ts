@@ -24,7 +24,7 @@ export const SKILLS: SkillDef[] = [
         name: "Frontend Development",
         icon: Globe,
         description:
-            "JavaScript, TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, Styled-Components, Chakra-UI, Framer Motion",
+            "JavaScript, TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, Styled-Components, Chakra-UI, Framer Motion, WebWorkers, WebAssembly",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60",
         animation: "rotate",
