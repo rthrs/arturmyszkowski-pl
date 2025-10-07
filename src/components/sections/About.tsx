@@ -18,7 +18,7 @@ export default function About({ onCtaClick }: AboutProps) {
             </div>
 
             <div className="space-y-8">
-                <SectionSubtitle className="max-w-3xl lg:max-w-4xl text-justify">
+                <SectionSubtitle large>
                     I&apos;m a Senior Software Engineer with extensive experience in modern web technologies and a
                     passion for creating scalable, maintainable applications. Holding a Master&apos;s degree in Computer
                     Science from the University of Warsaw, I have a strong foundation in algorithms and data structures,

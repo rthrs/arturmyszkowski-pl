@@ -21,7 +21,12 @@ export default function Hero({ onCtaClick }: HeroProps) {
             contentClassName="space-y-4 sm:space-y-8"
             background={<FluidBackground />}
         >
-            <div className="size-38 sm:size-52 sm:mb-8 mx-auto rounded-full relative">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="size-38 sm:size-52 sm:mb-8 mx-auto rounded-full relative"
+            >
                 <Image
                     fill
                     priority
@@ -36,17 +41,22 @@ export default function Hero({ onCtaClick }: HeroProps) {
                     alt="Artur Myszkowski"
                     className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center sepia-[0.2]"
                 />
-            </div>
+            </motion.div>
 
-            <div className="space-y-2 sm:space-y-4">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="space-y-2 sm:space-y-4"
+            >
                 <h1 className="text-4xl sm:text-7xl font-light text-white tracking-tight">Artur Myszkowski</h1>
                 <p className="text-lg sm:text-2xl text-gray-400 font-light">Senior Software Engineer</p>
-            </div>
+            </motion.div>
 
             <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-light"
             >
                 Building exceptional digital experiences with modern technologies. Passionate about clean code,
@@ -56,7 +66,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
                 className="pt-4 sm:pt-8 flex justify-center"
             >
                 <CTAButton onClick={onCtaClick} label="Read about me" />

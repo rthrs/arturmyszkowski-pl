@@ -25,13 +25,19 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
         >
             <div className="text-center">
                 <SectionTitle>Skills</SectionTitle>
-                <SectionSubtitle className="max-w-3xl lg:max-w-4xl text-justify">
+                <SectionSubtitle large>
                     My core philosophy is to continuously strive to learn and apply the most effective technologies for
                     each project to deliver exceptional results. While my main expertise is in the React ecosystem, I am
                     adaptable and comfortable working across a broad range of tools and frameworks.
                 </SectionSubtitle>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            >
                 {SKILLS.map((skill) => (
                     <Card
                         key={skill.name}
@@ -59,11 +65,17 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                         </div>
                     </Card>
                 ))}
-            </div>
+            </motion.div>
 
-            <div className="text-center flex justify-center">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="pt-2 flex flex-col gap-6 justify-center items-center"
+            >
                 <CTAButton onClick={onCtaClick} label="View my Projects" variant="gray" />
-            </div>
+            </motion.div>
         </Section>
     );
 }

@@ -17,7 +17,7 @@ export default function Resume({ onCtaClick }: ResumeProps) {
         <Section id="resume" containerClassName="max-w-4xl mx-auto" contentClassName="space-y-12">
             <div className="text-center">
                 <SectionTitle>Resume</SectionTitle>
-                <SectionSubtitle className="max-w-3xl">
+                <SectionSubtitle center>
                     Download my resume to learn more about my professional experience, technical expertise, and
                     achievements throughout my career.
                 </SectionSubtitle>
@@ -26,9 +26,9 @@ export default function Resume({ onCtaClick }: ResumeProps) {
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="pt-2 flex flex-col gap-6 justify-center items-center"
+                className="flex flex-col gap-6 justify-center items-center"
             >
                 <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
                     <CTAButton label="Download Resume" rightIcon={<Download size={18} />} />

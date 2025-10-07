@@ -21,6 +21,11 @@ const variantClasses: Record<CTAButtonVariant, string> = {
     gray: "bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white border-gray-600/30 hover:border-gray-500/50 shadow-md hover:shadow-lg"
 };
 
+const glowVariantClasses: Record<CTAButtonVariant, string> = {
+    blue: "absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg",
+    gray: "absolute -inset-1 rounded-xl bg-gradient-to-r from-gray-600/12 to-gray-700/12 blur-lg"
+};
+
 export default function CTAButton({ label, rightIcon, variant = "blue", className = "", ...rest }: CTAButtonProps) {
     return (
         <motion.button
@@ -30,9 +35,7 @@ export default function CTAButton({ label, rightIcon, variant = "blue", classNam
             className={`${baseClasses} ${sizeClasses} ${variantClasses[variant]} ${className}`}
             {...rest}
         >
-            {variant === "blue" && (
-                <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg" />
-            )}
+            <div className={glowVariantClasses[variant]} />
             <span className="relative z-10">{label}</span>
             <span className="ml-2 relative z-10">
                 {rightIcon ?? (

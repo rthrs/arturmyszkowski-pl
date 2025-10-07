@@ -76,12 +76,19 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
         <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-16">
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
-                <SectionSubtitle className="max-w-3xl">
+                <SectionSubtitle large>
                     My experience spans across full-stack development, network analysis, and performance optimization. I
                     thrive in collaborative environments and enjoy working with diverse teams.
                 </SectionSubtitle>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            >
                 {projects.map((project) => (
                     <Card key={project.title} featured={project.featured}>
                         <div className="flex flex-col h-full space-y-4">
@@ -135,11 +142,17 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
                         </div>
                     </Card>
                 ))}
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-6 justify-center items-center">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="flex flex-col gap-6 justify-center items-center"
+            >
                 <CTAButton onClick={onCtaClick} label="View my Resume" variant="gray" />
-            </div>
+            </motion.div>
         </Section>
     );
 }
