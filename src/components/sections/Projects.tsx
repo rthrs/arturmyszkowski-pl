@@ -76,7 +76,10 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
         <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-16">
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
-                {/* <SectionSubtitle className="max-w-3xl">Explore my portfolio of projects.</SectionSubtitle> */}
+                <SectionSubtitle className="max-w-3xl">
+                    My experience spans across full-stack development, network analysis, and performance optimization. I
+                    thrive in collaborative environments and enjoy working with diverse teams.
+                </SectionSubtitle>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {projects.map((project) => (
@@ -135,7 +138,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
             </div>
 
             <div className="flex flex-col gap-6 justify-center items-center">
-                <CTAButton onClick={onCtaClick} label="Get in touch" />
+                <CTAButton onClick={onCtaClick} label="View my Resume" variant="gray" />
             </div>
         </Section>
     );

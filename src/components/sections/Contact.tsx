@@ -19,10 +19,7 @@ export default function Contact() {
             <div className="text-center space-y-8">
                 <div className="flex flex-col gap-6 justify-center">
                     <a href="mailto:contact@arturmyszkowski.pl">
-                        <CTAButton label="contact@arturmyszkowski.pl" rightIcon={<Mail size={18} />} variant="blue" />
-                    </a>
-                    <a href="https://instagram.com/artur6strings" target="_blank" rel="noopener noreferrer">
-                        <CTAButton label="Instagram" rightIcon={<Instagram size={18} />} variant="gray" />
+                        <CTAButton label="contact@arturmyszkowski.pl" rightIcon={<Mail size={18} />} />
                     </a>
                 </div>
             </div>

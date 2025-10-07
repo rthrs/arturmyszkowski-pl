@@ -59,7 +59,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 transition={{ duration: 0.8, delay: 0.5 }}
                 className="pt-4 sm:pt-8 flex justify-center"
             >
-                <CTAButton onClick={onCtaClick} label="Read about me" variant="blue" />
+                <CTAButton onClick={onCtaClick} label="Read about me" />
             </motion.div>
 
             <HeroSocials />

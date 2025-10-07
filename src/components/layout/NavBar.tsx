@@ -125,16 +125,6 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                                     {item}
                                 </motion.button>
                             ))}
-                            <motion.a
-                                href={RESUME_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsMenuOpen(false)}
-                                whileTap={{ scale: 0.95 }}
-                                className="block w-full text-left text-gray-400 hover:text-white transition-colors text-md font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
-                            >
-                                Resume
-                            </motion.a>
                         </div>
                     </motion.div>
                 )}

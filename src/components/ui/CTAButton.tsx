@@ -21,7 +21,7 @@ const variantClasses: Record<CTAButtonVariant, string> = {
     gray: "bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white border-gray-600/30 hover:border-gray-500/50 shadow-md hover:shadow-lg"
 };
 
-export default function CTAButton({ label, rightIcon, variant = "gray", className = "", ...rest }: CTAButtonProps) {
+export default function CTAButton({ label, rightIcon, variant = "blue", className = "", ...rest }: CTAButtonProps) {
     return (
         <motion.button
             whileHover={{ scale: 1.05, y: -1 }}

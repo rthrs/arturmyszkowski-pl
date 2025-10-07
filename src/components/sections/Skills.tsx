@@ -26,10 +26,9 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
             <div className="text-center">
                 <SectionTitle>Skills</SectionTitle>
                 <SectionSubtitle className="max-w-3xl lg:max-w-4xl text-justify">
-                    My core philosophy is to continuously learn and apply the most effective technologies for each
-                    project. I thrive in collaborative environments and enjoy working with diverse teams. While my main
-                    expertise is in the React ecosystem, I am adaptable and comfortable working across a broad range of
-                    tools and frameworks.
+                    My core philosophy is to continuously strive to learn and apply the most effective technologies for
+                    each project to deliver exceptional results. While my main expertise is in the React ecosystem, I am
+                    adaptable and comfortable working across a broad range of tools and frameworks.
                 </SectionSubtitle>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -63,7 +62,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
             </div>
 
             <div className="text-center flex justify-center">
-                <CTAButton onClick={onCtaClick} label="View Projects" />
+                <CTAButton onClick={onCtaClick} label="View my Projects" variant="gray" />
             </div>
         </Section>
     );
