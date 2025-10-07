@@ -42,7 +42,7 @@ export default function Card({
             className={`group relative transform-gpu ${
                 variant === "skill"
                     ? "px-8 py-6 border border-gray-800 rounded-xl hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl"
-                    : "bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-gray-600/50 transition-all duration-300"
+                    : "bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl hover:border-gray-600/50 transition-all duration-300"
             } ${className}`}
         >
             {featured && (
