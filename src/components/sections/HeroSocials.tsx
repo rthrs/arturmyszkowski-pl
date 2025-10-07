@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiGithub as Github, FiMail as Mail, FiInstagram as Instagram, FiFileText as FileText } from "react-icons/fi";
 import type { IconType } from "react-icons";
+import { RESUME_URL } from "@/constants/nav";
 
 interface SocialLink {
     href: string;
@@ -33,7 +34,7 @@ const socialLinks: SocialLink[] = [
         icon: Mail
     },
     {
-        href: "/documents/Artur_Myszkowski_Resume_2025_v4.pdf",
+        href: RESUME_URL,
         label: "Resume",
         icon: FileText,
         target: "_blank",

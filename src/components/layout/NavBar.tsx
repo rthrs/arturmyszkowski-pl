@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiMenu as Menu, FiX as X } from "react-icons/fi";
-import { NAV_ITEMS, RESUME_URL } from "@/constants/nav";
+import { NAV_ITEMS } from "@/constants/nav";
 
 interface NavBarProps {
     onNavigate: (sectionId: string) => void;

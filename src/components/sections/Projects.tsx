@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiFileText } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
@@ -15,6 +15,7 @@ interface Project {
     technologies: string[];
     githubUrl?: string;
     liveUrl?: string;
+    paperUrl?: string;
     image?: string;
     featured?: boolean;
 }
@@ -51,6 +52,7 @@ const projects: Project[] = [
             "Network Analysis"
         ],
         githubUrl: "https://github.com/rthrs/igraph-community.js",
+        paperUrl: "/documents/igraph-community-js-paper.pdf",
         image: "/images/projects/igraph-community.png"
     },
     {
@@ -148,6 +150,20 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
                                     >
                                         <FiExternalLink size={16} />
                                         <span>Live Demo</span>
+                                    </motion.a>
+                                )}
+                                {project.paperUrl && (
+                                    <motion.a
+                                        href={project.paperUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={{ duration: 0.1, ease: "easeOut" }}
+                                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                                    >
+                                        <FiFileText size={16} />
+                                        <span>Paper</span>
                                     </motion.a>
                                 )}
                             </div>

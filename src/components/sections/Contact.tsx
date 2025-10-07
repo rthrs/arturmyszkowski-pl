@@ -1,6 +1,6 @@
 "use client";
 
-import { FiArrowUp, FiMail as Mail } from "react-icons/fi";
+import { FiMail as Mail } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
