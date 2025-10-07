@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub, FiDownload as Download } from "react-icons/fi";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
-import { RESUME_URL } from "@/constants/nav";
 
 interface Project {
     title: string;
@@ -21,37 +20,54 @@ interface Project {
 
 const projects: Project[] = [
     {
-        title: "E-Commerce Platform",
+        title: "Networks Centrality",
         description:
-            "Full-stack e-commerce solution with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, inventory management, and admin dashboard.",
-        technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
-        githubUrl: "https://github.com/arturmyszkowski/ecommerce-platform",
-        liveUrl: "https://ecommerce-demo.vercel.app",
+            "Authored a high-performance, interactive web application for the in-depth analysis of network data, focusing on centrality measures and community detection. A key innovation of this project is the custom-built graph rendering engine, which I engineered from the ground up using WebGL and Three.js to achieve real-time visualization of large-scale networks exceeding 500,000 vertices.",
+        technologies: [
+            "React",
+            "Three.js",
+            "WebGL",
+            "Styled-Components",
+            "WebWorkers",
+            "Community Detection",
+            "Rollup",
+            "Shaders"
+        ],
+        liveUrl: "https://network-centrality.firebaseapp.com/graph",
         featured: true
     },
     {
-        title: "Real-time Chat Application",
+        title: "igraph-community.js",
         description:
-            "Modern chat application with real-time messaging, file sharing, and video calls. Built with React Native for cross-platform compatibility.",
-        technologies: ["React Native", "Socket.io", "Firebase", "WebRTC"],
-        githubUrl: "https://github.com/arturmyszkowski/chat-app",
-        liveUrl: "https://chat-demo.netlify.app"
+            "Developed a high-performance JavaScript library for community detection, achieving near-native browser speeds by compiling C/C++ to WebAssembly using Emscripten. This library introduces three novel algorithms I designed for networks with pre-existing structural knowledge and serves as the core community detection engine for Networks Centrality application.",
+        technologies: [
+            "JavaScript",
+            "WebAssembly",
+            "Emscripten",
+            "C/C++",
+            "Community Detection",
+            "Graph Theory",
+            "Network Analysis"
+        ],
+        githubUrl: "https://github.com/rthrs/igraph-community.js",
+        featured: true
     },
     {
-        title: "Data Visualization Dashboard",
+        title: "333daily",
         description:
-            "Interactive dashboard for data analysis and visualization using D3.js and Three.js. Features 3D charts, real-time updates, and custom animations.",
-        technologies: ["React", "D3.js", "Three.js", "WebGL", "TypeScript"],
-        githubUrl: "https://github.com/arturmyszkowski/data-viz-dashboard",
-        liveUrl: "https://data-viz-demo.vercel.app"
+            "Creator of a modern, responsive React Progressive Web App (PWA) designed to implement Oliver Burkeman's 3/3/3 productivity method. Featuring an intuitive interface and progress tracking, the app guides users to dedicate 3 hours to their most important project, complete 3 urgent tasks, and tackle 3 daily maintenance activities",
+        technologies: ["React", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion", "Netlify", "PWA"],
+        githubUrl: "https://github.com/rthrs/333daily",
+        liveUrl: "https://333daily.netlify.app",
+        featured: true
     },
     {
-        title: "Task Management System",
+        title: "arturmyszkowski.pl",
         description:
-            "Collaborative task management tool with drag-and-drop functionality, team collaboration features, and project tracking capabilities.",
-        technologies: ["Next.js", "Prisma", "PostgreSQL", "Framer Motion", "Tailwind CSS"],
-        githubUrl: "https://github.com/arturmyszkowski/task-manager",
-        liveUrl: "https://task-manager-demo.vercel.app"
+            "This website serves as my digital portfolio, which I built as an open-source project using Next.js. My goal was to create a visually engaging and responsive platform to detail my professional journey, with the code publicly available for others to explore.",
+        technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "React"],
+        githubUrl: "https://github.com/rthrs/arturmyszkowski-pl",
+        featured: true
     }
 ];
 
@@ -60,10 +76,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
         <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-16">
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
-                <SectionSubtitle className="max-w-3xl">
-                    Explore my portfolio of projects and download my resume to learn more about my professional
-                    experience, achievements, and technical expertise.
-                </SectionSubtitle>
+                {/* <SectionSubtitle className="max-w-3xl">Explore my portfolio of projects.</SectionSubtitle> */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {projects.map((project) => (
