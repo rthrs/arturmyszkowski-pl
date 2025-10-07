@@ -22,7 +22,7 @@ const projects: Project[] = [
     {
         title: "Networks Centrality",
         description:
-            "Authored a high-performance, interactive web application for the in-depth analysis of network data, focusing on centrality measures and community detection. A key innovation of this project is the custom-built graph rendering engine, which I engineered from the ground up using WebGL and Three.js to achieve real-time visualization of large-scale networks exceeding 500,000 vertices.",
+            "Engineered high-performance web app for interactive network analysis and visualization. Its key feature is a custom WebGL and Three.js rendering engine created to handle large-scale graphs of over 500,000 vertices in real-time.",
         technologies: [
             "React",
             "Three.js",
@@ -39,7 +39,7 @@ const projects: Project[] = [
     {
         title: "igraph-community.js",
         description:
-            "Developed a high-performance JavaScript library for community detection, achieving near-native browser speeds by compiling C/C++ to WebAssembly using Emscripten. This library introduces three novel algorithms I designed for networks with pre-existing structural knowledge and serves as the core community detection engine for Networks Centrality application.",
+            "Authored open-source JavaScript library for community detection, compiling C/C++ to WebAssembly with Emscripten for near-native browser speeds. It features three novel algorithms I designed for specific network types and serves as the core analysis engine for Networks Centrality app.",
         technologies: [
             "JavaScript",
             "WebAssembly",
@@ -53,10 +53,10 @@ const projects: Project[] = [
         featured: true
     },
     {
-        title: "333daily",
+        title: "333 Daily",
         description:
-            "Creator of a modern, responsive React Progressive Web App (PWA) designed to implement Oliver Burkeman's 3/3/3 productivity method. Featuring an intuitive interface and progress tracking, the app guides users to dedicate 3 hours to their most important project, complete 3 urgent tasks, and tackle 3 daily maintenance activities",
-        technologies: ["React", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion", "Netlify", "PWA"],
+            "Built modern, responsive React PWA to help people implement Oliver Burkeman's 3/3/3 productivity method. The app uses an intuitive interface and progress tracking to guide users through their daily goals: three hours on a main project, three urgent tasks, and three maintenance items.",
+        technologies: ["React", "PWA", "Tailwind CSS", "Vite", "Framer Motion", "Netlify"],
         githubUrl: "https://github.com/rthrs/333daily",
         liveUrl: "https://333daily.netlify.app",
         featured: true
@@ -64,7 +64,7 @@ const projects: Project[] = [
     {
         title: "arturmyszkowski.pl",
         description:
-            "This website serves as my digital portfolio, which I built as an open-source project using Next.js. My goal was to create a visually engaging and responsive platform to detail my professional journey, with the code publicly available for others to explore.",
+            "Designed and created my personal portfolio as an open-source project using Next.js. The goal was to create a visually engaging and responsive platform to showcase my professional journey, with the code publicly available for exploration.",
         technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "React"],
         githubUrl: "https://github.com/rthrs/arturmyszkowski-pl",
         featured: true
@@ -81,7 +81,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {projects.map((project) => (
                     <Card key={project.title} featured={project.featured}>
-                        <div className="space-y-4">
+                        <div className="flex flex-col h-full space-y-4">
                             <h4 className="text-xl font-semibold text-gray-100 group-hover:text-white transition-colors">
                                 {project.title}
                             </h4>
@@ -99,7 +99,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
                                 ))}
                             </div>
 
-                            <div className="flex gap-3 pt-2">
+                            <div className="flex gap-3 pt-2 mt-auto">
                                 {project.githubUrl && (
                                     <motion.a
                                         href={project.githubUrl}

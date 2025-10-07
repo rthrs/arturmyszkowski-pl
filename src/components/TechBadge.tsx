@@ -37,7 +37,8 @@ import {
     SiFramer,
     SiGraphql,
     SiWebassembly,
-    SiReduxsaga
+    SiReduxsaga,
+    SiVite
 } from "react-icons/si";
 import { FiSettings } from "react-icons/fi";
 
@@ -98,7 +99,8 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Rollup: { icon: <SiRollupdotjs />, colorClass: "text-red-500" },
     "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" },
     WebWorkers: { icon: <FiSettings />, colorClass: "text-green-400" },
-    WebAssembly: { icon: <SiWebassembly />, colorClass: "text-purple-400" }
+    WebAssembly: { icon: <SiWebassembly />, colorClass: "text-purple-400" },
+    Vite: { icon: <SiVite />, colorClass: "text-yellow-400" }
 };
 
 const aliasMap: Record<string, string> = {

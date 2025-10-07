@@ -28,10 +28,8 @@ export default function About({ onCtaClick }: AboutProps) {
                 </SectionSubtitle>
 
                 <SectionSubtitle className="max-w-3xl lg:max-w-4xl text-justify">
-                    My core philosophy is to continuously learn and apply the most effective technologies for each
-                    project. I thrive in collaborative environments and enjoy working with diverse teams. While my main
-                    expertise is in the React ecosystem, I am adaptable and comfortable working across a broad range of
-                    tools and frameworks.
+                    Download my resume to learn more about my professional experience, achievements, and technical
+                    expertise.
                 </SectionSubtitle>
 
                 <motion.div

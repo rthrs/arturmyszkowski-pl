@@ -88,7 +88,7 @@ export const SKILLS: SkillDef[] = [
     {
         name: "DevOps & Leadership",
         icon: Code,
-        description: "Git, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile, Scrum Kanban",
+        description: "Git, Vite, Webpack, Rollup, AWS, Netlify, Hugo, Mentoring, Agile, Scrum, Kanban",
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
         cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60",
         animation: "float",
