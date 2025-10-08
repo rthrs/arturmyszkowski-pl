@@ -8,10 +8,16 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
+import FluidBackground from "../FluidBackground";
 
 export default function Resume() {
     return (
-        <Section id="resume" containerClassName="max-w-4xl mx-auto" contentClassName="space-y-12">
+        <Section
+            id="resume"
+            containerClassName="max-w-4xl mx-auto"
+            contentClassName="space-y-12"
+            background={<FluidBackground />}
+        >
             <div className="text-center">
                 <SectionTitle>Resume</SectionTitle>
                 <SectionSubtitle center>

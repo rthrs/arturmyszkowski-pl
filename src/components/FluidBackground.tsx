@@ -126,8 +126,7 @@ function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
           float fadeOut = 1.0 - smoothstep(0.3, 0.8, centerDistance);
 
           // Screen-space bottom fade (align with canvas). 0.0 at bottom, 1.0 at top
-          // Make band a bit smaller
-          float bottomMask = smoothstep(0.0, 0.2, vScreenY);
+          float bottomMask = smoothstep(0.0, 0.5, vScreenY);
           
           // Liquid-like opacity with smooth transitions and edge fading
           float alpha = (totalLiquid * 0.22 + 0.08) * fadeOut * bottomMask;
@@ -164,151 +163,124 @@ function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
     );
 }
 
-// Morphing wireframe grid using morph targets
-type MorphingWireframeProps = {
-    position: [number, number, number];
-    scale?: number;
-    divisions?: number;
+// Thin flowing lines overlay
+type FlowingLinesProps = {
+    lineCount?: number;
+    color?: string;
+    opacity?: number;
     speed?: number;
 };
 
-function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }: MorphingWireframeProps) {
-    const meshRef = useRef<THREE.Mesh>(null);
-    const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
-    const [material, setMaterial] = useState<THREE.MeshBasicMaterial | null>(null);
+function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed = 0.3 }: FlowingLinesProps) {
+    const groupRef = useRef<THREE.Group>(null);
+    const [materials, setMaterials] = useState<THREE.ShaderMaterial[]>([]);
 
     useEffect(() => {
-        // Create base wireframe geometry
-        const baseGeometry = new THREE.BufferGeometry();
-        const vertices: number[] = [];
-        const triangleIndices: number[] = [];
+        const group = new THREE.Group();
+        const shaderMaterials: THREE.ShaderMaterial[] = [];
 
-        const size = 20 * scale;
-        const step = size / divisions;
-        const halfSize = size / 2;
+        // Add thin vertical lines for definition
+        for (let i = 0; i < lineCount; i++) {
+            const segments = 200;
+            const positions: number[] = [];
 
-        // Create all vertices
-        for (let i = 0; i <= divisions; i++) {
-            for (let j = 0; j <= divisions; j++) {
-                const x = -halfSize + i * step;
-                const y = -halfSize + j * step;
-                vertices.push(x, y, 0);
+            // Create vertical lines (swap x and y)
+            const x = (i / lineCount) * 16 - 8; // Reduced from 20 to 16 to fit in viewport
+            for (let j = 0; j <= segments; j++) {
+                const y = (j / segments) * 20 - 10; // Lines go vertically
+                positions.push(x, y, 0);
             }
+
+            const points: THREE.Vector3[] = [];
+            for (let j = 0; j < positions.length; j += 3) {
+                points.push(new THREE.Vector3(positions[j], positions[j + 1], positions[j + 2]));
+            }
+
+            const curve = new THREE.CatmullRomCurve3(points);
+            const curvePoints = curve.getPoints(segments);
+            const geometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
+
+            // Simple line material with wave animation (adapted for vertical lines)
+            const lineMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    uTime: { value: 0 },
+                    uLineIndex: { value: i },
+                    uColor: { value: new THREE.Color(color) },
+                    uOpacity: { value: opacity * 0.4 }
+                },
+                vertexShader: `
+                    uniform float uTime;
+                    uniform float uLineIndex;
+                    
+                    void main() {
+                        vec3 pos = position;
+                        
+                        // Wave motion along Y axis (vertical lines)
+                        float wave1 = sin(pos.y * 0.3 + uTime * 1.2 + uLineIndex * 0.5) * 0.8;
+                        float wave2 = sin(pos.y * 0.5 - uTime * 0.8 + uLineIndex * 0.3) * 0.5;
+                        float wave3 = cos(pos.y * 0.2 + uTime * 0.6 + uLineIndex * 0.7) * 0.3;
+                        
+                        // Apply wave to X (horizontal displacement for vertical lines)
+                        pos.x += wave1 + wave2 + wave3;
+                        pos.z += sin(pos.y * 0.4 + uTime * 1.0 + uLineIndex * 0.4) * 0.5;
+                        
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform vec3 uColor;
+                    uniform float uOpacity;
+                    
+                    void main() {
+                        gl_FragColor = vec4(uColor, uOpacity);
+                    }
+                `,
+                transparent: true,
+                depthWrite: false
+            });
+
+            shaderMaterials.push(lineMaterial);
+
+            const line = new THREE.Line(geometry, lineMaterial);
+            group.add(line);
         }
 
-        // Create triangles using vertex indices
-        for (let i = 0; i < divisions; i++) {
-            for (let j = 0; j < divisions; j++) {
-                const a = i * (divisions + 1) + j;
-                const b = (i + 1) * (divisions + 1) + j;
-                const c = i * (divisions + 1) + (j + 1);
-                const d = (i + 1) * (divisions + 1) + (j + 1);
-
-                // Create two triangles per quad, alternating pattern
-                if ((i + j) % 2 === 0) {
-                    triangleIndices.push(a, b, c, b, d, c);
-                } else {
-                    triangleIndices.push(a, b, d, a, d, c);
-                }
+        if (groupRef.current) {
+            // Clear existing children
+            while (groupRef.current.children.length > 0) {
+                groupRef.current.remove(groupRef.current.children[0]);
             }
+            // Add new group
+            groupRef.current.add(group);
         }
 
-        baseGeometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
-        baseGeometry.setIndex(triangleIndices);
+        setMaterials(shaderMaterials);
 
-        // Initialize morph attributes array
-        baseGeometry.morphAttributes = {};
-
-        // Create morph targets
-        const wavePoints: number[] = [];
-        const spherePoints: number[] = [];
-        const twistPoints: number[] = [];
-
-        // Generate all morph targets in a single loop for efficiency
-        for (let i = 0; i <= divisions; i++) {
-            for (let j = 0; j <= divisions; j++) {
-                const x = -halfSize + i * step;
-                const y = -halfSize + j * step;
-
-                // Wave distortion
-                const waveZ = Math.sin(x * 0.08) * Math.cos(y * 0.08) * 1.2;
-                wavePoints.push(x, y, waveZ);
-
-                // Spherical distortion
-                const dist = Math.sqrt(x * x + y * y);
-                const sphereZ = Math.sqrt(Math.max(0, 80 - dist * 0.08)) - 8;
-                spherePoints.push(x, y, sphereZ);
-
-                // Twisted distortion using smooth spiral pattern
-                // Avoid atan2 discontinuity by using a different approach
-                const spiralPhase = Math.sqrt(x * x + y * y) * 0.3 + x * 0.1;
-                const twistZ = Math.cos(spiralPhase) * 2;
-                twistPoints.push(x, y, twistZ);
-            }
-        }
-
-        // Set up morph targets
-        baseGeometry.morphAttributes.position = [
-            new THREE.Float32BufferAttribute(wavePoints, 3),
-            new THREE.Float32BufferAttribute(spherePoints, 3),
-            new THREE.Float32BufferAttribute(twistPoints, 3)
-        ];
-
-        // Ensure the geometry is properly computed
-        baseGeometry.computeBoundingBox();
-        baseGeometry.computeBoundingSphere();
-
-        setGeometry(baseGeometry);
-
-        // Create wireframe material that supports morphing
-        const wireframeMaterial = new THREE.MeshBasicMaterial({
-            color: "#64D2FF",
-            wireframe: true,
-            transparent: true,
-            opacity: 0.08
-        });
-
-        setMaterial(wireframeMaterial);
-    }, [scale, divisions]);
+        return () => {
+            shaderMaterials.forEach((mat) => mat.dispose());
+            group.clear();
+        };
+    }, [lineCount, color, opacity]);
 
     useFrame((state) => {
-        if (!meshRef.current || !geometry) return;
+        if (!groupRef.current || materials.length === 0) return;
 
         const time = state.clock.getElapsedTime() * speed;
 
-        // Initialize morphTargetInfluences if not already set
-        if (!meshRef.current.morphTargetInfluences) {
-            meshRef.current.morphTargetInfluences = [0, 0, 0];
-        }
+        // Update shader uniforms
+        materials.forEach((material) => {
+            material.uniforms.uTime.value = time;
+        });
 
-        // Animate between different morph targets
-        const morph1 = (Math.sin(time * 0.3) + 1) * 0.5;
-        const morph2 = (Math.sin(time * 0.4 + Math.PI / 3) + 1) * 0.5;
-        const morph3 = (Math.sin(time * 0.5 + (Math.PI * 2) / 3) + 1) * 0.5;
-
-        meshRef.current.morphTargetInfluences[0] = morph1;
-        meshRef.current.morphTargetInfluences[1] = morph2;
-        meshRef.current.morphTargetInfluences[2] = morph3;
-
-        const maxRotation = 0.25;
-
-        // Oscillating rotation
-        meshRef.current.rotation.z = Math.sin(time * 0.3) * maxRotation;
-        meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.5;
-        meshRef.current.rotation.y = Math.sin(time * 0.25 + Math.PI / 2) * maxRotation * 0.3;
-
-        // Gentle floating
-        meshRef.current.position.y += Math.sin(time * 0.05) * 0.0001;
+        // Gentle rotation of entire group
+        groupRef.current.rotation.z = Math.sin(time * 0.2) * 0.05;
+        groupRef.current.rotation.x = Math.sin(time * 0.15) * 0.03;
     });
 
-    if (!geometry || !material) {
-        return null;
-    }
-
-    return <mesh ref={meshRef} geometry={geometry} material={material} position={position} />;
+    return <group ref={groupRef} />;
 }
 
-export default function FluidBackground({ className = "", speed = 0.3 }: FluidBackgroundProps) {
+export default function FluidBackground({ className = "", speed = 0.2 }: FluidBackgroundProps) {
     const [hasError, setHasError] = useState(false);
     const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
 
@@ -323,22 +295,19 @@ export default function FluidBackground({ className = "", speed = 0.3 }: FluidBa
 
     return (
         <div ref={containerRef} className={`absolute top-0 bottom-0 left-0 right-0 -z-10 ${className}`}>
-            <div className="w-full h-full">
-                <Canvas
-                    camera={{ position: [0, 0, 8], fov: 60 }}
-                    onError={() => setHasError(true)}
-                    gl={{
-                        alpha: true,
-                        antialias: true,
-                        powerPreference: "low-power" // Use integrated GPU
-                    }}
-                    frameloop={shouldAnimate ? "always" : "demand"}
-                >
-                    <FluidPlane speed={speed} />
-
-                    <MorphingWireframe position={[0, 0, 0]} scale={1.2} divisions={60} speed={speed} />
-                </Canvas>
-            </div>
+            <Canvas
+                camera={{ position: [0, 0, 10], fov: 60 }}
+                onError={() => setHasError(true)}
+                gl={{
+                    alpha: true,
+                    antialias: true,
+                    powerPreference: "low-power" // Use integrated GPU
+                }}
+                frameloop={shouldAnimate ? "always" : "demand"}
+            >
+                <FluidPlane speed={speed} />
+                <FlowingLines lineCount={16} speed={speed} opacity={0.35} color="#64D2FF" />
+            </Canvas>
         </div>
     );
 }

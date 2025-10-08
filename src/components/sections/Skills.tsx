@@ -18,7 +18,6 @@ export default function Skills() {
     return (
         <Section
             id="skills"
-            className="bg-gray-800/10"
             containerClassName="max-w-6xl mx-auto"
             contentClassName="space-y-16"
             background={<WireframeBackground />}
@@ -36,7 +35,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
                 {SKILLS.map((skill) => (
                     <Card
