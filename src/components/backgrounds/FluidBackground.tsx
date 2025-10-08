@@ -13,17 +13,34 @@ interface FluidBackgroundProps {
 
 type FluidPlaneProps = {
     speed?: number;
+    opacity?: number;
 };
 
-function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
+function FluidPlane({ speed = 0.3, opacity = 1.0 }: FluidPlaneProps) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
+    const [geometry, setGeometry] = useState<THREE.PlaneGeometry | null>(null);
+
+    useEffect(() => {
+        // Calculate aspect ratio based on viewport
+        const aspect = window.innerWidth / window.innerHeight;
+        // Make the plane wider to match typical viewport aspect ratios
+        const width = 60;
+        const height = width / aspect;
+        const planeGeometry = new THREE.PlaneGeometry(width, height, 1, 1);
+        setGeometry(planeGeometry);
+
+        return () => {
+            planeGeometry.dispose();
+        };
+    }, []);
 
     useEffect(() => {
         // Create fluid shader material
         const shaderMaterial = new THREE.ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
+                uOpacity: { value: opacity },
                 uColor1: { value: new THREE.Color("#007AFF") }, // Apple Blue
                 uColor2: { value: new THREE.Color("#AF52DE") }, // Apple Purple
                 uColor3: { value: new THREE.Color("#FF3B30") }, // Apple Red
@@ -46,6 +63,7 @@ function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
       `,
             fragmentShader: `
         uniform float uTime;
+        uniform float uOpacity;
         uniform vec3 uColor1;
         uniform vec3 uColor2;
         uniform vec3 uColor3;
@@ -130,7 +148,7 @@ function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
           
           // Liquid-like opacity with smooth transitions and edge fading
           float alpha = (totalLiquid * 0.22 + 0.08) * fadeOut * bottomMask;
-          alpha = clamp(alpha, 0.0, 0.35);
+          alpha = clamp(alpha, 0.0, 0.35) * uOpacity;
           
           gl_FragColor = vec4(finalColor, alpha);
         }
@@ -141,7 +159,7 @@ function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
         });
 
         setMaterial(shaderMaterial);
-    }, []);
+    }, [opacity]);
 
     useFrame((state) => {
         if (material) {
@@ -149,18 +167,11 @@ function FluidPlane({ speed = 0.3 }: FluidPlaneProps) {
         }
     });
 
-    if (!material) {
+    if (!material || !geometry) {
         return null;
     }
 
-    return (
-        <mesh
-            ref={meshRef}
-            geometry={new THREE.PlaneGeometry(50, 50, 1, 1)}
-            material={material}
-            position={[0, 0, -8]}
-        />
-    );
+    return <mesh ref={meshRef} geometry={geometry} material={material} position={[0, 0, -8]} />;
 }
 
 // Thin flowing lines overlay
@@ -179,15 +190,19 @@ function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed
         const group = new THREE.Group();
         const shaderMaterials: THREE.ShaderMaterial[] = [];
 
+        // Adjust width based on aspect ratio to cover the viewport properly
+        const width = 30;
+        const height = 20;
+
         // Add thin vertical lines for definition
         for (let i = 0; i < lineCount; i++) {
             const segments = 200;
             const positions: number[] = [];
 
-            // Create vertical lines (swap x and y)
-            const x = (i / lineCount) * 16 - 8; // Reduced from 20 to 16 to fit in viewport
+            // Create vertical lines with aspect-aware width
+            const x = (i / lineCount) * width - width / 2;
             for (let j = 0; j <= segments; j++) {
-                const y = (j / segments) * 20 - 10; // Lines go vertically
+                const y = (j / segments) * height - height / 2; // Lines go vertically
                 positions.push(x, y, 0);
             }
 
@@ -305,8 +320,8 @@ export default function FluidBackground({ className = "", speed = 0.2 }: FluidBa
                 }}
                 frameloop={shouldAnimate ? "always" : "demand"}
             >
-                <FluidPlane speed={speed} />
-                <FlowingLines lineCount={16} speed={speed} opacity={0.35} color="#64D2FF" />
+                <FluidPlane speed={speed} opacity={0.75} />
+                <FlowingLines lineCount={24} speed={speed} opacity={0.35} color="#64D2FF" />
             </Canvas>
         </div>
     );
