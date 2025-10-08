@@ -5,7 +5,7 @@ import CTAButton from "@/components/ui/CTAButton";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
-import { RESUME_URL } from "@/constants/nav";
+import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 
 interface ResumeProps {
@@ -30,8 +30,16 @@ export default function Resume({ onCtaClick }: ResumeProps) {
                 viewport={{ once: true }}
                 className="flex flex-col gap-6 justify-center items-center"
             >
-                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
-                    <CTAButton label="Download Resume" rightIcon={<Download size={18} />} />
+                <a href={SOCIAL_LINKS.resume.href} target="_blank" rel="noopener noreferrer">
+                    <CTAButton
+                        label="Download Resume"
+                        rightIcon={
+                            <Download
+                                className="group-hover:translate-y-0.5 transition-transform duration-200"
+                                size={18}
+                            />
+                        }
+                    />
                 </a>
                 <CTAButton onClick={onCtaClick} label="Get in touch" variant="gray" />
             </motion.div>

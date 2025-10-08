@@ -1,46 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiGithub as Github, FiMail as Mail, FiInstagram as Instagram, FiFileText as FileText } from "react-icons/fi";
-import type { IconType } from "react-icons";
-import { RESUME_URL } from "@/constants/nav";
-
-interface SocialLink {
-    href: string;
-    label: string;
-    icon: IconType;
-    target?: string;
-    rel?: string;
-}
-
-const socialLinks: SocialLink[] = [
-    {
-        href: "https://github.com/rthrs",
-        label: "GitHub",
-        icon: Github,
-        target: "_blank",
-        rel: "noopener noreferrer"
-    },
-    {
-        href: "https://instagram.com/artur6strings",
-        label: "Instagram",
-        icon: Instagram,
-        target: "_blank",
-        rel: "noopener noreferrer"
-    },
-    {
-        href: "mailto:contact@arturmyszkowski.pl",
-        label: "Email",
-        icon: Mail
-    },
-    {
-        href: RESUME_URL,
-        label: "Resume",
-        icon: FileText,
-        target: "_blank",
-        rel: "noopener noreferrer"
-    }
-];
+import { HERO_SOCIAL_LINKS } from "@/constants/socials";
 
 export default function HeroSocials() {
     return (
@@ -50,9 +11,9 @@ export default function HeroSocials() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex justify-center space-x-8 pt-4 sm:pt-12 pb-4 sm:pb-12"
         >
-            {socialLinks.map(({ href, label, icon: Icon, target, rel }) => (
+            {HERO_SOCIAL_LINKS.map(({ id, href, label, icon: Icon, target, rel }) => (
                 <motion.a
-                    key={label}
+                    key={id}
                     href={href}
                     target={target}
                     rel={rel}

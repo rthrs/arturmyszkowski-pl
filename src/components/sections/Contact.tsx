@@ -1,11 +1,11 @@
 "use client";
 
-import { FiMail as Mail } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
 import { motion } from "framer-motion";
+import { CONTACT_LINKS } from "@/constants/socials";
 
 export default function Contact() {
     return (
@@ -25,17 +25,20 @@ export default function Contact() {
                 viewport={{ once: true }}
                 className="pt-2 flex flex-col gap-6 justify-center items-center"
             >
-                <a href="mailto:contact@arturmyszkowski.pl">
-                    <CTAButton
-                        label="contact@arturmyszkowski.pl"
-                        rightIcon={
-                            <Mail
-                                size={18}
-                                className="group-hover:-translate-y-0.5 transition-transform duration-200"
-                            />
-                        }
-                    />
-                </a>
+                {CONTACT_LINKS.map(({ id, href, label, icon: Icon, target, rel }) => (
+                    <a key={id} href={href} target={target} rel={rel}>
+                        <CTAButton
+                            label={label}
+                            variant="blue"
+                            rightIcon={
+                                <Icon
+                                    size={18}
+                                    className="group-hover:-translate-y-0.5 transition-transform duration-200"
+                                />
+                            }
+                        />
+                    </a>
+                ))}
                 <CTAButton
                     label="Go to top"
                     variant="gray"
