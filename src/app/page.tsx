@@ -10,6 +10,7 @@ import Resume from "@/components/sections/Resume";
 import Contact from "@/components/sections/Contact";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import GoToTopButton from "@/components/ui/GoToTopButton";
+import Divider from "@/components/ui/Divider";
 import { scrollToSection } from "@/utils/scroll";
 
 export default function Home() {
@@ -20,15 +21,15 @@ export default function Home() {
             <NavBar onNavigate={scrollToSection} />
 
             <Hero />
-            <div className="divider" />
+            <Divider />
             <About />
-            <div className="divider" />
+            <Divider />
             <Skills />
-            <div className="divider" />
+            <Divider />
             <Projects />
-            <div className="divider" />
+            <Divider />
             <Resume />
-            <div className="divider" />
+            <Divider />
             <Contact />
 
             <Footer />
