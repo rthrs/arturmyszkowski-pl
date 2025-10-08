@@ -8,7 +8,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
-import FluidBackground from "../FluidBackground";
+import FluidBackground from "@/components/backgrounds/FluidBackground";
 
 export default function Resume() {
     return (

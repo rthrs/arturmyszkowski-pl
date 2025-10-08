@@ -248,7 +248,7 @@ export default function WireframeBackground({
     divisions = 60,
     cameraPosition = [0, 0, 8],
     fov = 75,
-    speed = 0.4
+    speed = 0.2
 }: WireframeBackgroundProps) {
     const [hasError, setHasError] = useState(false);
     const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });

@@ -6,7 +6,7 @@ import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Section from "@/components/ui/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpeg";
-import SneaksBackground from "../SneaksBackground";
+import SneaksBackground from "@/components/backgrounds/SneaksBackground";
 
 export default function Hero() {
     return (

@@ -7,7 +7,7 @@ import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
-import WireframeBackground from "@/components/WireframeBackground";
+import WireframeBackground from "@/components/backgrounds/WireframeBackground";
 import { SKILLS } from "@/constants/skills";
 import { DEFAULT_ICON_ANIMATION } from "@/constants/motion";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
