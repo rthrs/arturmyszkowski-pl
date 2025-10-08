@@ -9,7 +9,7 @@ import Projects from "@/components/sections/Projects";
 import Resume from "@/components/sections/Resume";
 import Contact from "@/components/sections/Contact";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
-import GoToTopButton from "@/components/ui/GoToTopButton";
+import GoToTopButton from "@/components/ui/buttons/GoToTopButton";
 import Divider from "@/components/ui/Divider";
 import { scrollToSection } from "@/utils/scroll";
 

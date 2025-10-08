@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import TechBadgesList from "@/components/TechBadgesList";
-import SectionScrollButton from "@/components/ui/SectionScrollButton";
+import TechBadgesList from "@/components/ui/TechBadgesList";
+import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Card from "@/components/ui/Card";
-import Section from "@/components/ui/Section";
-import SectionTitle from "@/components/ui/SectionTitle";
+import Section from "@/components/ui/section/Section";
+import SectionTitle from "@/components/ui/section/SectionTitle";
 import WireframeBackground from "@/components/backgrounds/WireframeBackground";
 import { SKILLS } from "@/constants/skills";
 import { DEFAULT_ICON_ANIMATION } from "@/constants/motion";
-import SectionSubtitle from "@/components/ui/SectionSubtitle";
+import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 
 export default function Skills() {
     const [hovered, setHovered] = useState<string | null>(null);
@@ -73,7 +73,7 @@ export default function Skills() {
                 viewport={{ once: true }}
                 className="pt-2 flex flex-col gap-6 justify-center items-center"
             >
-                <SectionScrollButton label="View my Projects" targetSection="projects" variant="gray" />
+                <ScrollButton label="View my Projects" targetSection="projects" variant="gray" />
             </motion.div>
         </Section>
     );

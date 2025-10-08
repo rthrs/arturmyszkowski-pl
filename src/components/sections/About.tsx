@@ -1,9 +1,9 @@
 "use client";
 
-import Section from "@/components/ui/Section";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SectionSubtitle from "@/components/ui/SectionSubtitle";
-import SectionScrollButton from "@/components/ui/SectionScrollButton";
+import Section from "@/components/ui/section/Section";
+import SectionTitle from "@/components/ui/section/SectionTitle";
+import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
+import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -28,7 +28,7 @@ export default function About() {
                     viewport={{ once: true }}
                     className="pt-8 flex justify-center"
                 >
-                    <SectionScrollButton label="Explore my skills" targetSection="skills" variant="gray" />
+                    <ScrollButton label="Explore my skills" targetSection="skills" variant="gray" />
                 </motion.div>
             </div>
         </Section>

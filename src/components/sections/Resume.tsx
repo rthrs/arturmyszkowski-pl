@@ -1,11 +1,11 @@
 "use client";
 
 import { FiDownload as Download } from "react-icons/fi";
-import CTAButton from "@/components/ui/CTAButton";
-import SectionScrollButton from "@/components/ui/SectionScrollButton";
-import Section from "@/components/ui/Section";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SectionSubtitle from "@/components/ui/SectionSubtitle";
+import CTAButton from "@/components/ui/buttons/CTAButton";
+import ScrollButton from "@/components/ui/buttons/ScrollButton";
+import Section from "@/components/ui/section/Section";
+import SectionTitle from "@/components/ui/section/SectionTitle";
+import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 import FluidBackground from "@/components/backgrounds/FluidBackground";
@@ -44,7 +44,7 @@ export default function Resume() {
                         }
                     />
                 </a>
-                <SectionScrollButton label="Get in touch" targetSection="contact" variant="gray" />
+                <ScrollButton label="Get in touch" targetSection="contact" variant="gray" />
             </motion.div>
         </Section>
     );

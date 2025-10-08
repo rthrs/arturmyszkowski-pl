@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import SectionScrollButton from "@/components/ui/SectionScrollButton";
-import Section from "@/components/ui/Section";
+import ScrollButton from "@/components/ui/buttons/ScrollButton";
+import Section from "@/components/ui/section/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpeg";
 import SneaksBackground from "@/components/backgrounds/SneaksBackground";
@@ -65,7 +65,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="pt-4 sm:pt-8 flex justify-center"
             >
-                <SectionScrollButton label="Read about me" targetSection="about" />
+                <ScrollButton label="Read about me" targetSection="about" />
             </motion.div>
 
             <HeroSocials />

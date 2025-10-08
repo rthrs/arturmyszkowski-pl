@@ -1,6 +1,6 @@
 "use client";
 
-import TechBadge from "@/components/TechBadge";
+import TechBadge from "@/components/ui/TechBadge";
 
 interface TechBadgesListProps {
     csv: string;

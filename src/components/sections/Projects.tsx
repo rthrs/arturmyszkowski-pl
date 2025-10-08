@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiExternalLink, FiGithub, FiFileText } from "react-icons/fi";
-import SectionScrollButton from "@/components/ui/SectionScrollButton";
+import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Card from "@/components/ui/Card";
-import Section from "@/components/ui/Section";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SectionSubtitle from "@/components/ui/SectionSubtitle";
+import Section from "@/components/ui/section/Section";
+import SectionTitle from "@/components/ui/section/SectionTitle";
+import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 
 interface Project {
     title: string;
@@ -179,7 +179,7 @@ export default function Projects() {
                 viewport={{ once: true }}
                 className="flex flex-col gap-6 justify-center items-center"
             >
-                <SectionScrollButton label="View my Resume" targetSection="resume" variant="gray" />
+                <ScrollButton label="View my Resume" targetSection="resume" variant="gray" />
             </motion.div>
         </Section>
     );

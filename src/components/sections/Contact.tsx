@@ -1,9 +1,9 @@
 "use client";
 
-import CTAButton from "@/components/ui/CTAButton";
-import Section from "@/components/ui/Section";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SectionSubtitle from "@/components/ui/SectionSubtitle";
+import CTAButton from "@/components/ui/buttons/CTAButton";
+import Section from "@/components/ui/section/Section";
+import SectionTitle from "@/components/ui/section/SectionTitle";
+import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { motion } from "framer-motion";
 import { CONTACT_LINKS } from "@/constants/socials";
 
