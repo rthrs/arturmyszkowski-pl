@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiExternalLink, FiGithub, FiFileText } from "react-icons/fi";
-import CTAButton from "@/components/ui/CTAButton";
+import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -74,7 +74,7 @@ const projects: Project[] = [
     }
 ];
 
-export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
+export default function Projects() {
     return (
         <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-16">
             <div className="text-center">
@@ -179,7 +179,7 @@ export default function Projects({ onCtaClick }: { onCtaClick: () => void }) {
                 viewport={{ once: true }}
                 className="flex flex-col gap-6 justify-center items-center"
             >
-                <CTAButton onClick={onCtaClick} label="View my Resume" variant="gray" />
+                <SectionScrollButton label="View my Resume" targetSection="resume" variant="gray" />
             </motion.div>
         </Section>
     );

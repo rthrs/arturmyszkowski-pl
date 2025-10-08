@@ -29,7 +29,6 @@ export default function Contact() {
                     <a key={id} href={href} target={target} rel={rel}>
                         <CTAButton
                             label={label}
-                            variant="blue"
                             rightIcon={
                                 <Icon
                                     size={18}
@@ -39,16 +38,6 @@ export default function Contact() {
                         />
                     </a>
                 ))}
-                <CTAButton
-                    label="Go to top"
-                    variant="gray"
-                    onClick={() => {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: "smooth"
-                        });
-                    }}
-                />
             </motion.div>
         </Section>
     );

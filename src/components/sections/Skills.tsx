@@ -3,16 +3,16 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import TechBadgesList from "@/components/TechBadgesList";
-import CTAButton from "@/components/ui/CTAButton";
+import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import WireframeBackground from "@/components/WireframeBackground";
 import { SKILLS } from "@/constants/skills";
 import { DEFAULT_ICON_ANIMATION } from "@/constants/motion";
-import SectionSubtitle from "../ui/SectionSubtitle";
+import SectionSubtitle from "@/components/ui/SectionSubtitle";
 
-export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
+export default function Skills() {
     const [hovered, setHovered] = useState<string | null>(null);
 
     return (
@@ -74,7 +74,7 @@ export default function Skills({ onCtaClick }: { onCtaClick: () => void }) {
                 viewport={{ once: true }}
                 className="pt-2 flex flex-col gap-6 justify-center items-center"
             >
-                <CTAButton onClick={onCtaClick} label="View my Projects" variant="gray" />
+                <SectionScrollButton label="View my Projects" targetSection="projects" variant="gray" />
             </motion.div>
         </Section>
     );

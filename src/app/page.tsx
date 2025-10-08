@@ -10,33 +10,24 @@ import Resume from "@/components/sections/Resume";
 import Contact from "@/components/sections/Contact";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import GoToTopButton from "@/components/ui/GoToTopButton";
+import { scrollToSection } from "@/utils/scroll";
 
 export default function Home() {
-    const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
-    };
-
     return (
         <main className="relative text-white">
             <BackgroundGradient />
 
             <NavBar onNavigate={scrollToSection} />
 
-            <Hero onCtaClick={() => scrollToSection("about")} />
+            <Hero />
             <div className="divider" />
-            <About onCtaClick={() => scrollToSection("skills")} />
+            <About />
             <div className="divider" />
-            <Skills onCtaClick={() => scrollToSection("projects")} />
+            <Skills />
             <div className="divider" />
-            <Projects onCtaClick={() => scrollToSection("resume")} />
+            <Projects />
             <div className="divider" />
-            <Resume onCtaClick={() => scrollToSection("contact")} />
+            <Resume />
             <div className="divider" />
             <Contact />
 

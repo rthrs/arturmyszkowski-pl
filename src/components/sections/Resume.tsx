@@ -2,17 +2,14 @@
 
 import { FiDownload as Download } from "react-icons/fi";
 import CTAButton from "@/components/ui/CTAButton";
+import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SectionSubtitle from "@/components/ui/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 
-interface ResumeProps {
-    onCtaClick: () => void;
-}
-
-export default function Resume({ onCtaClick }: ResumeProps) {
+export default function Resume() {
     return (
         <Section id="resume" containerClassName="max-w-4xl mx-auto" contentClassName="space-y-12">
             <div className="text-center">
@@ -41,7 +38,7 @@ export default function Resume({ onCtaClick }: ResumeProps) {
                         }
                     />
                 </a>
-                <CTAButton onClick={onCtaClick} label="Get in touch" variant="gray" />
+                <SectionScrollButton label="Get in touch" targetSection="contact" variant="gray" />
             </motion.div>
         </Section>
     );

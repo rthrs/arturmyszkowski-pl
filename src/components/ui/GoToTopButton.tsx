@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FiChevronUp } from "react-icons/fi";
+import Button from "./Button";
 
 export default function GoToTopButton() {
     const [isVisible, setIsVisible] = useState(false);
@@ -34,20 +35,21 @@ export default function GoToTopButton() {
     return (
         <AnimatePresence>
             {isVisible && (
-                <motion.button
+                <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.125, ease: "easeOut" }}
-                    onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-900 hover:to-blue-950 text-white p-3 rounded-full shadow-lg hover:shadow-xl border border-blue-700/30 hover:border-blue-600/50 transition-all duration-300"
-                    aria-label="Go to top"
+                    transition={{ duration: 0.2 }}
+                    className="fixed bottom-8 right-8 z-50"
                 >
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600/12 to-blue-700/12 blur-lg" />
-                    <FiChevronUp size={20} className="relative z-10" />
-                </motion.button>
+                    <Button
+                        size="icon"
+                        rounded
+                        onClick={scrollToTop}
+                        leftIcon={<FiChevronUp size={20} />}
+                        variant="gray"
+                    />
+                </motion.div>
             )}
         </AnimatePresence>
     );

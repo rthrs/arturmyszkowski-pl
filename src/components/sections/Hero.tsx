@@ -3,16 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import FluidBackground from "@/components/FluidBackground";
-import CTAButton from "@/components/ui/CTAButton";
+import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Section from "@/components/ui/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpg";
 
-interface HeroProps {
-    onCtaClick: () => void;
-}
-
-export default function Hero({ onCtaClick }: HeroProps) {
+export default function Hero() {
     return (
         <Section
             id="hero"
@@ -69,7 +65,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="pt-4 sm:pt-8 flex justify-center"
             >
-                <CTAButton onClick={onCtaClick} label="Read about me" />
+                <SectionScrollButton label="Read about me" targetSection="about" />
             </motion.div>
 
             <HeroSocials />

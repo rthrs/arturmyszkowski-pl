@@ -1,16 +1,12 @@
 "use client";
 
-import CTAButton from "@/components/ui/CTAButton";
 import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
-import SectionSubtitle from "../ui/SectionSubtitle";
+import SectionSubtitle from "@/components/ui/SectionSubtitle";
+import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import { motion } from "framer-motion";
 
-interface AboutProps {
-    onCtaClick: () => void;
-}
-
-export default function About({ onCtaClick }: AboutProps) {
+export default function About() {
     return (
         <Section id="about" containerClassName="max-w-4xl mx-auto" contentClassName="space-y-12">
             <div className="text-center">
@@ -32,7 +28,7 @@ export default function About({ onCtaClick }: AboutProps) {
                     viewport={{ once: true }}
                     className="pt-8 flex justify-center"
                 >
-                    <CTAButton onClick={onCtaClick} label="Explore my skills" variant="gray" />
+                    <SectionScrollButton label="Explore my skills" targetSection="skills" variant="gray" />
                 </motion.div>
             </div>
         </Section>
