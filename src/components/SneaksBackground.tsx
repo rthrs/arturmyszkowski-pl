@@ -5,7 +5,7 @@ import { useFrame, Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 import { useCanvasVisibility } from "@/hooks/useCanvasVisibility";
 
-interface FlowingLinesBackgroundProps {
+interface SneaksBackgroundProps {
     className?: string;
     lineCount?: number;
     color?: string;
@@ -254,13 +254,13 @@ function FlowingLines({
     return <group ref={groupRef} />;
 }
 
-export default function FlowingLinesBackground({
+export default function SneaksBackground({
     className = "",
     lineCount = 12,
     color = "#64D2FF",
     opacity = 0.15,
     speed = 0.2
-}: FlowingLinesBackgroundProps) {
+}: SneaksBackgroundProps) {
     const [hasError, setHasError] = useState(false);
     const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
 

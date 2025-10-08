@@ -6,7 +6,7 @@ import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Section from "@/components/ui/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpeg";
-import FlowingLinesBackground from "../FlowingLinesBackground";
+import SneaksBackground from "../SneaksBackground";
 
 export default function Hero() {
     return (
@@ -15,7 +15,7 @@ export default function Hero() {
             className="pt-21 pb-12"
             containerClassName="max-w-4xl mx-auto text-center relative z-10"
             contentClassName="space-y-4 sm:space-y-8"
-            background={<FlowingLinesBackground />}
+            background={<SneaksBackground />}
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

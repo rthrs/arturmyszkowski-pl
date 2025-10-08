@@ -8,7 +8,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Resume from "@/components/sections/Resume";
 import Contact from "@/components/sections/Contact";
-import BackgroundGradient from "@/components/BackgroundGradient";
+import GradientBackground from "@/components/GradientBackground";
 import GoToTopButton from "@/components/ui/GoToTopButton";
 import Divider from "@/components/ui/Divider";
 import { scrollToSection } from "@/utils/scroll";
@@ -16,7 +16,7 @@ import { scrollToSection } from "@/utils/scroll";
 export default function Home() {
     return (
         <main className="relative text-white">
-            <BackgroundGradient />
+            <GradientBackground />
 
             <NavBar onNavigate={scrollToSection} />
 
