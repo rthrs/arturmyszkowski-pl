@@ -6,7 +6,7 @@ import FluidBackground from "@/components/FluidBackground";
 import SectionScrollButton from "@/components/ui/SectionScrollButton";
 import Section from "@/components/ui/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
-import profileImage from "../../../public/images/profile.jpg";
+import profileImage from "../../../public/images/profile.jpeg";
 
 export default function Hero() {
     return (
@@ -28,14 +28,14 @@ export default function Hero() {
                     priority
                     src={profileImage}
                     alt="Artur Myszkowski"
-                    className="object-cover absolute -inset-6 blur-2xl scale-120 opacity-20 rounded-full"
+                    className="object-cover absolute -inset-6 blur-2xl scale-125 opacity-20 rounded-full"
                 />
                 <Image
                     fill
                     priority
                     src={profileImage}
                     alt="Artur Myszkowski"
-                    className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center sepia-[0.2]"
+                    className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center"
                 />
             </motion.div>
 
