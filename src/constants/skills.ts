@@ -18,16 +18,16 @@ export enum SkillId {
 }
 
 export interface TechGroup {
-    label: string;
+    label?: string; // Optional - if not provided, renders as simple list without label
     technologies: string[];
+    gridPosition?: string; // Custom grid position for specific layouts
 }
 
 export interface SkillDef {
     name: string;
     icon: IconType;
-    description: string;
-    groupedDescription?: TechGroup[]; // Optional grouped tech badges with labels
-    groupedGridClass?: string; // Grid classes for grouped layout
+    description: TechGroup[]; // Always use array of tech groups
+    gridClass?: string; // Grid classes for layout
     iconColorClass: string;
     cardBgClass: string;
     animation: string;
@@ -40,20 +40,18 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.FRONTEND]: {
         name: "Frontend Development",
         icon: Globe,
-        description:
-            "React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Framer Motion, Styled-Components, Chakra-UI, Redux, Redux Saga, TanStack Query, React Router, RxJS, Immer, Immutable.js, WebGL, Three.js, Shaders, D3.js, WebAssembly, Emscripten, WebWorkers, Vite, Webpack, Rollup, Vue.js, Electron",
-        groupedDescription: [
+        description: [
             {
                 label: "Core",
                 technologies: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "WebWorkers"]
             },
             {
-                label: "Styling",
-                technologies: ["Tailwind CSS", "Framer Motion", "Styled-Components", "Chakra-UI"]
-            },
-            {
                 label: "State Management",
                 technologies: ["Redux", "Redux Saga", "TanStack Query", "React Router", "RxJS", "Immer", "Immutable.js"]
+            },
+            {
+                label: "Styling",
+                technologies: ["Tailwind CSS", "Framer Motion", "Styled-Components", "Chakra-UI"]
             },
             {
                 label: "Graphics",
@@ -68,7 +66,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Vite", "Webpack", "Rollup", "Electron"]
             }
         ],
-        groupedGridClass: "grid-cols-1 md:grid-cols-3",
+        gridClass: "grid-cols-1 md:grid-cols-3",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60",
         animation: "rotate",
@@ -82,7 +80,11 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.MOBILE]: {
         name: "Mobile Development",
         icon: Smartphone,
-        description: "React Native, Expo, iOS, OpenGL ES",
+        description: [
+            {
+                technologies: ["React Native", "Expo", "iOS", "OpenGL ES"]
+            }
+        ],
         iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
         cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60",
         animation: "bounce",
@@ -96,9 +98,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.BACKEND]: {
         name: "Backend Development",
         icon: Server,
-        description:
-            "Node.js, Express, REST API, GraphQL, Python, Django, C/C++, PostgreSQL, SQLite, Firestore, Realtime Database, DuckDB, WebSockets, Postgraphile",
-        groupedDescription: [
+        description: [
             {
                 label: "Core",
                 technologies: ["Node.js", "Express", "Python", "Django", "C/C++"]
@@ -124,7 +124,11 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.DEVOPS]: {
         name: "DevOps & Cloud",
         icon: Cloud,
-        description: "AWS, Firebase, Google Cloud, Netlify, Git, Hugo, CI/CD",
+        description: [
+            {
+                technologies: ["AWS", "Firebase", "Google Cloud", "Netlify", "Git", "Hugo", "CI/CD"]
+            }
+        ],
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
         cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60",
         animation: "float",
@@ -138,7 +142,11 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.LEADERSHIP]: {
         name: "Leadership",
         icon: Users,
-        description: "Agile, Scrum, Kanban, Code Review, Audits, Mentoring, Documentation",
+        description: [
+            {
+                technologies: ["Agile", "Scrum", "Kanban", "Code Review", "Audits", "Mentoring", "Documentation"]
+            }
+        ],
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
         cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60",
         animation: "pulse",

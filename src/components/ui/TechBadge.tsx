@@ -152,9 +152,6 @@ const aliasMap: Record<string, string> = {
     VueJS: "Vue.js",
     Vuejs: "Vue.js",
     "Vue 3": "Vue.js",
-    "Web Socket": "WebSockets",
-    WebSocket: "WebSockets",
-    WS: "WebSockets",
     "OpenGL-ES": "OpenGL ES",
     OpenGLES: "OpenGL ES",
     "GL ES": "OpenGL ES"

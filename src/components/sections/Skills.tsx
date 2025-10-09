@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import TechBadgesList from "@/components/ui/TechBadgesList";
 import GroupedTechBadgesList from "@/components/ui/GroupedTechBadgesList";
 import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Card from "@/components/ui/Card";
@@ -61,14 +60,7 @@ export default function Skills() {
                             <h3 className="text-xl font-medium text-white">{skill.name}</h3>
                         </div>
                         <div className="text-gray-300 font-light">
-                            {skill.groupedDescription ? (
-                                <GroupedTechBadgesList
-                                    groups={skill.groupedDescription}
-                                    gridClass={skill.groupedGridClass}
-                                />
-                            ) : (
-                                <TechBadgesList csv={skill.description} />
-                            )}
+                            <GroupedTechBadgesList groups={skill.description} gridClass={skill.gridClass} />
                         </div>
                     </Card>
                 ))}
