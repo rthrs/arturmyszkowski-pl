@@ -43,7 +43,10 @@ import {
     SiReduxsaga,
     SiVite,
     SiExpo,
-    SiCplusplus
+    SiCplusplus,
+    SiVuedotjs,
+    SiElectron,
+    SiOpengl
 } from "react-icons/si";
 import { FiSettings } from "react-icons/fi";
 
@@ -60,8 +63,8 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Next.js": { icon: <SiNextdotjs />, colorClass: "text-white" },
     Git: { icon: <SiGit />, colorClass: "text-red-500" },
     "REST API": {
-        icon: <span className="font-bold text-[10px]">API</span>,
-        colorClass: "text-gray-200"
+        icon: "API",
+        colorClass: "text-gray-200 font-bold leading-none"
     },
     GraphQL: {
         icon: <SiGraphql />,
@@ -94,8 +97,8 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "TanStack Query": { icon: <SiReactquery />, colorClass: "text-red-400" },
     RxJS: { icon: <SiReactivex />, colorClass: "text-pink-400" },
     "Immutable.js": {
-        icon: <span className="font-bold text-[10px]">IM</span>,
-        colorClass: "text-gray-200"
+        icon: "IM",
+        colorClass: "text-gray-200 font-bold leading-none"
     },
     Immer: { icon: <SiImmer />, colorClass: "text-gray-200" },
     AWS: { icon: <SiAmazonwebservices />, colorClass: "text-orange-400" },
@@ -115,7 +118,15 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "TanStack Router": { icon: <SiReactquery />, colorClass: "text-amber-400" },
     SQLite: { icon: <SiSqlite />, colorClass: "text-sky-400" },
     "Google Cloud": { icon: <SiGooglecloud />, colorClass: "text-blue-400" },
-    "C/C++": { icon: <SiCplusplus />, colorClass: "text-blue-400" }
+    "C/C++": { icon: <SiCplusplus />, colorClass: "text-blue-400" },
+    "Vue.js": { icon: <SiVuedotjs />, colorClass: "text-green-400" },
+    Vue: { icon: <SiVuedotjs />, colorClass: "text-green-400" },
+    Postgraphile: {
+        icon: "PG",
+        colorClass: "text-purple-400 font-bold leading-none"
+    },
+    Electron: { icon: <SiElectron />, colorClass: "text-blue-400" },
+    "OpenGL ES": { icon: <SiOpengl />, colorClass: "text-orange-400" }
 };
 
 const aliasMap: Record<string, string> = {
@@ -137,7 +148,16 @@ const aliasMap: Record<string, string> = {
     C: "C/C++",
     "C++": "C/C++",
     Duckdb: "DuckDB",
-    duckdb: "DuckDB"
+    duckdb: "DuckDB",
+    VueJS: "Vue.js",
+    Vuejs: "Vue.js",
+    "Vue 3": "Vue.js",
+    "Web Socket": "WebSockets",
+    WebSocket: "WebSockets",
+    WS: "WebSockets",
+    "OpenGL-ES": "OpenGL ES",
+    OpenGLES: "OpenGL ES",
+    "GL ES": "OpenGL ES"
 };
 
 export default function TechBadge({ name }: TechBadgeProps) {

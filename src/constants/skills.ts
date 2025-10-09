@@ -41,11 +41,11 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         name: "Frontend Development",
         icon: Globe,
         description:
-            "React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Framer Motion, Styled-Components, Chakra-UI, Redux, Redux Saga, TanStack Query, React Router, RxJS, Immer, Immutable.js, WebGL, Three.js, Shaders, D3.js, WebAssembly, Emscripten, WebWorkers, Vite, Webpack, Rollup",
+            "React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Framer Motion, Styled-Components, Chakra-UI, Redux, Redux Saga, TanStack Query, React Router, RxJS, Immer, Immutable.js, WebGL, Three.js, Shaders, D3.js, WebAssembly, Emscripten, WebWorkers, Vite, Webpack, Rollup, Vue.js, Electron",
         groupedDescription: [
             {
                 label: "Core",
-                technologies: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3"]
+                technologies: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "WebWorkers"]
             },
             {
                 label: "Styling",
@@ -61,11 +61,11 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
             },
             {
                 label: "Low-level",
-                technologies: ["WebAssembly", "Emscripten", "WebWorkers"]
+                technologies: ["WebAssembly", "Emscripten"]
             },
             {
                 label: "Build Tools",
-                technologies: ["Vite", "Webpack", "Rollup"]
+                technologies: ["Vite", "Webpack", "Rollup", "Electron"]
             }
         ],
         groupedGridClass: "grid-cols-1 md:grid-cols-3",
@@ -82,7 +82,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.MOBILE]: {
         name: "Mobile Development",
         icon: Smartphone,
-        description: "React Native, Expo, iOS",
+        description: "React Native, Expo, iOS, OpenGL ES",
         iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
         cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60",
         animation: "bounce",
@@ -97,7 +97,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         name: "Backend Development",
         icon: Server,
         description:
-            "Node.js, Express, REST API, GraphQL, Python, Django, C/C++, PostgreSQL, SQLite, Firestore, Realtime Database, DuckDB",
+            "Node.js, Express, REST API, GraphQL, Python, Django, C/C++, PostgreSQL, SQLite, Firestore, Realtime Database, DuckDB, WebSockets, Postgraphile",
         groupedDescription: [
             {
                 label: "Core",
@@ -105,7 +105,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
             },
             {
                 label: "APIs",
-                technologies: ["REST API", "GraphQL"]
+                technologies: ["REST API", "GraphQL", "Postgraphile"]
             },
             {
                 label: "Databases",
@@ -138,7 +138,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.LEADERSHIP]: {
         name: "Leadership",
         icon: Users,
-        description: "Code Review, Audits, Mentoring, Agile, Scrum, Kanban",
+        description: "Agile, Scrum, Kanban, Code Review, Audits, Mentoring, Documentation",
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
         cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60",
         animation: "pulse",
