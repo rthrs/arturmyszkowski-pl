@@ -120,7 +120,6 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Google Cloud": { icon: <SiGooglecloud />, colorClass: "text-blue-400" },
     "C/C++": { icon: <SiCplusplus />, colorClass: "text-blue-400" },
     "Vue.js": { icon: <SiVuedotjs />, colorClass: "text-green-400" },
-    Vue: { icon: <SiVuedotjs />, colorClass: "text-green-400" },
     Postgraphile: {
         icon: "PG",
         colorClass: "text-purple-400 font-bold leading-none"
@@ -129,37 +128,8 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "OpenGL ES": { icon: <SiOpengl />, colorClass: "text-orange-400" }
 };
 
-const aliasMap: Record<string, string> = {
-    "CSS3/Sass": "CSS3",
-    "Styled Components": "Styled-Components",
-    "Chakra UI": "Chakra-UI",
-    ThreeJS: "Three.js",
-    ThreeJs: "Three.js",
-    NextJS: "Next.js",
-    NextJs: "Next.js",
-    Postgres: "PostgreSQL",
-    "React Query": "TanStack Query",
-    ReactRouter: "React Router",
-    "React-Router": "React Router",
-    JS: "JavaScript",
-    TS: "TypeScript",
-    GCP: "Google Cloud",
-    "Google Cloud Platform": "Google Cloud",
-    C: "C/C++",
-    "C++": "C/C++",
-    Duckdb: "DuckDB",
-    duckdb: "DuckDB",
-    VueJS: "Vue.js",
-    Vuejs: "Vue.js",
-    "Vue 3": "Vue.js",
-    "OpenGL-ES": "OpenGL ES",
-    OpenGLES: "OpenGL ES",
-    "GL ES": "OpenGL ES"
-};
-
 export default function TechBadge({ name }: TechBadgeProps) {
-    const key = aliasMap[name] ?? name;
-    const map = iconMap[key] || null;
+    const map = iconMap[name] || null;
 
     return (
         <span
