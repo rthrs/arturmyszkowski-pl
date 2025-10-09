@@ -2,7 +2,6 @@
 
 import { FiDownload as Download } from "react-icons/fi";
 import CTAButton from "@/components/ui/buttons/CTAButton";
-import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
@@ -17,6 +16,11 @@ export default function Resume() {
             containerClassName="max-w-4xl mx-auto"
             contentClassName="space-y-12"
             background={<FluidBackground />}
+            scrollButton={{
+                label: "Get in touch",
+                targetSection: "contact",
+                variant: "gray"
+            }}
         >
             <div className="text-center">
                 <SectionTitle>Resume</SectionTitle>
@@ -31,7 +35,7 @@ export default function Resume() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex flex-col gap-6 justify-center items-center"
+                className="flex justify-center"
             >
                 <a href={SOCIAL_LINKS.resume.href} target="_blank" rel="noopener noreferrer">
                     <CTAButton
@@ -44,7 +48,6 @@ export default function Resume() {
                         }
                     />
                 </a>
-                <ScrollButton label="Get in touch" targetSection="contact" variant="gray" />
             </motion.div>
         </Section>
     );

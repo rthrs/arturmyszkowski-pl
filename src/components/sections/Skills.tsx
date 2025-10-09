@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import GroupedTechBadgesList from "@/components/ui/GroupedTechBadgesList";
-import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
@@ -17,6 +16,10 @@ export default function Skills() {
             containerClassName="max-w-6xl mx-auto"
             contentClassName="space-y-8 xl:space-y-10"
             background={<WireframeBackground />}
+            scrollButton={{
+                label: "View my Projects",
+                targetSection: "projects"
+            }}
         >
             <div className="text-center">
                 <SectionTitle>Skills</SectionTitle>
@@ -55,16 +58,6 @@ export default function Skills() {
                         </div>
                     </Card>
                 ))}
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="pt-2 xl:pt-4 flex flex-col gap-6 justify-center items-center"
-            >
-                <ScrollButton label="View my Projects" targetSection="projects" variant="gray" />
             </motion.div>
         </Section>
     );

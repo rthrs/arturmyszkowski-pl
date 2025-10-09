@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Section from "@/components/ui/section/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpeg";
@@ -12,10 +11,14 @@ export default function Hero() {
     return (
         <Section
             id="hero"
-            className="pt-21 pb-12"
+            className="pt-21"
             containerClassName="max-w-4xl mx-auto text-center relative z-10"
-            contentClassName="space-y-4 sm:space-y-8"
+            contentClassName="space-y-4 sm:space-y-8 flex flex-col items-center"
             background={<SneaksBackground />}
+            scrollButton={{
+                label: "Read about me",
+                targetSection: "about"
+            }}
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -28,7 +31,7 @@ export default function Hero() {
                     priority
                     src={profileImage}
                     alt="Artur Myszkowski"
-                    className="object-cover absolute -inset-6 blur-2xl scale-125 opacity-20 rounded-full"
+                    className="object-cover absolute -inset-6 blur-xl scale-125 opacity-20 rounded-full"
                 />
                 <Image
                     fill
@@ -58,15 +61,6 @@ export default function Hero() {
                 Building exceptional digital experiences with modern technologies. Passionate about clean code,
                 innovative solutions, and meaningful impact.
             </motion.p>
-
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="pt-4 sm:pt-8 flex justify-center"
-            >
-                <ScrollButton label="Read about me" targetSection="about" />
-            </motion.div>
 
             <HeroSocials />
         </Section>

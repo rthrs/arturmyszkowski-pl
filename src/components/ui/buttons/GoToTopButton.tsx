@@ -47,7 +47,7 @@ export default function GoToTopButton() {
                         rounded
                         onClick={scrollToTop}
                         leftIcon={<FiChevronUp size={20} />}
-                        variant="gray"
+                        variant="ghost"
                     />
                 </motion.div>
             )}
