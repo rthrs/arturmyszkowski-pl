@@ -62,9 +62,9 @@ export default function Projects() {
         <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-8 xl:space-y-10">
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
-                <SectionSubtitle center large>
-                    My experience spans across full-stack development, network analysis, and performance optimization. I
-                    thrive in collaborative environments and enjoy working with diverse teams.
+                <SectionSubtitle>
+                    I enjoy building high-performance web applications combining advanced algorithms, interactive
+                    visualizations, and modern development practices.
                 </SectionSubtitle>
             </div>
 

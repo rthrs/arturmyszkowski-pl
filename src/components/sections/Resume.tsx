@@ -20,7 +20,7 @@ export default function Resume() {
         >
             <div className="text-center">
                 <SectionTitle>Resume</SectionTitle>
-                <SectionSubtitle center>
+                <SectionSubtitle>
                     Download my resume to learn more about my professional experience, technical expertise, and
                     achievements throughout my career.
                 </SectionSubtitle>

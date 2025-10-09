@@ -14,11 +14,18 @@ export default function About() {
             </div>
 
             <div className="space-y-8">
-                <SectionSubtitle large>
+                <SectionSubtitle className="text-justify">
                     I&apos;m a Senior Software Engineer with extensive experience in modern web technologies and a
-                    passion for creating scalable, maintainable applications. Holding a Master&apos;s degree in Computer
-                    Science from the University of Warsaw, I have a strong foundation in algorithms and data structures,
-                    which enables me to solve complex problems and build solutions that make a real difference.
+                    passion for creating scalable, maintainable applications.
+                    <br />
+                    <br />
+                    Holding a Master&apos;s degree in Computer Science from the University of Warsaw, I have a strong
+                    foundation in algorithms and data structures, which enables me to solve complex problems and build
+                    solutions that make a real difference.
+                    <br />
+                    <br />
+                    Recently, I&apos;ve been expanding my expertise and exploring how to work effectively with modern AI
+                    tools, with the goal of significantly boosting my productivity and delivering high-quality results.
                 </SectionSubtitle>
 
                 <motion.div

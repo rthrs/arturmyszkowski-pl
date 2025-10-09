@@ -12,7 +12,7 @@ export default function Contact() {
         <Section id="contact" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-12">
             <div className="text-center">
                 <SectionTitle>Contact</SectionTitle>
-                <SectionSubtitle center>
+                <SectionSubtitle>
                     I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of an
                     ambitious team. Let&apos;s connect and explore how we can work together!
                 </SectionSubtitle>

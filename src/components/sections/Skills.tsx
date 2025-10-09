@@ -20,10 +20,9 @@ export default function Skills() {
         >
             <div className="text-center">
                 <SectionTitle>Skills</SectionTitle>
-                <SectionSubtitle large>
-                    My core philosophy is to continuously strive to learn and apply the most effective technologies for
-                    each project to deliver exceptional results. While my main expertise is in the React ecosystem, I am
-                    adaptable and comfortable working across a broad range of tools and frameworks.
+                <SectionSubtitle>
+                    I specialize in React ecosystem while staying adaptable across full-stack development,
+                    visualization, and performance optimization.
                 </SectionSubtitle>
             </div>
             <motion.div
