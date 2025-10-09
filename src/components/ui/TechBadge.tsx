@@ -19,12 +19,15 @@ import {
     SiDjango,
     SiFirebase,
     SiPostgresql,
+    SiSqlite,
     SiD3Dotjs,
     SiRedux,
     SiReactquery,
+    SiReactrouter,
     SiReactivex,
     SiDuckdb,
     SiAmazonwebservices,
+    SiGooglecloud,
     SiNetlify,
     SiHugo,
     SiWebpack,
@@ -38,7 +41,9 @@ import {
     SiGraphql,
     SiWebassembly,
     SiReduxsaga,
-    SiVite
+    SiVite,
+    SiExpo,
+    SiCplusplus
 } from "react-icons/si";
 import { FiSettings } from "react-icons/fi";
 
@@ -82,6 +87,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     PostgreSQL: { icon: <SiPostgresql />, colorClass: "text-sky-400" },
     "D3.js": { icon: <SiD3Dotjs />, colorClass: "text-orange-500" },
     WebGL: { icon: <SiWebgl />, colorClass: "text-red-400" },
+    Shaders: { icon: <SiWebgl />, colorClass: "text-fuchsia-400" },
     DuckDB: { icon: <SiDuckdb />, colorClass: "text-amber-300" },
     Redux: { icon: <SiRedux />, colorClass: "text-purple-400" },
     "Redux Saga": { icon: <SiReduxsaga />, colorClass: "text-green-500" },
@@ -100,7 +106,16 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" },
     WebWorkers: { icon: <FiSettings />, colorClass: "text-green-400" },
     WebAssembly: { icon: <SiWebassembly />, colorClass: "text-purple-400" },
-    Vite: { icon: <SiVite />, colorClass: "text-yellow-400" }
+    Emscripten: { icon: <SiWebassembly />, colorClass: "text-indigo-300" },
+    Vite: { icon: <SiVite />, colorClass: "text-yellow-400" },
+    Expo: { icon: <SiExpo />, colorClass: "text-white" },
+    Firestore: { icon: <SiFirebase />, colorClass: "text-amber-400" },
+    "Realtime Database": { icon: <SiFirebase />, colorClass: "text-teal-300" },
+    "React Router": { icon: <SiReactrouter />, colorClass: "text-red-500" },
+    "TanStack Router": { icon: <SiReactquery />, colorClass: "text-amber-400" },
+    SQLite: { icon: <SiSqlite />, colorClass: "text-sky-400" },
+    "Google Cloud": { icon: <SiGooglecloud />, colorClass: "text-blue-400" },
+    "C/C++": { icon: <SiCplusplus />, colorClass: "text-blue-400" }
 };
 
 const aliasMap: Record<string, string> = {
@@ -113,9 +128,14 @@ const aliasMap: Record<string, string> = {
     NextJs: "Next.js",
     Postgres: "PostgreSQL",
     "React Query": "TanStack Query",
+    ReactRouter: "React Router",
+    "React-Router": "React Router",
     JS: "JavaScript",
     TS: "TypeScript",
-    Firestore: "Firebase",
+    GCP: "Google Cloud",
+    "Google Cloud Platform": "Google Cloud",
+    C: "C/C++",
+    "C++": "C/C++",
     Duckdb: "DuckDB",
     duckdb: "DuckDB"
 };

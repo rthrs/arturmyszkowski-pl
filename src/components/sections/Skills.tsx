@@ -19,7 +19,7 @@ export default function Skills() {
         <Section
             id="skills"
             containerClassName="max-w-6xl mx-auto"
-            contentClassName="space-y-16"
+            contentClassName="space-y-8 xl:space-y-10"
             background={<WireframeBackground />}
         >
             <div className="text-center">
@@ -35,13 +35,13 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 xl:gap-5 auto-rows-[1fr]"
             >
                 {SKILLS.map((skill) => (
                     <Card
                         key={skill.name}
                         variant="skill"
-                        className={skill.cardBgClass}
+                        className={`${skill.cardBgClass}`}
                         hoverable={true}
                         onHoverStart={() => setHovered(skill.name)}
                         onHoverEnd={() => setHovered(null)}
@@ -71,7 +71,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="pt-2 flex flex-col gap-6 justify-center items-center"
+                className="pt-2 xl:pt-4 flex flex-col gap-6 justify-center items-center"
             >
                 <ScrollButton label="View my Projects" targetSection="projects" variant="gray" />
             </motion.div>
