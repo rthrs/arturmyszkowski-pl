@@ -62,7 +62,10 @@ export default function Skills() {
                         </div>
                         <div className="text-gray-300 font-light">
                             {skill.groupedDescription ? (
-                                <GroupedTechBadgesList groups={skill.groupedDescription} />
+                                <GroupedTechBadgesList
+                                    groups={skill.groupedDescription}
+                                    gridClass={skill.groupedGridClass}
+                                />
                             ) : (
                                 <TechBadgesList csv={skill.description} />
                             )}

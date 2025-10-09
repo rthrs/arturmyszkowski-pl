@@ -27,6 +27,7 @@ export interface SkillDef {
     icon: IconType;
     description: string;
     groupedDescription?: TechGroup[]; // Optional grouped tech badges with labels
+    groupedGridClass?: string; // Grid classes for grouped layout
     iconColorClass: string;
     cardBgClass: string;
     animation: string;
@@ -67,6 +68,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Vite", "Webpack", "Rollup"]
             }
         ],
+        groupedGridClass: "grid-cols-1 md:grid-cols-3",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60",
         animation: "rotate",
