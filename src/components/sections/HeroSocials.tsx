@@ -25,6 +25,10 @@ export default function HeroSocials() {
                 >
                     <div className="absolute -inset-2 rounded-full bg-gray-500/12 blur-md"></div>
                     <Icon size={28} strokeWidth={1.5} className="relative z-10" />
+                    {/* Tooltip */}
+                    <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-gray-900/60 backdrop-blur-sm text-gray-300 text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 whitespace-nowrap z-20">
+                        {label}
+                    </span>
                 </motion.a>
             ))}
         </motion.div>
