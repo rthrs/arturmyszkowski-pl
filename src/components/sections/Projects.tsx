@@ -25,16 +25,7 @@ const projects: Project[] = [
         title: "Networks Centrality",
         description:
             "High-performance web app for interactive network analysis and visualization. Its key feature is a custom WebGL and Three.js rendering engine created to handle large-scale graphs of over 500,000 vertices in real-time.",
-        technologies: [
-            "React",
-            "Three.js",
-            "WebGL",
-            "Styled-Components",
-            "WebWorkers",
-            "Community Detection",
-            "Rollup",
-            "Shaders"
-        ],
+        technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Rollup", "Graph Theory", "Network Analysis"],
         liveUrl: "https://network-centrality.firebaseapp.com/graph",
         image: "/images/projects/networks-centrality.png"
     },
@@ -42,15 +33,7 @@ const projects: Project[] = [
         title: "igraph-community.js",
         description:
             "Open-source JavaScript library for community detection, compiling C/C++ to WebAssembly with Emscripten for near-native browser speeds. It features three novel algorithms I designed for specific network types and serves as the core analysis engine for Networks Centrality app.",
-        technologies: [
-            "JavaScript",
-            "WebAssembly",
-            "Emscripten",
-            "C/C++",
-            "Community Detection",
-            "Graph Theory",
-            "Network Analysis"
-        ],
+        technologies: ["JavaScript", "C/C++", "WebAssembly", "Emscripten"],
         githubUrl: "https://github.com/rthrs/igraph-community.js",
         paperUrl: "/documents/igraph-community-js-paper.pdf",
         image: "/images/projects/igraph-community.png"
@@ -59,7 +42,7 @@ const projects: Project[] = [
         title: "333 Daily",
         description:
             "Modern, responsive React PWA to help people implement Oliver Burkeman's 3/3/3 productivity method. The app uses an intuitive interface and progress tracking to guide users through their daily goals: three hours on a main project, three urgent tasks, and three maintenance items.",
-        technologies: ["React", "PWA", "Tailwind CSS", "Vite", "Framer Motion", "Netlify"],
+        technologies: ["React", "PWA", "Tailwind CSS", "Framer Motion", "Netlify", "Vite"],
         githubUrl: "https://github.com/rthrs/333daily",
         liveUrl: "https://333daily.netlify.app",
         image: "/images/projects/333daily.png"
@@ -68,7 +51,7 @@ const projects: Project[] = [
         title: "arturmyszkowski.pl",
         description:
             "My personal portfolio as an open-source project using Next.js. The goal was to create a visually engaging and responsive platform to showcase my professional journey, with the code publicly available for exploration.",
-        technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "React"],
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
         githubUrl: "https://github.com/rthrs/arturmyszkowski-pl",
         image: "/images/projects/arturmyszkowski-pl.png"
     }
@@ -76,7 +59,7 @@ const projects: Project[] = [
 
 export default function Projects() {
     return (
-        <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-16">
+        <Section id="projects" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-8 xl:space-y-10">
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
                 <SectionSubtitle center large>
@@ -90,40 +73,40 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-4"
             >
                 {projects.map((project) => (
                     <Card key={project.title} featured={project.featured} className="flex flex-col">
                         {project.image && (
-                            <div className="relative w-full h-42 rounded-t-xl overflow-hidden">
+                            <div className="relative w-full h-32 rounded-t-xl overflow-hidden">
                                 <Image
                                     src={project.image}
                                     alt={`${project.title} screenshot`}
                                     fill
                                     className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-800/50 to-transparent" />
                             </div>
                         )}
-                        <div className="p-6 flex flex-col space-y-4 flex-1">
-                            <h4 className="text-xl font-semibold text-gray-100 group-hover:text-white transition-colors">
+                        <div className="p-4 flex flex-col space-y-3 flex-1">
+                            <h4 className="text-lg font-semibold text-gray-100 group-hover:text-white transition-colors">
                                 {project.title}
                             </h4>
 
                             <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
 
-                            <div className="flex flex-wrap gap-2 p-1 mt-auto">
+                            <div className="flex flex-wrap gap-1.5 mt-auto">
                                 {project.technologies.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="px-3 py-0.5 bg-gray-700/50 text-gray-300 text-xs rounded-full border border-gray-600/30"
+                                        className="px-2 py-0.5 bg-gray-700/50 text-gray-300 text-xs rounded-full border border-gray-600/30"
                                     >
                                         {tech}
                                     </span>
                                 ))}
                             </div>
 
-                            <div className="flex gap-3 pt-2">
+                            <div className="flex gap-3 pt-1">
                                 {project.githubUrl && (
                                     <motion.a
                                         href={project.githubUrl}
@@ -177,7 +160,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="flex flex-col gap-6 justify-center items-center"
+                className="pt-2 xl:pt-4 flex flex-col gap-6 justify-center items-center"
             >
                 <ScrollButton label="View my Resume" targetSection="resume" variant="gray" />
             </motion.div>
