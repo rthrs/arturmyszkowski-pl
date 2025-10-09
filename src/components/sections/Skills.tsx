@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import GroupedTechBadgesList from "@/components/ui/GroupedTechBadgesList";
 import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Card from "@/components/ui/Card";
@@ -9,11 +8,9 @@ import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import WireframeBackground from "@/components/backgrounds/WireframeBackground";
 import { SKILLS } from "@/constants/skills";
-import { DEFAULT_ICON_ANIMATION } from "@/constants/motion";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 
 export default function Skills() {
-    const [hovered, setHovered] = useState<string | null>(null);
 
     return (
         <Section
@@ -43,19 +40,12 @@ export default function Skills() {
                         variant="skill"
                         className={`${skill.cardBgClass} ${skill.spanClass || ""}`}
                         hoverable={true}
-                        onHoverStart={() => setHovered(skill.name)}
-                        onHoverEnd={() => setHovered(null)}
                     >
                         <div className="flex items-center mb-4">
                             <div
-                                className={`p-2.5 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 hover:border-gray-500/50`}
+                                className={`p-2.5 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 group-hover:border-gray-500/50`}
                             >
-                                <motion.div
-                                    animate={hovered === skill.name ? skill.hoverAnimation : DEFAULT_ICON_ANIMATION}
-                                    className="text-white transform-gpu will-change-transform"
-                                >
-                                    <skill.icon size={20} />
-                                </motion.div>
+                                <skill.icon size={20} className="text-white transition-transform duration-200 group-hover:scale-110" />
                             </div>
                             <h3 className="text-xl font-medium text-white">{skill.name}</h3>
                         </div>

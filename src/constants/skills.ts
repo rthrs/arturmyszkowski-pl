@@ -7,7 +7,6 @@ import {
 } from "react-icons/fi";
 
 import type { IconType } from "react-icons";
-import type { HTMLMotionProps } from "framer-motion";
 
 export enum SkillId {
     FRONTEND = "frontend",
@@ -30,8 +29,6 @@ export interface SkillDef {
     gridClass?: string; // Grid classes for layout
     iconColorClass: string;
     cardBgClass: string;
-    animation: string;
-    hoverAnimation: HTMLMotionProps<"div">["animate"];
     spanClass?: string; // responsive grid column span class, e.g., "lg:col-span-2"
 }
 
@@ -69,12 +66,6 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         gridClass: "grid-cols-1 md:grid-cols-3",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60",
-        animation: "rotate",
-        hoverAnimation: {
-            rotate: [0, 5, -5, 0],
-            scale: [1, 1.05, 1.05, 1],
-            transition: { duration: 0.6, ease: "easeInOut" as const }
-        },
         spanClass: "md:col-span-2 lg:col-span-4"
     },
     [SkillId.MOBILE]: {
@@ -87,12 +78,6 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         ],
         iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
         cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60",
-        animation: "bounce",
-        hoverAnimation: {
-            y: [0, -4, 0],
-            scale: [1, 1.05, 1],
-            transition: { duration: 0.6, ease: "easeInOut" as const }
-        },
         spanClass: "lg:col-span-2"
     },
     [SkillId.BACKEND]: {
@@ -114,11 +99,6 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         ],
         iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
         cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60",
-        animation: "scale",
-        hoverAnimation: {
-            scale: [1, 1.08, 1],
-            transition: { duration: 0.6, ease: "easeInOut" as const }
-        },
         spanClass: "md:col-span-2 lg:col-span-2"
     },
     [SkillId.DEVOPS]: {
@@ -131,12 +111,6 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         ],
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
         cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60",
-        animation: "float",
-        hoverAnimation: {
-            y: [0, -3, -6, -3, 0],
-            scale: [1, 1.03, 1.05, 1.03, 1],
-            transition: { duration: 0.6, ease: "easeInOut" as const }
-        },
         spanClass: "lg:col-span-2"
     },
     [SkillId.LEADERSHIP]: {
@@ -149,11 +123,6 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         ],
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
         cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60",
-        animation: "pulse",
-        hoverAnimation: {
-            scale: [1, 1.03, 1],
-            transition: { duration: 0.6, ease: "easeInOut" as const }
-        },
         spanClass: "lg:col-span-2"
     }
 };
