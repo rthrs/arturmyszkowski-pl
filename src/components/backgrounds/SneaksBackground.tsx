@@ -25,199 +25,200 @@ function FlowingLines({
     speed: number;
 }) {
     const groupRef = useRef<THREE.Group>(null);
-    const [materials, setMaterials] = useState<THREE.ShaderMaterial[]>([]);
+    const bandMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
+    const lineMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
 
     useEffect(() => {
         const group = new THREE.Group();
-        const shaderMaterials: THREE.ShaderMaterial[] = [];
 
-        // Create colored bands between lines
+        // Create single merged geometry for all colored bands
+        const allBandPositions: number[] = [];
+        const allBandUvs: number[] = [];
+        const allBandIndices: number[] = [];
+        let vertexOffset = 0;
+
         for (let i = 0; i < lineCount - 1; i++) {
             const segments = 200;
-            const positions: number[] = [];
-            const uvs: number[] = [];
-            const indices: number[] = [];
-
-            // Create two parallel curves for top and bottom of the band
             const y1 = (i / lineCount) * 20 - 10;
             const y2 = ((i + 1) / lineCount) * 20 - 10;
 
-            // Generate vertices for the band (two rows of vertices)
+            // Generate vertices for the band
             for (let j = 0; j <= segments; j++) {
                 const x = (j / segments) * 40 - 20;
                 const u = j / segments;
 
                 // Top row
-                positions.push(x, y1, 0);
-                uvs.push(u, 0, i); // u, v, lineIndex
+                allBandPositions.push(x, y1, 0);
+                allBandUvs.push(u, 0, i); // u, v, lineIndex
 
                 // Bottom row
-                positions.push(x, y2, 0);
-                uvs.push(u, 1, i);
+                allBandPositions.push(x, y2, 0);
+                allBandUvs.push(u, 1, i);
             }
 
-            // Create triangles between the two rows
+            // Create triangles
             for (let j = 0; j < segments; j++) {
-                const base = j * 2;
-                // Triangle 1
-                indices.push(base, base + 1, base + 2);
-                // Triangle 2
-                indices.push(base + 1, base + 3, base + 2);
+                const base = vertexOffset + j * 2;
+                allBandIndices.push(base, base + 1, base + 2);
+                allBandIndices.push(base + 1, base + 3, base + 2);
             }
 
-            const geometry = new THREE.BufferGeometry();
-            geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-            geometry.setAttribute("aUvAndIndex", new THREE.Float32BufferAttribute(uvs, 3));
-            geometry.setIndex(indices);
-
-            // Create shader material for animated colored bands
-            const material = new THREE.ShaderMaterial({
-                uniforms: {
-                    uTime: { value: 0 },
-                    uLineIndex: { value: i },
-                    uLineCount: { value: lineCount },
-                    uColor1: { value: new THREE.Color("#007AFF") }, // Apple Blue
-                    uColor2: { value: new THREE.Color("#AF52DE") }, // Apple Purple
-                    uColor3: { value: new THREE.Color("#FF9500") }, // Apple Orange
-                    uColor4: { value: new THREE.Color("#64D2FF") }, // Cyan
-                    uOpacity: { value: opacity * 0.8 }
-                },
-                vertexShader: `
-                    uniform float uTime;
-                    uniform float uLineIndex;
-                    uniform float uLineCount;
-                    attribute vec3 aUvAndIndex;
-                    varying vec2 vUv;
-                    varying float vLineIndex;
-                    varying float vWaveIntensity;
-                    
-                    void main() {
-                        vec3 pos = position;
-                        vUv = aUvAndIndex.xy;
-                        vLineIndex = aUvAndIndex.z;
-                        
-                        // Create flowing wave motion with multiple frequencies
-                        float wave1 = sin(pos.x * 0.3 + uTime * 1.2 + uLineIndex * 0.5) * 0.8;
-                        float wave2 = sin(pos.x * 0.5 - uTime * 0.8 + uLineIndex * 0.3) * 0.5;
-                        float wave3 = cos(pos.x * 0.2 + uTime * 0.6 + uLineIndex * 0.7) * 0.3;
-                        
-                        float totalWave = wave1 + wave2 + wave3;
-                        
-                        // Apply wave motion to Y, scaled by v coordinate (0 or 1)
-                        pos.y += totalWave * (1.0 - vUv.y * 0.5);
-                        
-                        // Add Z-depth variation for 3D effect
-                        pos.z += sin(pos.x * 0.4 + uTime * 1.0 + uLineIndex * 0.4) * 0.5;
-                        
-                        // Pass wave intensity to fragment shader
-                        vWaveIntensity = (totalWave + 1.6) / 3.2;
-                        
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                    }
-                `,
-                fragmentShader: `
-                    uniform vec3 uColor1;
-                    uniform vec3 uColor2;
-                    uniform vec3 uColor3;
-                    uniform vec3 uColor4;
-                    uniform float uOpacity;
-                    uniform float uTime;
-                    uniform float uLineIndex;
-                    varying vec2 vUv;
-                    varying float vLineIndex;
-                    varying float vWaveIntensity;
-                    
-                    void main() {
-                        // Create flowing gradient based on position along band
-                        float gradient = vUv.x + sin(uTime * 0.5 + vLineIndex * 0.3) * 0.2;
-                        
-                        // Mix colors based on gradient and wave intensity
-                        vec3 color1 = mix(uColor1, uColor2, gradient);
-                        vec3 color2 = mix(uColor3, uColor4, 1.0 - gradient);
-                        vec3 finalColor = mix(color1, color2, vWaveIntensity);
-                        
-                        // Add vertical gradient for depth
-                        float verticalGradient = 1.0 - vUv.y * 0.3;
-                        
-                        // Add subtle glow based on wave intensity
-                        float glow = 1.0 + vWaveIntensity * 0.4;
-                        
-                        gl_FragColor = vec4(finalColor * glow * verticalGradient, uOpacity);
-                    }
-                `,
-                transparent: true,
-                side: THREE.DoubleSide,
-                depthWrite: false
-            });
-
-            shaderMaterials.push(material);
-
-            const mesh = new THREE.Mesh(geometry, material);
-            group.add(mesh);
+            vertexOffset += (segments + 1) * 2;
         }
 
-        // Add thin lines on top for definition
+        // Create single geometry for all bands
+        const bandGeometry = new THREE.BufferGeometry();
+        bandGeometry.setAttribute("position", new THREE.Float32BufferAttribute(allBandPositions, 3));
+        bandGeometry.setAttribute("aUvAndIndex", new THREE.Float32BufferAttribute(allBandUvs, 3));
+        bandGeometry.setIndex(allBandIndices);
+
+        // Create single shader material for all bands
+        const bandMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uLineCount: { value: lineCount },
+                uColor1: { value: new THREE.Color("#007AFF") }, // Apple Blue
+                uColor2: { value: new THREE.Color("#AF52DE") }, // Apple Purple
+                uColor3: { value: new THREE.Color("#FF9500") }, // Apple Orange
+                uColor4: { value: new THREE.Color("#64D2FF") }, // Cyan
+                uOpacity: { value: opacity * 0.8 }
+            },
+            vertexShader: `
+                uniform float uTime;
+                uniform float uLineCount;
+                attribute vec3 aUvAndIndex;
+                varying vec2 vUv;
+                varying float vLineIndex;
+                varying float vWaveIntensity;
+                
+                void main() {
+                    vec3 pos = position;
+                    vUv = aUvAndIndex.xy;
+                    vLineIndex = aUvAndIndex.z;
+                    
+                    // Create flowing wave motion with multiple frequencies
+                    float wave1 = sin(pos.x * 0.3 + uTime * 1.2 + vLineIndex * 0.5) * 0.8;
+                    float wave2 = sin(pos.x * 0.5 - uTime * 0.8 + vLineIndex * 0.3) * 0.5;
+                    float wave3 = cos(pos.x * 0.2 + uTime * 0.6 + vLineIndex * 0.7) * 0.3;
+                    
+                    float totalWave = wave1 + wave2 + wave3;
+                    
+                    // Apply wave motion to Y, scaled by v coordinate (0 or 1)
+                    pos.y += totalWave * (1.0 - vUv.y * 0.5);
+                    
+                    // Add Z-depth variation for 3D effect
+                    pos.z += sin(pos.x * 0.4 + uTime * 1.0 + vLineIndex * 0.4) * 0.5;
+                    
+                    // Pass wave intensity to fragment shader
+                    vWaveIntensity = (totalWave + 1.6) / 3.2;
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 uColor1;
+                uniform vec3 uColor2;
+                uniform vec3 uColor3;
+                uniform vec3 uColor4;
+                uniform float uOpacity;
+                uniform float uTime;
+                varying vec2 vUv;
+                varying float vLineIndex;
+                varying float vWaveIntensity;
+                
+                void main() {
+                    // Create flowing gradient based on position along band
+                    float gradient = vUv.x + sin(uTime * 0.5 + vLineIndex * 0.3) * 0.2;
+                    
+                    // Mix colors based on gradient and wave intensity
+                    vec3 color1 = mix(uColor1, uColor2, gradient);
+                    vec3 color2 = mix(uColor3, uColor4, 1.0 - gradient);
+                    vec3 finalColor = mix(color1, color2, vWaveIntensity);
+                    
+                    // Add vertical gradient for depth
+                    float verticalGradient = 1.0 - vUv.y * 0.3;
+                    
+                    // Add subtle glow based on wave intensity
+                    float glow = 1.0 + vWaveIntensity * 0.4;
+                    
+                    gl_FragColor = vec4(finalColor * glow * verticalGradient, uOpacity);
+                }
+            `,
+            transparent: true,
+            side: THREE.DoubleSide,
+            depthWrite: false
+        });
+
+        bandMaterialRef.current = bandMaterial;
+        const bandMesh = new THREE.Mesh(bandGeometry, bandMaterial);
+        group.add(bandMesh);
+
+        // Create single merged geometry for all lines
+        const lineGeometry = new THREE.BufferGeometry();
+        const positions: number[] = [];
+        const lineIndices: number[] = [];
+        const lineIndexAttribute: number[] = [];
+
         for (let i = 0; i < lineCount; i++) {
             const segments = 200;
-            const positions: number[] = [];
-
             const y = (i / lineCount) * 20 - 10;
+            const startVertex = positions.length / 3;
+
             for (let j = 0; j <= segments; j++) {
                 const x = (j / segments) * 40 - 20;
                 positions.push(x, y, 0);
+                lineIndexAttribute.push(i); // Store line index separately
             }
 
-            const points: THREE.Vector3[] = [];
-            for (let j = 0; j < positions.length; j += 3) {
-                points.push(new THREE.Vector3(positions[j], positions[j + 1], positions[j + 2]));
+            // Create line indices for this line segment
+            for (let j = 0; j < segments; j++) {
+                lineIndices.push(startVertex + j, startVertex + j + 1);
             }
-
-            const curve = new THREE.CatmullRomCurve3(points);
-            const curvePoints = curve.getPoints(segments);
-            const geometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
-
-            // Simple line material
-            const lineMaterial = new THREE.ShaderMaterial({
-                uniforms: {
-                    uTime: { value: 0 },
-                    uLineIndex: { value: i },
-                    uColor: { value: new THREE.Color(color) },
-                    uOpacity: { value: opacity * 0.4 }
-                },
-                vertexShader: `
-                    uniform float uTime;
-                    uniform float uLineIndex;
-                    
-                    void main() {
-                        vec3 pos = position;
-                        
-                        float wave1 = sin(pos.x * 0.3 + uTime * 1.2 + uLineIndex * 0.5) * 0.8;
-                        float wave2 = sin(pos.x * 0.5 - uTime * 0.8 + uLineIndex * 0.3) * 0.5;
-                        float wave3 = cos(pos.x * 0.2 + uTime * 0.6 + uLineIndex * 0.7) * 0.3;
-                        
-                        pos.y += wave1 + wave2 + wave3;
-                        pos.z += sin(pos.x * 0.4 + uTime * 1.0 + uLineIndex * 0.4) * 0.5;
-                        
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                    }
-                `,
-                fragmentShader: `
-                    uniform vec3 uColor;
-                    uniform float uOpacity;
-                    
-                    void main() {
-                        gl_FragColor = vec4(uColor, uOpacity);
-                    }
-                `,
-                transparent: true,
-                depthWrite: false
-            });
-
-            shaderMaterials.push(lineMaterial);
-
-            const line = new THREE.Line(geometry, lineMaterial);
-            group.add(line);
         }
+
+        lineGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+        lineGeometry.setAttribute("aLineIndex", new THREE.Float32BufferAttribute(lineIndexAttribute, 1));
+        lineGeometry.setIndex(lineIndices);
+
+        // Create single shader material for all lines
+        const lineMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uColor: { value: new THREE.Color(color) },
+                uOpacity: { value: opacity * 0.4 }
+            },
+            vertexShader: `
+                uniform float uTime;
+                attribute float aLineIndex;
+                
+                void main() {
+                    vec3 pos = position;
+                    
+                    float wave1 = sin(pos.x * 0.3 + uTime * 1.2 + aLineIndex * 0.5) * 0.8;
+                    float wave2 = sin(pos.x * 0.5 - uTime * 0.8 + aLineIndex * 0.3) * 0.5;
+                    float wave3 = cos(pos.x * 0.2 + uTime * 0.6 + aLineIndex * 0.7) * 0.3;
+                    
+                    pos.y += wave1 + wave2 + wave3;
+                    pos.z += sin(pos.x * 0.4 + uTime * 1.0 + aLineIndex * 0.4) * 0.5;
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 uColor;
+                uniform float uOpacity;
+                
+                void main() {
+                    gl_FragColor = vec4(uColor, uOpacity);
+                }
+            `,
+            transparent: true,
+            depthWrite: false
+        });
+
+        lineMaterialRef.current = lineMaterial;
+        const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+        group.add(lineSegments);
 
         if (groupRef.current) {
             // Clear existing children
@@ -228,23 +229,27 @@ function FlowingLines({
             groupRef.current.add(group);
         }
 
-        setMaterials(shaderMaterials);
-
         return () => {
-            shaderMaterials.forEach((mat) => mat.dispose());
+            bandMaterial.dispose();
+            bandGeometry.dispose();
+            lineMaterial.dispose();
+            lineGeometry.dispose();
             group.clear();
         };
     }, [lineCount, color, opacity]);
 
     useFrame((state) => {
-        if (!groupRef.current || materials.length === 0) return;
+        if (!groupRef.current) return;
 
         const time = state.clock.getElapsedTime() * speed;
 
-        // Update shader uniforms
-        materials.forEach((material) => {
-            material.uniforms.uTime.value = time;
-        });
+        // Update only two materials instead of looping through many
+        if (bandMaterialRef.current) {
+            bandMaterialRef.current.uniforms.uTime.value = time;
+        }
+        if (lineMaterialRef.current) {
+            lineMaterialRef.current.uniforms.uTime.value = time;
+        }
 
         // Gentle rotation of entire group
         groupRef.current.rotation.z = Math.sin(time * 0.2) * 0.05;
