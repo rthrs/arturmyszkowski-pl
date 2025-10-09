@@ -159,6 +159,10 @@ function FluidPlane({ speed = 0.3, opacity = 1.0 }: FluidPlaneProps) {
         });
 
         setMaterial(shaderMaterial);
+
+        return () => {
+            shaderMaterial.dispose();
+        };
     }, [opacity]);
 
     useFrame((state) => {

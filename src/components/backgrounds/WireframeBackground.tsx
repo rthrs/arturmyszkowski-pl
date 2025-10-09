@@ -106,10 +106,6 @@ function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }:
             new THREE.Float32BufferAttribute(twistPoints, 3)
         ];
 
-        // Ensure the geometry is properly computed
-        baseGeometry.computeBoundingBox();
-        baseGeometry.computeBoundingSphere();
-
         setGeometry(baseGeometry);
 
         // Create wireframe material that supports morphing
@@ -121,6 +117,11 @@ function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }:
         });
 
         setMaterial(wireframeMaterial);
+
+        return () => {
+            wireframeMaterial.dispose();
+            baseGeometry.dispose();
+        };
     }, [scale, divisions]);
 
     useFrame((state) => {
