@@ -137,7 +137,7 @@ export default function TechBadge({ name }: TechBadgeProps) {
             title={name}
         >
             {map && <span className={`${map.colorClass} text-xs`}>{map.icon}</span>}
-            <span className="leading-none">{name}</span>
+            <span className="leading-none text-nowrap">{name}</span>
         </span>
     );
 }

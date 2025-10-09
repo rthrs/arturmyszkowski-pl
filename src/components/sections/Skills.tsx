@@ -11,7 +11,6 @@ import { SKILLS } from "@/constants/skills";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 
 export default function Skills() {
-
     return (
         <Section
             id="skills"
@@ -32,7 +31,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 xl:gap-5 auto-rows-auto items-start"
+                className="grid grid-cols-1 md:grid-cols-[repeat(3,auto)] gap-6 md:gap-4"
             >
                 {SKILLS.map((skill) => (
                     <Card
@@ -45,7 +44,10 @@ export default function Skills() {
                             <div
                                 className={`p-2.5 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 group-hover:border-gray-500/50`}
                             >
-                                <skill.icon size={20} className="text-white transition-transform duration-200 group-hover:scale-110" />
+                                <skill.icon
+                                    size={20}
+                                    className="text-white transition-transform duration-200 group-hover:scale-110"
+                                />
                             </div>
                             <h3 className="text-xl font-medium text-white">{skill.name}</h3>
                         </div>
