@@ -184,81 +184,83 @@ type FlowingLinesProps = {
 
 function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed = 0.3 }: FlowingLinesProps) {
     const groupRef = useRef<THREE.Group>(null);
-    const [materials, setMaterials] = useState<THREE.ShaderMaterial[]>([]);
+    const lineMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
 
     useEffect(() => {
         const group = new THREE.Group();
-        const shaderMaterials: THREE.ShaderMaterial[] = [];
 
         // Adjust width based on aspect ratio to cover the viewport properly
         const width = 30;
         const height = 20;
 
-        // Add thin vertical lines for definition
+        // Create single merged geometry for all lines
+        const lineGeometry = new THREE.BufferGeometry();
+        const positions: number[] = [];
+        const lineIndices: number[] = [];
+        const lineIndexAttribute: number[] = [];
+
         for (let i = 0; i < lineCount; i++) {
             const segments = 200;
-            const positions: number[] = [];
-
-            // Create vertical lines with aspect-aware width
             const x = (i / lineCount) * width - width / 2;
+            const startVertex = positions.length / 3;
+
             for (let j = 0; j <= segments; j++) {
                 const y = (j / segments) * height - height / 2; // Lines go vertically
                 positions.push(x, y, 0);
+                lineIndexAttribute.push(i); // Store line index separately
             }
 
-            const points: THREE.Vector3[] = [];
-            for (let j = 0; j < positions.length; j += 3) {
-                points.push(new THREE.Vector3(positions[j], positions[j + 1], positions[j + 2]));
+            // Create line indices for this line segment
+            for (let j = 0; j < segments; j++) {
+                lineIndices.push(startVertex + j, startVertex + j + 1);
             }
-
-            const curve = new THREE.CatmullRomCurve3(points);
-            const curvePoints = curve.getPoints(segments);
-            const geometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
-
-            // Simple line material with wave animation (adapted for vertical lines)
-            const lineMaterial = new THREE.ShaderMaterial({
-                uniforms: {
-                    uTime: { value: 0 },
-                    uLineIndex: { value: i },
-                    uColor: { value: new THREE.Color(color) },
-                    uOpacity: { value: opacity * 0.4 }
-                },
-                vertexShader: `
-                    uniform float uTime;
-                    uniform float uLineIndex;
-                    
-                    void main() {
-                        vec3 pos = position;
-                        
-                        // Wave motion along Y axis (vertical lines)
-                        float wave1 = sin(pos.y * 0.3 + uTime * 1.2 + uLineIndex * 0.5) * 0.8;
-                        float wave2 = sin(pos.y * 0.5 - uTime * 0.8 + uLineIndex * 0.3) * 0.5;
-                        float wave3 = cos(pos.y * 0.2 + uTime * 0.6 + uLineIndex * 0.7) * 0.3;
-                        
-                        // Apply wave to X (horizontal displacement for vertical lines)
-                        pos.x += wave1 + wave2 + wave3;
-                        pos.z += sin(pos.y * 0.4 + uTime * 1.0 + uLineIndex * 0.4) * 0.5;
-                        
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                    }
-                `,
-                fragmentShader: `
-                    uniform vec3 uColor;
-                    uniform float uOpacity;
-                    
-                    void main() {
-                        gl_FragColor = vec4(uColor, uOpacity);
-                    }
-                `,
-                transparent: true,
-                depthWrite: false
-            });
-
-            shaderMaterials.push(lineMaterial);
-
-            const line = new THREE.Line(geometry, lineMaterial);
-            group.add(line);
         }
+
+        lineGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+        lineGeometry.setAttribute("aLineIndex", new THREE.Float32BufferAttribute(lineIndexAttribute, 1));
+        lineGeometry.setIndex(lineIndices);
+
+        // Create single shader material for all lines
+        const lineMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uColor: { value: new THREE.Color(color) },
+                uOpacity: { value: opacity * 0.4 }
+            },
+            vertexShader: `
+                uniform float uTime;
+                attribute float aLineIndex;
+                
+                void main() {
+                    vec3 pos = position;
+                    
+                    // Wave motion along Y axis (vertical lines)
+                    float wave1 = sin(pos.y * 0.3 + uTime * 1.2 + aLineIndex * 0.5) * 0.8;
+                    float wave2 = sin(pos.y * 0.5 - uTime * 0.8 + aLineIndex * 0.3) * 0.5;
+                    float wave3 = cos(pos.y * 0.2 + uTime * 0.6 + aLineIndex * 0.7) * 0.3;
+                    
+                    // Apply wave to X (horizontal displacement for vertical lines)
+                    pos.x += wave1 + wave2 + wave3;
+                    pos.z += sin(pos.y * 0.4 + uTime * 1.0 + aLineIndex * 0.4) * 0.5;
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 uColor;
+                uniform float uOpacity;
+                
+                void main() {
+                    gl_FragColor = vec4(uColor, uOpacity);
+                }
+            `,
+            transparent: true,
+            depthWrite: false
+        });
+
+        lineMaterialRef.current = lineMaterial;
+        const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+        group.add(lineSegments);
 
         if (groupRef.current) {
             // Clear existing children
@@ -269,23 +271,22 @@ function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed
             groupRef.current.add(group);
         }
 
-        setMaterials(shaderMaterials);
-
         return () => {
-            shaderMaterials.forEach((mat) => mat.dispose());
+            lineMaterial.dispose();
+            lineGeometry.dispose();
             group.clear();
         };
     }, [lineCount, color, opacity]);
 
     useFrame((state) => {
-        if (!groupRef.current || materials.length === 0) return;
+        if (!groupRef.current) return;
 
         const time = state.clock.getElapsedTime() * speed;
 
-        // Update shader uniforms
-        materials.forEach((material) => {
-            material.uniforms.uTime.value = time;
-        });
+        // Update only one material instead of looping through many
+        if (lineMaterialRef.current) {
+            lineMaterialRef.current.uniforms.uTime.value = time;
+        }
 
         // Gentle rotation of entire group
         groupRef.current.rotation.z = Math.sin(time * 0.2) * 0.05;
