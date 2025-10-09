@@ -12,5 +12,13 @@ interface ScrollButtonProps extends Omit<ButtonProps, "rightIcon" | "onClick"> {
 export default function ScrollButton({ label, targetSection, ...rest }: ScrollButtonProps) {
     const icon = <FiArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform duration-200" />;
 
-    return <Button label={label} rightIcon={icon} onClick={() => scrollToSection(targetSection)} {...rest} />;
+    return (
+        <Button
+            label={label}
+            rightIcon={icon}
+            onClick={() => scrollToSection(targetSection)}
+            variant="ghost"
+            {...rest}
+        />
+    );
 }
