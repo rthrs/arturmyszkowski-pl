@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import TechBadgesList from "@/components/ui/TechBadgesList";
+import GroupedTechBadgesList from "@/components/ui/GroupedTechBadgesList";
 import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/section/Section";
@@ -35,13 +36,13 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 xl:gap-5 auto-rows-[1fr]"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 xl:gap-5 auto-rows-auto items-start"
             >
                 {SKILLS.map((skill) => (
                     <Card
                         key={skill.name}
                         variant="skill"
-                        className={`${skill.cardBgClass}`}
+                        className={`${skill.cardBgClass} ${skill.spanClass || ""}`}
                         hoverable={true}
                         onHoverStart={() => setHovered(skill.name)}
                         onHoverEnd={() => setHovered(null)}
@@ -60,7 +61,11 @@ export default function Skills() {
                             <h3 className="text-xl font-medium text-white">{skill.name}</h3>
                         </div>
                         <div className="text-gray-300 font-light">
-                            <TechBadgesList csv={skill.description} />
+                            {skill.groupedDescription ? (
+                                <GroupedTechBadgesList groups={skill.groupedDescription} />
+                            ) : (
+                                <TechBadgesList csv={skill.description} />
+                            )}
                         </div>
                     </Card>
                 ))}
