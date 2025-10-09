@@ -146,10 +146,10 @@ export default function TechBadge({ name }: TechBadgeProps) {
 
     return (
         <span
-            className="inline-flex items-center gap-2 px-2 py-1.5 rounded-full border border-gray-600/60 text-gray-200 text-sm/none bg-black/60"
+            className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-gray-600/60 text-gray-200 text-sm bg-black/60"
             title={name}
         >
-            {map && <span className={`${map.colorClass} text-[14px]`}>{map.icon}</span>}
+            {map && <span className={`${map.colorClass} text-xs`}>{map.icon}</span>}
             <span className="leading-none">{name}</span>
         </span>
     );

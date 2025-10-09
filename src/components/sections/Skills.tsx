@@ -47,15 +47,15 @@ export default function Skills() {
                         onHoverStart={() => setHovered(skill.name)}
                         onHoverEnd={() => setHovered(null)}
                     >
-                        <div className="flex items-center mb-6">
+                        <div className="flex items-center mb-4">
                             <div
-                                className={`p-3 rounded-xl bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-4 border border-gray-600/30 hover:border-gray-500/50`}
+                                className={`p-2.5 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 hover:border-gray-500/50`}
                             >
                                 <motion.div
                                     animate={hovered === skill.name ? skill.hoverAnimation : DEFAULT_ICON_ANIMATION}
                                     className="text-white transform-gpu will-change-transform"
                                 >
-                                    <skill.icon size={24} />
+                                    <skill.icon size={20} />
                                 </motion.div>
                             </div>
                             <h3 className="text-xl font-medium text-white">{skill.name}</h3>
