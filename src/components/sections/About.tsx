@@ -18,17 +18,16 @@ export default function About() {
             <div className="text-center">
                 <SectionTitle>About</SectionTitle>
                 <SectionSubtitle className="text-justify">
-                    I&apos;m a Software Engineer with extensive experience in modern web technologies and a passion for
-                    creating scalable, maintainable applications.
+                    I am a Software Engineer specializing in high-performance web applications. My passion lies in
+                    building scalable, maintainable solutions that effectively solve complex problems.
                     <br />
                     <br />
-                    Holding a Master&apos;s degree in Computer Science from the University of Warsaw, I have a strong
-                    foundation in algorithms and data structures, which enables me to solve complex problems and build
-                    solutions that make a real difference.
+                    With a Master&apos;s in Computer Science from the University of Warsaw, I have a deep foundation in
+                    algorithms and data structures. This allows me to architect and build solutions that not only
+                    function flawlessly but also deliver significant impact.
                     <br />
-                    <br />
-                    Recently, I&apos;ve been expanding my expertise and exploring how to work effectively with modern AI
-                    tools, with the goal of boosting my productivity and delivering high-quality results.
+                    <br />I am currently integrating modern AI tools into my workflow to further enhance productivity
+                    and push the boundaries of what&apos;s possible in web development.
                 </SectionSubtitle>
             </div>
         </Section>

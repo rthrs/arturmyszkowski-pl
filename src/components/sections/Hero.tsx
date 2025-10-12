@@ -58,8 +58,8 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-light"
             >
-                Building exceptional digital experiences with modern technologies. Passionate about clean code,
-                innovative solutions, and meaningful impact.
+                I build high-performance web applications that bring complex data to life. Passionate about clean code,
+                innovative solutions, and creating meaningful user impact.
             </motion.p>
 
             <HeroSocials />

@@ -23,7 +23,7 @@ const projects: Project[] = [
     {
         title: "Networks Centrality",
         description:
-            "High-performance web app for interactive network analysis and visualization. Its key feature is a custom WebGL and Three.js rendering engine created to handle large-scale graphs of over 500,000 vertices in real-time.",
+            "An interactive network analysis tool capable of visualizing massive datasets. I engineered a custom WebGL rendering engine that achieves real-time interaction with graphs of over 500,000 vertices, overcoming typical browser performance limitations.",
         technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Rollup", "Graph Theory", "Network Analysis"],
         liveUrl: "https://network-centrality.firebaseapp.com/graph",
         image: "/images/projects/networks-centrality.png"
@@ -31,7 +31,7 @@ const projects: Project[] = [
     {
         title: "igraph-community.js",
         description:
-            "Open-source JavaScript library for community detection, compiling C/C++ to WebAssembly with Emscripten for near-native browser speeds. It features three novel algorithms I designed for specific network types and serves as the core analysis engine for Networks Centrality app.",
+            "A open-source, high-speed JavaScript library for community detection in networks. By compiling C/C++ to WebAssembly, the library achieves near-native performance in the browser. It features three novel algorithms I designed and serves as the core analysis engine for the Networks Centrality project.",
         technologies: ["JavaScript", "C/C++", "WebAssembly", "Emscripten"],
         githubUrl: "https://github.com/rthrs/igraph-community.js",
         paperUrl: "/documents/igraph-community-js-paper.pdf",
@@ -40,7 +40,7 @@ const projects: Project[] = [
     {
         title: "333 Daily",
         description:
-            "Modern, responsive React PWA to help people implement Oliver Burkeman's 3/3/3 productivity method. The app uses an intuitive interface and progress tracking to guide users through their daily goals: three hours on a main project, three urgent tasks, and three maintenance items.",
+            "A responsive Progressive Web App (PWA) designed to implement the 3/3/3 productivity method. I focused on creating an intuitive, minimalist user interface with clear progress tracking to help users effortlessly manage their daily goals and stay productive.",
         technologies: ["React", "PWA", "Tailwind CSS", "Framer Motion", "Netlify", "Vite"],
         githubUrl: "https://github.com/rthrs/333daily",
         liveUrl: "https://333daily.netlify.app",

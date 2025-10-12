@@ -9,7 +9,8 @@ import {
 import type { IconType } from "react-icons";
 
 export enum SkillId {
-    FRONTEND = "frontend",
+    FRONTEND_CORE = "frontend-core",
+    FRONTEND_ADVANCED = "frontend-advanced",
     MOBILE = "mobile",
     BACKEND = "backend",
     DEVOPS = "devops",
@@ -33,23 +34,13 @@ export interface SkillDef {
 }
 
 const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
-    [SkillId.FRONTEND]: {
-        name: "Frontend Development",
+    [SkillId.FRONTEND_CORE]: {
+        name: "Frontend Core",
         icon: Globe,
         description: [
             {
                 label: "Core",
-                technologies: [
-                    "React",
-                    "Next.js",
-                    "Vue.js",
-                    "TypeScript",
-                    "JavaScript",
-                    "HTML5",
-                    "CSS3",
-                    "WebWorkers",
-                    "Hugo"
-                ]
+                technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3"]
             },
             {
                 label: "State Management",
@@ -60,37 +51,41 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                     "TanStack Query",
                     "React Router",
                     "Immer",
-                    "Immutable.js",
-                    "Ramda",
+
                     "React Hook Form",
-                    "Zod",
-                    "Yup"
+                    "Zod"
                 ]
             },
             {
                 label: "Styling",
                 technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
-            },
+            }
+        ],
+        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
+        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.FRONTEND_ADVANCED]: {
+        name: "Frontend Advanced",
+        icon: Globe,
+        description: [
             {
                 label: "Graphics",
                 technologies: ["WebGL", "Three.js", "Shaders", "D3.js"]
             },
             {
                 label: "Low-level",
-                technologies: ["WebAssembly", "Emscripten"]
+                technologies: ["WebAssembly", "Emscripten", "WebWorkers"]
             },
             {
                 label: "Build Tools",
-                technologies: ["Vite", "Webpack", "Rollup", "Electron"]
+                technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo"]
             }
         ],
-        gridClass: "grid-cols-1 md:grid-cols-[repeat(3,auto)]",
-        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
-        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60",
-        spanClass: "md:col-span-2"
+        iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
+        cardBgClass: "from-indigo-900/60 to-gray-900/60 hover:from-indigo-800/60 hover:to-gray-800/60"
     },
     [SkillId.BACKEND]: {
-        name: "Backend Development",
+        name: "Backend",
         icon: Server,
         description: [
             {
@@ -110,7 +105,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60"
     },
     [SkillId.MOBILE]: {
-        name: "Mobile Development",
+        name: "Mobile",
         icon: Smartphone,
         description: [
             {
@@ -136,17 +131,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Users,
         description: [
             {
-                technologies: [
-                    "Agile",
-                    "Scrum",
-                    "Kanban",
-                    "Code Review",
-                    "Audits",
-                    "Mentoring",
-                    "Documentation",
-                    "Project Management",
-                    "Client Communication"
-                ]
+                technologies: ["Agile", "Scrum", "Kanban", "Code Review", "Audits", "Mentoring", "Team Collaboration"]
             }
         ],
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
@@ -155,7 +140,14 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
 };
 
 // Skill ordering
-const SKILL_ORDER = [SkillId.FRONTEND, SkillId.BACKEND, SkillId.MOBILE, SkillId.DEVOPS, SkillId.LEADERSHIP] as const;
+const SKILL_ORDER = [
+    SkillId.FRONTEND_CORE,
+    SkillId.FRONTEND_ADVANCED,
+    SkillId.BACKEND,
+    SkillId.MOBILE,
+    SkillId.DEVOPS,
+    SkillId.LEADERSHIP
+] as const;
 
 // Export ordered skills array
 export const SKILLS: SkillDef[] = SKILL_ORDER.map((key) => SKILL_DEFINITIONS[key]);

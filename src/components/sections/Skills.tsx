@@ -24,8 +24,8 @@ export default function Skills() {
             <div className="text-center">
                 <SectionTitle>Skills</SectionTitle>
                 <SectionSubtitle>
-                    I specialize in React ecosystem while staying adaptable across full-stack development,
-                    visualization, and performance optimization.
+                    I specialize in the React ecosystem and excel at building full-stack solutions with a focus on
+                    interactive data visualization and performance optimization.
                 </SectionSubtitle>
             </div>
             <motion.div
