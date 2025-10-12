@@ -39,15 +39,37 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         description: [
             {
                 label: "Core",
-                technologies: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "WebWorkers"]
+                technologies: [
+                    "React",
+                    "Next.js",
+                    "Vue.js",
+                    "TypeScript",
+                    "JavaScript",
+                    "HTML5",
+                    "CSS3",
+                    "WebWorkers",
+                    "Hugo"
+                ]
             },
             {
                 label: "State Management",
-                technologies: ["Redux", "Redux Saga", "TanStack Query", "React Router", "RxJS", "Immer", "Immutable.js"]
+                technologies: [
+                    "Redux",
+                    "RxJS",
+                    "Redux Saga",
+                    "TanStack Query",
+                    "React Router",
+                    "Immer",
+                    "Immutable.js",
+                    "Ramda",
+                    "React Hook Form",
+                    "Zod",
+                    "Yup"
+                ]
             },
             {
                 label: "Styling",
-                technologies: ["Tailwind CSS", "Framer Motion", "Styled-Components", "Chakra-UI"]
+                technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
             },
             {
                 label: "Graphics",
@@ -73,7 +95,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         description: [
             {
                 label: "Core",
-                technologies: ["Node.js", "Express", "Python", "Django", "C/C++"]
+                technologies: ["Node.js", "Express", "Python", "Django", "Flask", "C/C++"]
             },
             {
                 label: "APIs",
@@ -92,7 +114,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Smartphone,
         description: [
             {
-                technologies: ["React Native", "Expo", "iOS", "OpenGL ES"]
+                technologies: ["React Native", "Expo", "OpenGL ES"]
             }
         ],
         iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
@@ -103,7 +125,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cloud,
         description: [
             {
-                technologies: ["AWS", "Firebase", "Google Cloud", "Netlify", "Git", "Hugo", "CI/CD"]
+                technologies: ["AWS", "Firebase", "Google Cloud", "Netlify", "Docker", "CI/CD", "Git"]
             }
         ],
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
@@ -114,7 +136,17 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Users,
         description: [
             {
-                technologies: ["Agile", "Scrum", "Kanban", "Code Review", "Audits", "Mentoring", "Documentation"]
+                technologies: [
+                    "Agile",
+                    "Scrum",
+                    "Kanban",
+                    "Code Review",
+                    "Audits",
+                    "Mentoring",
+                    "Documentation",
+                    "Project Management",
+                    "Client Communication"
+                ]
             }
         ],
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",

@@ -18,8 +18,8 @@ export default function About() {
             <div className="text-center">
                 <SectionTitle>About</SectionTitle>
                 <SectionSubtitle className="text-justify">
-                    I&apos;m a Senior Software Engineer with extensive experience in modern web technologies and a
-                    passion for creating scalable, maintainable applications.
+                    I&apos;m a Software Engineer with extensive experience in modern web technologies and a passion for
+                    creating scalable, maintainable applications.
                     <br />
                     <br />
                     Holding a Master&apos;s degree in Computer Science from the University of Warsaw, I have a strong

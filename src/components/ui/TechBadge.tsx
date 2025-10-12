@@ -46,7 +46,11 @@ import {
     SiCplusplus,
     SiVuedotjs,
     SiElectron,
-    SiOpengl
+    SiOpengl,
+    SiDocker,
+    SiReacthookform,
+    SiFlask,
+    SiZod
 } from "react-icons/si";
 import { FiSettings } from "react-icons/fi";
 
@@ -74,11 +78,11 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     CSS3: { icon: <SiCss3 />, colorClass: "text-blue-500" },
     Sass: { icon: <SiSass />, colorClass: "text-pink-400" },
     "Tailwind CSS": { icon: <SiTailwindcss />, colorClass: "text-sky-400" },
-    "Styled-Components": {
+    "Styled Components": {
         icon: <SiStyledcomponents />,
         colorClass: "text-pink-300"
     },
-    "Chakra-UI": { icon: <SiChakraui />, colorClass: "text-teal-300" },
+    "Chakra UI": { icon: <SiChakraui />, colorClass: "text-teal-300" },
     "React Native": { icon: <SiReact />, colorClass: "text-cyan-300" },
     iOS: { icon: <SiApple />, colorClass: "text-gray-200" },
     Android: { icon: <SiAndroid />, colorClass: "text-green-500" },
@@ -125,7 +129,22 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
         colorClass: "text-purple-400 font-bold leading-none"
     },
     Electron: { icon: <SiElectron />, colorClass: "text-blue-400" },
-    "OpenGL ES": { icon: <SiOpengl />, colorClass: "text-orange-400" }
+    "OpenGL ES": { icon: <SiOpengl />, colorClass: "text-orange-400" },
+    Docker: { icon: <SiDocker />, colorClass: "text-blue-400" },
+    "React Hook Form": { icon: <SiReacthookform />, colorClass: "text-pink-400" },
+    Zod: {
+        icon: <SiZod />,
+        colorClass: "text-blue-400 font-bold leading-none"
+    },
+    Yup: {
+        icon: "Y",
+        colorClass: "text-gray-300 font-bold leading-none"
+    },
+    Ramda: {
+        icon: "R",
+        colorClass: "text-purple-400 font-bold leading-none"
+    },
+    Flask: { icon: <SiFlask />, colorClass: "text-white" }
 };
 
 export default function TechBadge({ name }: TechBadgeProps) {
