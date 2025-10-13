@@ -125,7 +125,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Google Cloud": { icon: <SiGooglecloud />, colorClass: "text-blue-400" },
     "C/C++": { icon: <SiCplusplus />, colorClass: "text-blue-400" },
     "Vue.js": { icon: <SiVuedotjs />, colorClass: "text-green-400" },
-    Postgraphile: {
+    PostGraphile: {
         icon: "PG",
         colorClass: "text-purple-400 font-bold leading-none"
     },

@@ -31,7 +31,7 @@ const projects: Project[] = [
     {
         title: "igraph-community.js",
         description:
-            "A open-source, high-speed JavaScript library for community detection in networks. By compiling C/C++ to WebAssembly, the library achieves near-native performance in the browser. It features three novel algorithms I designed and serves as the core analysis engine for the Networks Centrality project.",
+            "A high-speed JavaScript library for community detection in networks. By compiling C/C++ to WebAssembly, the library achieves near-native performance in the browser. It features three novel algorithms I designed and serves as the core analysis engine for the Networks Centrality project.",
         technologies: ["JavaScript", "C/C++", "WebAssembly", "Emscripten"],
         githubUrl: "https://github.com/rthrs/igraph-community.js",
         paperUrl: "/documents/igraph-community-js-paper.pdf",

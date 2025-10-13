@@ -6,7 +6,7 @@ import Card from "@/components/ui/Card";
 import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import WireframeBackground from "@/components/backgrounds/WireframeBackground";
-import { SKILLS } from "@/constants/skills";
+import { SKILLS, SKILLS_GRID_CLASS_NAME } from "@/constants/skills";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 
 export default function Skills() {
@@ -33,7 +33,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-[repeat(2,auto)] sm:grid-rows-[repeat(6,auto)] lg:grid-cols-[repeat(3,auto)] gap-6 sm:gap-4"
+                className={SKILLS_GRID_CLASS_NAME}
             >
                 {SKILLS.map((skill) => (
                     <Card

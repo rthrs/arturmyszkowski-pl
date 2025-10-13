@@ -3,18 +3,19 @@ import {
     FiSmartphone as Smartphone,
     FiServer as Server,
     FiCloud as Cloud,
-    FiUsers as Users
+    FiUsers as Users,
+    FiZap as Zap
 } from "react-icons/fi";
 
 import type { IconType } from "react-icons";
 
 export enum SkillId {
     FRONTEND_CORE = "frontend-core",
-    FRONTEND_ADVANCED = "frontend-advanced",
+    GRAPHICS_AND_LOW_LEVEL = "graphics-and-low-level",
     MOBILE = "mobile",
     BACKEND = "backend",
-    DEVOPS = "devops",
-    LEADERSHIP = "leadership"
+    DEVOPS_AND_CLOUD = "devops-and-cloud",
+    SOFT_SKILLS = "soft-skills"
 }
 
 export interface TechGroup {
@@ -33,14 +34,16 @@ export interface SkillDef {
     spanClass?: string; // responsive grid column span class, e.g., "lg:col-span-2"
 }
 
+export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-[repeat(3,auto)] gap-6 sm:gap-4";
+
 const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.FRONTEND_CORE]: {
-        name: "Frontend Core",
+        name: "Frontend",
         icon: Globe,
         description: [
             {
                 label: "Core",
-                technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3"]
+                technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "WebWorkers"]
             },
 
             {
@@ -58,29 +61,23 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                     "React Router",
                     "Immer",
                     "React Hook Form"
-                ],
-                gridPosition: "md:col-span-2"
-            }
-        ],
-        gridClass: "grid-cols-1 md:grid-cols-[repeat(2,auto)]",
-        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
-        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
-    },
-    [SkillId.FRONTEND_ADVANCED]: {
-        name: "Frontend Advanced",
-        icon: Globe,
-        description: [
-            {
-                label: "Graphics",
-                technologies: ["WebGL", "Three.js", "Shaders", "D3.js"]
-            },
-            {
-                label: "Low-level",
-                technologies: ["WebAssembly", "Emscripten", "WebWorkers"]
+                ]
             },
             {
                 label: "Build Tools",
                 technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo"]
+            }
+        ],
+        spanClass: "row-span-3",
+        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
+        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.GRAPHICS_AND_LOW_LEVEL]: {
+        name: "Graphics & Low-level",
+        icon: Zap,
+        description: [
+            {
+                technologies: ["WebGL", "Three.js", "Shaders", "D3.js", "WebAssembly", "Emscripten"]
             }
         ],
         iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
@@ -96,13 +93,14 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
             },
             {
                 label: "APIs",
-                technologies: ["REST API", "GraphQL", "Postgraphile"]
+                technologies: ["REST API", "GraphQL", "PostGraphile"]
             },
             {
                 label: "Databases",
                 technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j"]
             }
         ],
+        spanClass: "row-span-2",
         iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
         cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60"
     },
@@ -117,7 +115,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
         cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60"
     },
-    [SkillId.DEVOPS]: {
+    [SkillId.DEVOPS_AND_CLOUD]: {
         name: "DevOps & Cloud",
         icon: Cloud,
         description: [
@@ -128,12 +126,26 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
         cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60"
     },
-    [SkillId.LEADERSHIP]: {
-        name: "Leadership",
+    [SkillId.SOFT_SKILLS]: {
+        name: "Soft Skills",
         icon: Users,
         description: [
             {
-                technologies: ["Agile", "Scrum", "Kanban", "Code Review", "Audits", "Mentoring", "Team Collaboration"]
+                technologies: [
+                    "Leadership",
+                    "Client Communication",
+                    "Agile",
+
+                    "Problem Solving",
+                    "Team Collaboration",
+
+                    "Scrum",
+                    "Kanban",
+                    "Code Review",
+
+                    "Documentation",
+                    "Design Docs"
+                ]
             }
         ],
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
@@ -144,11 +156,13 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
 // Skill ordering
 const SKILL_ORDER = [
     SkillId.FRONTEND_CORE,
-    SkillId.FRONTEND_ADVANCED,
     SkillId.BACKEND,
-    SkillId.DEVOPS,
+
     SkillId.MOBILE,
-    SkillId.LEADERSHIP
+    SkillId.SOFT_SKILLS,
+    SkillId.GRAPHICS_AND_LOW_LEVEL,
+
+    SkillId.DEVOPS_AND_CLOUD
 ] as const;
 
 // Export ordered skills array
