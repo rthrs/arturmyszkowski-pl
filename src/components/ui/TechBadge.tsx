@@ -53,7 +53,16 @@ import {
     SiZod,
     SiNeo4J
 } from "react-icons/si";
-import { FiSettings } from "react-icons/fi";
+import {
+    FiSettings,
+    FiUsers,
+    FiMessageCircle,
+    FiTrendingUp,
+    FiZap,
+    FiCheckCircle,
+    FiFileText,
+    FiEdit3
+} from "react-icons/fi";
 
 interface TechBadgeProps {
     name: string;
@@ -138,7 +147,18 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
         colorClass: "text-blue-400 font-bold leading-none"
     },
     Neo4j: { icon: <SiNeo4J />, colorClass: "text-blue-600" },
-    Flask: { icon: <SiFlask />, colorClass: "text-white" }
+    Flask: { icon: <SiFlask />, colorClass: "text-white" },
+    // Soft Skills
+    Leadership: { icon: <FiUsers />, colorClass: "text-amber-400" },
+    "Client Communication": { icon: <FiMessageCircle />, colorClass: "text-blue-400" },
+    Agile: { icon: <FiTrendingUp />, colorClass: "text-green-400" },
+    "Problem Solving": { icon: <FiZap />, colorClass: "text-yellow-400" },
+    "Team Collaboration": { icon: <FiUsers />, colorClass: "text-purple-400" },
+    Scrum: { icon: <FiCheckCircle />, colorClass: "text-teal-400" },
+    Kanban: { icon: <FiCheckCircle />, colorClass: "text-cyan-400" },
+    "Code Review": { icon: <FiFileText />, colorClass: "text-pink-400" },
+    Documentation: { icon: <FiFileText />, colorClass: "text-orange-400" },
+    "Design Docs": { icon: <FiEdit3 />, colorClass: "text-indigo-400" }
 };
 
 export default function TechBadge({ name }: TechBadgeProps) {
