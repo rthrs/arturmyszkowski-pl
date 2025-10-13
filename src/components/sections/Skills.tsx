@@ -33,7 +33,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-[repeat(3,auto)] gap-6 md:gap-4"
+                className="grid grid-cols-1 sm:grid-cols-[repeat(2,auto)] sm:grid-rows-[repeat(6,auto)] lg:grid-cols-[repeat(3,auto)] gap-6 sm:gap-4"
             >
                 {SKILLS.map((skill) => (
                     <Card

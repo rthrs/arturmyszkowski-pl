@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
     title: "Artur Myszkowski | Senior Software Engineer",
     description:
-        "Senior Software Engineer with 7+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.",
+        "Senior Software Engineer with 8+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.",
     keywords: [
         "software Engineer",
         "senior Engineer",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     ],
     authors: [{ name: "Artur Myszkowski" }],
     openGraph: {
-        title: "Artur Myszkowski | Senior Software Engineer",
+        title: "Artur Myszkowski | Software Engineer",
         description: "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
         type: "website"
     }

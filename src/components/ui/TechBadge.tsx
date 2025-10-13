@@ -50,7 +50,8 @@ import {
     SiDocker,
     SiReacthookform,
     SiFlask,
-    SiZod
+    SiZod,
+    SiNeo4J
 } from "react-icons/si";
 import { FiSettings } from "react-icons/fi";
 
@@ -136,14 +137,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
         icon: <SiZod />,
         colorClass: "text-blue-400 font-bold leading-none"
     },
-    Yup: {
-        icon: "Y",
-        colorClass: "text-gray-300 font-bold leading-none"
-    },
-    Ramda: {
-        icon: "R",
-        colorClass: "text-purple-400 font-bold leading-none"
-    },
+    Neo4j: { icon: <SiNeo4J />, colorClass: "text-blue-600" },
     Flask: { icon: <SiFlask />, colorClass: "text-white" }
 };
 

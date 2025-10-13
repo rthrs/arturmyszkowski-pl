@@ -42,6 +42,12 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 label: "Core",
                 technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3"]
             },
+
+            {
+                label: "Styling",
+                technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
+            },
+
             {
                 label: "State Management",
                 technologies: [
@@ -51,16 +57,12 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                     "TanStack Query",
                     "React Router",
                     "Immer",
-
-                    "React Hook Form",
-                    "Zod"
-                ]
-            },
-            {
-                label: "Styling",
-                technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
+                    "React Hook Form"
+                ],
+                gridPosition: "md:col-span-2"
             }
         ],
+        gridClass: "grid-cols-1 md:grid-cols-[repeat(2,auto)]",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
     },
@@ -98,7 +100,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
             },
             {
                 label: "Databases",
-                technologies: ["PostgreSQL", "SQLite", "Firestore", "Realtime Database", "DuckDB"]
+                technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j"]
             }
         ],
         iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
@@ -120,7 +122,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cloud,
         description: [
             {
-                technologies: ["AWS", "Firebase", "Google Cloud", "Netlify", "Docker", "CI/CD", "Git"]
+                technologies: ["AWS", "Google Cloud", "Netlify", "Docker", "CI/CD", "Git"]
             }
         ],
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
@@ -144,8 +146,8 @@ const SKILL_ORDER = [
     SkillId.FRONTEND_CORE,
     SkillId.FRONTEND_ADVANCED,
     SkillId.BACKEND,
-    SkillId.MOBILE,
     SkillId.DEVOPS,
+    SkillId.MOBILE,
     SkillId.LEADERSHIP
 ] as const;
 
