@@ -35,7 +35,7 @@ export const SOCIAL_LINKS = {
     },
     resume: {
         id: "resume",
-        href: "/documents/Artur_Myszkowski_Resume_2025_v4.pdf",
+        href: "/documents/Artur_Myszkowski_Resume_2025_v5b-3.pdf",
         label: "Resume",
         icon: FiFileText,
         target: "_blank",

@@ -18,8 +18,7 @@ export default function Resume() {
             background={<FluidBackground />}
             scrollButton={{
                 label: "Get in touch",
-                targetSection: "contact",
-                variant: "gray"
+                targetSection: "contact"
             }}
         >
             <div className="text-center">
