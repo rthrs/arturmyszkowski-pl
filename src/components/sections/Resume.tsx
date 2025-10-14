@@ -17,12 +17,12 @@ export default function Resume() {
             contentClassName="space-y-12"
             background={<FluidBackground />}
             scrollButton={{
-                label: "Get in touch",
+                label: "Let's Connect!",
                 targetSection: "contact"
             }}
         >
             <div className="text-center">
-                <SectionTitle>Resume</SectionTitle>
+                <SectionTitle>Experience</SectionTitle>
                 <SectionSubtitle>
                     Download my resume to learn more about my professional experience, technical expertise, and
                     achievements throughout my career.

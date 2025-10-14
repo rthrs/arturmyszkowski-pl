@@ -15,7 +15,7 @@ export default function FullStackSolutions() {
             containerClassName="max-w-6xl mx-auto"
             contentClassName="space-y-8 xl:space-y-10"
             scrollButton={{
-                label: "View my Projects",
+                label: "Check Out My Projects",
                 targetSection: "projects"
             }}
         >

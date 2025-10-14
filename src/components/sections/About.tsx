@@ -11,12 +11,12 @@ export default function About() {
             containerClassName="max-w-4xl mx-auto"
             contentClassName="space-y-8 xl:space-y-10 flex flex-col items-center"
             scrollButton={{
-                label: "Explore my skills",
+                label: "Explore My Skills",
                 targetSection: "frontend-expertise"
             }}
         >
             <div className="text-center">
-                <SectionTitle>About</SectionTitle>
+                <SectionTitle>About Me</SectionTitle>
                 <SectionSubtitle className="text-justify">
                     I am a Software Engineer specializing in high-performance web applications. My passion lies in
                     building scalable, maintainable solutions that effectively solve complex problems.

@@ -16,7 +16,7 @@ export default function Hero() {
             contentClassName="space-y-4 sm:space-y-8 flex flex-col items-center"
             background={<SneaksBackground />}
             scrollButton={{
-                label: "Read about me",
+                label: "Learn More",
                 targetSection: "about"
             }}
         >

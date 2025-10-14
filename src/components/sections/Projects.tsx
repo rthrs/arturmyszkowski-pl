@@ -63,7 +63,7 @@ export default function Projects() {
             containerClassName="max-w-6xl mx-auto"
             contentClassName="space-y-8 xl:space-y-10"
             scrollButton={{
-                label: "View my Resume",
+                label: "Learn My Journey",
                 targetSection: "resume"
             }}
         >
