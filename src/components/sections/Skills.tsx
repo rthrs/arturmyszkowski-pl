@@ -42,16 +42,16 @@ export default function Skills() {
                         className={`${skill.cardBgClass} ${skill.spanClass || ""}`}
                         hoverable={true}
                     >
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-2.5">
                             <div
-                                className={`p-2.5 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 group-hover:border-gray-500/50`}
+                                className={`p-2 rounded-md bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-2.5 border border-gray-600/30 group-hover:border-gray-500/50`}
                             >
                                 <skill.icon
-                                    size={20}
+                                    size={18}
                                     className="text-white transition-transform duration-200 group-hover:scale-110"
                                 />
                             </div>
-                            <h3 className="text-xl font-medium text-white">{skill.name}</h3>
+                            <h3 className="text-lg font-medium text-white">{skill.name}</h3>
                         </div>
                         <div className="text-gray-300 font-light">
                             <GroupedTechBadgesList groups={skill.description} gridClass={skill.gridClass} />

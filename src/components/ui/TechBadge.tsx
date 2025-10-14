@@ -76,7 +76,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     "Framer Motion": { icon: <SiFramer />, colorClass: "text-white" },
     "Next.js": { icon: <SiNextdotjs />, colorClass: "text-white" },
     Git: { icon: <SiGit />, colorClass: "text-red-500" },
-    "REST API": {
+    REST: {
         icon: "API",
         colorClass: "text-gray-200 font-bold leading-none"
     },
@@ -148,17 +148,20 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     },
     Neo4j: { icon: <SiNeo4J />, colorClass: "text-blue-600" },
     Flask: { icon: <SiFlask />, colorClass: "text-white" },
-    // Soft Skills
+    // Soft Skills & Project Management
     Leadership: { icon: <FiUsers />, colorClass: "text-amber-400" },
     "Client Communication": { icon: <FiMessageCircle />, colorClass: "text-blue-400" },
-    Agile: { icon: <FiTrendingUp />, colorClass: "text-green-400" },
-    "Problem Solving": { icon: <FiZap />, colorClass: "text-yellow-400" },
+    "Problem-solving": { icon: <FiZap />, colorClass: "text-yellow-400" },
     "Team Collaboration": { icon: <FiUsers />, colorClass: "text-purple-400" },
+    Agile: { icon: <FiTrendingUp />, colorClass: "text-green-400" },
     Scrum: { icon: <FiCheckCircle />, colorClass: "text-teal-400" },
     Kanban: { icon: <FiCheckCircle />, colorClass: "text-cyan-400" },
     "Code Review": { icon: <FiFileText />, colorClass: "text-pink-400" },
     Documentation: { icon: <FiFileText />, colorClass: "text-orange-400" },
-    "Design Docs": { icon: <FiEdit3 />, colorClass: "text-indigo-400" }
+    "Design Docs": { icon: <FiEdit3 />, colorClass: "text-indigo-400" },
+    // Languages
+    "English Professional": { icon: "🇬🇧", colorClass: "text-white" },
+    "Polish Native": { icon: "🇵🇱", colorClass: "text-white" }
 };
 
 export default function TechBadge({ name }: TechBadgeProps) {
@@ -166,10 +169,10 @@ export default function TechBadge({ name }: TechBadgeProps) {
 
     return (
         <span
-            className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full border border-gray-600/60 text-gray-200 text-sm bg-black/60"
+            className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full border border-gray-600/60 text-gray-200 text-[13px] bg-black/60"
             title={name}
         >
-            {map && <span className={`${map.colorClass} text-xs`}>{map.icon}</span>}
+            {map && <span className={`${map.colorClass} text-[12px]`}>{map.icon}</span>}
             <span className="leading-none text-nowrap">{name}</span>
         </span>
     );

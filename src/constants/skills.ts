@@ -1,21 +1,33 @@
 import {
-    FiGlobe as Globe,
     FiSmartphone as Smartphone,
     FiServer as Server,
     FiCloud as Cloud,
     FiUsers as Users,
-    FiZap as Zap
+    FiZap as Zap,
+    FiCode as Code,
+    FiLayers as Layers,
+    FiBox as Box,
+    FiTool as Tool,
+    FiDatabase as Database,
+    FiGlobe as Globe,
+    FiClipboard as Clipboard
 } from "react-icons/fi";
 
 import type { IconType } from "react-icons";
 
 export enum SkillId {
     FRONTEND_CORE = "frontend-core",
+    FRONTEND_STATE = "frontend-state",
+    FRONTEND_STYLING = "frontend-styling",
     GRAPHICS_AND_LOW_LEVEL = "graphics-and-low-level",
+    FRONTEND_BUILD = "frontend-build",
     MOBILE = "mobile",
     BACKEND = "backend",
+    BACKEND_DB = "backend-db",
     DEVOPS_AND_CLOUD = "devops-and-cloud",
-    SOFT_SKILLS = "soft-skills"
+    PROJECT_MANAGEMENT = "project-management",
+    SOFT_SKILLS = "soft-skills",
+    LANGUAGES = "languages"
 }
 
 export interface TechGroup {
@@ -34,77 +46,85 @@ export interface SkillDef {
     spanClass?: string; // responsive grid column span class, e.g., "lg:col-span-2"
 }
 
-export const SKILLS_GRID_CLASS_NAME =
-    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(3,auto)] gap-4";
+export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3";
 
 const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.FRONTEND_CORE]: {
-        name: "Frontend",
-        icon: Globe,
+        name: "Frontend Core",
+        icon: Code,
         description: [
             {
-                label: "Core",
                 technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "WebWorkers"]
-            },
-
+            }
+        ],
+        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
+        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.FRONTEND_STYLING]: {
+        name: "Styling",
+        icon: Layers,
+        description: [
             {
-                label: "Styling",
                 technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
-            },
-
+            }
+        ],
+        iconColorClass: "from-blue-800/60 to-gray-900/60 group-hover:bg-blue-600/60",
+        cardBgClass: "from-blue-800/60 to-gray-900/60 hover:from-blue-700/60 hover:to-gray-800/60"
+    },
+    [SkillId.FRONTEND_STATE]: {
+        name: "State Management",
+        icon: Box,
+        description: [
             {
-                label: "State Management",
-                technologies: [
-                    "Redux",
-                    "RxJS",
-                    "Redux Saga",
-                    "TanStack Query",
-                    "React Router",
-                    "Immer",
-                    "React Hook Form"
-                ]
-            },
+                technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer"]
+            }
+        ],
+        iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
+        cardBgClass: "from-indigo-900/60 to-gray-900/60 hover:from-indigo-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.FRONTEND_BUILD]: {
+        name: "Build Tools",
+        icon: Tool,
+        description: [
             {
-                label: "Build Tools",
                 technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo"]
             }
         ],
-        spanClass: "sm:row-span-3",
-        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
-        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-sky-900/60 to-gray-900/60 group-hover:bg-sky-700/60",
+        cardBgClass: "from-sky-900/60 to-gray-900/60 hover:from-sky-800/60 hover:to-gray-800/60"
     },
     [SkillId.GRAPHICS_AND_LOW_LEVEL]: {
         name: "Graphics & Low-level",
         icon: Zap,
         description: [
             {
-                technologies: ["WebGL", "Three.js", "Shaders", "D3.js", "WebAssembly", "Emscripten"]
+                technologies: ["WebGL", "Three.js", "D3.js", "WebAssembly", "Emscripten"]
             }
         ],
-        spanClass: "sm:row-start-1 sm:col-start-2 lg:row-start-auto lg:col-start-auto",
-        iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
-        cardBgClass: "from-indigo-900/60 to-gray-900/60 hover:from-indigo-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-violet-900/60 to-gray-900/60 group-hover:bg-violet-700/60",
+        cardBgClass: "from-violet-900/60 to-gray-900/60 hover:from-violet-800/60 hover:to-gray-800/60"
     },
     [SkillId.BACKEND]: {
         name: "Backend",
         icon: Server,
         description: [
             {
-                label: "Core",
-                technologies: ["Node.js", "Express", "Python", "Django", "Flask", "C/C++"]
-            },
+                technologies: ["Node.js", "Express", "Python", "Django", "Flask", "C/C++", "REST", "GraphQL"]
+            }
+        ],
+        iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
+        cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.BACKEND_DB]: {
+        name: "Databases",
+        icon: Database,
+        description: [
             {
-                label: "APIs",
-                technologies: ["REST API", "GraphQL", "PostGraphile"]
-            },
-            {
-                label: "Databases",
                 technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j"]
             }
         ],
-        spanClass: "sm:row-span-2",
-        iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
-        cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-emerald-900/60 to-gray-900/60 group-hover:bg-emerald-700/60",
+        cardBgClass: "from-emerald-900/60 to-gray-900/60 hover:from-emerald-800/60 hover:to-gray-800/60"
     },
     [SkillId.MOBILE]: {
         name: "Mobile",
@@ -128,44 +148,55 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
         cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60"
     },
+    [SkillId.PROJECT_MANAGEMENT]: {
+        name: "Project Management",
+        icon: Clipboard,
+        description: [
+            {
+                technologies: ["Agile", "Scrum", "Kanban", "Code Review", "Documentation", "Design Docs"]
+            }
+        ],
+        iconColorClass: "from-orange-900/60 to-gray-900/60 group-hover:bg-orange-700/60",
+        cardBgClass: "from-orange-900/60 to-gray-900/60 hover:from-orange-800/60 hover:to-gray-800/60"
+    },
     [SkillId.SOFT_SKILLS]: {
         name: "Soft Skills",
         icon: Users,
         description: [
             {
-                technologies: [
-                    "Leadership",
-                    "Client Communication",
-                    "Agile",
-
-                    "Problem Solving",
-                    "Team Collaboration",
-
-                    "Scrum",
-                    "Kanban",
-                    "Code Review",
-
-                    "Documentation",
-                    "Design Docs"
-                ]
+                technologies: ["Leadership", "Client Communication", "Problem-solving", "Team Collaboration"]
             }
         ],
-        spanClass: "sm:row-span-2 lg:row-span-1",
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
         cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.LANGUAGES]: {
+        name: "Languages",
+        icon: Globe,
+        description: [
+            {
+                technologies: ["English Professional", "Polish Native"]
+            }
+        ],
+        iconColorClass: "from-rose-900/60 to-gray-900/60 group-hover:bg-rose-700/60",
+        cardBgClass: "from-rose-900/60 to-gray-900/60 hover:from-rose-800/60 hover:to-gray-800/60"
     }
 };
 
 // Skill ordering
 const SKILL_ORDER = [
     SkillId.FRONTEND_CORE,
-    SkillId.BACKEND,
-
-    SkillId.MOBILE,
-    SkillId.SOFT_SKILLS,
+    SkillId.FRONTEND_STATE,
+    SkillId.FRONTEND_STYLING,
     SkillId.GRAPHICS_AND_LOW_LEVEL,
-
-    SkillId.DEVOPS_AND_CLOUD
+    SkillId.FRONTEND_BUILD,
+    SkillId.MOBILE,
+    SkillId.BACKEND,
+    SkillId.BACKEND_DB,
+    SkillId.DEVOPS_AND_CLOUD,
+    SkillId.PROJECT_MANAGEMENT,
+    SkillId.SOFT_SKILLS,
+    SkillId.LANGUAGES
 ] as const;
 
 // Export ordered skills array

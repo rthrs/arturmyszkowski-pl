@@ -15,11 +15,11 @@ interface GroupedTechBadgesListProps {
 
 export default function GroupedTechBadgesList({ groups, gridClass = "grid-cols-1" }: GroupedTechBadgesListProps) {
     return (
-        <div className={`grid ${gridClass} gap-x-1 gap-y-4`}>
+        <div className={`grid ${gridClass} gap-x-1 gap-y-3`}>
             {groups.map((group, index) => (
-                <div key={group.label || index} className={`flex flex-col gap-1.5 ${group.gridPosition || ""}`}>
+                <div key={group.label || index} className={`flex flex-col gap-1 ${group.gridPosition || ""}`}>
                     {group.label && (
-                        <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                        <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
                             {group.label}
                         </span>
                     )}
