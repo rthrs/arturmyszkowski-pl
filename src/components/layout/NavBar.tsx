@@ -74,12 +74,12 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                     <div className="hidden md:flex items-center h-full">
                         {NAV_ITEMS.map((item) => (
                             <motion.button
-                                key={item}
-                                onClick={() => onNavigate(item.toLowerCase())}
+                                key={item.id}
+                                onClick={() => onNavigate(item.id)}
                                 whileTap={{ scale: 0.95 }}
                                 className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                             >
-                                {item}
+                                {item.label}
                             </motion.button>
                         ))}
                     </div>
@@ -105,15 +105,15 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                         <div className="py-2 space-y-2">
                             {NAV_ITEMS.map((item) => (
                                 <motion.button
-                                    key={item}
+                                    key={item.id}
                                     onClick={() => {
                                         setIsMenuOpen(false);
-                                        onNavigate(item.toLowerCase());
+                                        onNavigate(item.id);
                                     }}
                                     whileTap={{ scale: 0.95 }}
                                     className="block w-full text-left text-gray-400 hover:text-white transition-colors text-md font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                                 >
-                                    {item}
+                                    {item.label}
                                 </motion.button>
                             ))}
                         </div>

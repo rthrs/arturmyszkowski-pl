@@ -104,7 +104,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     PostgreSQL: { icon: <SiPostgresql />, colorClass: "text-sky-400" },
     "D3.js": { icon: <SiD3Dotjs />, colorClass: "text-orange-500" },
     WebGL: { icon: <SiWebgl />, colorClass: "text-red-400" },
-    Shaders: { icon: <SiWebgl />, colorClass: "text-fuchsia-400" },
+    Optimization: { icon: <FiZap />, colorClass: "text-yellow-400" },
     DuckDB: { icon: <SiDuckdb />, colorClass: "text-amber-300" },
     Redux: { icon: <SiRedux />, colorClass: "text-purple-400" },
     "Redux Saga": { icon: <SiReduxsaga />, colorClass: "text-green-500" },
@@ -121,6 +121,8 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Webpack: { icon: <SiWebpack />, colorClass: "text-sky-400" },
     Rollup: { icon: <SiRollupdotjs />, colorClass: "text-red-500" },
     "Three.js": { icon: <SiThreedotjs />, colorClass: "text-white" },
+    "React Three Fiber": { icon: <SiThreedotjs />, colorClass: "text-cyan-300" },
+    "React DevTools": { icon: <SiReact />, colorClass: "text-cyan-300" },
     WebWorkers: { icon: <FiSettings />, colorClass: "text-green-400" },
     WebAssembly: { icon: <SiWebassembly />, colorClass: "text-purple-400" },
     Emscripten: { icon: <SiWebassembly />, colorClass: "text-indigo-300" },
@@ -141,6 +143,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Electron: { icon: <SiElectron />, colorClass: "text-blue-400" },
     "OpenGL ES": { icon: <SiOpengl />, colorClass: "text-orange-400" },
     Docker: { icon: <SiDocker />, colorClass: "text-blue-400" },
+    "CI/CD": { icon: <FiSettings />, colorClass: "text-green-400" },
     "React Hook Form": { icon: <SiReacthookform />, colorClass: "text-pink-400" },
     Zod: {
         icon: <SiZod />,
@@ -169,7 +172,7 @@ export default function TechBadge({ name }: TechBadgeProps) {
 
     return (
         <span
-            className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full border border-gray-600/60 text-gray-200 text-[13px] bg-black/60"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-600/60 text-gray-200 text-[13px] bg-black/60"
             title={name}
         >
             {map && <span className={`${map.colorClass} text-[12px]`}>{map.icon}</span>}

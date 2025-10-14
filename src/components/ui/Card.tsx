@@ -41,7 +41,7 @@ export default function Card({
             onHoverEnd={onHoverEnd}
             className={`group relative transform-gpu ${
                 variant === "skill"
-                    ? "py-2.5 px-3.5 border border-gray-800 rounded-lg hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl"
+                    ? "p-4 border border-gray-800 rounded-lg hover:border-gray-700 transition-all duration-300 bg-gradient-to-bl"
                     : "bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl hover:border-gray-600/50 transition-all duration-300"
             } ${className}`}
         >

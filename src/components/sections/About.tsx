@@ -12,7 +12,7 @@ export default function About() {
             contentClassName="space-y-8 xl:space-y-10 flex flex-col items-center"
             scrollButton={{
                 label: "Explore my skills",
-                targetSection: "skills"
+                targetSection: "frontend-expertise"
             }}
         >
             <div className="text-center">

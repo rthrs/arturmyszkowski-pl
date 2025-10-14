@@ -9,8 +9,8 @@ import {
     FiBox as Box,
     FiTool as Tool,
     FiDatabase as Database,
-    FiGlobe as Globe,
-    FiClipboard as Clipboard
+    FiClipboard as Clipboard,
+    FiCpu as Cpu
 } from "react-icons/fi";
 
 import type { IconType } from "react-icons";
@@ -19,15 +19,15 @@ export enum SkillId {
     FRONTEND_CORE = "frontend-core",
     FRONTEND_STATE = "frontend-state",
     FRONTEND_STYLING = "frontend-styling",
-    GRAPHICS_AND_LOW_LEVEL = "graphics-and-low-level",
+    GRAPHICS = "graphics",
+    LOW_LEVEL = "low-level",
     FRONTEND_BUILD = "frontend-build",
     MOBILE = "mobile",
     BACKEND = "backend",
     BACKEND_DB = "backend-db",
     DEVOPS_AND_CLOUD = "devops-and-cloud",
     PROJECT_MANAGEMENT = "project-management",
-    SOFT_SKILLS = "soft-skills",
-    LANGUAGES = "languages"
+    SOFT_SKILLS = "soft-skills"
 }
 
 export interface TechGroup {
@@ -46,15 +46,15 @@ export interface SkillDef {
     spanClass?: string; // responsive grid column span class, e.g., "lg:col-span-2"
 }
 
-export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3";
+export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5";
 
 const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.FRONTEND_CORE]: {
-        name: "Frontend Core",
+        name: "Core",
         icon: Code,
         description: [
             {
-                technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "WebWorkers"]
+                technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3"]
             }
         ],
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
@@ -76,7 +76,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Box,
         description: [
             {
-                technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer"]
+                technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer", "Zod"]
             }
         ],
         iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
@@ -93,34 +93,45 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         iconColorClass: "from-sky-900/60 to-gray-900/60 group-hover:bg-sky-700/60",
         cardBgClass: "from-sky-900/60 to-gray-900/60 hover:from-sky-800/60 hover:to-gray-800/60"
     },
-    [SkillId.GRAPHICS_AND_LOW_LEVEL]: {
-        name: "Graphics & Low-level",
+    [SkillId.GRAPHICS]: {
+        name: "Graphics & Visualization",
         icon: Zap,
         description: [
             {
-                technologies: ["WebGL", "Three.js", "D3.js", "WebAssembly", "Emscripten"]
+                technologies: ["WebGL", "Three.js", "React Three Fiber", "D3.js"]
             }
         ],
         iconColorClass: "from-violet-900/60 to-gray-900/60 group-hover:bg-violet-700/60",
         cardBgClass: "from-violet-900/60 to-gray-900/60 hover:from-violet-800/60 hover:to-gray-800/60"
+    },
+    [SkillId.LOW_LEVEL]: {
+        name: "Low-level & Performance",
+        icon: Cpu,
+        description: [
+            {
+                technologies: ["WebAssembly", "Emscripten", "WebWorkers", "Optimization"]
+            }
+        ],
+        iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
+        cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60"
     },
     [SkillId.BACKEND]: {
         name: "Backend",
         icon: Server,
         description: [
             {
-                technologies: ["Node.js", "Express", "Python", "Django", "Flask", "C/C++", "REST", "GraphQL"]
+                technologies: ["Node.js", "Express", "Python", "Django", "Flask", "C/C++"]
             }
         ],
         iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
         cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60"
     },
     [SkillId.BACKEND_DB]: {
-        name: "Databases",
+        name: "Databases & APIs",
         icon: Database,
         description: [
             {
-                technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j"]
+                technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j", "REST", "GraphQL"]
             }
         ],
         iconColorClass: "from-emerald-900/60 to-gray-900/60 group-hover:bg-emerald-700/60",
@@ -164,40 +175,41 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Users,
         description: [
             {
-                technologies: ["Leadership", "Client Communication", "Problem-solving", "Team Collaboration"]
+                technologies: [
+                    "Leadership",
+                    "Client Communication",
+                    "Problem-solving",
+                    "Team Collaboration",
+                    "English Professional",
+                    "Polish Native"
+                ]
             }
         ],
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
         cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60"
-    },
-    [SkillId.LANGUAGES]: {
-        name: "Languages",
-        icon: Globe,
-        description: [
-            {
-                technologies: ["English Professional", "Polish Native"]
-            }
-        ],
-        iconColorClass: "from-rose-900/60 to-gray-900/60 group-hover:bg-rose-700/60",
-        cardBgClass: "from-rose-900/60 to-gray-900/60 hover:from-rose-800/60 hover:to-gray-800/60"
     }
 };
 
-// Skill ordering
-const SKILL_ORDER = [
+// Skill ordering for Frontend expertise
+const FRONTEND_EXPERTISE_ORDER = [
     SkillId.FRONTEND_CORE,
     SkillId.FRONTEND_STATE,
     SkillId.FRONTEND_STYLING,
-    SkillId.GRAPHICS_AND_LOW_LEVEL,
-    SkillId.FRONTEND_BUILD,
-    SkillId.MOBILE,
-    SkillId.BACKEND,
-    SkillId.BACKEND_DB,
-    SkillId.DEVOPS_AND_CLOUD,
-    SkillId.PROJECT_MANAGEMENT,
-    SkillId.SOFT_SKILLS,
-    SkillId.LANGUAGES
+    SkillId.GRAPHICS,
+    SkillId.LOW_LEVEL,
+    SkillId.FRONTEND_BUILD
 ] as const;
 
-// Export ordered skills array
-export const SKILLS: SkillDef[] = SKILL_ORDER.map((key) => SKILL_DEFINITIONS[key]);
+// Skill ordering for other skills
+const OTHER_SKILLS_ORDER = [
+    SkillId.BACKEND,
+    SkillId.BACKEND_DB,
+    SkillId.MOBILE,
+    SkillId.DEVOPS_AND_CLOUD,
+    SkillId.PROJECT_MANAGEMENT,
+    SkillId.SOFT_SKILLS
+] as const;
+
+// Export ordered skills arrays
+export const FRONTEND_EXPERTISE_SKILLS: SkillDef[] = FRONTEND_EXPERTISE_ORDER.map((key) => SKILL_DEFINITIONS[key]);
+export const OTHER_SKILLS: SkillDef[] = OTHER_SKILLS_ORDER.map((key) => SKILL_DEFINITIONS[key]);
