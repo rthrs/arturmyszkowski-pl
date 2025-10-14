@@ -79,8 +79,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer", "Zod"]
             }
         ],
-        iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
-        cardBgClass: "from-indigo-900/60 to-gray-900/60 hover:from-indigo-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-blue-700/60 to-gray-900/60 group-hover:bg-blue-500/60",
+        cardBgClass: "from-blue-700/60 to-gray-900/60 hover:from-blue-600/60 hover:to-gray-800/60"
     },
     [SkillId.FRONTEND_BUILD]: {
         name: "Build Tools",
@@ -101,8 +101,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["WebGL", "Three.js", "React Three Fiber", "D3.js"]
             }
         ],
-        iconColorClass: "from-violet-900/60 to-gray-900/60 group-hover:bg-violet-700/60",
-        cardBgClass: "from-violet-900/60 to-gray-900/60 hover:from-violet-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-sky-800/60 to-gray-900/60 group-hover:bg-sky-600/60",
+        cardBgClass: "from-sky-800/60 to-gray-900/60 hover:from-sky-700/60 hover:to-gray-800/60"
     },
     [SkillId.LOW_LEVEL]: {
         name: "Low-level & Performance",
@@ -112,8 +112,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["WebAssembly", "Emscripten", "WebWorkers", "Optimization"]
             }
         ],
-        iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
-        cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-sky-700/60 to-gray-900/60 group-hover:bg-sky-500/60",
+        cardBgClass: "from-sky-700/60 to-gray-900/60 hover:from-sky-600/60 hover:to-gray-800/60"
     },
     [SkillId.BACKEND]: {
         name: "Backend",
