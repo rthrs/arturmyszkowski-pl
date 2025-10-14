@@ -58,8 +58,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3"]
             }
         ],
-        iconColorClass: "from-blue-700/60 to-gray-900/60 group-hover:bg-blue-700/60",
-        cardBgClass: "from-blue-700/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
+        cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60"
     },
     [SkillId.FRONTEND_STATE]: {
         name: "State Management",
@@ -69,8 +69,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer", "Zod"]
             }
         ],
-        iconColorClass: "from-blue-800/60 to-gray-900/60 group-hover:bg-blue-500/60",
-        cardBgClass: "from-blue-800/60 to-gray-900/60 hover:from-blue-600/60 hover:to-gray-800/60"
+        iconColorClass: "from-sky-900/60 to-gray-900/60 group-hover:bg-sky-700/60",
+        cardBgClass: "from-sky-900/60 to-gray-900/60 hover:from-sky-800/60 hover:to-gray-800/60"
     },
     [SkillId.FRONTEND_STYLING]: {
         name: "Styling",
@@ -80,8 +80,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
             }
         ],
-        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-600/60",
-        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-700/60 hover:to-gray-800/60"
+        iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
+        cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
     },
     [SkillId.FRONTEND_GRAPHICS]: {
         name: "Graphics & Visualization",
@@ -91,8 +91,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["WebGL", "Three.js", "React Three Fiber", "D3.js"]
             }
         ],
-        iconColorClass: "from-sky-700/60 to-gray-900/60 group-hover:bg-sky-600/60",
-        cardBgClass: "from-sky-700/60 to-gray-900/60 hover:from-sky-700/60 hover:to-gray-800/60"
+        iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
+        cardBgClass: "from-indigo-900/60 to-gray-900/60 hover:from-indigo-800/60 hover:to-gray-800/60"
     },
     [SkillId.FRONTEND_LOW_LEVEL]: {
         name: "Low-level & Performance",
@@ -102,8 +102,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["WebAssembly", "Emscripten", "WebWorkers", "Optimization"]
             }
         ],
-        iconColorClass: "from-sky-800/60 to-gray-900/60 group-hover:bg-sky-500/60",
-        cardBgClass: "from-sky-800/60 to-gray-900/60 hover:from-sky-600/60 hover:to-gray-800/60"
+        iconColorClass: "from-violet-900/60 to-gray-900/60 group-hover:bg-violet-700/60",
+        cardBgClass: "from-violet-900/60 to-gray-900/60 hover:from-violet-800/60 hover:to-gray-800/60"
     },
     [SkillId.FRONTEND_BUILD]: {
         name: "Build Tools",
@@ -113,8 +113,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo"]
             }
         ],
-        iconColorClass: "from-sky-900/60 to-gray-900/60 group-hover:bg-sky-700/60",
-        cardBgClass: "from-sky-900/60 to-gray-900/60 hover:from-sky-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
+        cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60"
     },
     [SkillId.BACKEND]: {
         name: "Backend",
@@ -146,8 +146,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["AWS", "Google Cloud", "Netlify", "Docker", "CI/CD", "Git"]
             }
         ],
-        iconColorClass: "from-cyan-900/60 to-gray-900/60 group-hover:bg-cyan-700/60",
-        cardBgClass: "from-cyan-900/60 to-gray-900/60 hover:from-cyan-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-teal-900/60 to-gray-900/60 group-hover:bg-teal-700/60",
+        cardBgClass: "from-teal-900/60 to-gray-900/60 hover:from-teal-800/60 hover:to-gray-800/60"
     },
     [SkillId.MOBILE]: {
         name: "Mobile",
@@ -157,8 +157,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["React Native", "Expo", "OpenGL ES"]
             }
         ],
-        iconColorClass: "from-purple-900/60 to-gray-900/60 group-hover:bg-purple-700/60",
-        cardBgClass: "from-purple-900/60 to-gray-900/60 hover:from-purple-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-fuchsia-900/60 to-gray-900/60 group-hover:bg-fuchsia-700/60",
+        cardBgClass: "from-fuchsia-900/60 to-gray-900/60 hover:from-fuchsia-800/60 hover:to-gray-800/60"
     },
     [SkillId.PROJECT_MANAGEMENT]: {
         name: "Project Management",
@@ -186,8 +186,8 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 ]
             }
         ],
-        iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
-        cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60"
+        iconColorClass: "from-neutral-900/60 to-gray-900/60 group-hover:bg-neutral-700/60",
+        cardBgClass: "from-neutral-900/60 to-gray-900/60 hover:from-neutral-800/60 hover:to-gray-800/60"
     }
 };
 
