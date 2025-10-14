@@ -34,7 +34,8 @@ export interface SkillDef {
     spanClass?: string; // responsive grid column span class, e.g., "lg:col-span-2"
 }
 
-export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-[repeat(3,auto)] gap-6 sm:gap-4";
+export const SKILLS_GRID_CLASS_NAME =
+    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(3,auto)] gap-4";
 
 const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.FRONTEND_CORE]: {
@@ -68,7 +69,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo"]
             }
         ],
-        spanClass: "row-span-3",
+        spanClass: "sm:row-span-3",
         iconColorClass: "from-blue-900/60 to-gray-900/60 group-hover:bg-blue-700/60",
         cardBgClass: "from-blue-900/60 to-gray-900/60 hover:from-blue-800/60 hover:to-gray-800/60"
     },
@@ -80,6 +81,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["WebGL", "Three.js", "Shaders", "D3.js", "WebAssembly", "Emscripten"]
             }
         ],
+        spanClass: "sm:row-start-1 sm:col-start-2 lg:row-start-auto lg:col-start-auto",
         iconColorClass: "from-indigo-900/60 to-gray-900/60 group-hover:bg-indigo-700/60",
         cardBgClass: "from-indigo-900/60 to-gray-900/60 hover:from-indigo-800/60 hover:to-gray-800/60"
     },
@@ -100,7 +102,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j"]
             }
         ],
-        spanClass: "row-span-2",
+        spanClass: "sm:row-span-2",
         iconColorClass: "from-green-900/60 to-gray-900/60 group-hover:bg-green-700/60",
         cardBgClass: "from-green-900/60 to-gray-900/60 hover:from-green-800/60 hover:to-gray-800/60"
     },
@@ -148,6 +150,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
                 ]
             }
         ],
+        spanClass: "sm:row-span-2 lg:row-span-1",
         iconColorClass: "from-slate-900/60 to-gray-900/60 group-hover:bg-slate-700/60",
         cardBgClass: "from-slate-900/60 to-gray-900/60 hover:from-slate-800/60 hover:to-gray-800/60"
     }

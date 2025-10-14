@@ -80,7 +80,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-4"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
             >
                 {projects.map((project) => (
                     <Card key={project.title} featured={project.featured} className="flex flex-col">
