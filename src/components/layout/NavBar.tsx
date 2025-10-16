@@ -4,19 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiMenu as Menu, FiX as X } from "react-icons/fi";
 import { NAV_ITEMS } from "@/constants/nav";
+import { FEATURES } from "@/constants/features";
 
 interface NavBarProps {
     onNavigate: (sectionId: string) => void;
 }
-
-const NAVBAR_STYLES = {
-    slant: `
-        [--slant:theme(--navbar-slant-mobile)]
-        sm:[--slant:theme(--navbar-slant-tablet)]
-        md:[--slant:theme(--navbar-slant-desktop)]
-    `,
-    container: "fixed z-[60] w-full bg-black/50 backdrop-blur-2xl pb-1 slant-bottom"
-} as const;
 
 export default function NavBar({ onNavigate }: NavBarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,10 +49,17 @@ export default function NavBar({ onNavigate }: NavBarProps) {
         };
     }, [isMenuOpen]);
 
-    //
+    const slantClasses = FEATURES.SLANT_ENABLED
+        ? `
+            slant-bottom 
+            [--slant:theme(--navbar-slant-mobile)] 
+            sm:[--slant:theme(--navbar-slant-tablet)] 
+            md:[--slant:theme(--navbar-slant-desktop)]
+        `
+        : "";
 
     return (
-        <nav ref={navRef} className={`${NAVBAR_STYLES.container} ${NAVBAR_STYLES.slant}`}>
+        <nav ref={navRef} className={`fixed z-[60] w-full bg-black/50 backdrop-blur-2xl pb-1 ${slantClasses}`}>
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <motion.button

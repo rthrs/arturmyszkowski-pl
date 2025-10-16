@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import ScrollButton from "@/components/ui/buttons/ScrollButton";
+import { FEATURES } from "@/constants/features";
 
 interface ScrollButtonProps {
     label: string;
@@ -32,6 +33,16 @@ export default function Section({
     variant = "default",
     withDivider = true
 }: SectionProps) {
+    const slantClasses = FEATURES.SLANT_ENABLED
+        ? `
+            slant-top-bottom
+            [--slant:theme(--section-slant-mobile)]
+            md:[--slant:theme(--section-slant-tablet)]
+            lg:[--slant:theme(--section-slant-desktop)]
+            -mb-[var(--slant)]
+        `
+        : "border-b border-dotted border-gray-700/50";
+
     return (
         <>
             <section
@@ -39,13 +50,9 @@ export default function Section({
                 data-variant={variant !== "default" ? variant : undefined}
                 className={`
                     section-base
-                    slant-top-bottom
                     flex flex-col px-6 relative
                     [--section-padding-y:theme(--section-padding-y)]
-                    [--slant:theme(--section-slant-mobile)]
-                    md:[--slant:theme(--section-slant-tablet)]
-                    lg:[--slant:theme(--section-slant-desktop)]
-                    -mb-[var(--slant)]
+                    ${slantClasses}
                     ${className}
                 `}
             >
@@ -68,7 +75,7 @@ export default function Section({
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                             viewport={{ once: true }}
-                            className="flex justify-center pb-[calc(var(--slant)_+_theme(spacing.6))] sm:pb-[calc(var(--slant)_+_theme(spacing.12))]"
+                            className="flex justify-center pb-6 sm:pb-12"
                         >
                             <ScrollButton label={scrollButton.label} targetSection={scrollButton.targetSection} />
                         </motion.div>
@@ -76,7 +83,7 @@ export default function Section({
                 </div>
             </section>
 
-            {withDivider && (
+            {withDivider && FEATURES.SLANT_ENABLED && (
                 <div
                     className="
                         [background:repeating-linear-gradient(to_right,theme(colors.gray.700)_0_1px,transparent_1px_2px)]

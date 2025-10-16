@@ -8,15 +8,15 @@ button,
 }
 
 @theme {
-    /* Navbar slant values */
+    /* Navbar slant values - Only used when FEATURES.SLANT_ENABLED is true */
     --navbar-slant-mobile: 0.5rem;
     --navbar-slant-tablet: 0.45rem;
     --navbar-slant-desktop: 0.4rem;
 
-    /* Section slant values */
-    --section-slant-mobile: calc(1.25 * var(--navbar-slant-mobile));
-    --section-slant-tablet: calc(2 * var(--navbar-slant-tablet));
-    --section-slant-desktop: calc(2.5 * var(--navbar-slant-desktop));
+    /* Section slant values - Only used when FEATURES.SLANT_ENABLED is true */
+    --section-slant-mobile: 0.75rem;
+    --section-slant-tablet: 1.35rem;
+    --section-slant-desktop: 1.6rem;
 }
 
 @layer base {
@@ -29,19 +29,19 @@ button,
     /* Base section styles */
     .section-base {
         /* 64px is the height of the navbar */
-        min-height: calc(100vh - 64px);
-        scroll-margin-top: 64px;
+        min-height: calc(100vh - 68px);
+        scroll-margin-top: 69px;
     }
 
     .section-base[data-variant="hero"] {
         min-height: 100vh;
-        /* 64px is the height of the navbar */
-        padding-top: 64px;
+        /* 68px is the height of the navbar */
+        padding-top: 68px;
     }
 
     .section-base[data-variant="contact"] {
-        /* 64px is the height of the navbar; 168px is the height of the footer */
-        min-height: calc(100vh - 64px - 168px);
+        /* 68px is the height of the navbar; 168px is the height of the footer */
+        min-height: calc(100vh - 68px - 168px);
     }
 }
 

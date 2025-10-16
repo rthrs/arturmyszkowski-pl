@@ -1,6 +1,17 @@
+import { FEATURES } from "@/constants/features";
+
 export default function Footer() {
+    const slantClasses = FEATURES.SLANT_ENABLED
+        ? `
+            slant-top 
+            [--slant:theme(--section-slant-mobile)] 
+            md:[--slant:theme(--section-slant-tablet)] 
+            lg:[--slant:theme(--section-slant-desktop)]
+        `
+        : "";
+
     return (
-        <footer className="py-16 px-6 bg-black [--slant:theme(--section-slant-mobile)] md:[--slant:theme(--section-slant-tablet)] lg:[--slant:theme(--section-slant-desktop)] slant-top">
+        <footer className={`py-16 px-6 bg-black ${slantClasses}`}>
             <div className="max-w-4xl mx-auto text-center text-sm">
                 <p className="text-gray-400 mb-1">© 2025 Artur Myszkowski</p>
                 <p className="text-gray-400 text-xs">
