@@ -36,7 +36,7 @@ function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }:
         const vertices: number[] = [];
         const triangleIndices: number[] = [];
 
-        const size = 20 * scale;
+        const size = 25 * scale;
         const step = size / divisions;
         const halfSize = size / 2;
 
@@ -146,8 +146,8 @@ function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }:
         const maxRotation = 0.25;
 
         // Oscillating rotation
-        meshRef.current.rotation.z = Math.sin(time * 0.3) * maxRotation;
-        meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.5;
+        meshRef.current.rotation.z = Math.sin(time * 0.3) * 0.3 * maxRotation;
+        meshRef.current.rotation.x = Math.sin(time * 0.2 + Math.PI / 4) * maxRotation * 0.3;
         meshRef.current.rotation.y = Math.sin(time * 0.25 + Math.PI / 2) * maxRotation * 0.3;
 
         // Gentle floating
@@ -163,7 +163,7 @@ function MorphingWireframe({ position, scale = 1, divisions = 60, speed = 0.5 }:
 
 export default function WireframeBackground({
     className = "",
-    position = [0, 0, 0],
+    position = [-2, 0, 0],
     divisions = 60,
     cameraPosition = [0, 0, 8],
     fov = 75,
