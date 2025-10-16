@@ -7,6 +7,7 @@ import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { OTHER_SKILLS, SKILLS_GRID_CLASS_NAME } from "@/constants/skills";
+import GradientBackground from "../backgrounds/GradientBackground";
 
 export default function FullStackSolutions() {
     return (
@@ -18,6 +19,7 @@ export default function FullStackSolutions() {
                 label: "Check Out My Projects",
                 targetSection: "projects"
             }}
+            background={<GradientBackground />}
         >
             <div className="text-center">
                 <SectionTitle>Full-Stack Solutions</SectionTitle>
