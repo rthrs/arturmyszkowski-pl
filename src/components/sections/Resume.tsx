@@ -14,7 +14,7 @@ export default function Resume() {
         <Section
             id="resume"
             containerClassName="max-w-4xl mx-auto"
-            contentClassName="space-y-12"
+            contentClassName="justify-center space-y-12"
             background={<FluidBackground />}
             scrollButton={{
                 label: "Let's Connect!",

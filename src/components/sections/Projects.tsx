@@ -61,7 +61,7 @@ export default function Projects() {
         <Section
             id="projects"
             containerClassName="max-w-6xl mx-auto"
-            contentClassName="space-y-8 xl:space-y-10"
+            contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={{
                 label: "Learn My Journey",
                 targetSection: "resume"

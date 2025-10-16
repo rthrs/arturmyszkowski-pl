@@ -9,7 +9,7 @@ export default function HeroSocials() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex justify-center space-x-8 pt-4 pb-4"
+            className="flex justify-center space-x-8"
         >
             {HERO_SOCIAL_LINKS.map(({ id, href, label, icon: Icon, target, rel }) => (
                 <motion.a

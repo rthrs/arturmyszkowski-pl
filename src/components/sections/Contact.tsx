@@ -9,7 +9,12 @@ import { CONTACT_LINKS } from "@/constants/socials";
 
 export default function Contact() {
     return (
-        <Section id="contact" variant="contact" containerClassName="max-w-6xl mx-auto" contentClassName="space-y-12">
+        <Section
+            id="contact"
+            variant="contact"
+            containerClassName="max-w-6xl mx-auto"
+            contentClassName="justify-center space-y-12"
+        >
             <div className="text-center">
                 <SectionTitle>Contact</SectionTitle>
                 <SectionSubtitle>

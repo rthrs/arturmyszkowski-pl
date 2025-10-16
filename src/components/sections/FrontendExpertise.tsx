@@ -14,7 +14,7 @@ export default function FrontendExpertise() {
         <Section
             id="frontend-expertise"
             containerClassName="max-w-6xl mx-auto"
-            contentClassName="space-y-8 xl:space-y-10"
+            contentClassName="justify-center space-y-8 xl:space-y-10"
             background={<WireframeBackground />}
             scrollButton={{
                 label: "See the Full Picture",

@@ -18,6 +18,7 @@ interface SectionProps {
     background?: ReactNode;
     scrollButton?: ScrollButtonProps;
     variant?: "hero" | "contact" | "default";
+    withDivider?: boolean;
 }
 
 export default function Section({
@@ -28,47 +29,68 @@ export default function Section({
     contentClassName,
     background,
     scrollButton,
-    variant = "default"
+    variant = "default",
+    withDivider = true
 }: SectionProps) {
     return (
-        <section
-            id={id}
-            data-variant={variant !== "default" ? variant : undefined}
-            className={`
-                section-slanted 
-                flex flex-col px-6 relative
-                [--section-slant:theme(--section-slant-mobile)]
-                [--section-padding-y:theme(--section-padding-y)]
-                md:[--section-slant:theme(--section-slant-tablet)]
-                lg:[--section-slant:theme(--section-slant-desktop)]
-                ${className}
-            `}
-        >
-            {background}
+        <>
+            <section
+                id={id}
+                data-variant={variant !== "default" ? variant : undefined}
+                className={`
+                    section-base
+                    slant-top-bottom
+                    flex flex-col px-6 relative
+                    [--section-padding-y:theme(--section-padding-y)]
+                    [--slant:theme(--section-slant-mobile)]
+                    md:[--slant:theme(--section-slant-tablet)]
+                    lg:[--slant:theme(--section-slant-desktop)]
+                    -mb-[var(--slant)]
+                    ${className}
+                `}
+            >
+                {background}
 
-            <div className={`${containerClassName} flex flex-col flex-1`}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className={`${contentClassName} flex-1 flex flex-col justify-center`}
-                >
-                    {children}
-                </motion.div>
-
-                {scrollButton && (
+                <div className={`flex flex-1 flex-col ${containerClassName}`}>
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
+                        transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="flex justify-center pt-6"
+                        className={`flex flex-1 flex-col py-8 sm:py-12 ${contentClassName}`}
                     >
-                        <ScrollButton label={scrollButton.label} targetSection={scrollButton.targetSection} />
+                        {children}
                     </motion.div>
-                )}
-            </div>
-        </section>
+
+                    {scrollButton && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            viewport={{ once: true }}
+                            className="flex justify-center pb-[calc(var(--slant)_+_theme(spacing.6))] sm:pb-[calc(var(--slant)_+_theme(spacing.12))]"
+                        >
+                            <ScrollButton label={scrollButton.label} targetSection={scrollButton.targetSection} />
+                        </motion.div>
+                    )}
+                </div>
+            </section>
+
+            {withDivider && (
+                <div
+                    className="
+                        [background:repeating-linear-gradient(to_right,theme(colors.gray.700)_0_1px,transparent_1px_2px)]
+                        w-full
+                        opacity-50
+                        slant-top-bottom
+                        [--slant:theme(--section-slant-mobile)]
+                        md:[--slant:theme(--section-slant-tablet)]
+                        lg:[--slant:theme(--section-slant-desktop)]
+                        h-[calc(var(--slant)+1px)]
+                        -mb-[var(--slant)]
+                    "
+                />
+            )}
+        </>
     );
 }

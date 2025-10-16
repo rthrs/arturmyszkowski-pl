@@ -11,12 +11,11 @@ interface NavBarProps {
 
 const NAVBAR_STYLES = {
     slant: `
-        [--navbar-slant:theme(--navbar-slant-mobile)]
-        sm:[--navbar-slant:theme(--navbar-slant-tablet)]
-        md:[--navbar-slant:theme(--navbar-slant-desktop)]
+        [--slant:theme(--navbar-slant-mobile)]
+        sm:[--slant:theme(--navbar-slant-tablet)]
+        md:[--slant:theme(--navbar-slant-desktop)]
     `,
-    clipPath: "[clip-path:polygon(0_0,0_100%,100%_calc(100%_-_var(--navbar-slant)),100%_0)]",
-    container: "fixed z-[60] w-full bg-black/50 backdrop-blur-2xl pb-1"
+    container: "fixed z-[60] w-full bg-black/50 backdrop-blur-2xl pb-1 slant-bottom"
 } as const;
 
 export default function NavBar({ onNavigate }: NavBarProps) {
@@ -61,7 +60,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
     //
 
     return (
-        <nav ref={navRef} className={`${NAVBAR_STYLES.container} ${NAVBAR_STYLES.slant} ${NAVBAR_STYLES.clipPath}`}>
+        <nav ref={navRef} className={`${NAVBAR_STYLES.container} ${NAVBAR_STYLES.slant}`}>
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <motion.button

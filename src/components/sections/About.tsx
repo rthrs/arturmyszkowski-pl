@@ -9,7 +9,7 @@ export default function About() {
         <Section
             id="about"
             containerClassName="max-w-4xl mx-auto"
-            contentClassName="space-y-8 xl:space-y-10 flex flex-col items-center"
+            contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={{
                 label: "Explore My Skills",
                 targetSection: "frontend-expertise"

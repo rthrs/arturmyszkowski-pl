@@ -13,7 +13,7 @@ export default function FullStackSolutions() {
         <Section
             id="full-stack-solutions"
             containerClassName="max-w-6xl mx-auto"
-            contentClassName="space-y-8 xl:space-y-10"
+            contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={{
                 label: "Check Out My Projects",
                 targetSection: "projects"

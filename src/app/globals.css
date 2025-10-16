@@ -1,33 +1,9 @@
 @import "tailwindcss";
 
-/* Overscroll background color to match main page */
-html {
-    background-color: #000000;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: var(--font-space-grotesk), system-ui, sans-serif;
-    overflow-x: clip;
-}
-
-/* Selection color */
-::selection {
-    background: #3b82f6;
-    color: #ffffff;
-}
-
-/* Cursor pointer for all links and clickable elements */
 a,
 button,
 [role="button"],
 [onclick] {
-    cursor: pointer;
-}
-
-/* Ensure links without href still show pointer cursor */
-a {
     cursor: pointer;
 }
 
@@ -38,66 +14,47 @@ a {
     --navbar-slant-desktop: 0.4rem;
 
     /* Section slant values */
-    --section-slant-mobile: 0.75rem;
-    --section-slant-tablet: 1.35rem;
-    --section-slant-desktop: 1.6rem;
+    --section-slant-mobile: calc(1.25 * var(--navbar-slant-mobile));
+    --section-slant-tablet: calc(2 * var(--navbar-slant-tablet));
+    --section-slant-desktop: calc(2.5 * var(--navbar-slant-desktop));
+}
 
-    /* Section spacing */
-    --section-padding-y: 4.5rem;
+@layer base {
+    ::selection {
+        @apply bg-blue-500 text-white;
+    }
 }
 
 @layer components {
     /* Base section styles */
-    .section-slanted {
-        clip-path: polygon(0 var(--section-slant), 100% 0, 100% calc(100% - var(--section-slant)), 0 100%);
-        margin-bottom: calc(-1 * var(--section-slant));
-        padding-top: var(--section-padding-y);
-        padding-bottom: var(--section-padding-y);
-        min-height: calc(100vh - 3.75rem);
-        scroll-margin-top: 3.75rem;
+    .section-base {
+        /* 64px is the height of the navbar */
+        min-height: calc(100vh - 64px);
+        scroll-margin-top: 64px;
     }
 
-    /* Section variants using data attributes */
-    .section-slanted[data-variant="hero"] {
+    .section-base[data-variant="hero"] {
         min-height: 100vh;
-        padding-top: calc(var(--section-padding-y) + 68px);
+        /* 64px is the height of the navbar */
+        padding-top: 64px;
     }
 
-    .section-slanted[data-variant="contact"] {
-        min-height: calc(100vh - 11.75rem);
-    }
-
-    /* Divider component */
-    .section-divider {
-        clip-path: polygon(0 var(--section-slant), 100% 0, 100% calc(100% - var(--section-slant)), 0 100%);
-        height: calc(var(--section-slant) + 1px);
-        background: repeating-linear-gradient(to right, var(--color-gray-700) 0 1px, transparent 1px 2px);
-        opacity: 0.5;
-        margin-bottom: calc(-1 * var(--section-slant));
-        width: 100%;
+    .section-base[data-variant="contact"] {
+        /* 64px is the height of the navbar; 168px is the height of the footer */
+        min-height: calc(100vh - 64px - 168px);
     }
 }
 
-/* nav {
-    background: gray;
-} */
+@layer utilities {
+    .slant-bottom {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+    }
 
-/* #hero {
-    background: red;
+    .slant-top {
+        clip-path: polygon(0 var(--slant), 100% 0, 100% 100%, 0 100%);
+    }
+
+    .slant-top-bottom {
+        clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+    }
 }
-
-#about {
-    background: blue;
-}
-
-#frontend-expertise {
-    background: green;
-}
-
-#projects {
-    background: yellow;
-}
-
-#contact {
-    background: purple;
-} */

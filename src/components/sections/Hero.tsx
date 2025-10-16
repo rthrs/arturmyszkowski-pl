@@ -12,9 +12,8 @@ export default function Hero() {
         <Section
             id="hero"
             variant="hero"
-            className="pt-21"
             containerClassName="max-w-4xl mx-auto text-center relative z-10"
-            contentClassName="space-y-4 sm:space-y-8 flex flex-col items-center"
+            contentClassName="justify-center"
             background={<SneaksBackground />}
             scrollButton={{
                 label: "Learn More",
@@ -25,7 +24,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="size-38 sm:size-52 sm:mb-8 mx-auto rounded-full relative"
+                className="size-38 sm:size-52 mx-auto rounded-full relative mb-4 sm:mb-8"
             >
                 <Image
                     fill
@@ -47,7 +46,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="space-y-2 sm:space-y-4"
+                className="space-y-2 sm:space-y-4 mb-4 sm:mb-8"
             >
                 <h1 className="text-4xl sm:text-7xl font-light text-white tracking-tight">Artur Myszkowski</h1>
                 <p className="text-lg sm:text-2xl text-gray-400 font-light">Software Engineer</p>
@@ -57,7 +56,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-light"
+                className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-ligh mb-8 sm:mb-16"
             >
                 I build high-performance web applications that bring complex data to life. Passionate about clean code,
                 innovative solutions, and creating meaningful user impact.

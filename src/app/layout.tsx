@@ -36,8 +36,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${spaceGrotesk.variable} antialiased`}>{children}</body>
+        <html lang="en" className="scroll-smooth overflow-x-hidden bg-black bg-gradient-to-b from-black to-gray-950">
+            <body
+                className={`${spaceGrotesk.variable} antialiased overflow-x-clip font-[family-name:var(--font-space-grotesk)]`}
+            >
+                {children}
+            </body>
         </html>
     );
 }
