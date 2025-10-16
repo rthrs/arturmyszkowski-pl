@@ -31,6 +31,7 @@ export default function Hero() {
                     priority
                     src={profileImage}
                     alt="Artur Myszkowski"
+                    sizes="(min-width: 640px) 208px, 152px"
                     className="object-cover absolute -inset-6 blur-xl scale-125 opacity-20 rounded-full"
                 />
                 <Image
@@ -38,6 +39,7 @@ export default function Hero() {
                     priority
                     src={profileImage}
                     alt="Artur Myszkowski"
+                    sizes="(min-width: 640px) 208px, 152px"
                     className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center"
                 />
             </motion.div>

@@ -90,6 +90,7 @@ export default function Projects() {
                                     src={project.image}
                                     alt={`${project.title} screenshot`}
                                     fill
+                                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                                     className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-800/50 to-transparent" />
