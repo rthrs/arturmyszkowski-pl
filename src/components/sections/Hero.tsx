@@ -11,6 +11,7 @@ export default function Hero() {
     return (
         <Section
             id="hero"
+            variant="hero"
             className="pt-21"
             containerClassName="max-w-4xl mx-auto text-center relative z-10"
             contentClassName="space-y-4 sm:space-y-8 flex flex-col items-center"

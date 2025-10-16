@@ -17,19 +17,33 @@ interface SectionProps {
     contentClassName?: string;
     background?: ReactNode;
     scrollButton?: ScrollButtonProps;
+    variant?: "hero" | "contact" | "default";
 }
 
 export default function Section({
     id,
     children,
-    className,
+    className = "",
     containerClassName,
     contentClassName,
     background,
-    scrollButton
+    scrollButton,
+    variant = "default"
 }: SectionProps) {
     return (
-        <section id={id} className={`flex flex-col px-6 relative ${className}`}>
+        <section
+            id={id}
+            data-variant={variant !== "default" ? variant : undefined}
+            className={`
+                section-slanted 
+                flex flex-col px-6 relative
+                [--section-slant:theme(--section-slant-mobile)]
+                [--section-padding-y:theme(--section-padding-y)]
+                md:[--section-slant:theme(--section-slant-tablet)]
+                lg:[--section-slant:theme(--section-slant-desktop)]
+                ${className}
+            `}
+        >
             {background}
 
             <div className={`${containerClassName} flex flex-col flex-1`}>
