@@ -8,10 +8,14 @@ import { motion } from "framer-motion";
 import { CONTACT_LINKS } from "@/constants/socials";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
 
-export default function Contact() {
+interface ContactProps {
+    id?: string;
+}
+
+export default function Contact({ id = "contact" }: ContactProps = {}) {
     return (
         <Section
-            id="contact"
+            id={id}
             variant="contact"
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-12"

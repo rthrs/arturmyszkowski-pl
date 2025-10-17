@@ -7,18 +7,26 @@ import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { OTHER_SKILLS, SKILLS_GRID_CLASS_NAME } from "@/constants/skills";
-import GradientBackground from "../backgrounds/GradientBackground";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
-export default function FullStackSolutions() {
+interface FullStackSolutionsProps {
+    id?: string;
+    scrollButton?: {
+        label: string;
+        targetSection: string;
+    };
+}
+
+export default function FullStackSolutions({
+    id = "full-stack-solutions",
+    scrollButton
+}: FullStackSolutionsProps = {}) {
     return (
         <Section
-            id="full-stack-solutions"
+            id={id}
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
-            scrollButton={{
-                label: "Check Out My Projects",
-                targetSection: "featured-projects"
-            }}
+            scrollButton={scrollButton}
             background={<GradientBackground direction="bottom" />}
         >
             <div className="text-center">

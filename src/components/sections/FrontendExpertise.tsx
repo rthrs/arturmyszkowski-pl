@@ -8,12 +8,20 @@ import SectionTitle from "@/components/ui/section/SectionTitle";
 import WireframeBackground from "@/components/backgrounds/WireframeBackground";
 import { FRONTEND_EXPERTISE_SKILLS, SKILLS_GRID_CLASS_NAME } from "@/constants/skills";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
-import GradientBackground from "../backgrounds/GradientBackground";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
-export default function FrontendExpertise() {
+interface FrontendExpertiseProps {
+    id?: string;
+    scrollButton?: {
+        label: string;
+        targetSection: string;
+    };
+}
+
+export default function FrontendExpertise({ id = "frontend-expertise", scrollButton }: FrontendExpertiseProps = {}) {
     return (
         <Section
-            id="frontend-expertise"
+            id={id}
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
             background={
@@ -22,10 +30,7 @@ export default function FrontendExpertise() {
                     <GradientBackground direction="top" />
                 </>
             }
-            scrollButton={{
-                label: "See the Full Picture",
-                targetSection: "full-stack-solutions"
-            }}
+            scrollButton={scrollButton}
         >
             <div className="text-center">
                 <SectionTitle>Frontend Expertise</SectionTitle>

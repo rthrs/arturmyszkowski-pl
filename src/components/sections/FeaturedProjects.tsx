@@ -57,16 +57,21 @@ const projects: Project[] = [
     }
 ];
 
-export default function FeaturedProjects() {
+interface FeaturedProjectsProps {
+    id?: string;
+    scrollButton?: {
+        label: string;
+        targetSection: string;
+    };
+}
+
+export default function FeaturedProjects({ id = "featured-projects", scrollButton }: FeaturedProjectsProps = {}) {
     return (
         <Section
-            id="featured-projects"
+            id={id}
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
-            scrollButton={{
-                label: "Learn My Journey",
-                targetSection: "experience"
-            }}
+            scrollButton={scrollButton}
             background={<GradientBackground direction="top" />}
         >
             <div className="text-center">

@@ -17,13 +17,49 @@ export default function Home() {
         <main className="relative text-white">
             <NavBar onNavigate={scrollToSection} />
 
-            <Hero />
-            <About />
-            <FrontendExpertise />
-            <FullStackSolutions />
-            <FeaturedProjects />
-            <Experience />
-            <Contact />
+            <Hero
+                id="hero"
+                scrollButton={{
+                    label: "Learn More",
+                    targetSection: "about"
+                }}
+            />
+            <About
+                id="about"
+                scrollButton={{
+                    label: "Explore My Skills",
+                    targetSection: "frontend-expertise"
+                }}
+            />
+            <FrontendExpertise
+                id="frontend-expertise"
+                scrollButton={{
+                    label: "See the Full Picture",
+                    targetSection: "full-stack-solutions"
+                }}
+            />
+            <FullStackSolutions
+                id="full-stack-solutions"
+                scrollButton={{
+                    label: "Check Out My Projects",
+                    targetSection: "featured-projects"
+                }}
+            />
+            <FeaturedProjects
+                id="featured-projects"
+                scrollButton={{
+                    label: "Learn My Journey",
+                    targetSection: "experience"
+                }}
+            />
+            <Experience
+                id="experience"
+                scrollButton={{
+                    label: "Let's Connect!",
+                    targetSection: "contact"
+                }}
+            />
+            <Contact id="contact" />
 
             <Footer />
 

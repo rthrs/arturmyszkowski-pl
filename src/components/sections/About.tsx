@@ -5,16 +5,21 @@ import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
 
-export default function About() {
+interface AboutProps {
+    id?: string;
+    scrollButton?: {
+        label: string;
+        targetSection: string;
+    };
+}
+
+export default function About({ id = "about", scrollButton }: AboutProps = {}) {
     return (
         <Section
-            id="about"
+            id={id}
             containerClassName="max-w-4xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
-            scrollButton={{
-                label: "Explore My Skills",
-                targetSection: "frontend-expertise"
-            }}
+            scrollButton={scrollButton}
             background={<GradientBackground direction="bottom" />}
         >
             <div className="text-center">

@@ -8,12 +8,20 @@ import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 import FluidBackground from "@/components/backgrounds/FluidBackground";
-import GradientBackground from "../backgrounds/GradientBackground";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
-export default function Experience() {
+interface ExperienceProps {
+    id?: string;
+    scrollButton?: {
+        label: string;
+        targetSection: string;
+    };
+}
+
+export default function Experience({ id = "experience", scrollButton }: ExperienceProps = {}) {
     return (
         <Section
-            id="experience"
+            id={id}
             containerClassName="max-w-4xl mx-auto"
             contentClassName="justify-center space-y-12"
             background={
@@ -22,10 +30,7 @@ export default function Experience() {
                     <GradientBackground direction="bottom" />
                 </>
             }
-            scrollButton={{
-                label: "Let's Connect!",
-                targetSection: "contact"
-            }}
+            scrollButton={scrollButton}
         >
             <div className="text-center">
                 <SectionTitle>Experience</SectionTitle>

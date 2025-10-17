@@ -7,18 +7,23 @@ import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpeg";
 import SneaksBackground from "@/components/backgrounds/SneaksBackground";
 
-export default function Hero() {
+interface HeroProps {
+    id?: string;
+    scrollButton?: {
+        label: string;
+        targetSection: string;
+    };
+}
+
+export default function Hero({ id = "hero", scrollButton }: HeroProps = {}) {
     return (
         <Section
-            id="hero"
+            id={id}
             variant="hero"
             containerClassName="max-w-4xl mx-auto text-center relative z-10"
             contentClassName="justify-center"
             background={<SneaksBackground />}
-            scrollButton={{
-                label: "Learn More",
-                targetSection: "about"
-            }}
+            scrollButton={scrollButton}
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
