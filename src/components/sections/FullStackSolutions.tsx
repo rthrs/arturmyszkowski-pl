@@ -17,7 +17,7 @@ export default function FullStackSolutions() {
             contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={{
                 label: "Check Out My Projects",
-                targetSection: "projects"
+                targetSection: "featured-projects"
             }}
             background={<GradientBackground direction="bottom" />}
         >

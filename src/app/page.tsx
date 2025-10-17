@@ -6,8 +6,8 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import FrontendExpertise from "@/components/sections/FrontendExpertise";
 import FullStackSolutions from "@/components/sections/FullStackSolutions";
-import Projects from "@/components/sections/Projects";
-import Resume from "@/components/sections/Resume";
+import FeaturedProjects from "@/components/sections/FeaturedProjects";
+import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import GoToTopButton from "@/components/ui/buttons/GoToTopButton";
 import { scrollToSection } from "@/utils/scroll";
@@ -21,8 +21,8 @@ export default function Home() {
             <About />
             <FrontendExpertise />
             <FullStackSolutions />
-            <Projects />
-            <Resume />
+            <FeaturedProjects />
+            <Experience />
             <Contact />
 
             <Footer />

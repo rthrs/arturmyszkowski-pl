@@ -10,10 +10,10 @@ import { motion } from "framer-motion";
 import FluidBackground from "@/components/backgrounds/FluidBackground";
 import GradientBackground from "../backgrounds/GradientBackground";
 
-export default function Resume() {
+export default function Experience() {
     return (
         <Section
-            id="resume"
+            id="experience"
             containerClassName="max-w-4xl mx-auto"
             contentClassName="justify-center space-y-12"
             background={

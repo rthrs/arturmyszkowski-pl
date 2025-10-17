@@ -57,15 +57,15 @@ const projects: Project[] = [
     }
 ];
 
-export default function Projects() {
+export default function FeaturedProjects() {
     return (
         <Section
-            id="projects"
+            id="featured-projects"
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={{
                 label: "Learn My Journey",
-                targetSection: "resume"
+                targetSection: "experience"
             }}
             background={<GradientBackground direction="top" />}
         >
