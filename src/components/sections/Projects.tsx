@@ -47,7 +47,7 @@ const projects: Project[] = [
         image: "/images/projects/333daily.png"
     },
     {
-        title: "arturmyszkowski.pl",
+        title: "Personal Website",
         description:
             "My personal portfolio as an open-source project using Next.js. The goal was to create a visually engaging and responsive platform to showcase my professional journey, with the code publicly available for exploration.",
         technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React Three Fiber"],
