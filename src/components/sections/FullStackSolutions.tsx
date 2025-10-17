@@ -19,7 +19,7 @@ export default function FullStackSolutions() {
                 label: "Check Out My Projects",
                 targetSection: "projects"
             }}
-            background={<GradientBackground />}
+            background={<GradientBackground direction="bottom" />}
         >
             <div className="text-center">
                 <SectionTitle>Full-Stack Solutions</SectionTitle>

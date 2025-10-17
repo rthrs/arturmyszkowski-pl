@@ -274,7 +274,7 @@ export default function SneaksBackground({
     }
 
     return (
-        <div ref={containerRef} className={`absolute top-0 bottom-0 left-0 right-0 -z-10 ${className}`}>
+        <div ref={containerRef} className={`absolute top-0 bottom-0 left-0 right-0 ${className}`}>
             <Canvas
                 camera={{ position: [0, 0, 15], fov: 60 }}
                 onError={() => setHasError(true)}

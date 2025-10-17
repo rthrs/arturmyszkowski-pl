@@ -3,6 +3,7 @@
 import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
 export default function About() {
     return (
@@ -14,6 +15,7 @@ export default function About() {
                 label: "Explore My Skills",
                 targetSection: "frontend-expertise"
             }}
+            background={<GradientBackground direction="bottom" />}
         >
             <div className="text-center">
                 <SectionTitle>About Me</SectionTitle>

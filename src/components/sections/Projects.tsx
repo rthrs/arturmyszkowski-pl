@@ -7,6 +7,7 @@ import Card from "@/components/ui/Card";
 import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
 interface Project {
     title: string;
@@ -66,6 +67,7 @@ export default function Projects() {
                 label: "Learn My Journey",
                 targetSection: "resume"
             }}
+            background={<GradientBackground direction="top" />}
         >
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>

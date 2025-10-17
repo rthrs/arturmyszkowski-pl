@@ -6,6 +6,7 @@ import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { motion } from "framer-motion";
 import { CONTACT_LINKS } from "@/constants/socials";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
 export default function Contact() {
     return (
@@ -14,6 +15,7 @@ export default function Contact() {
             variant="contact"
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-12"
+            background={<GradientBackground direction="top" />}
         >
             <div className="text-center">
                 <SectionTitle>Contact</SectionTitle>

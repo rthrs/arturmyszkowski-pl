@@ -8,6 +8,7 @@ import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 import FluidBackground from "@/components/backgrounds/FluidBackground";
+import GradientBackground from "../backgrounds/GradientBackground";
 
 export default function Resume() {
     return (
@@ -15,7 +16,12 @@ export default function Resume() {
             id="resume"
             containerClassName="max-w-4xl mx-auto"
             contentClassName="justify-center space-y-12"
-            background={<FluidBackground />}
+            background={
+                <>
+                    <FluidBackground />
+                    <GradientBackground direction="bottom" />
+                </>
+            }
             scrollButton={{
                 label: "Let's Connect!",
                 targetSection: "contact"
