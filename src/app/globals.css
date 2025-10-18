@@ -29,19 +29,36 @@ button,
     /* Base section styles */
     .section-base {
         /* 64px is the height of the navbar */
-        min-height: calc(100vh - 68px);
+        /* Use svh (small viewport height) for stable mobile layout */
+        /* Note: Brave mobile has a bug treating svh like dvh, but it's a niche browser */
+        min-height: calc(100svh - 68px);
         scroll-margin-top: 69px;
     }
 
     .section-base[data-variant="hero"] {
-        min-height: 100vh;
+        min-height: 100svh;
         /* 68px is the height of the navbar */
         padding-top: 68px;
     }
 
     .section-base[data-variant="contact"] {
         /* 68px is the height of the navbar; 168px is the height of the footer */
-        min-height: calc(100vh - 68px - 168px);
+        min-height: calc(100svh - 68px - 168px);
+    }
+
+    /* Fallback for browsers that don't support svh */
+    @supports not (height: 100svh) {
+        .section-base {
+            min-height: calc(100vh - 68px);
+        }
+
+        .section-base[data-variant="hero"] {
+            min-height: 100vh;
+        }
+
+        .section-base[data-variant="contact"] {
+            min-height: calc(100vh - 68px - 168px);
+        }
     }
 }
 
