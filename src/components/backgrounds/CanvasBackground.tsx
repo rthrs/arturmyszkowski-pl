@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { Canvas } from "@react-three/offscreen";
 import { Canvas as FallbackCanvas } from "@react-three/fiber";
 import { useCanvasVisibility } from "@/hooks/useCanvasVisibility";
@@ -78,7 +78,16 @@ export default function CanvasBackground({
     onError
 }: CanvasBackgroundProps) {
     const [hasError, setHasError] = useState(false);
+    const [isReady, setIsReady] = useState(false);
     const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
+
+    // Fade in after a brief delay to allow canvas to render first frame
+    useEffect(() => {
+        if (isClient) {
+            const timer = setTimeout(() => setIsReady(true), 100);
+            return () => clearTimeout(timer);
+        }
+    }, [isClient]);
 
     const handleError = () => {
         setHasError(true);
@@ -98,7 +107,12 @@ export default function CanvasBackground({
     // Level 2 Fallback: Use main thread canvas if worker unavailable, offscreen disabled, or error occurred
     if (!worker || !useOffscreen || hasError) {
         return (
-            <div ref={containerRef} className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
+            <div
+                ref={containerRef}
+                className={`absolute -z-10 top-0 bottom-0 left-0 right-0 transition-opacity duration-1000 ${
+                    isReady ? "opacity-100" : "opacity-0"
+                } ${className}`}
+            >
                 <FallbackCanvas
                     camera={camera}
                     onError={handleError}
@@ -113,7 +127,12 @@ export default function CanvasBackground({
 
     // Level 1: Use offscreen canvas with worker (best performance)
     return (
-        <div ref={containerRef} className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
+        <div
+            ref={containerRef}
+            className={`absolute -z-10 top-0 bottom-0 left-0 right-0 transition-opacity duration-1000 ${
+                isReady ? "opacity-100" : "opacity-0"
+            } ${className}`}
+        >
             <Canvas
                 worker={worker}
                 fallback={fallbackScene}

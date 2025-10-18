@@ -37,7 +37,7 @@ export default function Hero({ id = "hero", scrollButton }: HeroProps = {}) {
                     src={profileImage}
                     alt="Artur Myszkowski"
                     sizes="(min-width: 640px) 208px, 152px"
-                    className="object-cover absolute -inset-6 blur-xl scale-125 opacity-20 rounded-full"
+                    className="object-cover absolute -inset-6 blur-xl scale-125 opacity-10 rounded-full"
                 />
                 <Image
                     fill

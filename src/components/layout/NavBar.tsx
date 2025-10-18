@@ -65,6 +65,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                     <motion.button
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         onClick={() => {
                             setIsMenuOpen(false);
                             onNavigate("hero");
@@ -77,9 +78,12 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center h-full">
-                        {NAV_ITEMS.map((item) => (
+                        {NAV_ITEMS.map((item, index) => (
                             <motion.button
                                 key={item.id}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.1 + index * 0.05, ease: "easeOut" }}
                                 onClick={() => onNavigate(item.id)}
                                 whileTap={{ scale: 0.95 }}
                                 className="text-gray-400 hover:text-white transition-colors duration-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
@@ -91,6 +95,9 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
                     {/* Mobile Menu Button */}
                     <motion.button
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         className="md:hidden text-white z-60 p-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         whileTap={{ scale: 0.9 }}
