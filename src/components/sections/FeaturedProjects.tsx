@@ -90,8 +90,9 @@ export default function FeaturedProjects({ id = "featured-projects", scrollButto
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                         viewport={{ once: true }}
+                        className="h-full"
                     >
-                        <Card featured={project.featured} className="flex flex-col">
+                        <Card featured={project.featured} className="flex flex-col h-full">
                             {project.image && (
                                 <div className="relative w-full h-32 rounded-t-xl overflow-hidden">
                                     <Image

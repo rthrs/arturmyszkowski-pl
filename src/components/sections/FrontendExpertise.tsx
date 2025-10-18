@@ -47,10 +47,11 @@ export default function FrontendExpertise({ id = "frontend-expertise", scrollBut
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                         viewport={{ once: true }}
+                        className="h-full"
                     >
                         <Card
                             variant="skill"
-                            className={`${skill.cardBgClass} ${skill.spanClass || ""}`}
+                            className={`h-full ${skill.cardBgClass} ${skill.spanClass || ""}`}
                             hoverable={true}
                         >
                             <div className="flex items-center mb-4">

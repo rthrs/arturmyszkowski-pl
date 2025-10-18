@@ -38,7 +38,7 @@ export default function Contact({ id = "contact" }: ContactProps = {}) {
                         rel={rel}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                         viewport={{ once: true }}
                     >
                         <CTAButton

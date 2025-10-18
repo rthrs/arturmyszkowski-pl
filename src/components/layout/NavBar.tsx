@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu as Menu, FiX as X } from "react-icons/fi";
 import { NAV_ITEMS } from "@/constants/nav";
 import { FEATURES } from "@/constants/features";
@@ -107,30 +107,37 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                 </div>
 
                 {/* Mobile Navigation */}
-                {isMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden relative z-50 pb-4"
-                    >
-                        <div className="py-2 space-y-2">
-                            {NAV_ITEMS.map((item) => (
-                                <motion.button
-                                    key={item.id}
-                                    onClick={() => {
-                                        setIsMenuOpen(false);
-                                        onNavigate(item.id);
-                                    }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="block w-full text-left text-gray-400 hover:text-white transition-colors text-md font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
-                                >
-                                    {item.label}
-                                </motion.button>
-                            ))}
-                        </div>
-                    </motion.div>
-                )}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="md:hidden relative z-50 pb-4 overflow-hidden"
+                        >
+                            <div className="py-2 space-y-2">
+                                {NAV_ITEMS.map((item, index) => (
+                                    <motion.button
+                                        key={item.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.2, delay: index * 0.05, ease: "easeOut" }}
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            onNavigate(item.id);
+                                        }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="block w-full text-left text-gray-400 hover:text-white transition-colors text-md font-medium px-4 py-2 rounded-lg hover:bg-white/5 active:bg-white/10"
+                                    >
+                                        {item.label}
+                                    </motion.button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </nav>
     );
