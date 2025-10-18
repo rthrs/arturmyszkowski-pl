@@ -60,7 +60,7 @@ export default function Section({
 
                 <div className={`flex flex-1 flex-col ${containerClassName}`}>
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
@@ -71,7 +71,7 @@ export default function Section({
 
                     {scrollButton && (
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                             viewport={{ once: true }}

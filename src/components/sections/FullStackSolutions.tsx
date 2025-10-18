@@ -36,37 +36,38 @@ export default function FullStackSolutions({
                     proven leadership in project delivery.
                 </SectionSubtitle>
             </div>
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className={SKILLS_GRID_CLASS_NAME}
-            >
-                {OTHER_SKILLS.map((skill) => (
-                    <Card
+            <div className={SKILLS_GRID_CLASS_NAME}>
+                {OTHER_SKILLS.map((skill, index) => (
+                    <motion.div
                         key={skill.name}
-                        variant="skill"
-                        className={`${skill.cardBgClass} ${skill.spanClass || ""}`}
-                        hoverable={true}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: "easeOut" }}
+                        viewport={{ once: true }}
                     >
-                        <div className="flex items-center mb-4">
-                            <div
-                                className={`p-3 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 group-hover:border-gray-500/50`}
-                            >
-                                <skill.icon
-                                    size={24}
-                                    className="text-white transition-transform duration-200 group-hover:scale-110"
-                                />
+                        <Card
+                            variant="skill"
+                            className={`${skill.cardBgClass} ${skill.spanClass || ""}`}
+                            hoverable={true}
+                        >
+                            <div className="flex items-center mb-4">
+                                <div
+                                    className={`p-3 rounded-lg bg-gray-800 bg-gradient-to-bl ${skill.iconColorClass} transition-all duration-300 mr-3 border border-gray-600/30 group-hover:border-gray-500/50`}
+                                >
+                                    <skill.icon
+                                        size={24}
+                                        className="text-white transition-transform duration-200 group-hover:scale-110"
+                                    />
+                                </div>
+                                <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
                             </div>
-                            <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
-                        </div>
-                        <div className="text-gray-300 font-light text-sm">
-                            <GroupedTechBadgesList groups={skill.description} gridClass={skill.gridClass} />
-                        </div>
-                    </Card>
+                            <div className="text-gray-300 font-light text-sm">
+                                <GroupedTechBadgesList groups={skill.description} gridClass={skill.gridClass} />
+                            </div>
+                        </Card>
+                    </motion.div>
                 ))}
-            </motion.div>
+            </div>
         </Section>
     );
 }

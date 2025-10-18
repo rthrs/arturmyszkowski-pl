@@ -60,8 +60,8 @@ export default function Hero({ id = "hero", scrollButton }: HeroProps = {}) {
             </motion.div>
 
             <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-ligh mb-8 sm:mb-16"
             >

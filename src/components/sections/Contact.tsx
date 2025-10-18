@@ -29,15 +29,18 @@ export default function Contact({ id = "contact" }: ContactProps = {}) {
                 </SectionSubtitle>
             </div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="pt-2 flex flex-col gap-6 justify-center items-center"
-            >
-                {CONTACT_LINKS.map(({ id, href, label, icon: Icon, target, rel }) => (
-                    <a key={id} href={href} target={target} rel={rel}>
+            <div className="pt-2 flex flex-col gap-6 justify-center items-center">
+                {CONTACT_LINKS.map(({ id, href, label, icon: Icon, target, rel }, index) => (
+                    <motion.a
+                        key={id}
+                        href={href}
+                        target={target}
+                        rel={rel}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+                        viewport={{ once: true }}
+                    >
                         <CTAButton
                             label={label}
                             rightIcon={
@@ -47,9 +50,9 @@ export default function Contact({ id = "contact" }: ContactProps = {}) {
                                 />
                             }
                         />
-                    </a>
+                    </motion.a>
                 ))}
-            </motion.div>
+            </div>
         </Section>
     );
 }
