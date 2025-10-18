@@ -26,8 +26,8 @@ export default function FrontendExpertise({ id = "frontend-expertise", scrollBut
             contentClassName="justify-center space-y-8 xl:space-y-10"
             background={
                 <>
-                    <WireframeBackground />
                     <GradientBackground direction="top" />
+                    <WireframeBackground />
                 </>
             }
             scrollButton={scrollButton}
