@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import CanvasBackground from "./CanvasBackground";
+import CanvasBackground from "../CanvasBackground";
 import WireframeScene from "./WireframeScene";
 
 interface WireframeBackgroundProps {

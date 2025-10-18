@@ -5,7 +5,7 @@ import Image from "next/image";
 import Section from "@/components/ui/section/Section";
 import HeroSocials from "@/components/sections/HeroSocials";
 import profileImage from "../../../public/images/profile.jpeg";
-import SneaksBackground from "@/components/backgrounds/SneaksBackground";
+import SneaksBackground from "@/components/backgrounds/sneaks";
 
 interface HeroProps {
     id?: string;

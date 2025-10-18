@@ -1,29 +1,22 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { useFrame, Canvas } from "@react-three/fiber";
+import { useRef, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { useCanvasVisibility } from "@/hooks/useCanvasVisibility";
 
-interface SneaksBackgroundProps {
-    className?: string;
+interface SneaksSceneProps {
     lineCount?: number;
     color?: string;
     opacity?: number;
     speed?: number;
 }
 
-function FlowingLines({
-    lineCount,
-    color,
-    opacity,
-    speed
-}: {
-    lineCount: number;
-    color: string;
-    opacity: number;
-    speed: number;
-}) {
+export default function SneaksScene({
+    lineCount = 12,
+    color = "#64D2FF",
+    opacity = 0.15,
+    speed = 0.2
+}: SneaksSceneProps) {
     const groupRef = useRef<THREE.Group>(null);
     const bandMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
     const lineMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
@@ -257,36 +250,4 @@ function FlowingLines({
     });
 
     return <group ref={groupRef} />;
-}
-
-export default function SneaksBackground({
-    className = "",
-    lineCount = 12,
-    color = "#64D2FF",
-    opacity = 0.15,
-    speed = 0.2
-}: SneaksBackgroundProps) {
-    const [hasError, setHasError] = useState(false);
-    const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
-
-    if (hasError || !isClient) {
-        return null;
-    }
-
-    return (
-        <div ref={containerRef} className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
-            <Canvas
-                camera={{ position: [0, 0, 15], fov: 60 }}
-                onError={() => setHasError(true)}
-                gl={{
-                    alpha: true,
-                    antialias: true,
-                    powerPreference: "low-power"
-                }}
-                frameloop={shouldAnimate ? "always" : "demand"}
-            >
-                <FlowingLines lineCount={lineCount} color={color} opacity={opacity} speed={speed} />
-            </Canvas>
-        </div>
-    );
 }

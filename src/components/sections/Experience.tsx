@@ -7,7 +7,7 @@ import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
-import FluidBackground from "@/components/backgrounds/FluidBackground";
+import FluidBackground from "@/components/backgrounds/fluid";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
 
 interface ExperienceProps {

@@ -2,14 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
-import { useCanvasVisibility } from "@/hooks/useCanvasVisibility";
-
-interface FluidBackgroundProps {
-    className?: string;
-    speed?: number;
-}
 
 type FluidPlaneProps = {
     speed?: number;
@@ -304,34 +297,15 @@ function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed
     return <group ref={groupRef} />;
 }
 
-export default function FluidBackground({ className = "", speed = 0.2 }: FluidBackgroundProps) {
-    const [hasError, setHasError] = useState(false);
-    const { ref: containerRef, shouldAnimate, isClient } = useCanvasVisibility<HTMLDivElement>({ threshold: 0.1 });
+interface FluidSceneProps {
+    speed?: number;
+}
 
-    if (hasError || !isClient) {
-        // Fallback gradient while loading or on error
-        return (
-            <div className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
-            </div>
-        );
-    }
-
+export default function FluidScene({ speed = 0.2 }: FluidSceneProps) {
     return (
-        <div ref={containerRef} className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
-            <Canvas
-                camera={{ position: [0, 0, 10], fov: 60 }}
-                onError={() => setHasError(true)}
-                gl={{
-                    alpha: true,
-                    antialias: true,
-                    powerPreference: "low-power" // Use integrated GPU
-                }}
-                frameloop={shouldAnimate ? "always" : "demand"}
-            >
-                <FluidPlane speed={speed} opacity={0.75} />
-                <FlowingLines lineCount={24} speed={speed} opacity={0.35} color="#64D2FF" />
-            </Canvas>
-        </div>
+        <>
+            <FluidPlane speed={speed} opacity={0.75} />
+            <FlowingLines lineCount={24} speed={speed} opacity={0.35} color="#64D2FF" />
+        </>
     );
 }
