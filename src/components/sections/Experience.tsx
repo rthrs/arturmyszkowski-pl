@@ -26,8 +26,8 @@ export default function Experience({ id = "experience", scrollButton }: Experien
             contentClassName="justify-center space-y-12"
             background={
                 <>
-                    <FluidBackground />
                     <GradientBackground direction="bottom" />
+                    <FluidBackground />
                 </>
             }
             scrollButton={scrollButton}

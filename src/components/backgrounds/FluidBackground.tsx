@@ -144,10 +144,14 @@ function FluidPlane({ speed = 0.3, opacity = 1.0 }: FluidPlaneProps) {
           float fadeOut = 1.0 - smoothstep(0.3, 0.8, centerDistance);
 
           // Screen-space bottom fade (align with canvas). 0.0 at bottom, 1.0 at top
-          float bottomMask = smoothstep(0.0, 0.5, vScreenY);
+          float fade = 0.33;
+          float bottomMask = smoothstep(0.0, fade, vScreenY);
+          
+          // Screen-space top fade. 1.0 at bottom, 0.0 at top
+          float topMask = 1.0 - smoothstep(1.0 - fade, 1.0, vScreenY);
           
           // Liquid-like opacity with smooth transitions and edge fading
-          float alpha = (totalLiquid * 0.22 + 0.08) * fadeOut * bottomMask;
+          float alpha = (totalLiquid * 0.22 + 0.08) * fadeOut * bottomMask * topMask;
           alpha = clamp(alpha, 0.0, 0.35) * uOpacity;
           
           gl_FragColor = vec4(finalColor, alpha);
@@ -307,14 +311,14 @@ export default function FluidBackground({ className = "", speed = 0.2 }: FluidBa
     if (hasError || !isClient) {
         // Fallback gradient while loading or on error
         return (
-            <div className={`absolute top-0 bottom-0 left-0 right-0 ${className}`}>
+            <div className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
             </div>
         );
     }
 
     return (
-        <div ref={containerRef} className={`absolute top-0 bottom-0 left-0 right-0 ${className}`}>
+        <div ref={containerRef} className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${className}`}>
             <Canvas
                 camera={{ position: [0, 0, 10], fov: 60 }}
                 onError={() => setHasError(true)}
