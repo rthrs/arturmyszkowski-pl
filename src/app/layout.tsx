@@ -8,24 +8,36 @@ const spaceGrotesk = Space_Grotesk({
     display: "swap"
 });
 
+const title = "Artur Myszkowski - Software Engineer";
+const description =
+    "Senior Software Engineer with 8+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.";
+
 export const metadata: Metadata = {
-    title: "Artur Myszkowski | Senior Software Engineer",
-    description:
-        "Senior Software Engineer with 8+ years experience and Master's degree in Computer Science. Specializing in modern front-end applications, React, TypeScript, and high-performance web development.",
+    title,
+    description,
     keywords: [
+        "Artur Myszkowski",
         "software Engineer",
         "senior Engineer",
+        "senior software engineer",
         "frontend Engineer",
         "react Engineer",
+        "react developer",
+        "typescript developer",
+        "javascript developer",
+        "javascript",
         "typescript",
+        "computer science",
         "web development",
         "computer science",
-        "university of warsaw"
+        "university of warsaw",
+        "mimuw",
+        "master's degree in computer science"
     ],
     authors: [{ name: "Artur Myszkowski" }],
     openGraph: {
-        title: "Artur Myszkowski | Software Engineer",
-        description: "Senior Software Engineer with 7+ years experience specializing in modern front-end applications",
+        title,
+        description,
         type: "website"
     }
 };
