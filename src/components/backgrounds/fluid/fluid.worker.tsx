@@ -1,4 +1,4 @@
 import { render } from "@react-three/offscreen";
 import FluidScene from "./FluidScene";
 
-render(<FluidScene speed={0.2} />);
+render(<FluidScene speed={0.2} aspectRatio={16 / 9} />);

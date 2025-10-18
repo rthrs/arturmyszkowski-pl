@@ -7,26 +7,25 @@ import * as THREE from "three";
 type FluidPlaneProps = {
     speed?: number;
     opacity?: number;
+    aspectRatio?: number;
 };
 
-function FluidPlane({ speed = 0.3, opacity = 1.0 }: FluidPlaneProps) {
+function FluidPlane({ speed = 0.3, opacity = 1.0, aspectRatio = 16 / 9 }: FluidPlaneProps) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
     const [geometry, setGeometry] = useState<THREE.PlaneGeometry | null>(null);
 
     useEffect(() => {
-        // Calculate aspect ratio based on viewport
-        const aspect = window.innerWidth / window.innerHeight;
         // Make the plane wider to match typical viewport aspect ratios
         const width = 60;
-        const height = width / aspect;
+        const height = width / aspectRatio;
         const planeGeometry = new THREE.PlaneGeometry(width, height, 1, 1);
         setGeometry(planeGeometry);
 
         return () => {
             planeGeometry.dispose();
         };
-    }, []);
+    }, [aspectRatio]);
 
     useEffect(() => {
         // Create fluid shader material
@@ -299,12 +298,13 @@ function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed
 
 interface FluidSceneProps {
     speed?: number;
+    aspectRatio?: number;
 }
 
-export default function FluidScene({ speed = 0.2 }: FluidSceneProps) {
+export default function FluidScene({ speed = 0.2, aspectRatio = 16 / 9 }: FluidSceneProps) {
     return (
         <>
-            <FluidPlane speed={speed} opacity={0.75} />
+            <FluidPlane speed={speed} opacity={0.75} aspectRatio={aspectRatio} />
             <FlowingLines lineCount={24} speed={speed} opacity={0.35} color="#64D2FF" />
         </>
     );

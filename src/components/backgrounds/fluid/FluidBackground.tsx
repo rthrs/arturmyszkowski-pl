@@ -7,9 +7,10 @@ import FluidScene from "./FluidScene";
 interface FluidBackgroundProps {
     className?: string;
     speed?: number;
+    aspectRatio?: number;
 }
 
-export default function FluidBackground({ className = "", speed = 0.2 }: FluidBackgroundProps) {
+export default function FluidBackground({ className = "", speed = 0.2, aspectRatio = 16 / 9 }: FluidBackgroundProps) {
     const worker = useMemo(() => {
         if (typeof window !== "undefined") {
             try {
@@ -26,7 +27,7 @@ export default function FluidBackground({ className = "", speed = 0.2 }: FluidBa
         <CanvasBackground
             className={className}
             worker={worker}
-            fallbackScene={<FluidScene speed={speed} />}
+            fallbackScene={<FluidScene speed={speed} aspectRatio={aspectRatio} />}
             fallbackBackground={
                 <div className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-orange-500/6" />
             }
