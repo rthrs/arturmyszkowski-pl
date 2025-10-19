@@ -1,49 +1,38 @@
 /**
- * Google Analytics 4 utilities using Next.js @next/third-parties
- * Documentation: https://nextjs.org/docs/app/building-your-application/optimizing/third-party-libraries#google-analytics
+ * PostHog Analytics utilities - Cookie-free implementation
+ * Documentation: https://posthog.com/docs/libraries/next-js
  */
 
-import { sendGAEvent } from "@next/third-parties/google";
+import posthog from "posthog-js";
 
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 
 /**
- * Check if Google Analytics is enabled
+ * Check if PostHog is enabled
  */
-export const isGAEnabled = (): boolean => {
-    return !!GA_MEASUREMENT_ID && process.env.NODE_ENV === "production";
+export const isAnalyticsEnabled = (): boolean => {
+    return !!POSTHOG_KEY && process.env.NODE_ENV === "production" && typeof window !== "undefined";
 };
 
 /**
  * Custom event parameters
  */
-export interface GAEvent {
-    action: string;
-    category?: string;
-    label?: string;
-    value?: number;
-    // Allow additional custom parameters
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
+export interface AnalyticsEvent {
+    [key: string]: string | number | boolean | undefined;
 }
 
 /**
- * Track custom events using Next.js sendGAEvent
+ * Track custom events using PostHog
  * Examples:
  * - Button clicks
  * - Form submissions
  * - Downloads
  * - External link clicks
  */
-export const event = ({ action, category, label, value, ...params }: GAEvent): void => {
-    if (!isGAEnabled()) return;
+export const trackEvent = (eventName: string, properties?: AnalyticsEvent): void => {
+    if (!isAnalyticsEnabled()) return;
 
-    sendGAEvent("event", action, {
-        event_category: category,
-        event_label: label,
-        value: value,
-        ...params
-    });
+    posthog.capture(eventName, properties);
 };
 
 /**
@@ -54,10 +43,8 @@ export const analytics = {
      * Track button clicks
      */
     trackButtonClick: (buttonName: string, location?: string) => {
-        event({
-            action: "button_click",
-            category: "engagement",
-            label: buttonName,
+        trackEvent("button_click", {
+            button_name: buttonName,
             location: location
         });
     },
@@ -66,11 +53,9 @@ export const analytics = {
      * Track external link clicks
      */
     trackExternalLink: (url: string, linkText?: string, location?: string) => {
-        event({
-            action: "external_link_click",
-            category: "outbound",
-            label: linkText || url,
+        trackEvent("external_link_click", {
             url: url,
+            link_text: linkText,
             location: location
         });
     },
@@ -78,11 +63,8 @@ export const analytics = {
     /**
      * Track file downloads
      */
-    trackDownload: (label: string, fileName: string, fileType?: string, location?: string) => {
-        event({
-            action: "file_download",
-            category: "downloads",
-            label: label,
+    trackDownload: (fileName: string, fileType?: string, location?: string) => {
+        trackEvent("file_download", {
             file_name: fileName,
             file_type: fileType,
             location: location
@@ -92,12 +74,11 @@ export const analytics = {
     /**
      * Track form submissions
      */
-    trackFormSubmission: (formName: string, success: boolean = true) => {
-        event({
-            action: "form_submit",
-            category: "engagement",
-            label: formName,
-            success: success
+    trackFormSubmission: (formName: string, location?: string, success: boolean = true) => {
+        trackEvent("form_submit", {
+            form_name: formName,
+            success: success,
+            location: location
         });
     },
 
@@ -105,10 +86,8 @@ export const analytics = {
      * Track social media clicks
      */
     trackSocialClick: (platform: string, location?: string, action: string = "click") => {
-        event({
-            action: "social_interaction",
-            category: "social",
-            label: platform,
+        trackEvent("social_interaction", {
+            platform: platform,
             social_action: action,
             location: location
         });
@@ -118,23 +97,18 @@ export const analytics = {
      * Track section views (when user scrolls to a section)
      */
     trackSectionView: (sectionName: string) => {
-        event({
-            action: "section_view",
-            category: "engagement",
-            label: sectionName
+        trackEvent("section_view", {
+            section_name: sectionName
         });
     },
 
     /**
      * Track scroll depth
      */
-    trackScrollDepth: (percentage: number, page?: string) => {
-        event({
-            action: "scroll_depth",
-            category: "engagement",
-            label: `${percentage}%`,
-            value: percentage,
-            page: page
+    trackScrollDepth: (percentage: number) => {
+        trackEvent("scroll_depth", {
+            percentage: percentage,
+            depth_label: `${percentage}%`
         });
     }
 };

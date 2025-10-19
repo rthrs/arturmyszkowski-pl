@@ -42,7 +42,7 @@ export default function Contact({ id: sectionId = "contact" }: ContactProps = {}
                         transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                         viewport={{ once: true }}
                         onClick={() => {
-                            analytics.trackSocialClick(contactId, sectionId);
+                            analytics.trackSocialClick(label, sectionId);
                         }}
                     >
                         <CTAButton

@@ -86,7 +86,7 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                         whileTap={{ scale: 0.95 }}
                         onClick={() => {
                             if (socialId === "resume") {
-                                analytics.trackDownload("resume", href, "pdf", sectionId);
+                                analytics.trackDownload(href, "pdf", sectionId);
                             } else {
                                 analytics.trackSocialClick(socialId, sectionId);
                             }

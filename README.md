@@ -10,7 +10,7 @@ A modern, minimalist personal website inspired by Cursor's aesthetic, built with
 - **SEO Optimized**: Proper meta tags and structured data
 - **Accessibility**: WCAG compliant design patterns
 - **Smooth Animations**: Subtle Framer Motion animations throughout
-- **Analytics**: Google Analytics 4
+- **Analytics**: PostHog (cookie-free, privacy-first)
 
 ## 📋 Sections
 
@@ -43,10 +43,11 @@ A modern, minimalist personal website inspired by Cursor's aesthetic, built with
     Create a `.env.local` file in the root directory:
 
     ```bash
-    NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+    NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
+    NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
     ```
 
-    See [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md) for detailed instructions on setting up Google Analytics.
+    See [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md) for detailed PostHog setup instructions.
 
 3. **Run the development server**:
 
@@ -104,7 +105,13 @@ The website is structured to easily add:
 
 ## 📊 Analytics
 
-This website includes Google Analytics 4 (GA4) integration for tracking:
+This website uses **PostHog** for cookie-free, privacy-first analytics:
+
+✅ **No cookies** - GDPR compliant, no consent banner needed  
+✅ **Privacy-first** - Anonymous tracking only  
+✅ **Feature-rich** - Events, insights, session replay
+
+**Tracks:**
 
 - Page views and visitor metrics
 - Button clicks and user interactions
@@ -114,9 +121,13 @@ This website includes Google Analytics 4 (GA4) integration for tracking:
 
 **Quick Setup**:
 
-1. Create a GA4 property at [analytics.google.com](https://analytics.google.com)
-2. Get your Measurement ID (format: `G-XXXXXXXXXX`)
-3. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` to your environment variables
+1. Sign up at [posthog.com](https://posthog.com/signup)
+2. Get your Project API Key and Host
+3. Add to environment variables:
+    ```bash
+    NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
+    NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+    ```
 
 **Full guide**: [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md)
 
@@ -126,7 +137,9 @@ This website includes Google Analytics 4 (GA4) integration for tracking:
 
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Add environment variable `NEXT_PUBLIC_GA_MEASUREMENT_ID` in project settings
+3. Add environment variables in project settings:
+    - `NEXT_PUBLIC_POSTHOG_KEY`
+    - `NEXT_PUBLIC_POSTHOG_HOST`
 4. Deploy with zero configuration
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/arturmyszkowski-pl)
@@ -134,7 +147,9 @@ This website includes Google Analytics 4 (GA4) integration for tracking:
 ### Deploy to Netlify
 
 1. Connect your GitHub repository to Netlify
-2. Add environment variable `NEXT_PUBLIC_GA_MEASUREMENT_ID` in site settings
+2. Add environment variables in site settings:
+    - `NEXT_PUBLIC_POSTHOG_KEY`
+    - `NEXT_PUBLIC_POSTHOG_HOST`
 3. Deploy
 
 ### Other Deployment Options
@@ -142,7 +157,7 @@ This website includes Google Analytics 4 (GA4) integration for tracking:
 - **AWS Amplify**: Deploy directly from your repository
 - **Railway**: Simple deployment with automatic builds
 
-**Important**: Don't forget to add your `NEXT_PUBLIC_GA_MEASUREMENT_ID` environment variable to your deployment platform!
+**Important**: Don't forget to add your PostHog environment variables to your deployment platform!
 
 ## 📝 License
 

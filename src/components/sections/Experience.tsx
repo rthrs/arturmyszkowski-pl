@@ -52,7 +52,7 @@ export default function Experience({ id: sectionId = "experience", scrollButton 
                     href={SOCIAL_LINKS.resume.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => analytics.trackDownload("resume", SOCIAL_LINKS.resume.href, "pdf", sectionId)}
+                    onClick={() => analytics.trackDownload(SOCIAL_LINKS.resume.href, "pdf", sectionId)}
                 >
                     <CTAButton
                         label="Download Resume"

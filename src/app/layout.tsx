@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { PostHogProvider } from "@/providers/posthog-provider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,9 +53,8 @@ export default function RootLayout({
             <body
                 className={`${spaceGrotesk.variable} antialiased overflow-x-clip font-[family-name:var(--font-space-grotesk)]`}
             >
-                {children}
+                <PostHogProvider>{children}</PostHogProvider>
             </body>
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
         </html>
     );
 }

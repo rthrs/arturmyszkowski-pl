@@ -171,9 +171,7 @@ export default function FeaturedProjects({
                                             whileTap={{ scale: 0.95 }}
                                             transition={{ duration: 0.1, ease: "easeOut" }}
                                             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
-                                            onClick={() =>
-                                                analytics.trackDownload("Paper", project.paperUrl!, "pdf", sectionId)
-                                            }
+                                            onClick={() => analytics.trackDownload(project.paperUrl!, "pdf", sectionId)}
                                         >
                                             <FiFileText size={16} />
                                             <span>Paper</span>
