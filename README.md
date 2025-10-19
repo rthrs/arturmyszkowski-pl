@@ -1,172 +1,97 @@
-# Artur Myszkowski - Personal Website
+# Artur Myszkowski - Portfolio
 
-A modern, minimalist personal website inspired by Cursor's aesthetic, built with Next.js 14, TypeScript, and Tailwind CSS. This website showcases your professional profile as a Senior Software Engineer with a sleek, dark-first design.
+[![Website-Status](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Farturmyszkowski.pl)](https://arturmyszkowski.pl)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 Features
+Personal portfolio website showcasing professional work as a Senior Software Engineer. Built with Next.js 15, TypeScript, WebGL, and modern web technologies.
 
-- **Cursor-Inspired Design**: Minimalist, dark-first aesthetic with clean typography
-- **Responsive**: Optimized for all devices (desktop, tablet, mobile)
-- **Performance**: Fast loading with Next.js optimizations
-- **SEO Optimized**: Proper meta tags and structured data
-- **Accessibility**: WCAG compliant design patterns
-- **Smooth Animations**: Subtle Framer Motion animations throughout
-- **Analytics**: PostHog (cookie-free, privacy-first)
+**Live**: [arturmyszkowski.pl](https://arturmyszkowski.pl)
 
-## 📋 Sections
+## Features
 
-- **Hero Section**: Professional photo, name, title, and social links
-- **About Me**: Professional background and personal story
-- **Skills**: Key technical skills with icons and descriptions
-- **Resume**: Download link for your CV/resume
-- **Contact**: Contact information and social media links
+- **Interactive 3D Backgrounds**: WebGL-powered animated scenes using React Three Fiber
+- **SEO Optimized**: Complete metadata, OpenGraph images, structured data (JSON-LD), sitemap
+- **Performance**: Optimized with Next.js 15, code splitting, and lazy loading
+- **Responsive Design**: Mobile-first approach with smooth scroll snapping
+- **Privacy-First Analytics**: PostHog integration (cookie-free, GDPR compliant)
+- **Smooth Animations**: Framer Motion throughout
 
-## 🛠️ Technology Stack
+## Technology Stack
 
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js 15 (App Router, Turbopack)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS v4
+- **3D Graphics**: React Three Fiber, Three.js
 - **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Fonts**: Inter (sans-serif) + JetBrains Mono (monospace)
-- **Deployment**: Vercel (recommended)
+- **Analytics**: PostHog
+- **Font**: Space Grotesk
 
-## 🚀 Getting Started
+## Development
 
-1. **Install dependencies**:
+```bash
+# Install dependencies
+npm install
 
-    ```bash
-    npm install
-    ```
+# Run development server (with Turbopack)
+npm run dev
 
-2. **Set up environment variables** (optional, for analytics):
+# Build for production
+npm run build
 
-    Create a `.env.local` file in the root directory:
-
-    ```bash
-    NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
-    NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
-    ```
-
-    See [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md) for detailed PostHog setup instructions.
-
-3. **Run the development server**:
-
-    ```bash
-    npm run dev
-    ```
-
-4. **Open your browser** and visit [http://localhost:3000](http://localhost:3000)
-
-## 🎨 Customization
-
-### Personal Information
-
-Update the following in `src/app/page.tsx`:
-
-- Name and title in the hero section
-- About me content
-- Skills and descriptions
-- Contact information and social links
-- Profile photo (replace `public/profile-photo.jpg`)
-
-### Styling
-
-- Colors: Modify the Tailwind classes throughout the components
-- Typography: Update font choices in `src/app/layout.tsx`
-- Layout: Adjust spacing, sizing, and layout in the component classes
-
-### Content
-
-- **Profile Photo**: Replace `public/profile-photo.jpg` with your actual photo (recommended: 400x400px or larger)
-- **Resume**: Add your actual resume PDF to the public folder and update the download link
-- **Social Links**: Update GitHub, LinkedIn, and email links with your actual profiles
-
-### Future Enhancements
-
-The website is structured to easily add:
-
-- **Blog Section**: Add MDX support for blog posts
-- **Portfolio**: Create a projects showcase section
-- **Contact Form**: Add a functional contact form with form handling
-
-## 📁 Project Structure
-
-```
-├── public/
-│   ├── profile-photo.jpg    # Your profile photo
-│   └── resume.pdf          # Your resume (add this)
-├── src/
-│   └── app/
-│       ├── layout.tsx      # Root layout and metadata
-│       ├── page.tsx        # Main homepage
-│       └── globals.css     # Global styles
-└── package.json
+# Run linting and formatting
+npm run check
+npm run fix
 ```
 
-## 📊 Analytics
+### Environment Variables
 
-This website uses **PostHog** for cookie-free, privacy-first analytics:
+Create `.env.local` for analytics (optional):
 
-✅ **No cookies** - GDPR compliant, no consent banner needed  
-✅ **Privacy-first** - Anonymous tracking only  
-✅ **Feature-rich** - Events, insights, session replay
+```bash
+NEXT_PUBLIC_POSTHOG_KEY=your_posthog_key
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_verification_code
+```
 
-**Tracks:**
+See [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md) for PostHog setup.
 
-- Page views and visitor metrics
-- Button clicks and user interactions
-- Resume downloads
-- Project link clicks (GitHub, live demos, papers)
-- Social media link clicks
+## Project Structure
 
-**Quick Setup**:
+```
+src/
+├── app/
+│   ├── layout.tsx              # Root layout, metadata, SEO
+│   ├── page.tsx                # Main page
+│   ├── robots.ts               # robots.txt generation
+│   ├── sitemap.ts              # sitemap.xml generation
+│   └── opengraph-image.tsx     # Dynamic OG image
+├── components/
+│   ├── backgrounds/            # WebGL 3D backgrounds
+│   ├── sections/               # Page sections
+│   ├── ui/                     # Reusable UI components
+│   └── StructuredData.tsx      # JSON-LD schemas
+├── constants/                  # Site configuration
+├── hooks/                      # Custom React hooks
+└── lib/                        # Utilities
+```
 
-1. Sign up at [posthog.com](https://posthog.com/signup)
-2. Get your Project API Key and Host
-3. Add to environment variables:
-    ```bash
-    NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
-    NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
-    ```
+## SEO Implementation
 
-**Full guide**: [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md)
+Complete SEO setup following Next.js best practices:
 
-## 🚀 Deployment
+- ✅ Dynamic `robots.txt` and `sitemap.xml`
+- ✅ OpenGraph and Twitter Card metadata
+- ✅ Dynamic social sharing image (1200×630)
+- ✅ JSON-LD structured data (Person, ProfilePage, WebSite schemas)
+- ✅ Canonical URLs and meta robots configuration
+- ✅ 40+ targeted keywords for search optimization
 
-### Deploy to Vercel (Recommended)
+See [SEO_IMPLEMENTATION.md](SEO_IMPLEMENTATION.md) for details.
 
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add environment variables in project settings:
-    - `NEXT_PUBLIC_POSTHOG_KEY`
-    - `NEXT_PUBLIC_POSTHOG_HOST`
-4. Deploy with zero configuration
+## License
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/arturmyszkowski-pl)
-
-### Deploy to Netlify
-
-1. Connect your GitHub repository to Netlify
-2. Add environment variables in site settings:
-    - `NEXT_PUBLIC_POSTHOG_KEY`
-    - `NEXT_PUBLIC_POSTHOG_HOST`
-3. Deploy
-
-### Other Deployment Options
-
-- **AWS Amplify**: Deploy directly from your repository
-- **Railway**: Simple deployment with automatic builds
-
-**Important**: Don't forget to add your PostHog environment variables to your deployment platform!
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
+MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
+**Artur Myszkowski** • [Website](https://arturmyszkowski.pl) • [GitHub](https://github.com/rthrs) • [LinkedIn](https://linkedin.com/in/artur-myszkowski)
