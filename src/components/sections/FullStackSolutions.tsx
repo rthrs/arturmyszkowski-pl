@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import GroupedTechBadgesList from "@/components/ui/GroupedTechBadgesList";
 import Card from "@/components/ui/Card";
-import Section from "@/components/ui/section/Section";
+import Section, { ScrollButtonProps } from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { OTHER_SKILLS, SKILLS_GRID_CLASS_NAME } from "@/constants/skills";
@@ -11,10 +11,7 @@ import GradientBackground from "@/components/backgrounds/GradientBackground";
 
 interface FullStackSolutionsProps {
     id?: string;
-    scrollButton?: {
-        label: string;
-        targetSection: string;
-    };
+    scrollButton?: ScrollButtonProps;
 }
 
 export default function FullStackSolutions({

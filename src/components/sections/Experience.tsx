@@ -2,7 +2,7 @@
 
 import { FiDownload as Download } from "react-icons/fi";
 import CTAButton from "@/components/ui/buttons/CTAButton";
-import Section from "@/components/ui/section/Section";
+import Section, { ScrollButtonProps } from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { SOCIAL_LINKS } from "@/constants/socials";
@@ -13,10 +13,7 @@ import { analytics } from "@/lib/analytics";
 
 interface ExperienceProps {
     id?: string;
-    scrollButton?: {
-        label: string;
-        targetSection: string;
-    };
+    scrollButton?: ScrollButtonProps;
 }
 
 export default function Experience({ id: sectionId = "experience", scrollButton }: ExperienceProps = {}) {

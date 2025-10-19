@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import GroupedTechBadgesList from "@/components/ui/GroupedTechBadgesList";
 import Card from "@/components/ui/Card";
-import Section from "@/components/ui/section/Section";
+import Section, { ScrollButtonProps } from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import WireframeBackground from "@/components/backgrounds/wireframe";
 import { FRONTEND_EXPERTISE_SKILLS, SKILLS_GRID_CLASS_NAME } from "@/constants/skills";
@@ -12,10 +12,7 @@ import GradientBackground from "@/components/backgrounds/GradientBackground";
 
 interface FrontendExpertiseProps {
     id?: string;
-    scrollButton?: {
-        label: string;
-        targetSection: string;
-    };
+    scrollButton?: ScrollButtonProps;
 }
 
 export default function FrontendExpertise({

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Section from "@/components/ui/section/Section";
+import Section, { ScrollButtonProps } from "@/components/ui/section/Section";
 import profileImage from "../../../public/images/profile.jpeg";
 import SneaksBackground from "@/components/backgrounds/sneaks";
 import { HERO_SOCIAL_LINKS } from "@/constants/socials";
@@ -10,10 +10,7 @@ import { analytics } from "@/lib/analytics";
 
 interface HeroProps {
     id?: string;
-    scrollButton?: {
-        label: string;
-        targetSection: string;
-    };
+    scrollButton?: ScrollButtonProps;
 }
 
 export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps = {}) {

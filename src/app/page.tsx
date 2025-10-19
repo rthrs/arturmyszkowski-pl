@@ -35,7 +35,8 @@ export default function Home() {
                 id="hero"
                 scrollButton={{
                     label: "Learn More",
-                    targetSection: "about"
+                    targetSection: "about",
+                    delay: 0.7
                 }}
             />
             <About
@@ -49,21 +50,24 @@ export default function Home() {
                 id="frontend-expertise"
                 scrollButton={{
                     label: "See the Full Picture",
-                    targetSection: "full-stack-solutions"
+                    targetSection: "full-stack-solutions",
+                    delay: 0.8
                 }}
             />
             <FullStackSolutions
                 id="full-stack-solutions"
                 scrollButton={{
                     label: "Check Out My Projects",
-                    targetSection: "featured-projects"
+                    targetSection: "featured-projects",
+                    delay: 0.8
                 }}
             />
             <FeaturedProjects
                 id="featured-projects"
                 scrollButton={{
                     label: "Learn My Journey",
-                    targetSection: "experience"
+                    targetSection: "experience",
+                    delay: 0.6
                 }}
             />
             <Experience

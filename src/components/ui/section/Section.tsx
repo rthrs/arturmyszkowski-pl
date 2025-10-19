@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import ScrollButton from "@/components/ui/buttons/ScrollButton";
 import { FEATURES } from "@/constants/features";
 
-interface ScrollButtonProps {
+export interface ScrollButtonProps {
     label: string;
     targetSection: string;
     delay?: number;
