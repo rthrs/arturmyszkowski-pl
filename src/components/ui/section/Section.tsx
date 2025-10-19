@@ -75,7 +75,7 @@ export default function Section({
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                             viewport={{ once: true }}
-                            className="flex justify-center pb-6 sm:pb-12"
+                            className="flex justify-center pb-10 sm:pb-12"
                         >
                             <ScrollButton label={scrollButton.label} targetSection={scrollButton.targetSection} />
                         </motion.div>
