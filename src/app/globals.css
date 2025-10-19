@@ -33,12 +33,8 @@ button,
         /* Note: Brave mobile has a bug treating svh like dvh, but it's a niche browser */
         min-height: calc(100svh - 68px);
         scroll-margin-top: 69px;
-
-        /* Scroll snap only on medium+ screens to avoid cropping on mobile */
-        @media (min-width: 768px) {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 
     .section-base[data-variant="hero"] {
