@@ -8,6 +8,7 @@ import { FEATURES } from "@/constants/features";
 interface ScrollButtonProps {
     label: string;
     targetSection: string;
+    delay?: number;
 }
 
 interface SectionProps {
@@ -73,7 +74,7 @@ export default function Section({
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
+                            transition={{ duration: 0.8, delay: scrollButton.delay ?? 0.3 }}
                             viewport={{ once: true }}
                             className="flex justify-center pb-10 sm:pb-12"
                         >

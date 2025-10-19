@@ -9,7 +9,7 @@ interface CTAButtonProps extends Omit<ButtonProps, "rightIcon"> {
     rightIcon?: ReactNode;
 }
 
-export default function CTAButton({ label, rightIcon, variant = "ghost", ...rest }: CTAButtonProps) {
+export default function CTAButton({ label, rightIcon, variant = "primary", ...rest }: CTAButtonProps) {
     const defaultRightIcon = (
         <FiArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform duration-200" />
     );
