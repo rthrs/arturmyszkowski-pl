@@ -9,6 +9,7 @@ import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 import FluidBackground from "@/components/backgrounds/fluid";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
+import { analytics } from "@/lib/analytics";
 
 interface ExperienceProps {
     id?: string;
@@ -18,10 +19,10 @@ interface ExperienceProps {
     };
 }
 
-export default function Experience({ id = "experience", scrollButton }: ExperienceProps = {}) {
+export default function Experience({ id: sectionId = "experience", scrollButton }: ExperienceProps = {}) {
     return (
         <Section
-            id={id}
+            id={sectionId}
             containerClassName="max-w-4xl mx-auto"
             contentClassName="justify-center space-y-12"
             background={
@@ -47,7 +48,12 @@ export default function Experience({ id = "experience", scrollButton }: Experien
                 viewport={{ once: true }}
                 className="flex justify-center"
             >
-                <a href={SOCIAL_LINKS.resume.href} target="_blank" rel="noopener noreferrer">
+                <a
+                    href={SOCIAL_LINKS.resume.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => analytics.trackDownload("resume", SOCIAL_LINKS.resume.href, "pdf", sectionId)}
+                >
                     <CTAButton
                         label="Download Resume"
                         rightIcon={

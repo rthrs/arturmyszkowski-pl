@@ -8,6 +8,7 @@ import Section from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
+import { analytics } from "@/lib/analytics";
 
 interface Project {
     title: string;
@@ -65,10 +66,13 @@ interface FeaturedProjectsProps {
     };
 }
 
-export default function FeaturedProjects({ id = "featured-projects", scrollButton }: FeaturedProjectsProps = {}) {
+export default function FeaturedProjects({
+    id: sectionId = "featured-projects",
+    scrollButton
+}: FeaturedProjectsProps = {}) {
     return (
         <Section
-            id={id}
+            id={sectionId}
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={scrollButton}
@@ -133,6 +137,9 @@ export default function FeaturedProjects({ id = "featured-projects", scrollButto
                                             whileTap={{ scale: 0.95 }}
                                             transition={{ duration: 0.1, ease: "easeOut" }}
                                             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                                            onClick={() =>
+                                                analytics.trackExternalLink(project.githubUrl!, "Code", sectionId)
+                                            }
                                         >
                                             <FiGithub size={16} />
                                             <span>Code</span>
@@ -147,6 +154,9 @@ export default function FeaturedProjects({ id = "featured-projects", scrollButto
                                             whileTap={{ scale: 0.95 }}
                                             transition={{ duration: 0.1, ease: "easeOut" }}
                                             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                                            onClick={() =>
+                                                analytics.trackExternalLink(project.liveUrl!, "Live Demo", sectionId)
+                                            }
                                         >
                                             <FiExternalLink size={16} />
                                             <span>Live Demo</span>
@@ -161,6 +171,9 @@ export default function FeaturedProjects({ id = "featured-projects", scrollButto
                                             whileTap={{ scale: 0.95 }}
                                             transition={{ duration: 0.1, ease: "easeOut" }}
                                             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                                            onClick={() =>
+                                                analytics.trackDownload("Paper", project.paperUrl!, "pdf", sectionId)
+                                            }
                                         >
                                             <FiFileText size={16} />
                                             <span>Paper</span>

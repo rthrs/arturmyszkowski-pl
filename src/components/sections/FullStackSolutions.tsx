@@ -18,12 +18,12 @@ interface FullStackSolutionsProps {
 }
 
 export default function FullStackSolutions({
-    id = "full-stack-solutions",
+    id: sectionId = "full-stack-solutions",
     scrollButton
 }: FullStackSolutionsProps = {}) {
     return (
         <Section
-            id={id}
+            id={sectionId}
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={scrollButton}

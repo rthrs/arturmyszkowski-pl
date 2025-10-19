@@ -7,15 +7,16 @@ import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { motion } from "framer-motion";
 import { CONTACT_LINKS } from "@/constants/socials";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
+import { analytics } from "@/lib/analytics";
 
 interface ContactProps {
     id?: string;
 }
 
-export default function Contact({ id = "contact" }: ContactProps = {}) {
+export default function Contact({ id: sectionId = "contact" }: ContactProps = {}) {
     return (
         <Section
-            id={id}
+            id={sectionId}
             variant="contact"
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-12"
@@ -30,9 +31,9 @@ export default function Contact({ id = "contact" }: ContactProps = {}) {
             </div>
 
             <div className="pt-2 flex flex-col gap-6 justify-center items-center">
-                {CONTACT_LINKS.map(({ id, href, label, icon: Icon, target, rel }, index) => (
+                {CONTACT_LINKS.map(({ id: contactId, href, label, icon: Icon, target, rel }, index) => (
                     <motion.a
-                        key={id}
+                        key={contactId}
                         href={href}
                         target={target}
                         rel={rel}
@@ -40,6 +41,9 @@ export default function Contact({ id = "contact" }: ContactProps = {}) {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                         viewport={{ once: true }}
+                        onClick={() => {
+                            analytics.trackSocialClick(contactId, sectionId);
+                        }}
                     >
                         <CTAButton
                             label={label}

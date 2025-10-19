@@ -46,7 +46,7 @@ export const SOCIAL_LINKS = {
 export const HERO_SOCIAL_LINKS: SocialLink[] = [
     SOCIAL_LINKS.github,
     SOCIAL_LINKS.linkedin,
-    SOCIAL_LINKS.email,
+    { ...SOCIAL_LINKS.email, label: "Email" },
     SOCIAL_LINKS.resume
 ];
 

@@ -13,10 +13,10 @@ interface AboutProps {
     };
 }
 
-export default function About({ id = "about", scrollButton }: AboutProps = {}) {
+export default function About({ id: sectionId = "about", scrollButton }: AboutProps = {}) {
     return (
         <Section
-            id={id}
+            id={sectionId}
             containerClassName="max-w-4xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
             scrollButton={scrollButton}

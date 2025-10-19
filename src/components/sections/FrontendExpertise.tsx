@@ -18,10 +18,13 @@ interface FrontendExpertiseProps {
     };
 }
 
-export default function FrontendExpertise({ id = "frontend-expertise", scrollButton }: FrontendExpertiseProps = {}) {
+export default function FrontendExpertise({
+    id: sectionId = "frontend-expertise",
+    scrollButton
+}: FrontendExpertiseProps = {}) {
     return (
         <Section
-            id={id}
+            id={sectionId}
             containerClassName="max-w-6xl mx-auto"
             contentClassName="justify-center space-y-8 xl:space-y-10"
             background={

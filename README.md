@@ -10,6 +10,7 @@ A modern, minimalist personal website inspired by Cursor's aesthetic, built with
 - **SEO Optimized**: Proper meta tags and structured data
 - **Accessibility**: WCAG compliant design patterns
 - **Smooth Animations**: Subtle Framer Motion animations throughout
+- **Analytics**: Google Analytics 4
 
 ## 📋 Sections
 
@@ -37,13 +38,23 @@ A modern, minimalist personal website inspired by Cursor's aesthetic, built with
     npm install
     ```
 
-2. **Run the development server**:
+2. **Set up environment variables** (optional, for analytics):
+
+    Create a `.env.local` file in the root directory:
+
+    ```bash
+    NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+    ```
+
+    See [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md) for detailed instructions on setting up Google Analytics.
+
+3. **Run the development server**:
 
     ```bash
     npm run dev
     ```
 
-3. **Open your browser** and visit [http://localhost:3000](http://localhost:3000)
+4. **Open your browser** and visit [http://localhost:3000](http://localhost:3000)
 
 ## 🎨 Customization
 
@@ -91,21 +102,47 @@ The website is structured to easily add:
 └── package.json
 ```
 
+## 📊 Analytics
+
+This website includes Google Analytics 4 (GA4) integration for tracking:
+
+- Page views and visitor metrics
+- Button clicks and user interactions
+- Resume downloads
+- Project link clicks (GitHub, live demos, papers)
+- Social media link clicks
+
+**Quick Setup**:
+
+1. Create a GA4 property at [analytics.google.com](https://analytics.google.com)
+2. Get your Measurement ID (format: `G-XXXXXXXXXX`)
+3. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` to your environment variables
+
+**Full guide**: [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md)
+
 ## 🚀 Deployment
 
 ### Deploy to Vercel (Recommended)
 
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Deploy with zero configuration
+3. Add environment variable `NEXT_PUBLIC_GA_MEASUREMENT_ID` in project settings
+4. Deploy with zero configuration
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/arturmyszkowski-pl)
 
+### Deploy to Netlify
+
+1. Connect your GitHub repository to Netlify
+2. Add environment variable `NEXT_PUBLIC_GA_MEASUREMENT_ID` in site settings
+3. Deploy
+
 ### Other Deployment Options
 
-- **Netlify**: Connect your GitHub repository
 - **AWS Amplify**: Deploy directly from your repository
 - **Railway**: Simple deployment with automatic builds
+
+**Important**: Don't forget to add your `NEXT_PUBLIC_GA_MEASUREMENT_ID` environment variable to your deployment platform!
 
 ## 📝 License
 
