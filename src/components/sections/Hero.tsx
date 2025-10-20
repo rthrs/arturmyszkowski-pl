@@ -31,11 +31,11 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
             >
                 <Image
                     fill
-                    priority
                     src={profileImage}
-                    alt="Artur Myszkowski"
+                    alt=""
                     sizes="(min-width: 640px) 208px, 152px"
                     className="object-cover absolute -inset-6 blur-xl scale-125 opacity-10 rounded-full"
+                    aria-hidden="true"
                 />
                 <Image
                     fill

@@ -116,12 +116,6 @@ export default function RootLayout({
         <html lang="en" className="scroll-smooth snap-y snap-mandatory overflow-x-hidden bg-black">
             <head>
                 <StructuredData />
-                {/* Preload critical resources */}
-                <link rel="preload" href="/images/profile.jpeg" as="image" type="image/jpeg" />
-                {/* Preconnect to external domains */}
-                {/* Fixme: not sure it we need this, cdouble check from where fonts are coming from */}
-                {/* <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
-                {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /> */}
             </head>
             <body
                 className={`${spaceGrotesk.variable} antialiased overflow-x-clip font-[family-name:var(--font-space-grotesk)]`}
