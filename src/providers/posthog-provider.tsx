@@ -16,19 +16,13 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
                     api_host: posthogHost,
                     // Cookie-free configuration
                     persistence: "memory", // No cookies or localStorage
-                    disable_session_recording: false, // Can enable if needed
+                    disable_session_recording: true, // Can enable if needed
                     capture_pageview: true,
                     capture_pageleave: true,
                     // Privacy settings
                     autocapture: false, // Manual tracking only
                     mask_all_text: false,
-                    mask_all_element_attributes: false,
-                    // Performance
-                    loaded: () => {
-                        if (process.env.NODE_ENV === "development") {
-                            console.log("PostHog loaded");
-                        }
-                    }
+                    mask_all_element_attributes: false
                 });
             }
         }

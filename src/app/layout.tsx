@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PostHogProvider } from "@/providers/posthog-provider";
 import StructuredData from "@/components/StructuredData";
 import "./globals.css";
@@ -121,6 +122,7 @@ export default function RootLayout({
                 className={`${spaceGrotesk.variable} antialiased overflow-x-clip font-[family-name:var(--font-space-grotesk)]`}
             >
                 <PostHogProvider>{children}</PostHogProvider>
+                <SpeedInsights />
             </body>
         </html>
     );
