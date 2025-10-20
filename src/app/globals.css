@@ -35,7 +35,7 @@ button,
         scroll-margin-top: 69px;
 
         /* For devices with a minimum certain dimensions, enable scroll snapping - value tested empirically */
-        @media (min-width: 1085px) and (min-height: 996px) {
+        @media (min-width: theme("screens.lg")) and (min-height: 988px) {
             scroll-snap-align: start;
             scroll-snap-stop: always;
         }

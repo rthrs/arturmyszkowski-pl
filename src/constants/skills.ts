@@ -47,7 +47,7 @@ export interface SkillDef {
     spanClass?: string; // responsive grid column span class, e.g., "lg:col-span-2"
 }
 
-export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5";
+export const SKILLS_GRID_CLASS_NAME = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4";
 
 const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
     [SkillId.FRONTEND_CORE]: {
@@ -66,7 +66,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Box,
         description: [
             {
-                technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer", "Zod"]
+                technologies: ["Redux", "RxJS", "Redux Saga", "TanStack Query", "React Hook Form", "Immer"]
             }
         ],
         iconColorClass: "from-sky-900/40 to-gray-900/40 group-hover:bg-sky-700/40",
@@ -178,7 +178,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
             {
                 technologies: [
                     "Leadership",
-                    "Client Communication",
+                    "Communication",
                     "Problem-solving",
                     "Team Collaboration",
                     "English Professional",

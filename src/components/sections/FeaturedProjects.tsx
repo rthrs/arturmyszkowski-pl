@@ -26,14 +26,14 @@ const projects: Project[] = [
         title: "Networks Centrality",
         description:
             "An interactive network analysis tool capable of visualizing massive datasets. I engineered a custom WebGL rendering engine that achieves real-time interaction with graphs of over 500,000 vertices, overcoming typical browser performance limitations.",
-        technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Rollup", "Graph Theory"],
+        technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Graph Theory"],
         liveUrl: "https://network-centrality.firebaseapp.com/graph",
         image: "/images/projects/networks-centrality.png"
     },
     {
         title: "igraph-community.js",
         description:
-            "A high-speed JavaScript library for community detection in networks. By compiling C/C++ to WebAssembly, the library achieves near-native performance in the browser. It features three novel algorithms I designed and serves as the core analysis engine for the Networks Centrality project.",
+            "A high-performance JavaScript library for community detection in networks. Compiled from C/C++ to WebAssembly for near‑native speed in the browser. Featuring three novel algorithms I designed and powering the Networks Centrality analysis engine.",
         technologies: ["JavaScript", "C/C++", "WebAssembly", "Emscripten"],
         githubUrl: "https://github.com/rthrs/igraph-community.js",
         paperUrl: "/documents/igraph-community-js-paper.pdf",
@@ -43,7 +43,7 @@ const projects: Project[] = [
         title: "333 Daily",
         description:
             "A responsive Progressive Web App (PWA) designed to implement the 3/3/3 productivity method. I focused on creating an intuitive, minimalist user interface with clear progress tracking to help users effortlessly manage their daily goals and stay productive.",
-        technologies: ["React", "PWA", "Tailwind CSS", "Framer Motion", "Netlify", "Vite"],
+        technologies: ["React", "PWA", "Tailwind CSS", "Framer Motion", "Vite"],
         githubUrl: "https://github.com/rthrs/333daily",
         liveUrl: "https://333daily.netlify.app",
         image: "/images/projects/333daily.png"
@@ -71,7 +71,7 @@ export default function FeaturedProjects({
         <Section
             id={sectionId}
             containerClassName="max-w-6xl mx-auto"
-            contentClassName="justify-center space-y-8 xl:space-y-10"
+            contentClassName="justify-center space-y-4 lg:space-y-6"
             scrollButton={scrollButton}
             background={<GradientBackground direction="top" />}
         >

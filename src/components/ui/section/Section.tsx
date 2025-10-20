@@ -65,7 +65,7 @@ export default function Section({
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`flex flex-1 flex-col py-8 sm:py-12 ${contentClassName}`}
+                        className={`flex flex-1 flex-col py-8 sm:py-10 ${contentClassName}`}
                     >
                         {children}
                     </motion.div>

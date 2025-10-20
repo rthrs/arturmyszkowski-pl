@@ -153,7 +153,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     Flask: { icon: <SiFlask />, colorClass: "text-white" },
     // Soft Skills & Project Management
     Leadership: { icon: <FiUsers />, colorClass: "text-amber-400" },
-    "Client Communication": { icon: <FiMessageCircle />, colorClass: "text-blue-400" },
+    Communication: { icon: <FiMessageCircle />, colorClass: "text-blue-400" },
     "Problem-solving": { icon: <FiZap />, colorClass: "text-yellow-400" },
     "Team Collaboration": { icon: <FiUsers />, colorClass: "text-purple-400" },
     Agile: { icon: <FiTrendingUp />, colorClass: "text-green-400" },
