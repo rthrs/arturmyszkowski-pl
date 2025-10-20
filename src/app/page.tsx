@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -12,21 +11,8 @@ import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import GoToTopButton from "@/components/ui/buttons/GoToTopButton";
 import { scrollToSection } from "@/utils/scroll";
-import { useScrollSnap } from "@/hooks/useScrollSnap";
 
 export default function Home() {
-    const snapEnabled = useScrollSnap();
-
-    useEffect(() => {
-        const html = document.documentElement;
-
-        if (snapEnabled) {
-            html.classList.add("snap-y", "snap-mandatory");
-        } else {
-            html.classList.remove("snap-y", "snap-mandatory");
-        }
-    }, [snapEnabled]);
-
     return (
         <main className="relative text-white">
             <NavBar onNavigate={scrollToSection} />

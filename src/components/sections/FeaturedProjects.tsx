@@ -26,7 +26,7 @@ const projects: Project[] = [
         title: "Networks Centrality",
         description:
             "An interactive network analysis tool capable of visualizing massive datasets. I engineered a custom WebGL rendering engine that achieves real-time interaction with graphs of over 500,000 vertices, overcoming typical browser performance limitations.",
-        technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Rollup", "Graph Theory", "Network Analysis"],
+        technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Rollup", "Graph Theory"],
         liveUrl: "https://network-centrality.firebaseapp.com/graph",
         image: "/images/projects/networks-centrality.png"
     },

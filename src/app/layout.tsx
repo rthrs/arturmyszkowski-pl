@@ -111,7 +111,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="scroll-smooth overflow-x-hidden bg-black">
+        <html lang="en" className="scroll-smooth snap-y snap-mandatory overflow-x-hidden bg-black">
             <head>
                 <StructuredData />
             </head>
