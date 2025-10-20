@@ -38,17 +38,14 @@ button,
     }
 
     /* Reduce initial paint complexity */
-    .section-base {
+    .section-base,
+    .card,
+    h1,
+    h2,
+    p,
+    button {
         /* Hint to browser about upcoming changes */
         will-change: transform, opacity;
-    }
-
-    /* Optimize animations for 60fps */
-    @media (prefers-reduced-motion: no-preference) {
-        * {
-            /* Use GPU for animations */
-            transform: translateZ(0);
-        }
     }
 }
 
@@ -60,6 +57,11 @@ button,
         /* Note: Brave mobile has a bug treating svh like dvh, but it's a niche browser */
         min-height: calc(100svh - 68px);
         scroll-margin-top: 69px;
+
+        /* Prevent layout thrashing */
+        contain: layout style paint;
+        /* Optimize for animations */
+        will-change: transform, opacity;
 
         /* For devices with a minimum certain dimensions, enable scroll snapping - value tested empirically */
         @media (min-width: theme("screens.lg")) and (min-height: 988px) {

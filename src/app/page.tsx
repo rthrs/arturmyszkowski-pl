@@ -7,33 +7,56 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import GoToTopButton from "@/components/ui/buttons/GoToTopButton";
 import { scrollToSection } from "@/utils/scroll";
+import GradientBackground from "@/components/backgrounds/GradientBackground";
 
-const SectionLoading = () => <div className="h-screen bg-gradient-to-b from-slate-900 to-slate-800" />;
+const SectionPlaceholder = ({ children }: { children?: React.ReactNode }) => (
+    <div className="section-base">{children}</div>
+);
 
 // Lazy load heavy sections with backgrounds
 const FrontendExpertise = dynamic(() => import("@/components/sections/FrontendExpertise"), {
     ssr: false,
-    loading: SectionLoading
+    loading: () => (
+        <SectionPlaceholder>
+            <GradientBackground direction="top" />
+        </SectionPlaceholder>
+    )
 });
 
 const FullStackSolutions = dynamic(() => import("@/components/sections/FullStackSolutions"), {
     ssr: false,
-    loading: SectionLoading
+    loading: () => (
+        <SectionPlaceholder>
+            <GradientBackground direction="bottom" />
+        </SectionPlaceholder>
+    )
 });
 
 const FeaturedProjects = dynamic(() => import("@/components/sections/FeaturedProjects"), {
     ssr: false,
-    loading: SectionLoading
+    loading: () => (
+        <SectionPlaceholder>
+            <GradientBackground direction="top" />
+        </SectionPlaceholder>
+    )
 });
 
 const Experience = dynamic(() => import("@/components/sections/Experience"), {
     ssr: false,
-    loading: SectionLoading
+    loading: () => (
+        <SectionPlaceholder>
+            <GradientBackground direction="bottom" />
+        </SectionPlaceholder>
+    )
 });
 
 const Contact = dynamic(() => import("@/components/sections/Contact"), {
     ssr: false,
-    loading: SectionLoading
+    loading: () => (
+        <SectionPlaceholder>
+            <GradientBackground direction="top" />
+        </SectionPlaceholder>
+    )
 });
 
 export default function Home() {

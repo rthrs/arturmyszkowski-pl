@@ -109,9 +109,13 @@ export default function CanvasBackground({
         return (
             <div
                 ref={containerRef}
-                className={`absolute -z-10 top-0 bottom-0 left-0 right-0 transition-opacity duration-1000 ${
+                className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${
                     isReady ? "opacity-100" : "opacity-0"
                 } ${className}`}
+                style={{
+                    transition: "opacity 0.8s ease-in-out",
+                    willChange: "opacity"
+                }}
             >
                 <FallbackCanvas
                     camera={camera}
@@ -129,9 +133,13 @@ export default function CanvasBackground({
     return (
         <div
             ref={containerRef}
-            className={`absolute -z-10 top-0 bottom-0 left-0 right-0 transition-opacity duration-1000 ${
+            className={`absolute -z-10 top-0 bottom-0 left-0 right-0 ${
                 isReady ? "opacity-100" : "opacity-0"
             } ${className}`}
+            style={{
+                transition: "opacity 0.8s ease-in-out",
+                willChange: "opacity"
+            }}
         >
             <Canvas
                 worker={worker}
