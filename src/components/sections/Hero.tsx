@@ -76,11 +76,15 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                         rel={rel}
                         aria-label={label}
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: "easeOut" }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.5, delay: 0.3 + index * 0.1, ease: "easeOut" }
+                        }}
+                        transition={{ duration: 0.125 }}
                         className="text-gray-400 hover:text-white relative group"
-                        whileHover={{ scale: 1.15, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.15, y: -2, transition: { duration: 0.125 } }}
+                        whileTap={{ scale: 0.95, transition: { duration: 0.125 } }}
                         onClick={() => {
                             if (socialId === "resume") {
                                 analytics.trackDownload(href, "pdf", sectionId);
