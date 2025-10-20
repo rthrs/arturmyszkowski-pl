@@ -23,6 +23,33 @@ button,
     ::selection {
         @apply bg-blue-500 text-white;
     }
+
+    /* Performance optimizations for animations */
+    * {
+        /* Hint to browser which properties will change for smoother animations */
+        will-change: auto;
+    }
+
+    /* Optimize canvas rendering */
+    canvas {
+        /* Prevent unnecessary repaints */
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    /* Reduce initial paint complexity */
+    .section-base {
+        /* Hint to browser about upcoming changes */
+        will-change: transform, opacity;
+    }
+
+    /* Optimize animations for 60fps */
+    @media (prefers-reduced-motion: no-preference) {
+        * {
+            /* Use GPU for animations */
+            transform: translateZ(0);
+        }
+    }
 }
 
 @layer components {

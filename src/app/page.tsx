@@ -1,16 +1,40 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import FrontendExpertise from "@/components/sections/FrontendExpertise";
-import FullStackSolutions from "@/components/sections/FullStackSolutions";
-import FeaturedProjects from "@/components/sections/FeaturedProjects";
-import Experience from "@/components/sections/Experience";
-import Contact from "@/components/sections/Contact";
 import GoToTopButton from "@/components/ui/buttons/GoToTopButton";
 import { scrollToSection } from "@/utils/scroll";
+
+const SectionLoading = () => <div className="h-screen bg-gradient-to-b from-slate-900 to-slate-800" />;
+
+// Lazy load heavy sections with backgrounds
+const FrontendExpertise = dynamic(() => import("@/components/sections/FrontendExpertise"), {
+    ssr: false,
+    loading: SectionLoading
+});
+
+const FullStackSolutions = dynamic(() => import("@/components/sections/FullStackSolutions"), {
+    ssr: false,
+    loading: SectionLoading
+});
+
+const FeaturedProjects = dynamic(() => import("@/components/sections/FeaturedProjects"), {
+    ssr: false,
+    loading: SectionLoading
+});
+
+const Experience = dynamic(() => import("@/components/sections/Experience"), {
+    ssr: false,
+    loading: SectionLoading
+});
+
+const Contact = dynamic(() => import("@/components/sections/Contact"), {
+    ssr: false,
+    loading: SectionLoading
+});
 
 export default function Home() {
     return (
