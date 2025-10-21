@@ -1,4 +1,5 @@
 import { FEATURES } from "@/constants/features";
+import ExternalLinkIndicator from "@/components/ui/ExternalLinkIndicator";
 
 export default function Footer() {
     const slantClasses = FEATURES.SLANT_ENABLED
@@ -11,7 +12,7 @@ export default function Footer() {
         : "";
 
     return (
-        <footer className={`py-16 px-6 bg-black ${slantClasses}`}>
+        <footer role="contentinfo" className={`py-16 px-6 bg-black ${slantClasses}`}>
             <div className="max-w-4xl mx-auto text-center text-sm">
                 <p className="text-gray-400 mb-1">© 2025 Artur Myszkowski</p>
                 <p className="text-gray-400 text-xs">
@@ -23,6 +24,7 @@ export default function Footer() {
                         className="text-blue-400 hover:text-blue-300 transition-colors duration-200 underline decoration-blue-500/50 hover:decoration-blue-400/70"
                     >
                         Next.js
+                        <ExternalLinkIndicator />
                     </a>
                     {", "}
                     <a
@@ -32,6 +34,7 @@ export default function Footer() {
                         className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 underline decoration-cyan-500/50 hover:decoration-cyan-400/70"
                     >
                         Tailwind CSS
+                        <ExternalLinkIndicator />
                     </a>
                     {", "}
                     <a
@@ -41,6 +44,7 @@ export default function Footer() {
                         className="text-purple-400 hover:text-purple-300 transition-colors duration-200 underline decoration-purple-500/50 hover:decoration-purple-400/70"
                     >
                         Framer Motion
+                        <ExternalLinkIndicator />
                     </a>
                     {" and "}
                     <a
@@ -50,6 +54,7 @@ export default function Footer() {
                         className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200 underline decoration-emerald-500/50 hover:decoration-emerald-400/70"
                     >
                         Three.js
+                        <ExternalLinkIndicator />
                     </a>
                 </p>
             </div>

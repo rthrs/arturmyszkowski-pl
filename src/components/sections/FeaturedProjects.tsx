@@ -8,6 +8,7 @@ import Section, { ScrollButtonProps } from "@/components/ui/section/Section";
 import SectionTitle from "@/components/ui/section/SectionTitle";
 import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
+import ExternalLinkIndicator from "@/components/ui/ExternalLinkIndicator";
 import { analytics } from "@/lib/analytics";
 
 interface Project {
@@ -140,6 +141,7 @@ export default function FeaturedProjects({
                                         >
                                             <FiGithub size={16} />
                                             <span>Code</span>
+                                            <ExternalLinkIndicator />
                                         </motion.a>
                                     )}
                                     {project.liveUrl && (
@@ -157,6 +159,7 @@ export default function FeaturedProjects({
                                         >
                                             <FiExternalLink size={16} />
                                             <span>Live Demo</span>
+                                            <ExternalLinkIndicator />
                                         </motion.a>
                                     )}
                                     {project.paperUrl && (
@@ -172,6 +175,7 @@ export default function FeaturedProjects({
                                         >
                                             <FiFileText size={16} />
                                             <span>Paper</span>
+                                            <ExternalLinkIndicator />
                                         </motion.a>
                                     )}
                                 </div>

@@ -11,6 +11,7 @@ Personal portfolio website showcasing professional work as a Senior Software Eng
 
 - **Interactive 3D Backgrounds**: WebGL-powered animated scenes using React Three Fiber
 - **SEO Optimized**: Complete metadata, OpenGraph images, structured data (JSON-LD), sitemap
+- **Accessibility (a11y)**: WCAG 2.1 Level AA compliant with proper landmarks, ARIA labels, skip navigation, and reduced motion support
 - **Performance**: Optimized with Next.js 15, code splitting, and lazy loading
 - **Responsive Design**: Mobile-first approach with smooth scroll snapping
 - **Privacy-First Analytics**: PostHog integration (cookie-free, GDPR compliant)
@@ -74,6 +75,19 @@ src/
 ├── hooks/                      # Custom React hooks
 └── lib/                        # Utilities
 ```
+
+## Accessibility (a11y)
+
+WCAG 2.1 Level AA compliant implementation following industry best practices:
+
+- ✅ **Semantic HTML5 landmarks**: Proper `<header>`, `<nav>`, `<main>`, `<footer>` with ARIA roles
+- ✅ **Skip navigation link**: Keyboard users can skip to main content
+- ✅ **ARIA labels**: Comprehensive labeling for navigation, buttons, and interactive elements
+- ✅ **Keyboard navigation**: Full keyboard support with proper focus management
+- ✅ **Screen reader optimization**: External link indicators and descriptive labels
+- ✅ **Reduced motion support**: Respects `prefers-reduced-motion` system preference
+- ✅ **Proper heading hierarchy**: Logical document structure with h1-h3 tags
+- ✅ **Alt text**: Descriptive alternative text for all images
 
 ## SEO Implementation
 

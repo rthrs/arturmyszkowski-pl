@@ -74,7 +74,7 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                         href={href}
                         target={target}
                         rel={rel}
-                        aria-label={label}
+                        aria-label={target === "_blank" ? `${label} (opens in new tab)` : label}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
                             opacity: 1,

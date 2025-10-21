@@ -42,7 +42,13 @@ export default function GoToTopButton() {
                     transition={{ duration: 0.2 }}
                     className="fixed bottom-8 right-8 z-50"
                 >
-                    <Button size="icon" onClick={scrollToTop} leftIcon={<FiChevronUp size={20} />} variant="primary" />
+                    <Button
+                        size="icon"
+                        onClick={scrollToTop}
+                        leftIcon={<FiChevronUp size={20} />}
+                        variant="primary"
+                        aria-label="Scroll to top"
+                    />
                 </motion.div>
             )}
         </AnimatePresence>

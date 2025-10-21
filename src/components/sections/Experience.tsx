@@ -9,6 +9,7 @@ import { SOCIAL_LINKS } from "@/constants/socials";
 import { motion } from "framer-motion";
 import FluidBackground from "@/components/backgrounds/fluid";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
+import ExternalLinkIndicator from "@/components/ui/ExternalLinkIndicator";
 import { analytics } from "@/lib/analytics";
 
 interface ExperienceProps {
@@ -60,6 +61,7 @@ export default function Experience({ id: sectionId = "experience", scrollButton 
                             />
                         }
                     />
+                    <ExternalLinkIndicator />
                 </a>
             </motion.div>
         </Section>

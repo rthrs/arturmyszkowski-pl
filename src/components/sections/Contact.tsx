@@ -7,6 +7,7 @@ import SectionSubtitle from "@/components/ui/section/SectionSubtitle";
 import { motion } from "framer-motion";
 import { CONTACT_LINKS } from "@/constants/socials";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
+import ExternalLinkIndicator from "@/components/ui/ExternalLinkIndicator";
 import { analytics } from "@/lib/analytics";
 
 interface ContactProps {
@@ -54,6 +55,7 @@ export default function Contact({ id: sectionId = "contact" }: ContactProps = {}
                                 />
                             }
                         />
+                        {target === "_blank" && <ExternalLinkIndicator />}
                     </motion.a>
                 ))}
             </div>

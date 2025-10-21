@@ -13,6 +13,7 @@ interface NavBarProps {
 export default function NavBar({ onNavigate }: NavBarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navRef = useRef<HTMLElement>(null);
+    const mobileMenuId = "mobile-menu";
 
     // Close menu when clicking outside
     useEffect(() => {
@@ -59,7 +60,12 @@ export default function NavBar({ onNavigate }: NavBarProps) {
         : "";
 
     return (
-        <nav ref={navRef} className={`fixed z-[60] w-full bg-black/50 backdrop-blur-2xl pb-1 ${slantClasses}`}>
+        <nav
+            ref={navRef}
+            role="navigation"
+            aria-label="Main navigation"
+            className={`fixed z-[60] w-full bg-black/50 backdrop-blur-2xl pb-1 ${slantClasses}`}
+        >
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <motion.button
@@ -71,6 +77,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                             onNavigate("hero");
                         }}
                         whileTap={{ scale: 0.95 }}
+                        aria-label="Go to home section"
                         className="font-medium text-xl text-gray-300 hover:text-gray-300 transition-colors duration-300 z-60 p-2 rounded-lg hover:bg-white/5 active:bg-white/10"
                     >
                         arturmyszkowski.pl
@@ -101,6 +108,9 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                         className="md:hidden text-white z-60 p-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         whileTap={{ scale: 0.9 }}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isMenuOpen}
+                        aria-controls={mobileMenuId}
                     >
                         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
                     </motion.button>
@@ -110,6 +120,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                 <AnimatePresence>
                     {isMenuOpen && (
                         <motion.div
+                            id={mobileMenuId}
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
