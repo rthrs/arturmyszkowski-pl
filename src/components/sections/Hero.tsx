@@ -31,19 +31,24 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
             >
                 <Image
                     fill
+                    priority
+                    fetchPriority="high"
                     src={profileImage}
                     alt=""
                     sizes="(min-width: 640px) 208px, 152px"
                     className="object-cover absolute -inset-6 blur-xl scale-125 opacity-10 rounded-full"
                     aria-hidden="true"
+                    quality={10}
                 />
                 <Image
                     fill
                     priority
+                    fetchPriority="high"
                     src={profileImage}
                     alt="Artur Myszkowski"
                     sizes="(min-width: 640px) 208px, 152px"
                     className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center"
+                    quality={90}
                 />
             </motion.div>
 

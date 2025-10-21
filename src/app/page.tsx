@@ -5,7 +5,6 @@ import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import GoToTopButton from "@/components/ui/buttons/GoToTopButton";
 import { scrollToSection } from "@/utils/scroll";
 import GradientBackground from "@/components/backgrounds/GradientBackground";
 
@@ -13,8 +12,7 @@ const SectionPlaceholder = ({ children }: { children?: React.ReactNode }) => (
     <div className="section-base">{children}</div>
 );
 
-// Lazy load heavy sections with backgrounds
-const FrontendExpertise = dynamic(() => import("@/components/sections/FrontendExpertise"), {
+const LazyFrontendExpertise = dynamic(() => import("@/components/sections/FrontendExpertise"), {
     ssr: false,
     loading: () => (
         <SectionPlaceholder>
@@ -23,7 +21,7 @@ const FrontendExpertise = dynamic(() => import("@/components/sections/FrontendEx
     )
 });
 
-const FullStackSolutions = dynamic(() => import("@/components/sections/FullStackSolutions"), {
+const LazyFullStackSolutions = dynamic(() => import("@/components/sections/FullStackSolutions"), {
     ssr: false,
     loading: () => (
         <SectionPlaceholder>
@@ -32,7 +30,7 @@ const FullStackSolutions = dynamic(() => import("@/components/sections/FullStack
     )
 });
 
-const FeaturedProjects = dynamic(() => import("@/components/sections/FeaturedProjects"), {
+const LazyFeaturedProjects = dynamic(() => import("@/components/sections/FeaturedProjects"), {
     ssr: false,
     loading: () => (
         <SectionPlaceholder>
@@ -41,7 +39,7 @@ const FeaturedProjects = dynamic(() => import("@/components/sections/FeaturedPro
     )
 });
 
-const Experience = dynamic(() => import("@/components/sections/Experience"), {
+const LazyExperience = dynamic(() => import("@/components/sections/Experience"), {
     ssr: false,
     loading: () => (
         <SectionPlaceholder>
@@ -50,13 +48,18 @@ const Experience = dynamic(() => import("@/components/sections/Experience"), {
     )
 });
 
-const Contact = dynamic(() => import("@/components/sections/Contact"), {
+const LazyContact = dynamic(() => import("@/components/sections/Contact"), {
     ssr: false,
     loading: () => (
         <SectionPlaceholder>
             <GradientBackground direction="top" />
         </SectionPlaceholder>
     )
+});
+
+// Lazy load GoToTopButton since it's not immediately visible
+const LazyGoToTopButton = dynamic(() => import("@/components/ui/buttons/GoToTopButton"), {
+    ssr: false
 });
 
 export default function Home() {
@@ -89,7 +92,7 @@ export default function Home() {
                         targetSection: "frontend-expertise"
                     }}
                 />
-                <FrontendExpertise
+                <LazyFrontendExpertise
                     id="frontend-expertise"
                     scrollButton={{
                         label: "See the Full Picture",
@@ -97,7 +100,7 @@ export default function Home() {
                         delay: 0.8
                     }}
                 />
-                <FullStackSolutions
+                <LazyFullStackSolutions
                     id="full-stack-solutions"
                     scrollButton={{
                         label: "Check Out My Projects",
@@ -105,7 +108,7 @@ export default function Home() {
                         delay: 0.8
                     }}
                 />
-                <FeaturedProjects
+                <LazyFeaturedProjects
                     id="featured-projects"
                     scrollButton={{
                         label: "Learn My Journey",
@@ -113,19 +116,19 @@ export default function Home() {
                         delay: 0.6
                     }}
                 />
-                <Experience
+                <LazyExperience
                     id="experience"
                     scrollButton={{
                         label: "Let's Connect!",
                         targetSection: "contact"
                     }}
                 />
-                <Contact id="contact" />
+                <LazyContact id="contact" />
             </main>
 
             <Footer />
 
-            <GoToTopButton />
+            <LazyGoToTopButton />
         </>
     );
 }
