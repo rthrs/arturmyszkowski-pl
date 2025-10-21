@@ -107,9 +107,9 @@ export default function FeaturedProjects({
                                 </div>
                             )}
                             <div className="p-4 flex flex-col space-y-3 flex-1">
-                                <h4 className="text-lg font-semibold text-gray-100 group-hover:text-white transition-colors">
+                                <h3 className="text-lg font-semibold text-gray-100 group-hover:text-white transition-colors">
                                     {project.title}
-                                </h4>
+                                </h3>
 
                                 <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
 
