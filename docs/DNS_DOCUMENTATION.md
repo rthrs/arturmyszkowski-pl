@@ -24,7 +24,7 @@ The main domain points to the Vercel-hosted Next.js application.
 
 | Type      | Name  | Value                  | TTL  | Purpose                                          |
 | :-------- | :---- | :--------------------- | :--- | :----------------------------------------------- |
-| **A**     | `@`   | `76.76.21.21`          | Auto | Points the root domain to Vercel's Edge Network. |
+| **A**     | `@`   | `216.198.79.1`         | Auto | Points the root domain to Vercel's Edge Network. |
 | **CNAME** | `www` | `cname.vercel-dns.com` | Auto | Points the `www` subdomain to Vercel.            |
 
 ### 2.2. Archived v1 Site (`v1.arturmyszkowski.pl`)

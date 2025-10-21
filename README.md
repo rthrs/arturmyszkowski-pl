@@ -54,7 +54,7 @@ NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_verification_code
 ```
 
-See [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md) for PostHog setup.
+See [ANALYTICS_SETUP.md](docs/ANALYTICS_SETUP.md) for PostHog setup.
 
 ## Project Structure
 
@@ -100,7 +100,7 @@ Complete SEO setup following Next.js best practices:
 - ✅ Canonical URLs and meta robots configuration
 - ✅ 40+ targeted keywords for search optimization
 
-See [SEO_IMPLEMENTATION.md](SEO_IMPLEMENTATION.md) for details.
+See [SEO_IMPLEMENTATION.md](docs/SEO_IMPLEMENTATION.md) for details.
 
 ## License
 
