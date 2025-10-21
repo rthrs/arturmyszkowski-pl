@@ -116,40 +116,6 @@ export default function RootLayout({
     return (
         <html lang="en" className="scroll-smooth snap-y snap-mandatory overflow-x-hidden bg-black">
             <head>
-                {/* Preconnect to external domains for faster resource loading */}
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link rel="preconnect" href="https://us.i.posthog.com" />
-                <link rel="preconnect" href="https://vitals.vercel-insights.com" />
-
-                {/* DNS prefetch for other external domains */}
-                <link rel="dns-prefetch" href="https://github.com" />
-                <link rel="dns-prefetch" href="https://linkedin.com" />
-                <link rel="dns-prefetch" href="https://threejs.org" />
-
-                {/* Critical CSS inlined for faster rendering */}
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        /* Critical above-the-fold styles */
-                        html { scroll-behavior: smooth; }
-                        body { 
-                            font-family: var(--font-space-grotesk), system-ui, sans-serif;
-                            background-color: #000;
-                            color: #fff;
-                            overflow-x: hidden;
-                        }
-                        .section-base[data-variant="hero"] {
-                            min-height: 100svh;
-                            padding-top: 68px;
-                        }
-                        @supports not (height: 100svh) {
-                            .section-base[data-variant="hero"] { min-height: 100vh; }
-                        }
-                    `
-                    }}
-                />
-
                 <StructuredData />
             </head>
             <body

@@ -1,24 +1,28 @@
 import type { NextConfig } from "next";
 
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+    enabled: process.env.ANALYZE === "true"
+});
+
 const nextConfig: NextConfig = {
-    // Performance optimizations
     experimental: {
-        optimizePackageImports: ["framer-motion", "react-icons"]
+        optimizePackageImports: ["framer-motion", "react-icons", "three"]
     },
 
-    // Compiler optimizations
     compiler: {
         removeConsole: process.env.NODE_ENV === "production"
     },
 
-    // Image optimization
     images: {
         formats: ["image/webp", "image/avif"],
         minimumCacheTTL: 31536000, // 1 year
-        qualities: [10, 25, 50, 75, 90, 100] // Configured quality values
+        qualities: [10, 25, 50, 75, 90, 100], // Configured quality values
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
     },
 
-    // Headers for better caching and performance
     async headers() {
         return [
             {
@@ -67,4 +71,4 @@ const nextConfig: NextConfig = {
     }
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

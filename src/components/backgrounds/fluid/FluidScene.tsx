@@ -2,7 +2,18 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import {
+    Mesh,
+    ShaderMaterial,
+    PlaneGeometry,
+    Color,
+    DoubleSide,
+    NormalBlending,
+    Group,
+    BufferGeometry,
+    Float32BufferAttribute,
+    LineSegments
+} from "three";
 
 type FluidPlaneProps = {
     speed?: number;
@@ -11,15 +22,15 @@ type FluidPlaneProps = {
 };
 
 function FluidPlane({ speed = 0.3, opacity = 1.0, aspectRatio = 16 / 9 }: FluidPlaneProps) {
-    const meshRef = useRef<THREE.Mesh>(null);
-    const [material, setMaterial] = useState<THREE.ShaderMaterial | null>(null);
-    const [geometry, setGeometry] = useState<THREE.PlaneGeometry | null>(null);
+    const meshRef = useRef<Mesh>(null);
+    const [material, setMaterial] = useState<ShaderMaterial | null>(null);
+    const [geometry, setGeometry] = useState<PlaneGeometry | null>(null);
 
     useEffect(() => {
         // Make the plane wider to match typical viewport aspect ratios
         const width = 60;
         const height = width / aspectRatio;
-        const planeGeometry = new THREE.PlaneGeometry(width, height, 1, 1);
+        const planeGeometry = new PlaneGeometry(width, height, 1, 1);
         setGeometry(planeGeometry);
 
         return () => {
@@ -29,16 +40,16 @@ function FluidPlane({ speed = 0.3, opacity = 1.0, aspectRatio = 16 / 9 }: FluidP
 
     useEffect(() => {
         // Create fluid shader material
-        const shaderMaterial = new THREE.ShaderMaterial({
+        const shaderMaterial = new ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
                 uOpacity: { value: opacity },
-                uColor1: { value: new THREE.Color("#007AFF") }, // Apple Blue
-                uColor2: { value: new THREE.Color("#AF52DE") }, // Apple Purple
-                uColor3: { value: new THREE.Color("#FF3B30") }, // Apple Red
-                uColor4: { value: new THREE.Color("#FF9500") }, // Apple Orange
-                uColor5: { value: new THREE.Color("#30D158") }, // Apple Green
-                uColor6: { value: new THREE.Color("#64D2FF") } // Apple Cyan
+                uColor1: { value: new Color("#007AFF") }, // Apple Blue
+                uColor2: { value: new Color("#AF52DE") }, // Apple Purple
+                uColor3: { value: new Color("#FF3B30") }, // Apple Red
+                uColor4: { value: new Color("#FF9500") }, // Apple Orange
+                uColor5: { value: new Color("#30D158") }, // Apple Green
+                uColor6: { value: new Color("#64D2FF") } // Apple Cyan
             },
             vertexShader: `
         varying vec2 vUv;
@@ -148,10 +159,10 @@ function FluidPlane({ speed = 0.3, opacity = 1.0, aspectRatio = 16 / 9 }: FluidP
           
           gl_FragColor = vec4(finalColor, alpha);
         }
-      `,
+            `,
             transparent: true,
-            side: THREE.DoubleSide,
-            blending: THREE.NormalBlending
+            side: DoubleSide,
+            blending: NormalBlending
         });
 
         setMaterial(shaderMaterial);
@@ -183,18 +194,18 @@ type FlowingLinesProps = {
 };
 
 function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed = 0.3 }: FlowingLinesProps) {
-    const groupRef = useRef<THREE.Group>(null);
-    const lineMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
+    const groupRef = useRef<Group>(null);
+    const lineMaterialRef = useRef<ShaderMaterial | null>(null);
 
     useEffect(() => {
-        const group = new THREE.Group();
+        const group = new Group();
 
         // Adjust width based on aspect ratio to cover the viewport properly
         const width = 30;
         const height = 20;
 
         // Create single merged geometry for all lines
-        const lineGeometry = new THREE.BufferGeometry();
+        const lineGeometry = new BufferGeometry();
         const positions: number[] = [];
         const lineIndices: number[] = [];
         const lineIndexAttribute: number[] = [];
@@ -216,15 +227,15 @@ function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed
             }
         }
 
-        lineGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-        lineGeometry.setAttribute("aLineIndex", new THREE.Float32BufferAttribute(lineIndexAttribute, 1));
+        lineGeometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
+        lineGeometry.setAttribute("aLineIndex", new Float32BufferAttribute(lineIndexAttribute, 1));
         lineGeometry.setIndex(lineIndices);
 
         // Create single shader material for all lines
-        const lineMaterial = new THREE.ShaderMaterial({
+        const lineMaterial = new ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
-                uColor: { value: new THREE.Color(color) },
+                uColor: { value: new Color(color) },
                 uOpacity: { value: opacity * 0.4 }
             },
             vertexShader: `
@@ -259,7 +270,7 @@ function FlowingLines({ lineCount = 12, color = "#64D2FF", opacity = 0.08, speed
         });
 
         lineMaterialRef.current = lineMaterial;
-        const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+        const lineSegments = new LineSegments(lineGeometry, lineMaterial);
         group.add(lineSegments);
 
         if (groupRef.current) {

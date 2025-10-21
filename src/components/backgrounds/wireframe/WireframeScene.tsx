@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { Mesh, BufferGeometry, Float32BufferAttribute, MeshBasicMaterial } from "three";
 
 // Morphing wireframe grid using morph targets
 interface WireframeSceneProps {
@@ -13,13 +13,13 @@ interface WireframeSceneProps {
 }
 
 export default function WireframeScene({ position, scale = 1, divisions = 60, speed = 0.5 }: WireframeSceneProps) {
-    const meshRef = useRef<THREE.Mesh>(null);
-    const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
-    const [material, setMaterial] = useState<THREE.MeshBasicMaterial | null>(null);
+    const meshRef = useRef<Mesh>(null);
+    const [geometry, setGeometry] = useState<BufferGeometry | null>(null);
+    const [material, setMaterial] = useState<MeshBasicMaterial | null>(null);
 
     useEffect(() => {
         // Create base wireframe geometry
-        const baseGeometry = new THREE.BufferGeometry();
+        const baseGeometry = new BufferGeometry();
         const vertices: number[] = [];
         const triangleIndices: number[] = [];
 
@@ -53,7 +53,7 @@ export default function WireframeScene({ position, scale = 1, divisions = 60, sp
             }
         }
 
-        baseGeometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
+        baseGeometry.setAttribute("position", new Float32BufferAttribute(vertices, 3));
         baseGeometry.setIndex(triangleIndices);
 
         // Initialize morph attributes array
@@ -88,15 +88,15 @@ export default function WireframeScene({ position, scale = 1, divisions = 60, sp
 
         // Set up morph targets
         baseGeometry.morphAttributes.position = [
-            new THREE.Float32BufferAttribute(wavePoints, 3),
-            new THREE.Float32BufferAttribute(spherePoints, 3),
-            new THREE.Float32BufferAttribute(twistPoints, 3)
+            new Float32BufferAttribute(wavePoints, 3),
+            new Float32BufferAttribute(spherePoints, 3),
+            new Float32BufferAttribute(twistPoints, 3)
         ];
 
         setGeometry(baseGeometry);
 
         // Create wireframe material that supports morphing
-        const wireframeMaterial = new THREE.MeshBasicMaterial({
+        const wireframeMaterial = new MeshBasicMaterial({
             color: "#64D2FF",
             wireframe: true,
             transparent: true,

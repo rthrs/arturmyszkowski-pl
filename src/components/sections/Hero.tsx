@@ -48,7 +48,7 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                     alt="Artur Myszkowski"
                     sizes="(min-width: 640px) 208px, 152px"
                     className="object-cover relative z-10 rounded-full mask-radial-from-50% mask-radial-to-100% mask-radial-at-center"
-                    quality={90}
+                    quality={75}
                 />
             </motion.div>
 

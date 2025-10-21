@@ -2,7 +2,16 @@
 
 import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import {
+    Group,
+    BufferGeometry,
+    Float32BufferAttribute,
+    ShaderMaterial,
+    Mesh,
+    LineSegments,
+    Color,
+    DoubleSide
+} from "three";
 
 interface SneaksSceneProps {
     lineCount?: number;
@@ -17,12 +26,12 @@ export default function SneaksScene({
     opacity = 0.15,
     speed = 0.2
 }: SneaksSceneProps) {
-    const groupRef = useRef<THREE.Group>(null);
-    const bandMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
-    const lineMaterialRef = useRef<THREE.ShaderMaterial | null>(null);
+    const groupRef = useRef<Group>(null);
+    const bandMaterialRef = useRef<ShaderMaterial | null>(null);
+    const lineMaterialRef = useRef<ShaderMaterial | null>(null);
 
     useEffect(() => {
-        const group = new THREE.Group();
+        const group = new Group();
 
         // Create single merged geometry for all colored bands
         const allBandPositions: number[] = [];
@@ -60,20 +69,20 @@ export default function SneaksScene({
         }
 
         // Create single geometry for all bands
-        const bandGeometry = new THREE.BufferGeometry();
-        bandGeometry.setAttribute("position", new THREE.Float32BufferAttribute(allBandPositions, 3));
-        bandGeometry.setAttribute("aUvAndIndex", new THREE.Float32BufferAttribute(allBandUvs, 3));
+        const bandGeometry = new BufferGeometry();
+        bandGeometry.setAttribute("position", new Float32BufferAttribute(allBandPositions, 3));
+        bandGeometry.setAttribute("aUvAndIndex", new Float32BufferAttribute(allBandUvs, 3));
         bandGeometry.setIndex(allBandIndices);
 
         // Create single shader material for all bands
-        const bandMaterial = new THREE.ShaderMaterial({
+        const bandMaterial = new ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
                 uLineCount: { value: lineCount },
-                uColor1: { value: new THREE.Color("#007AFF") }, // Apple Blue
-                uColor2: { value: new THREE.Color("#AF52DE") }, // Apple Purple
-                uColor3: { value: new THREE.Color("#FF9500") }, // Apple Orange
-                uColor4: { value: new THREE.Color("#64D2FF") }, // Cyan
+                uColor1: { value: new Color("#007AFF") }, // Apple Blue
+                uColor2: { value: new Color("#AF52DE") }, // Apple Purple
+                uColor3: { value: new Color("#FF9500") }, // Apple Orange
+                uColor4: { value: new Color("#64D2FF") }, // Cyan
                 uOpacity: { value: opacity * 0.8 }
             },
             vertexShader: `
@@ -138,16 +147,16 @@ export default function SneaksScene({
                 }
             `,
             transparent: true,
-            side: THREE.DoubleSide,
+            side: DoubleSide,
             depthWrite: false
         });
 
         bandMaterialRef.current = bandMaterial;
-        const bandMesh = new THREE.Mesh(bandGeometry, bandMaterial);
+        const bandMesh = new Mesh(bandGeometry, bandMaterial);
         group.add(bandMesh);
 
         // Create single merged geometry for all lines
-        const lineGeometry = new THREE.BufferGeometry();
+        const lineGeometry = new BufferGeometry();
         const positions: number[] = [];
         const lineIndices: number[] = [];
         const lineIndexAttribute: number[] = [];
@@ -169,15 +178,15 @@ export default function SneaksScene({
             }
         }
 
-        lineGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-        lineGeometry.setAttribute("aLineIndex", new THREE.Float32BufferAttribute(lineIndexAttribute, 1));
+        lineGeometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
+        lineGeometry.setAttribute("aLineIndex", new Float32BufferAttribute(lineIndexAttribute, 1));
         lineGeometry.setIndex(lineIndices);
 
         // Create single shader material for all lines
-        const lineMaterial = new THREE.ShaderMaterial({
+        const lineMaterial = new ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
-                uColor: { value: new THREE.Color(color) },
+                uColor: { value: new Color(color) },
                 uOpacity: { value: opacity * 0.4 }
             },
             vertexShader: `
@@ -210,7 +219,7 @@ export default function SneaksScene({
         });
 
         lineMaterialRef.current = lineMaterial;
-        const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+        const lineSegments = new LineSegments(lineGeometry, lineMaterial);
         group.add(lineSegments);
 
         if (groupRef.current) {
