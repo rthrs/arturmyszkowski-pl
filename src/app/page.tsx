@@ -39,7 +39,7 @@ const LazyFeaturedProjects = dynamic(() => import("@/components/sections/Feature
     )
 });
 
-const LazyExperience = dynamic(() => import("@/components/sections/Experience"), {
+const LazyResume = dynamic(() => import("@/components/sections/Resume"), {
     ssr: false,
     loading: () => (
         <SectionPlaceholder>
@@ -80,7 +80,7 @@ export default function Home() {
                 <Hero
                     id="hero"
                     scrollButton={{
-                        label: "Learn More",
+                        label: "Read About Me",
                         targetSection: "about",
                         delay: 0.7
                     }}
@@ -103,7 +103,7 @@ export default function Home() {
                 <LazyFullStackSolutions
                     id="full-stack-solutions"
                     scrollButton={{
-                        label: "Check Out My Projects",
+                        label: "See My Skills in Action",
                         targetSection: "featured-projects",
                         delay: 0.8
                     }}
@@ -111,13 +111,13 @@ export default function Home() {
                 <LazyFeaturedProjects
                     id="featured-projects"
                     scrollButton={{
-                        label: "Learn My Journey",
-                        targetSection: "experience",
+                        label: "View My Full Resume",
+                        targetSection: "resume",
                         delay: 0.6
                     }}
                 />
-                <LazyExperience
-                    id="experience"
+                <LazyResume
+                    id="resume"
                     scrollButton={{
                         label: "Let's Connect!",
                         targetSection: "contact"

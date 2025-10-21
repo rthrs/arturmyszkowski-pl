@@ -59,7 +59,7 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                 className="space-y-2 sm:space-y-4 mb-4 sm:mb-8"
             >
                 <h1 className="text-4xl sm:text-7xl font-light text-white tracking-tight">Artur Myszkowski</h1>
-                <p className="text-lg sm:text-2xl text-gray-400 font-light">Software Engineer</p>
+                <p className="text-lg sm:text-2xl text-gray-400 font-light">Senior Software Engineer</p>
             </motion.div>
 
             <motion.p

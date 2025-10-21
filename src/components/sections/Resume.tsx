@@ -12,12 +12,12 @@ import GradientBackground from "@/components/backgrounds/GradientBackground";
 import ExternalLinkIndicator from "@/components/ui/ExternalLinkIndicator";
 import { analytics } from "@/lib/analytics";
 
-interface ExperienceProps {
+interface ResumeProps {
     id?: string;
     scrollButton?: ScrollButtonProps;
 }
 
-export default function Experience({ id: sectionId = "experience", scrollButton }: ExperienceProps = {}) {
+export default function Resume({ id: sectionId = "resume", scrollButton }: ResumeProps = {}) {
     return (
         <Section
             id={sectionId}
@@ -32,9 +32,9 @@ export default function Experience({ id: sectionId = "experience", scrollButton 
             scrollButton={scrollButton}
         >
             <div className="text-center">
-                <SectionTitle>Experience</SectionTitle>
+                <SectionTitle>Resume</SectionTitle>
                 <SectionSubtitle>
-                    Download my resume to learn more about my professional experience, technical expertise, and
+                    Download my Resume to learn more about my professional experience, technical expertise, and
                     achievements throughout my career.
                 </SectionSubtitle>
             </div>

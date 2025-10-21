@@ -143,7 +143,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cloud,
         description: [
             {
-                technologies: ["AWS", "Google Cloud", "Netlify", "Docker", "CI/CD", "Git"]
+                technologies: ["AWS", "Google Cloud", "Netlify", "Vercel", "Docker", "CI/CD", "Git"]
             }
         ],
         iconColorClass: "from-teal-900/40 to-gray-900/40 group-hover:bg-teal-700/40",

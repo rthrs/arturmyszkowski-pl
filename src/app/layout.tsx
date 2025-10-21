@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 
 const title = "Artur Myszkowski - Senior Software Engineer";
 const description =
-    "Senior Software Engineer with 8+ years experience and Master's degree in Computer Science from University of Warsaw. Specializing in React, TypeScript, WebGL, WebAssembly, and high-performance web applications with interactive data visualization.";
+    "Senior Software Engineer with 8+ years of experience and Master's degree in Computer Science from University of Warsaw. Specializing in React, TypeScript, WebGL, WebAssembly, and high-performance web applications with interactive data visualization.";
 const siteUrl = "https://arturmyszkowski.pl";
 
 export const metadata: Metadata = {

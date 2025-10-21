@@ -29,8 +29,9 @@ export default function FullStackSolutions({
             <div className="text-center">
                 <SectionTitle>Full-Stack Solutions</SectionTitle>
                 <SectionSubtitle>
-                    Building complete solutions with backend architecture, cloud infrastructure, database design, and
-                    proven leadership in project delivery.
+                    Beyond the frontend, I build complete solutions with robust backend architecture, scalable cloud
+                    infrastructure, and thoughtful database design. My expertise extends to project leadership, ensuring
+                    efficient and impactful delivery from start to finish.
                 </SectionSubtitle>
             </div>
             <div className={SKILLS_GRID_CLASS_NAME}>

@@ -19,7 +19,7 @@ This document outlines all SEO optimizations following Next.js 15 best practices
     - Home page: priority 1.0
     - Featured Projects: priority 0.9
     - About/Skills sections: priority 0.8
-    - Experience/Contact: priority 0.6-0.7
+    - Resume/Contact: priority 0.6-0.7
 - Automatic `lastModified` date updates
 - **Reference**: [Next.js Sitemap Documentation](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
 

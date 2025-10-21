@@ -141,7 +141,7 @@ analytics.trackButtonClick("download_resume", "hero");
 analytics.trackExternalLink("https://github.com/username", "GitHub", "contact");
 
 // Track download
-analytics.trackDownload("/documents/resume.pdf", "pdf", "experience");
+analytics.trackDownload("/documents/resume.pdf", "pdf", "resume");
 
 // Track social media click
 analytics.trackSocialClick("LinkedIn", "hero");

@@ -6,11 +6,7 @@ export default function StructuredData() {
         jobTitle: "Senior Software Engineer",
         url: "https://arturmyszkowski.pl",
         image: "https://arturmyszkowski.pl/images/profile.jpeg",
-        sameAs: [
-            "https://github.com/rthrs",
-            "https://linkedin.com/in/artur-myszkowski",
-            "https://twitter.com/arturmyszkowski"
-        ],
+        sameAs: ["https://github.com/rthrs", "https://linkedin.com/in/artur-myszkowski"],
         alumniOf: {
             "@type": "EducationalOrganization",
             name: "University of Warsaw",
@@ -38,7 +34,7 @@ export default function StructuredData() {
             "Computer Science"
         ],
         description:
-            "Senior Software Engineer with 8+ years experience and Master's degree in Computer Science from University of Warsaw. Specializing in React, TypeScript, WebGL, WebAssembly, and high-performance web applications with interactive data visualization.",
+            "Senior Software Engineer with 8+ years of experience and Master's degree in Computer Science from University of Warsaw. Specializing in React, TypeScript, WebGL, WebAssembly, and high-performance web applications with interactive data visualization.",
         hasCredential: {
             "@type": "EducationalOccupationalCredential",
             credentialCategory: "degree",
@@ -77,18 +73,24 @@ export default function StructuredData() {
                 {
                     "@type": "ListItem",
                     position: 3,
+                    name: "Skills",
+                    item: "https://arturmyszkowski.pl#frontend-expertise"
+                },
+                {
+                    "@type": "ListItem",
+                    position: 4,
                     name: "Projects",
                     item: "https://arturmyszkowski.pl#featured-projects"
                 },
                 {
                     "@type": "ListItem",
-                    position: 4,
-                    name: "Experience",
-                    item: "https://arturmyszkowski.pl#experience"
+                    position: 5,
+                    name: "Resume",
+                    item: "https://arturmyszkowski.pl#resume"
                 },
                 {
                     "@type": "ListItem",
-                    position: 5,
+                    position: 6,
                     name: "Contact",
                     item: "https://arturmyszkowski.pl#contact"
                 }
