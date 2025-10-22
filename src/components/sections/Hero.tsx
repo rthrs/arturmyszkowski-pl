@@ -36,7 +36,7 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                     src={profileImage}
                     alt=""
                     sizes="(min-width: 640px) 208px, 152px"
-                    className="object-cover absolute -inset-6 blur-xl scale-125 opacity-10 rounded-full"
+                    className="object-cover absolute -inset-6 blur-xl scale-125 opacity-15 rounded-full"
                     aria-hidden="true"
                     quality={10}
                 />

@@ -55,7 +55,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Code,
         description: [
             {
-                technologies: ["React", "Next.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3"]
+                technologies: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3"]
             }
         ],
         iconColorClass: "from-cyan-900/40 to-gray-900/40 group-hover:bg-cyan-700/40",
@@ -77,7 +77,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Layers,
         description: [
             {
-                technologies: ["Tailwind CSS", "Framer Motion", "Styled Components", "Chakra UI"]
+                technologies: ["Tailwind CSS", "Framer Motion", "Chakra UI", "Styled Components"]
             }
         ],
         iconColorClass: "from-blue-900/40 to-gray-900/40 group-hover:bg-blue-700/40",
@@ -99,7 +99,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cpu,
         description: [
             {
-                technologies: ["WebAssembly", "Emscripten", "WebWorkers", "Optimization"]
+                technologies: ["WebWorkers", "WebAssembly", "Emscripten", "Optimization"]
             }
         ],
         iconColorClass: "from-violet-900/40 to-gray-900/40 group-hover:bg-violet-700/40",
@@ -143,7 +143,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cloud,
         description: [
             {
-                technologies: ["AWS", "Google Cloud", "Netlify", "Vercel", "Docker", "CI/CD", "Git"]
+                technologies: ["AWS", "Google Cloud", "Vercel", "Netlify", "Docker", "CI/CD", "Git"]
             }
         ],
         iconColorClass: "from-teal-900/40 to-gray-900/40 group-hover:bg-teal-700/40",

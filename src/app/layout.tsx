@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
     adjustFontFallback: true
 });
 
-const title = "Artur Myszkowski - Senior Software Engineer";
+const title = "Artur Myszkowski | Senior Software Engineer";
 const description =
     "Senior Software Engineer with 8+ years of experience and Master's degree in Computer Science from University of Warsaw. Specializing in React, TypeScript, WebGL, WebAssembly, and high-performance web applications with interactive data visualization.";
 const siteUrl = "https://arturmyszkowski.pl";
@@ -29,8 +29,17 @@ export const metadata: Metadata = {
         "Artur Myszkowski Warsaw",
         // Job titles
         "Senior Software Engineer",
+        "Senior Software Developer",
+        "Senior Full-Stack Engineer",
+        "Senior Full-Stack Developer",
         "Senior Frontend Engineer",
+        "Senior Frontend Developer",
+        "Software Engineer",
+        "Software Developer",
+        "Full-Stack Engineer",
         "Full-Stack Developer",
+        "Frontend Engineer",
+        "Frontend Developer",
         // Technologies - Frontend
         "React Developer",
         "React Engineer",
@@ -91,7 +100,7 @@ export const metadata: Metadata = {
                 url: "/opengraph-image",
                 width: 1200,
                 height: 630,
-                alt: "Artur Myszkowski - Senior Software Engineer"
+                alt: "Artur Myszkowski | Senior Software Engineer"
             }
         ]
     },

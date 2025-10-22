@@ -152,7 +152,7 @@ const iconMap: Record<string, { icon: ReactNode; colorClass: string }> = {
     },
     Neo4j: { icon: <SiNeo4J />, colorClass: "text-blue-600" },
     Flask: { icon: <SiFlask />, colorClass: "text-white" },
-    Vercel: { icon: <SiVercel />, colorClass: "text-black" },
+    Vercel: { icon: <SiVercel />, colorClass: "text-white" },
     // Soft Skills & Project Management
     Leadership: { icon: <FiUsers />, colorClass: "text-amber-400" },
     Communication: { icon: <FiMessageCircle />, colorClass: "text-blue-400" },
