@@ -99,12 +99,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cpu,
         description: [
             {
-                technologies: [
-                    "WebWorkers",
-                    "WebAssembly",
-                    "Web Vitals Optimisation",
-                    "API Refactoring",
-                ]
+                technologies: ["WebWorkers", "WebAssembly", "Web Vitals Optimisation", "API Refactoring"]
             }
         ],
         iconColorClass: "from-violet-900/40 to-gray-900/40 group-hover:bg-violet-700/40",
