@@ -99,7 +99,12 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Cpu,
         description: [
             {
-                technologies: ["WebWorkers", "WebAssembly", "Emscripten", "Optimization"]
+                technologies: [
+                    "WebWorkers",
+                    "WebAssembly",
+                    "Web Vitals Optimisation",
+                    "API Refactoring",
+                ]
             }
         ],
         iconColorClass: "from-violet-900/40 to-gray-900/40 group-hover:bg-violet-700/40",
@@ -110,7 +115,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Tool,
         description: [
             {
-                technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo"]
+                technologies: ["Vite", "Webpack", "Rollup", "Electron", "Hugo", "Emscripten"]
             }
         ],
         iconColorClass: "from-purple-900/40 to-gray-900/40 group-hover:bg-purple-700/40",
