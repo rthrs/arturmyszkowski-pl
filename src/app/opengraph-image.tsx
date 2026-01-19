@@ -74,7 +74,7 @@ export default async function Image() {
                             fontWeight: 300
                         }}
                     >
-                        Senior Software Engineer
+                        Software Engineer
                     </p>
                     <div
                         style={{

@@ -26,7 +26,7 @@ const projects: Project[] = [
     {
         title: "Networks Centrality",
         description:
-            "An interactive network analysis tool capable of visualizing massive datasets. I engineered a custom WebGL rendering engine that achieves real-time interaction with graphs of over 500,000 vertices, overcoming typical browser performance limitations.",
+            "An interactive network analysis tool. I authored the core of this toolkit: a high-performance, WebGL-based rendering engine capable of visualizing massive datasets with over 500,000 vertices, overcoming typical browser performance limitations.",
         technologies: ["React", "Three.js", "WebGL", "WebWorkers", "Graph Theory"],
         liveUrl: "https://network-centrality.firebaseapp.com/graph",
         image: "/images/projects/networks-centrality.png"
@@ -34,7 +34,7 @@ const projects: Project[] = [
     {
         title: "igraph-community.js",
         description:
-            "A high-performance JavaScript library for community detection in networks. Compiled from C/C++ to WebAssembly for near‑native speed in the browser. Featuring three novel algorithms I designed and powering the Networks Centrality analysis engine.",
+            "A high-performance JavaScript library for community detection in networks. I compiled C/C++ code to WebAssembly for near‑native speed in the browser. Features three novel algorithms I designed that power the Networks Centrality analysis engine.",
         technologies: ["JavaScript", "C/C++", "WebAssembly", "Emscripten"],
         githubUrl: "https://github.com/rthrs/igraph-community.js",
         paperUrl: "/documents/igraph-community-js-paper.pdf",
@@ -78,10 +78,7 @@ export default function FeaturedProjects({
         >
             <div className="text-center">
                 <SectionTitle>Featured Projects</SectionTitle>
-                <SectionSubtitle>
-                    I enjoy building high-performance web applications combining advanced algorithms, interactive
-                    visualizations, and modern development practices.
-                </SectionSubtitle>
+                <SectionSubtitle />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

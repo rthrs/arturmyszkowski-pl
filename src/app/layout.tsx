@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
     adjustFontFallback: true
 });
 
-const title = "Artur Myszkowski | Senior Software Engineer";
+const title = "Artur Myszkowski | Software Engineer";
 const description =
     "Senior Software Engineer with 8+ years of experience and Master's degree in Computer Science from University of Warsaw. Specializing in React, TypeScript, WebGL, WebAssembly, and high-performance web applications with interactive data visualization.";
 const siteUrl = "https://arturmyszkowski.pl";
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
                 url: "/opengraph-image",
                 width: 1200,
                 height: 630,
-                alt: "Artur Myszkowski | Senior Software Engineer"
+                alt: "Artur Myszkowski | Software Engineer"
             }
         ]
     },

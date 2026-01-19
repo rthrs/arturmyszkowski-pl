@@ -14,7 +14,7 @@ export default function Footer() {
     return (
         <footer role="contentinfo" className={`py-16 px-6 bg-black ${slantClasses}`}>
             <div className="max-w-4xl mx-auto text-center text-sm">
-                <p className="text-gray-400 mb-1">© 2025 Artur Myszkowski</p>
+                <p className="text-gray-400 mb-1">© 2026 Artur Myszkowski</p>
                 <p className="text-gray-400 text-xs">
                     Built with{" "}
                     <a

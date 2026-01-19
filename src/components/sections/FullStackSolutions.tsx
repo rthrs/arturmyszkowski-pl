@@ -29,8 +29,7 @@ export default function FullStackSolutions({
             <div className="text-center">
                 <SectionTitle>Full-Stack Solutions</SectionTitle>
                 <SectionSubtitle>
-                    Beyond the frontend, I build complete solutions with robust backend architecture, scalable cloud
-                    infrastructure, and thoughtful database design. My expertise extends to project leadership, ensuring
+                    Beyond the frontend, I build complete solutions with robust backend architecture. My expertise extends also to project leadership, ensuring
                     efficient and impactful delivery from start to finish.
                 </SectionSubtitle>
             </div>

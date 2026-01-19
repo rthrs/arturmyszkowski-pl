@@ -1,4 +1,5 @@
 import posthog from "posthog-js";
+import { getPageviewSource, analytics } from "@/lib/analytics";
 
 posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     api_host: "/relay-p5g",
@@ -13,3 +14,9 @@ posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     mask_all_text: false,
     mask_all_element_attributes: false
 });
+
+// Track pageview with source attribution
+if (typeof window !== "undefined") {
+    const source = getPageviewSource();
+    analytics.trackPageviewWithSource(source);
+}

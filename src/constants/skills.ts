@@ -132,7 +132,7 @@ const SKILL_DEFINITIONS: Record<SkillId, SkillDef> = {
         icon: Database,
         description: [
             {
-                technologies: ["PostgreSQL", "SQLite", "Firebase", "DuckDB", "Neo4j", "REST", "GraphQL"]
+                technologies: ["PostgreSQL", "Firebase", "DuckDB", "Neo4j", "REST", "GraphQL"]
             }
         ],
         iconColorClass: "from-emerald-900/40 to-gray-900/40 group-hover:bg-emerald-700/40",

@@ -21,17 +21,12 @@ export default function About({ id: sectionId = "about", scrollButton }: AboutPr
         >
             <div className="text-center">
                 <SectionTitle>About Me</SectionTitle>
-                <SectionSubtitle className="text-justify">
-                    I am a Software Engineer specializing in high-performance web applications. My passion lies in
-                    building scalable, maintainable solutions that effectively solve complex problems.
-                    <br />
-                    <br />
-                    With a Master&apos;s in Computer Science from the University of Warsaw, I have a deep foundation in
-                    algorithms and data structures. This allows me to architect and build solutions that not only
-                    function flawlessly but also deliver significant impact.
-                    <br />
-                    <br />I am currently integrating modern AI tools into my workflow to further enhance productivity
-                    and push the boundaries of what&apos;s possible in web development.
+                <SectionSubtitle>
+                    I am an experienced Software Engineer with a Master's in Computer Science specializing
+                    in architecting scalable web applications. My deep foundation in algorithms and system
+                    design allows me to transform complex business challenges into robust, high-impact technical
+                    solutions. I also actively leverage modern AI tools to accelerate development cycles, enhance
+                    code quality, and efficiently deliver value.
                 </SectionSubtitle>
             </div>
         </Section>

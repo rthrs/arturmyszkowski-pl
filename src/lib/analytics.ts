@@ -5,6 +5,27 @@
 
 import posthog from "posthog-js";
 
+/**
+ * Detect pageview source from URL params or referrer
+ * Priority: query params ("source" or "s") > referrer detection
+ */
+export const getPageviewSource = (): string => {
+    if (typeof window === "undefined") return "direct";
+
+    // Check URL params first ("source" param takes priority, fallback to "s")
+    const params = new URLSearchParams(window.location.search);
+    const sourceParam = params.get("source") || params.get("s");
+    if (sourceParam) return sourceParam;
+
+    // Fall back to referrer detection
+    const referrer = document.referrer || "";
+    if (referrer.includes("linkedin")) return "linkedin";
+    if (referrer.includes("google")) return "google_search";
+    if (referrer.includes("instagram")) return "instagram";
+
+    return "direct";
+};
+
 export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 
 /**
@@ -23,11 +44,6 @@ export interface AnalyticsEvent {
 
 /**
  * Track custom events using PostHog
- * Examples:
- * - Button clicks
- * - Form submissions
- * - Downloads
- * - External link clicks
  */
 export const trackEvent = (eventName: string, properties?: AnalyticsEvent): void => {
     if (!isAnalyticsEnabled()) return;
@@ -109,6 +125,15 @@ export const analytics = {
         trackEvent("scroll_depth", {
             percentage: percentage,
             depth_label: `${percentage}%`
+        });
+    },
+
+    /**
+     * Track pageview with source attribution
+     */
+    trackPageviewWithSource: (source: string) => {
+        trackEvent("pageview_source", {
+            source: source
         });
     }
 };

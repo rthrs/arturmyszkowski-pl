@@ -59,17 +59,16 @@ export default function Hero({ id: sectionId = "hero", scrollButton }: HeroProps
                 className="space-y-2 sm:space-y-4 mb-4 sm:mb-8"
             >
                 <h1 className="text-4xl sm:text-7xl font-light text-white tracking-tight">Artur Myszkowski</h1>
-                <p className="text-lg sm:text-2xl text-gray-400 font-light">Senior Software Engineer</p>
+                <p className="text-lg sm:text-2xl text-gray-400 font-light">Software Engineer</p>
             </motion.div>
 
             <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-ligh mb-8 sm:mb-16"
+                className="text-md sm:text-lg text-gray-300 max-w-lg mx-auto leading-relaxed font-ligh mb-8 sm:mb-16"
             >
-                I build high-performance web applications that bring complex data to life. Passionate about clean code,
-                innovative solutions, and creating meaningful user impact.
+                I build high-performance web applications that bring complex data to life.
             </motion.p>
 
             <div className="flex justify-center space-x-8">
